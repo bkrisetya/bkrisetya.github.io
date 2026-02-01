@@ -38,10 +38,10 @@ author:
   googlescholar    : "https://scholar.google.com/citations?user=iZPlpSsAAAAJ"
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
+  orcid            : "https://orcid.org/0000-0003-2721-4386"
   semantic         : # URL
   ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
   zotero           : # URL
@@ -67,7 +67,7 @@ author:
   instagram        : # Username
   lastfm           : # Username
   linkedin         : # Username
-  mastodon         : # URL
+  mastodon         : "https://aoir.social/@krisetya"
   medium           : # URL
   pinterest        : # Username
   soundcloud       : # Username
