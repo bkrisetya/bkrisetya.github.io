@@ -3,7 +3,7 @@
   <div class="shrink-0">
     {{ $image := resources.Get "img/author.jpg" }}
     {{ if $image }}
-      {{ $image = $image.Fill "280x280 Center" }}
+      {{ $image = $image.Fill "280x280 Top" }}
       <img
         src="{{ $image.RelPermalink }}"
         alt="{{ .Site.Params.author.name }}"
@@ -14,18 +14,20 @@
 
   <!-- Text -->
   <div class="text-center md:text-left">
-    <h1 class="hero-headline">
-      How do governments and platforms govern online speech in crisis?
-    </h1>
-    <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+    <p class="mt-0 text-lg text-neutral-600 dark:text-neutral-400">
       I'm <strong>Beltsazar Krisetya</strong>, a doctoral researcher at University College London, currently figuring out how content moderation actually works.
     </p>
     <p class="mt-2 text-base text-neutral-500 dark:text-neutral-400">
       I study how governments and platforms negotiate the rules of online speech across Southeast Asia, especially when things get messy.
     </p>
 
+    <!-- Social icons -->
+    <div class="mt-4 flex justify-center md:justify-start">
+      {{ partial "author-links.html" . }}
+    </div>
+
     <!-- CTAs -->
-    <div class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+    <div class="mt-5 flex flex-wrap gap-3 justify-center md:justify-start">
       <a href="{{ "research/" | relURL }}" class="cta-button cta-button-primary">View Research</a>
       <a href="{{ "policy/" | relURL }}" class="cta-button">Policy Work</a>
       <a href="{{ "contact/" | relURL }}" class="cta-button">Get in Touch</a>
