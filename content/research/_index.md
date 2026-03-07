@@ -10,7 +10,7 @@ My doctoral research at [UCL STEaPP](https://profiles.ucl.ac.uk/102833-beltsazar
 
 ## Current Projects
 
-*Project pages coming soon.*
+I'm currently working on several research streams. Individual project pages will be added as findings are published.
 
 ## Selected Publications
 

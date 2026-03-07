@@ -11,7 +11,7 @@ I'm always happy to hear from fellow researchers, policymakers, journalists, and
 The easiest way to reach me is to book a time directly:
 
 <div class="mt-4 mb-8">
-  <a href="https://chat.krisetya.com" class="cta-button cta-button-primary" target="_blank" rel="noopener">Schedule a Conversation</a>
+  <a href="https://chat.krisetya.com" class="cta-button cta-button-primary" target="_blank" rel="noopener" style="font-size: 1rem; padding: 0.75rem 2rem;">Schedule a Conversation</a>
 </div>
 
 ## Email

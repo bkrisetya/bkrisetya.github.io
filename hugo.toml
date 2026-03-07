@@ -2,6 +2,7 @@ theme = "congo"
 baseURL = "https://bkrisetya.github.io/"
 languageCode = "en-GB"
 defaultContentLanguage = "en"
+copyright = "Beltsazar Krisetya"
 enableRobotsTXT = true
 paginate = 10
 summaryLength = 30
