@@ -1,0 +1,19 @@
+[[main]]
+  name = "Research"
+  pageRef = "research"
+  weight = 10
+
+[[main]]
+  name = "Policy"
+  pageRef = "policy"
+  weight = 20
+
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 30
+
+[[main]]
+  name = "Contact"
+  pageRef = "contact"
+  weight = 40

@@ -1,0 +1,17 @@
+title = "Beltsazar Krisetya"
+languageName = "English"
+
+[params.author]
+  name = "Beltsazar Krisetya"
+  image = "img/author.jpg"
+  headline = "How do governments and platforms govern online speech in crisis?"
+  bio = "PhD Candidate, UCL STEaPP | Researcher, CSIS Indonesia | Visiting Fellow, ISEAS"
+  links = [
+    { bluesky = "https://bsky.app/profile/krisetya.com" },
+    { mastodon = "https://aoir.social/@krisetya" },
+    { linkedin = "https://www.linkedin.com/in/krisetya/" },
+    { google-scholar = "https://scholar.google.com/citations?user=iZPlpSsAAAAJ" },
+    { orcid = "https://orcid.org/0000-0003-2721-4386" },
+    { link = "https://profiles.ucl.ac.uk/102833-beltsazar-krisetya" },
+    { github = "https://github.com/bkrisetya" },
+  ]
