@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Serif headings */
+h1, h2, h3, h4, h5, h6,
+.font-serif {
+  font-family: 'Source Serif 4', 'Georgia', serif;
+}
+
+/* Sans body */
+body,
+.font-sans {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Hero headline styling */
+.hero-headline {
+  font-family: 'Source Serif 4', 'Georgia', serif;
+  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: rgb(var(--color-neutral-800));
+}
+
+@media (min-width: 768px) {
+  .hero-headline {
+    font-size: 3rem;
+  }
+}
+
+/* CTA button styling */
+.cta-button {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  border: 1.5px solid rgb(var(--color-primary-700));
+  color: rgb(var(--color-primary-700));
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: rgb(var(--color-primary-700));
+  color: white;
+}
+
+.cta-button-primary {
+  background-color: rgb(var(--color-primary-700));
+  color: white;
+}
+
+.cta-button-primary:hover {
+  background-color: rgb(var(--color-primary-800));
+}
+
+/* Expertise cards */
+.expertise-card {
+  padding: 1.5rem;
+  border: 1px solid rgb(var(--color-neutral-200));
+  transition: border-color 0.2s ease;
+}
+
+.expertise-card:hover {
+  border-color: rgb(var(--color-primary-500));
+}
+
+.expertise-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.expertise-card p {
+  font-size: 0.9rem;
+  color: rgb(var(--color-neutral-600));
+  line-height: 1.6;
+}
