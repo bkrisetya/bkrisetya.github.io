@@ -6,7 +6,7 @@ layout: "simple"
 
 I study how internet infrastructure, digital platforms, and mis/disinformation intersect, particularly in crisis contexts where information environments are most fragile and the stakes of governance are highest.
 
-My doctoral research at [UCL STEaPP](https://profiles.ucl.ac.uk/102833-beltsazar-krisetya) focuses on content moderation policy across Southeast Asia, examining how governments and platforms negotiate the rules of online speech during elections, natural disasters, and public health emergencies.
+My doctoral research at UCL STEaPP focuses on content moderation policy across Southeast Asia, examining how governments and platforms negotiate the rules of online speech during high-stakes political events, such as elections and public protests.
 
 ## Current Projects
 
@@ -18,14 +18,10 @@ I'm currently working on several research streams. Individual project pages will
 
 **Krisetya, B.** (2024). "[Shaping the Digital Future: Regulatory Updates from Indonesia](https://techforgoodinstitute.org/blog/expert-opinion/shaping-the-digital-future-regulatory-updates-from-indonesia/)." *Tech For Good Institute*.
 
+**Krisetya, B.** (2024). "[Defending Election Integrity from Disinformation](https://www.wfd.org/)." Westminster Foundation for Democracy.
+
 **Krisetya, B.** (2024). "Pemilih Muda, Persepsi Korupsi, dan Pemilu 2024." Research Report, CSIS Indonesia.
 
 **Krisetya, B.** "[Should Indonesia Adopt EU Digital Services Act to Improve Its Content Moderation Policies?](https://blog.csis.or.id/should-indonesia-adopt-eu-digital-services-act-to-improve-its-content-moderation-policies-e2db6ee5f968)" *CSIS Notes*.
-
-**Krisetya, B.** "Briefing on Disinformation." Westminster Foundation for Democracy.
-
-**Safer Internet Lab.** (2024). "[Disinformation in Indonesia's 2024 Election: A Southeast Asia Perspective](https://saferinternetlab.org/uva/)." Research presentation.
-
-**Safer Internet Lab.** (2024). "[Countering Election Disinformation: Insights on Monitoring Mechanisms for 2024](https://saferinternetlab.org/perludem/)."
 
 For a full list, see my [Google Scholar](https://scholar.google.com/citations?user=iZPlpSsAAAAJ) or [ORCID](https://orcid.org/0000-0003-2721-4386) profiles.
