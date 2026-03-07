@@ -1,0 +1,10 @@
+theme = "congo"
+baseURL = "https://bkrisetya.github.io/"
+languageCode = "en-GB"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+paginate = 10
+summaryLength = 30
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
