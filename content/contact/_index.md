@@ -4,7 +4,7 @@ description: "Get in touch with Beltsazar Krisetya for research collaboration, p
 layout: "simple"
 ---
 
-I'm always happy to hear from fellow researchers, policymakers, journalists, and anyone working on digital governance in the region. Whether it's a potential collaboration, an advisory engagement, a speaking invitation, or a media enquiry — don't hesitate to reach out.
+I'm always happy to hear from fellow researchers, policymakers, journalists, and anyone working on digital governance in the region. Whether it's a potential collaboration, an advisory engagement, a speaking invitation, or a media enquiry, don't hesitate to reach out.
 
 ## Book a Meeting
 

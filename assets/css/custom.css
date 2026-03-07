@@ -16,15 +16,14 @@ body,
 .hero-headline {
   font-family: 'Source Serif 4', 'Georgia', serif;
   font-weight: 600;
-  font-size: 2.25rem;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: rgb(var(--color-neutral-800));
+  font-size: 1.75rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 @media (min-width: 768px) {
   .hero-headline {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -32,8 +31,8 @@ body,
 .cta-button {
   display: inline-block;
   padding: 0.625rem 1.5rem;
-  border: 1.5px solid rgb(var(--color-primary-700));
-  color: rgb(var(--color-primary-700));
+  border: 1.5px solid rgb(51, 65, 85);
+  color: rgb(51, 65, 85);
   font-weight: 500;
   font-size: 0.9rem;
   text-decoration: none;
@@ -41,28 +40,56 @@ body,
 }
 
 .cta-button:hover {
-  background-color: rgb(var(--color-primary-700));
+  background-color: rgb(51, 65, 85);
   color: white;
 }
 
 .cta-button-primary {
-  background-color: rgb(var(--color-primary-700));
+  background-color: rgb(51, 65, 85);
   color: white;
 }
 
 .cta-button-primary:hover {
-  background-color: rgb(var(--color-primary-800));
+  background-color: rgb(30, 41, 59);
+}
+
+/* Dark mode CTA buttons */
+.dark .cta-button {
+  border-color: rgb(148, 163, 184);
+  color: rgb(148, 163, 184);
+}
+
+.dark .cta-button:hover {
+  background-color: rgb(148, 163, 184);
+  color: rgb(15, 23, 42);
+}
+
+.dark .cta-button-primary {
+  background-color: rgb(148, 163, 184);
+  color: rgb(15, 23, 42);
+}
+
+.dark .cta-button-primary:hover {
+  background-color: rgb(203, 213, 225);
 }
 
 /* Expertise cards */
 .expertise-card {
   padding: 1.5rem;
-  border: 1px solid rgb(var(--color-neutral-200));
+  border: 1px solid rgb(229, 231, 235);
   transition: border-color 0.2s ease;
 }
 
 .expertise-card:hover {
-  border-color: rgb(var(--color-primary-500));
+  border-color: rgb(100, 116, 139);
+}
+
+.dark .expertise-card {
+  border-color: rgb(55, 65, 81);
+}
+
+.dark .expertise-card:hover {
+  border-color: rgb(148, 163, 184);
 }
 
 .expertise-card h3 {
@@ -72,6 +99,10 @@ body,
 
 .expertise-card p {
   font-size: 0.9rem;
-  color: rgb(var(--color-neutral-600));
+  color: rgb(75, 85, 99);
   line-height: 1.6;
+}
+
+.dark .expertise-card p {
+  color: rgb(156, 163, 175);
 }
