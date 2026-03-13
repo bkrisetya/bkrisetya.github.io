@@ -19,6 +19,10 @@ enableImageWebp = true
   layout = "custom"
   showRecent = false
 
+[substackFeed]
+  url = "https://idea.krisetya.com/feed"
+  limit = 3
+
 [article]
   showDate = true
   showAuthor = false

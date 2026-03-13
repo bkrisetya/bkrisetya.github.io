@@ -9,3 +9,8 @@ summaryLength = 30
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[security]
+  [security.http]
+    urls = ['https://idea\.krisetya\.com/.*']
+    methods = ['(?i)GET']
