@@ -79,12 +79,6 @@
   {{ end }}
   <div class="flex items-center justify-center">
     <div class="text-center">
-      {{/* Copyright */}}
-      {{ if .Site.Params.footer.showCopyright | default true }}
-        <p class="text-sm text-neutral-500 dark:text-neutral-400">
-          &copy; {{ now.Format "2006" }}
-        </p>
-      {{ end }}
     </div>
   </div>
   {{/* Extend footer - eg. for extra scripts, etc. */}}
