@@ -11,19 +11,19 @@
       {{- $items = slice $items -}}
     {{- end -}}
 
-    <section class="mt-12 md:mt-16">
+    <section class="mt-12 md:mt-16 mx-auto max-w-xl">
       <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-neutral-800 dark:text-neutral-100 mb-6" style="font-family: 'Source Serif 4', Georgia, serif;">
         Latest Writing
       </h2>
 
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-6">
         {{- range first $limit $items -}}
           {{- $title := .title -}}
           {{- $link := .link -}}
           {{- $desc := .description | plainify | truncate 150 -}}
           {{- $date := .pubDate -}}
 
-          <a href="{{ $link }}" target="_blank" rel="noopener" class="block expertise-card group no-underline">
+          <a href="{{ $link }}" target="_blank" rel="noopener" class="block group no-underline">
             <h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors" style="font-family: 'Source Serif 4', Georgia, serif; margin: 0 0 0.25rem 0;">
               {{ $title }}
             </h3>
