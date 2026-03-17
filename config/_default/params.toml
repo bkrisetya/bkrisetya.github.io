@@ -20,7 +20,7 @@ enableImageWebp = true
   showRecent = false
 
 [substackFeed]
-  url = "https://idea.krisetya.com/feed"
+  url = "https://sarkas.tech/feed"
   limit = 3
 
 [article]

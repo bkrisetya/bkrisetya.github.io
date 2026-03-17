@@ -6,7 +6,7 @@ layout: "simple"
 
 I study how internet infrastructure, digital platforms, and mis/disinformation intersect, particularly in crisis contexts where information environments are most fragile and the stakes of governance are highest.
 
-My doctoral research at UCL STEaPP focuses on content moderation policy across Southeast Asia, examining how governments and platforms negotiate the rules of online speech during high-stakes political events, such as elections and public protests.
+My doctoral research at UCL STEaPP focuses on content moderation policy across Southeast Asia, examining how governments and platforms negotiate the rules of online speech during high-stakes political events, such as elections and public protests. I am supervised by [Dr Roser Pujadas](https://profiles.ucl.ac.uk/93849-roser-pujadas/about) and [Prof Mark Warner](https://profiles.ucl.ac.uk/57936-mark-warner/about).
 
 ## Current Projects
 
