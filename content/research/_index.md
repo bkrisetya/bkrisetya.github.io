@@ -6,7 +6,7 @@ layout: "simple"
 
 I study how internet infrastructure, digital platforms, and mis/disinformation intersect, particularly in crisis contexts where information environments are most fragile and the stakes of governance are highest.
 
-My doctoral research at UCL STEaPP focuses on content moderation policy across Southeast Asia, examining how governments and platforms negotiate the rules of online speech during high-stakes political events, such as elections and public protests. I am supervised by [Dr Roser Pujadas](https://profiles.ucl.ac.uk/93849-roser-pujadas/about) and [Prof Mark Warner](https://profiles.ucl.ac.uk/57936-mark-warner/about).
+My doctoral research at [UCL STEaPP](https://www.ucl.ac.uk/steapp/) focuses on content moderation policy across Southeast Asia, examining how governments and platforms negotiate the rules of online speech during high-stakes political events, such as elections and public protests. I am supervised by [Dr Roser Pujadas](https://profiles.ucl.ac.uk/93849-roser-pujadas/about) and [Dr Mark Warner](https://profiles.ucl.ac.uk/57936-mark-warner/about).
 
 ## Current Projects
 
@@ -18,7 +18,7 @@ I'm currently working on several research streams. Individual project pages will
 
 **Krisetya, B.** (2024). "[Shaping the Digital Future: Regulatory Updates from Indonesia](https://techforgoodinstitute.org/blog/expert-opinion/shaping-the-digital-future-regulatory-updates-from-indonesia/)." *Tech For Good Institute*.
 
-**Krisetya, B.** (2024). "[Defending Election Integrity from Disinformation](https://www.wfd.org/)." Westminster Foundation for Democracy.
+**Krisetya, B.** (2024). "Defending Election Integrity from Disinformation." Westminster Foundation for Democracy.
 
 **Krisetya, B.** (2024). "Pemilih Muda, Persepsi Korupsi, dan Pemilu 2024." Research Report, CSIS Indonesia.
 
