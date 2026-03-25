@@ -13,7 +13,7 @@ Before starting my PhD, I spent several years as a policy researcher at [CSIS In
 - **PhD Candidate**, [UCL STEaPP](https://profiles.ucl.ac.uk/102833-beltsazar-krisetya), London
 - **Visiting Fellow**, Media, Technology & Society Programme, [ISEAS – Yusof Ishak Institute](https://www.iseas.edu.sg/about-us/researchers/beltsazar-krisetya/), Singapore
 - **Researcher** (study leave), Department of Politics & Social Change, [CSIS Indonesia](https://www.csis.or.id/scholar/beltsazar-krisetya/), Jakarta
-- **Founder & Principal Researcher**, [Safer Internet Lab (SAIL)](https://saferinternetlab.org/), in collaboration with Google
+- **Advisor**, [Safer Internet Lab (SAIL)](https://saferinternetlab.org/)
 
 ## Education
 
