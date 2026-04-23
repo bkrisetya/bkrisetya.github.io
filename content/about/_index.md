@@ -4,7 +4,7 @@ description: "Beltsazar Krisetya — doctoral researcher at UCL studying content
 layout: "simple"
 ---
 
-I'm a doctoral researcher at the [Department of Science, Technology, Engineering and Public Policy (STEaPP)](https://www.ucl.ac.uk/steapp/), [University College London](https://profiles.ucl.ac.uk/102833-beltsazar-krisetya), and a member of the [UCL Digital Speech Lab](https://www.digitalspeechlab.com/). I research how governments and digital platforms negotiate the governance of online speech, particularly during crises such as elections, natural disasters, and public health emergencies.
+I'm a doctoral researcher at the [Department of Science, Technology, Engineering and Public Policy (STEaPP)](https://www.ucl.ac.uk/steapp/), [University College London](https://profiles.ucl.ac.uk/102833-beltsazar-krisetya). I research how governments and digital platforms negotiate the governance of online speech, particularly during crises such as elections, natural disasters, and public health emergencies.
 
 Before starting my PhD, I spent several years as a policy researcher at [CSIS Indonesia](https://www.csis.or.id/scholar/beltsazar-krisetya/), leading research projects on social media disinformation, online hate speech, personal data protection, and cybersecurity. That practitioner experience shapes how I approach my academic work. I'm interested in research that speaks to both scholarly communities and the policymakers who need it most.
 

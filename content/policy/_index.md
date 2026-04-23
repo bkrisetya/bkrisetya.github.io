@@ -36,6 +36,7 @@ I work at the intersection of research and policy, advising governments, interna
 
 ### Advisory & Affiliations
 
+- **[UCL Digital Speech Lab](https://www.digitalspeechlab.com/)** — Member
 - **International Panel on the Information Environment ([IPIE](https://www.ipie.info/scientists/beltsazar-krisetya))** — Affiliate researcher, collaborating with scholars and policymakers to assess the state of global information ecosystems
 - **[ISEAS – Yusof Ishak Institute](https://www.iseas.edu.sg/about-us/researchers/beltsazar-krisetya/)**, Singapore — Visiting Fellow, Media, Technology & Society Programme
 - **[Centre for Strategic and International Studies (CSIS)](https://www.csis.or.id/scholar/beltsazar-krisetya/)**, Jakarta — Researcher, Department of Politics & Social Change. Led 10+ research projects on social media disinformation, online hate speech, data protection, and cybersecurity
