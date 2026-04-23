@@ -25,3 +25,12 @@ I'm currently working on several research streams. Individual project pages will
 **Krisetya, B.** "[Should Indonesia Adopt EU Digital Services Act to Improve Its Content Moderation Policies?](https://blog.csis.or.id/should-indonesia-adopt-eu-digital-services-act-to-improve-its-content-moderation-policies-e2db6ee5f968)" *CSIS Notes*.
 
 For a full list, see my [Google Scholar](https://scholar.google.com/citations?user=iZPlpSsAAAAJ) or [ORCID](https://orcid.org/0000-0003-2721-4386) profiles.
+
+## Research Affiliations
+
+- **[UCL Digital Speech Lab](https://www.digitalspeechlab.com/)** — Doctoral Researcher
+- **[UCL Information Security Research Group (ISec)](https://sec.cs.ucl.ac.uk/)** — Member
+- **International Panel on the Information Environment ([IPIE](https://www.ipie.info/scientists/beltsazar-krisetya))** — Affiliate Researcher
+- **[Global Network of Internet & Society Centers (NoC)](https://networkofcenters.net/)** — Member (network founded by Harvard, MIT, and Oxford)
+- **[Association of Internet Researchers (AoIR)](https://aoir.org/)** — Member
+- **[Doctrine UK](https://www.doctrineuk.org/)** — Member
