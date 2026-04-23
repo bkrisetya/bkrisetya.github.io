@@ -18,7 +18,7 @@ I'm currently working on several research streams. Individual project pages will
 
 **Krisetya, B.** (2024). "[Shaping the Digital Future: Regulatory Updates from Indonesia](https://techforgoodinstitute.org/blog/expert-opinion/shaping-the-digital-future-regulatory-updates-from-indonesia/)." *Tech For Good Institute*.
 
-**Krisetya, B.** (2024). "Defending Election Integrity from Disinformation." Westminster Foundation for Democracy.
+**Krisetya, B.** (2024). "[Defending Election Integrity from Disinformation](https://www.wfd.org/sites/default/files/2024-03/BCSMF_WFD_Briefing%20Paper_Election%20Disinformation.pdf)." Westminster Foundation for Democracy.
 
 **Krisetya, B.** "[Should Indonesia Adopt EU Digital Services Act to Improve Its Content Moderation Policies?](https://blog.csis.or.id/should-indonesia-adopt-eu-digital-services-act-to-improve-its-content-moderation-policies-e2db6ee5f968)" *CSIS Notes*.
 
@@ -38,3 +38,7 @@ I am currently involved, in various capacities, with:
 ## Teaching
 
 I have been involved in teaching and assistantship capacities at UCL, including on [How to Change the World](https://www.ucl.ac.uk/engineering/steapp/study/how-change-world), a two-week programme for engineering and management science students developing solutions to contemporary global challenges.
+
+Guest Lecturer at UPNVJ, UNAIR, UNDIP, and UAI.
+
+Undergraduate thesis supervision at Universitas Prasetiya Mulya.
