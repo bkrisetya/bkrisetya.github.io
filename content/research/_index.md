@@ -37,8 +37,9 @@ I am currently involved, in various capacities, with:
 
 ## Teaching
 
-I have been involved in teaching and assistantship capacities at UCL, including on [How to Change the World](https://www.ucl.ac.uk/engineering/steapp/study/how-change-world), a two-week programme for engineering and management science students developing solutions to contemporary global challenges.
+I have been involved in teaching and assistantship capacities with:
 
-Guest Lecturer at UPNVJ, UNAIR, UNDIP, and UAI.
-
-Undergraduate thesis supervision at Universitas Prasetiya Mulya.
+- [UCL](https://www.ucl.ac.uk/) ([How to Change the World](https://www.ucl.ac.uk/engineering/steapp/study/how-change-world))
+- [Universität Hamburg](https://www.inf.uni-hamburg.de/en.html) (Informatics)
+- Guest Lectures: [UPNVJ](https://upnvj.ac.id/), [UNAIR](https://www.unair.ac.id/), [UNDIP](https://www.undip.ac.id/), [UAI](https://uai.ac.id/)
+- Undergraduate Supervision: [Prasmul](https://www.prasmul.ac.id/)
