@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Public Authority Definition Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="dashboard-shell" aria-label="Public Authority Definition Dashboard">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">EIC working dataset</p>
+          <h1>Public Authority Definition Dashboard</h1>
+          <p class="subtitle">Organisational classification, evidence gaps, and definitional caveats</p>
+        </div>
+        <dl class="snapshot" aria-label="Dataset snapshot">
+          <div>
+            <dt>Snapshot</dt>
+            <dd>May 2026</dd>
+          </div>
+          <div>
+            <dt>Rows</dt>
+            <dd>142</dd>
+          </div>
+          <div>
+            <dt>Review coverage</dt>
+            <dd>61%</dd>
+          </div>
+        </dl>
+      </header>
+
+      <section class="filters" aria-label="Dashboard filters">
+        <div class="filter">
+          <label for="sector">Sector</label>
+          <select id="sector">
+            <option>All sectors</option>
+            <option>Education</option>
+            <option>Health and social care</option>
+            <option>Housing</option>
+            <option>Regulators</option>
+            <option>Outsourced providers</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="status">Likely public authority?</label>
+          <select id="status">
+            <option>Borderline + Function-specific</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="money">Public money?</label>
+          <select id="money">
+            <option>Any</option>
+            <option>Yes</option>
+            <option>Partial / mixed</option>
+            <option>No</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="function">Public function?</label>
+          <select id="function">
+            <option>Clear or possible</option>
+            <option>Yes</option>
+            <option>Function-specific</option>
+            <option>Possible</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="filter wide">
+          <label for="grounds">Grounds / signal</label>
+          <select id="grounds">
+            <option>Public function / funding / powers</option>
+            <option>Formal listing</option>
+            <option>Accountability or control</option>
+            <option>Negative signal</option>
+            <option>Public interest only</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="confidence">Confidence</label>
+          <select id="confidence">
+            <option>Medium + Low</option>
+            <option>High</option>
+            <option>Low</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="review">Review status</label>
+          <select id="review">
+            <option>Needs review</option>
+            <option>Ready for use</option>
+            <option>Needs source</option>
+            <option>Deferred</option>
+          </select>
+        </div>
+        <div class="filter wide">
+          <label for="gap">Evidence gap</label>
+          <select id="gap">
+            <option>Missing statutory source</option>
+            <option>Commissioning evidence</option>
+            <option>Control/accountability</option>
+            <option>Legal-form evidence</option>
+            <option>No gap selected</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="active-lens" aria-live="polite">
+        <span class="lens-label">Current lens</span>
+        <span id="lens-summary">All sectors / Borderline + Function-specific / Needs review / Missing statutory source</span>
+        <span class="dummy-note">Dummy data for concept mockup</span>
+      </section>
+
+      <section class="kpis" aria-label="Headline counts">
+        <article class="kpi yes">
+          <span>Yes</span>
+          <strong>42</strong>
+          <small>clear public authority</small>
+        </article>
+        <article class="kpi no">
+          <span>No</span>
+          <strong>16</strong>
+          <small>ordinary private / excluded</small>
+        </article>
+        <article class="kpi borderline">
+          <span>Borderline</span>
+          <strong>27</strong>
+          <small>material caveat</small>
+        </article>
+        <article class="kpi function-specific">
+          <span>Function-specific</span>
+          <strong>18</strong>
+          <small>public for some acts</small>
+        </article>
+        <article class="kpi unknown">
+          <span>Unknown</span>
+          <strong>31</strong>
+          <small>evidence gap</small>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel decision-map">
+          <div class="panel-header">
+            <div>
+              <h2>Public Authority Decision Map</h2>
+              <p>Public money signal vs public function signal</p>
+            </div>
+            <span class="panel-tag">policy tension</span>
+          </div>
+          <div class="matrix" role="img" aria-label="Two by two matrix of public money and public function signals">
+            <span class="axis y high">Clear public function</span>
+            <span class="axis y low">Unclear public function</span>
+            <span class="axis x low">Unclear public money</span>
+            <span class="axis x high">Clear public money</span>
+            <div class="quadrant q1">Delegated public function</div>
+            <div class="quadrant q2">Clear public body</div>
+            <div class="quadrant q3">Social/public interest only</div>
+            <div class="quadrant q4">Public money only</div>
+            <span class="dot status-yes" style="left: 78%; top: 22%"></span>
+            <span class="dot status-borderline" style="left: 68%; top: 42%"></span>
+            <span class="dot status-function" style="left: 41%; top: 28%"></span>
+            <span class="dot status-unknown" style="left: 31%; top: 65%"></span>
+            <span class="dot status-no" style="left: 18%; top: 74%"></span>
+            <span class="dot status-borderline" style="left: 84%; top: 61%"></span>
+            <span class="dot status-function" style="left: 52%; top: 36%"></span>
+            <span class="dot status-unknown" style="left: 59%; top: 70%"></span>
+          </div>
+          <div class="map-axis-note">
+            <span>Function signal: unclear to clear</span>
+            <span>Money signal: unclear to clear</span>
+          </div>
+          <div class="legend">
+            <span><i class="status-yes"></i>Yes</span>
+            <span><i class="status-borderline"></i>Borderline</span>
+            <span><i class="status-function"></i>Function-specific</span>
+            <span><i class="status-unknown"></i>Unknown</span>
+            <span><i class="status-no"></i>No</span>
+          </div>
+        </article>
+
+        <article class="panel sector-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Sector Uncertainty View</h2>
+              <p>Which domains create the hardest definition calls</p>
+            </div>
+          </div>
+          <div class="stacked-bars">
+            <div class="bar-row">
+              <span>Education</span>
+              <div class="bar"><b class="yes" style="width: 38%"></b><b class="borderline" style="width: 25%"></b><b class="function" style="width: 17%"></b><b class="unknown" style="width: 13%"></b><b class="no" style="width: 7%"></b></div>
+            </div>
+            <div class="bar-row">
+              <span>Health & care</span>
+              <div class="bar"><b class="yes" style="width: 32%"></b><b class="borderline" style="width: 28%"></b><b class="function" style="width: 19%"></b><b class="unknown" style="width: 15%"></b><b class="no" style="width: 6%"></b></div>
+            </div>
+            <div class="bar-row">
+              <span>Housing</span>
+              <div class="bar"><b class="yes" style="width: 18%"></b><b class="borderline" style="width: 38%"></b><b class="function" style="width: 10%"></b><b class="unknown" style="width: 24%"></b><b class="no" style="width: 10%"></b></div>
+            </div>
+            <div class="bar-row">
+              <span>Regulators</span>
+              <div class="bar"><b class="yes" style="width: 64%"></b><b class="borderline" style="width: 14%"></b><b class="function" style="width: 8%"></b><b class="unknown" style="width: 9%"></b><b class="no" style="width: 5%"></b></div>
+            </div>
+            <div class="bar-row">
+              <span>Charities</span>
+              <div class="bar"><b class="yes" style="width: 8%"></b><b class="borderline" style="width: 27%"></b><b class="function" style="width: 10%"></b><b class="unknown" style="width: 35%"></b><b class="no" style="width: 20%"></b></div>
+            </div>
+            <div class="bar-row">
+              <span>Outsourced providers</span>
+              <div class="bar"><b class="yes" style="width: 7%"></b><b class="borderline" style="width: 31%"></b><b class="function" style="width: 34%"></b><b class="unknown" style="width: 18%"></b><b class="no" style="width: 10%"></b></div>
+            </div>
+            <div class="bar-row">
+              <span>Local government</span>
+              <div class="bar"><b class="yes" style="width: 72%"></b><b class="borderline" style="width: 8%"></b><b class="function" style="width: 7%"></b><b class="unknown" style="width: 8%"></b><b class="no" style="width: 5%"></b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel grounds-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Grounds for Inclusion</h2>
+              <p>Signals are evidence, not automatic answers</p>
+            </div>
+          </div>
+          <div class="grounds-list">
+            <div><span>Public function</span><b style="width: 92%"></b><em>64</em></div>
+            <div><span>Public money</span><b style="width: 84%"></b><em>58</em></div>
+            <div><span>Formal listing</span><b style="width: 64%"></b><em>44</em></div>
+            <div><span>Statutory duty</span><b style="width: 56%"></b><em>39</em></div>
+            <div><span>Public powers</span><b style="width: 48%"></b><em>33</em></div>
+            <div><span>Accountability/control</span><b style="width: 42%"></b><em>29</em></div>
+            <div><span>Public interest only</span><b style="width: 30%"></b><em>21</em></div>
+            <div><span>Negative signal</span><b style="width: 25%"></b><em>17</em></div>
+          </div>
+        </article>
+
+        <article class="panel table-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Borderline & Caveat Table</h2>
+              <p>Rows policymakers should discuss, not bury</p>
+            </div>
+            <span class="panel-tag amber">needs judgement</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Organisation</th>
+                <th>Status</th>
+                <th>Main caveat</th>
+                <th>Evidence gap</th>
+                <th>Next review</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Academy Trust A</td>
+                <td><span class="pill function">Function-specific</span></td>
+                <td>Public education role, private corporate form</td>
+                <td>Statutory basis</td>
+                <td>Legal review</td>
+              </tr>
+              <tr>
+                <td>Care Provider B</td>
+                <td><span class="pill borderline">Borderline</span></td>
+                <td>Commissioned care, private operator</td>
+                <td>Contract scope</td>
+                <td>Sector review</td>
+              </tr>
+              <tr>
+                <td>Housing Association C</td>
+                <td><span class="pill borderline">Borderline</span></td>
+                <td>Public purpose, mixed funding</td>
+                <td>Control route</td>
+                <td>Legal review</td>
+              </tr>
+              <tr>
+                <td>Tech Supplier D</td>
+                <td><span class="pill no">No / unclear</span></td>
+                <td>Ordinary supplier unless delegated function</td>
+                <td>Delegation evidence</td>
+                <td>Needs source</td>
+              </tr>
+              <tr>
+                <td>Charity Programme E</td>
+                <td><span class="pill unknown">Unknown</span></td>
+                <td>Public-interest activity, weak formal signal</td>
+                <td>Funding/control</td>
+                <td>Policy review</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel conduct-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Code of Conduct Lens</h2>
+              <p>Phase 2 placeholder - not current classification</p>
+            </div>
+            <span class="panel-tag grey">not settled</span>
+          </div>
+          <ol class="ladder">
+            <li><span>1</span>No identified document</li>
+            <li><span>2</span>General values</li>
+            <li><span>3</span>Published policy</li>
+            <li><span>4</span>Named code</li>
+            <li><span>5</span>Binding obligations</li>
+            <li><span>6</span>Enforcement route</li>
+          </ol>
+          <p class="caution">Shown only to reserve space for the later debate about what counts as a code of conduct.</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
