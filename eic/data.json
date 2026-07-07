@@ -1,0 +1,179 @@
+{
+  "meta": {
+    "title": "Public Authority Assessment Dashboard",
+    "snapshot": "July 2026",
+    "note": "Working sample of real organisations and their published codes. Nolan tags are two-layer: whether the code explicitly adopts the Seven Principles, and whether it substantively covers each principle. Every tag is evidenced from the source text.",
+    "source_reviewer": "EIC / DSL"
+  },
+  "principles": [
+    { "id": "selflessness", "name": "Selflessness", "def": "Act solely in the public interest." },
+    { "id": "integrity", "name": "Integrity", "def": "Avoid obligations that could influence official duties." },
+    { "id": "objectivity", "name": "Objectivity", "def": "Make choices on merit and evidence." },
+    { "id": "accountability", "name": "Accountability", "def": "Be accountable and submit to scrutiny." },
+    { "id": "openness", "name": "Openness", "def": "Be as open as possible about decisions and actions." },
+    { "id": "honesty", "name": "Honesty", "def": "Be truthful." },
+    { "id": "leadership", "name": "Leadership", "def": "Promote and support these principles by example." }
+  ],
+  "coverage_scale": {
+    "yes": "Explicit or clearly covered",
+    "partial": "Partially or indirectly covered",
+    "no": "No clear provision",
+    "unknown": "Source not located"
+  },
+  "orgs": [
+    {
+      "id": "westminster",
+      "name": "Westminster City Council",
+      "sector": "Local government",
+      "classification": { "status": "Likely public authority", "basis": "Local government, statutory", "confidence": "High" },
+      "coc": {
+        "found": true,
+        "doc_type": "Members' Code of Conduct",
+        "url": "https://committees.westminster.gov.uk/documents/s26120/Appendix%204.doc.pdf",
+        "explicit_seven_ref": true,
+        "note": "Enumerates all seven Nolan principles with definitions, but as an appendix 'to remind Members' that 'do not form part of the Code of Conduct' (advisory, not binding clauses)."
+      },
+      "nolan": {
+        "selflessness": { "covered": "yes", "evidence": "Holders of public office should act solely in terms of the public interest." },
+        "integrity": { "covered": "yes", "evidence": "Should not place themselves under any financial or other obligation to outside individuals or organisations that might seek to influence them." },
+        "objectivity": { "covered": "yes", "evidence": "Should make choices on merit." },
+        "accountability": { "covered": "yes", "evidence": "Accountable for their decisions and actions to the public and must submit themselves to whatever scrutiny is appropriate." },
+        "openness": { "covered": "yes", "evidence": "Should be as open as possible about all the decisions and actions that they take." },
+        "honesty": { "covered": "yes", "evidence": "A duty to declare any private interests relating to their public duties." },
+        "leadership": { "covered": "yes", "evidence": "Should promote and support these principles by leadership and example (Seven Principles appendix)." }
+      }
+    },
+    {
+      "id": "ofcom",
+      "name": "Ofcom",
+      "sector": "Regulators",
+      "classification": { "status": "Likely public authority", "basis": "Statutory regulator, Communications Act 2003", "confidence": "High" },
+      "coc": {
+        "found": true,
+        "doc_type": "Board Code of Conduct",
+        "url": "https://www.ofcom.org.uk/siteassets/resources/documents/about-ofcom/how-ofcom-is-run/content-board/content-board-code-of-conduct.pdf",
+        "explicit_seven_ref": true,
+        "note": "Members must ensure their conduct accords with the Seven Principles of Public Life, defined in an annex to the Code."
+      },
+      "nolan": {
+        "selflessness": { "covered": "yes", "evidence": "Listed and defined in the Code's Seven Principles of Public Life annex." },
+        "integrity": { "covered": "yes", "evidence": "Ofcom must maintain a reputation for impartiality, integrity and high professional standards; Seven Principles annex." },
+        "objectivity": { "covered": "yes", "evidence": "Members must not bring Ofcom's impartiality and objectivity into question; Seven Principles annex." },
+        "accountability": { "covered": "yes", "evidence": "Listed and defined in the Code's Seven Principles annex." },
+        "openness": { "covered": "yes", "evidence": "Listed and defined in the Code's Seven Principles annex." },
+        "honesty": { "covered": "yes", "evidence": "Listed and defined in the Code's Seven Principles annex." },
+        "leadership": { "covered": "yes", "evidence": "Listed and defined in the Code's Seven Principles annex." }
+      }
+    },
+    {
+      "id": "gstt",
+      "name": "Guy's & St Thomas' NHS Foundation Trust",
+      "sector": "Health and social care",
+      "classification": { "status": "Likely public authority", "basis": "NHS foundation trust, statutory public function", "confidence": "High" },
+      "coc": {
+        "found": true,
+        "doc_type": "Governors' Code of Conduct (Trust constitution)",
+        "url": "https://www.guysandstthomas.nhs.uk/media/13582/Trust-constitution",
+        "explicit_seven_ref": true,
+        "note": "Governors' Code requires members to 'uphold the Nolan principles of public life'; the constitution enumerates all seven."
+      },
+      "nolan": {
+        "selflessness": { "covered": "yes", "evidence": "Uphold the Nolan principles of public life; Selflessness enumerated: take decisions solely in terms of the public interest." },
+        "integrity": { "covered": "yes", "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life." },
+        "objectivity": { "covered": "yes", "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life." },
+        "accountability": { "covered": "yes", "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life." },
+        "openness": { "covered": "yes", "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life." },
+        "honesty": { "covered": "yes", "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life." },
+        "leadership": { "covered": "yes", "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life." }
+      }
+    },
+    {
+      "id": "civil-service",
+      "name": "Civil Service",
+      "sector": "Central government",
+      "classification": { "status": "Likely public authority", "basis": "Central government, Constitutional Reform and Governance Act 2010", "confidence": "High" },
+      "coc": {
+        "found": true,
+        "doc_type": "The Civil Service Code",
+        "url": "https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code",
+        "explicit_seven_ref": false,
+        "note": "Uses four own values (integrity, honesty, objectivity, impartiality); does not name the Seven Principles, but substantively covers most."
+      },
+      "nolan": {
+        "selflessness": { "covered": "yes", "evidence": "You must not misuse your official position... to further your private interests; must not be influenced by the prospect of personal gain." },
+        "integrity": { "covered": "yes", "evidence": "Named core value; must not accept gifts or hospitality which might reasonably be seen to compromise your integrity." },
+        "objectivity": { "covered": "yes", "evidence": "Named core value; provide advice on the basis of the evidence; take decisions on the merits of the case." },
+        "accountability": { "covered": "yes", "evidence": "Civil servants are accountable to ministers, who in turn are accountable to Parliament; keep accurate official records." },
+        "openness": { "covered": "partial", "evidence": "Handle information as openly as possible within the legal framework (qualified, sits against a non-disclosure duty)." },
+        "honesty": { "covered": "yes", "evidence": "Named core value; set out the facts truthfully and correct any errors; must not deceive or knowingly mislead." },
+        "leadership": { "covered": "no", "evidence": "No leadership-by-example provision in the Nolan sense." }
+      }
+    },
+    {
+      "id": "nmc",
+      "name": "Nursing & Midwifery Council",
+      "sector": "Health and social care",
+      "classification": { "status": "Likely public authority", "basis": "Statutory professional regulator, public function", "confidence": "High" },
+      "coc": {
+        "found": true,
+        "doc_type": "The Code (professional standards)",
+        "url": "https://www.nmc.org.uk/globalassets/sitedocuments/nmc-publications/nmc-code.pdf",
+        "explicit_seven_ref": false,
+        "note": "Structured around four themes, not the Seven Principles; substantively covers most."
+      },
+      "nolan": {
+        "selflessness": { "covered": "yes", "evidence": "Prioritise people: you put the interests of people using or needing nursing or midwifery services first." },
+        "integrity": { "covered": "yes", "evidence": "Promote professionalism and trust; act with honesty and integrity, upholding the reputation of your profession." },
+        "objectivity": { "covered": "yes", "evidence": "Always practise in line with the best available evidence; make sure any advice given is evidence-based." },
+        "accountability": { "covered": "yes", "evidence": "The professions we regulate exercise professional judgement and are accountable for their work." },
+        "openness": { "covered": "yes", "evidence": "Be open and candid with all service users about all aspects of care, including when mistakes or harm have taken place." },
+        "honesty": { "covered": "yes", "evidence": "Provide honest, accurate and constructive feedback; be open and honest when something goes wrong." },
+        "leadership": { "covered": "partial", "evidence": "Uphold the reputation of your profession at all times (professional leadership, not the Nolan championing-by-example sense)." }
+      }
+    },
+    {
+      "id": "met-police",
+      "name": "Metropolitan Police Service",
+      "sector": "Police and justice",
+      "classification": { "status": "Likely public authority", "basis": "Police force, statutory public powers", "confidence": "High" },
+      "coc": {
+        "found": true,
+        "doc_type": "Standards of Professional Behaviour (Police Conduct Regs)",
+        "url": "https://www.legislation.gov.uk/uksi/2008/2864/schedule/made",
+        "explicit_seven_ref": false,
+        "note": "The statutory Standards of Professional Behaviour focus on conduct; the College of Policing Code of Ethics separately states its principles are based on the Seven Principles of Public Life."
+      },
+      "nolan": {
+        "selflessness": { "covered": "partial", "evidence": "Officers do not abuse their powers or authority and do not compromise or abuse their position (anti-self-interest, not a full public-interest duty)." },
+        "integrity": { "covered": "yes", "evidence": "Honesty and Integrity: officers are honest, act with integrity and do not compromise or abuse their position." },
+        "objectivity": { "covered": "partial", "evidence": "Only give and carry out lawful orders; use force only where necessary, proportionate and reasonable (no explicit merit/evidence standard)." },
+        "accountability": { "covered": "yes", "evidence": "Report, challenge or take action against colleagues' conduct that falls below the Standards; report any action taken against them." },
+        "openness": { "covered": "no", "evidence": "No openness provision; the Confidentiality standard restricts disclosure to the proper course of police duties." },
+        "honesty": { "covered": "yes", "evidence": "Honesty and Integrity: officers are honest and do not compromise their position." },
+        "leadership": { "covered": "partial", "evidence": "Challenging and Reporting Improper Conduct implies leading by example, but no explicit leadership duty." }
+      }
+    },
+    {
+      "id": "harris-federation",
+      "name": "Harris Federation",
+      "sector": "Education",
+      "classification": { "status": "Requires judgement", "basis": "Academy trust: public education function, private (charitable company) legal form", "confidence": "Medium" },
+      "coc": {
+        "found": false,
+        "doc_type": "Staff code of conduct (not located)",
+        "url": "https://www.harrisfederation.org.uk/39/policies-documents",
+        "explicit_seven_ref": null,
+        "note": "Borderline public-authority case; a published staff code of conduct was not located in public search. Coded as insufficient evidence pending the document."
+      },
+      "nolan": {
+        "selflessness": { "covered": "unknown", "evidence": "Source not located." },
+        "integrity": { "covered": "unknown", "evidence": "Source not located." },
+        "objectivity": { "covered": "unknown", "evidence": "Source not located." },
+        "accountability": { "covered": "unknown", "evidence": "Source not located." },
+        "openness": { "covered": "unknown", "evidence": "Source not located." },
+        "honesty": { "covered": "unknown", "evidence": "Source not located." },
+        "leadership": { "covered": "unknown", "evidence": "Source not located." }
+      }
+    }
+  ]
+}
