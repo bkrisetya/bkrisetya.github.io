@@ -2,9 +2,11 @@
  "meta": {
   "total": 49557,
   "coded": 7,
-  "sample_size": 66,
+  "umbrella_count": 2,
+  "inherited_total": 38035,
+  "assessed": 38042,
   "snapshot": "July 2026",
-  "note": "Sample of a Datasette-backed register of 49,557 organisations. Scope and classification totals are the full dataset; the table shows a representative slice plus the seven coded Nolan exemplars. Nolan coding is in progress (the live NP columns are unfilled; seven worked exemplars are shown).",
+  "note": "Front end for a Datasette-backed register of 49,557 organisations. Scope/classification totals are the full dataset. Nolan coverage is coded directly for distinct bodies and INHERITED via umbrella codes for the schools (DfE framework) and local councils (LGA model code), per Emma's method; a representative slice is shown.",
   "scope_facets": [
    {
     "value": "IS",
@@ -183,7 +185,191 @@
    "def": "Promote and support these principles by example."
   }
  ],
+ "umbrellas": {
+  "LGA": {
+   "id": "LGA",
+   "name": "Local Government Association — Model Councillor Code of Conduct",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Holders of public office should act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Should not place themselves under any financial or other obligation to outside individuals or organisations that might seek to influence them."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Should make choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountable for their decisions and actions to the public and must submit themselves to whatever scrutiny is appropriate."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Should be as open as possible about all the decisions and actions that they take."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "A duty to declare any private interests relating to their public duties."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Should promote and support these principles by leadership and example (Seven Principles appendix)."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "LGA Model Councillor Code of Conduct",
+    "url": "https://www.local.gov.uk/publications/councillors-guide-2022-23-model-member-code-conduct",
+    "explicit_seven_ref": true,
+    "note": "Local councils adopt the LGA model code, which sets out the Seven Principles of Public Life; individual councils' codes are not separately assessed."
+   }
+  },
+  "DfE": {
+   "id": "DfE",
+   "name": "Department for Education — governance framework (schools & academies)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "DfE Academy Trust Handbook / governance guide (Seven Principles)",
+    "url": "https://www.gov.uk/government/publications/academy-trust-handbook/academy-trust-handbook-2025-effective-from-1-september-2025",
+    "explicit_seven_ref": true,
+    "note": "Schools and academies follow the DfE governance framework, which requires adherence to the Seven Principles of Public Life; individual schools' codes are not separately assessed."
+   }
+  }
+ },
  "orgs": [
+  {
+   "id": "umbrella-lga",
+   "name": "Local Government Association — Model Councillor Code of Conduct",
+   "classification": "Local government",
+   "category": "Umbrella body",
+   "scope": "IS",
+   "url": "https://www.local.gov.uk/publications/councillors-guide-2022-23-model-member-code-conduct",
+   "notes": "Local councils adopt the LGA model code, which sets out the Seven Principles of Public Life; individual councils' codes are not separately assessed.",
+   "coded": true,
+   "is_umbrella": true,
+   "umbrella_id": "LGA",
+   "umbrella": null,
+   "coc": {
+    "found": true,
+    "doc_type": "LGA Model Councillor Code of Conduct",
+    "url": "https://www.local.gov.uk/publications/councillors-guide-2022-23-model-member-code-conduct",
+    "explicit_seven_ref": true,
+    "note": "Local councils adopt the LGA model code, which sets out the Seven Principles of Public Life; individual councils' codes are not separately assessed."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Holders of public office should act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Should not place themselves under any financial or other obligation to outside individuals or organisations that might seek to influence them."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Should make choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountable for their decisions and actions to the public and must submit themselves to whatever scrutiny is appropriate."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Should be as open as possible about all the decisions and actions that they take."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "A duty to declare any private interests relating to their public duties."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Should promote and support these principles by leadership and example (Seven Principles appendix)."
+    }
+   }
+  },
+  {
+   "id": "umbrella-dfe",
+   "name": "Department for Education — governance framework (schools & academies)",
+   "classification": "Central government",
+   "category": "Umbrella body",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/publications/academy-trust-handbook/academy-trust-handbook-2025-effective-from-1-september-2025",
+   "notes": "Schools and academies follow the DfE governance framework, which requires adherence to the Seven Principles of Public Life; individual schools' codes are not separately assessed.",
+   "coded": true,
+   "is_umbrella": true,
+   "umbrella_id": "DfE",
+   "umbrella": null,
+   "coc": {
+    "found": true,
+    "doc_type": "DfE Academy Trust Handbook / governance guide (Seven Principles)",
+    "url": "https://www.gov.uk/government/publications/academy-trust-handbook/academy-trust-handbook-2025-effective-from-1-september-2025",
+    "explicit_seven_ref": true,
+    "note": "Schools and academies follow the DfE governance framework, which requires adherence to the Seven Principles of Public Life; individual schools' codes are not separately assessed."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide. DfE governance framework: those in school and academy governance must follow the Seven Principles of Public Life (selflessness, integrity, objectivity, accountability, openness, honesty and leadership)."
+    }
+   }
+  },
   {
    "id": "westminster",
    "name": "Westminster City Council",
@@ -193,6 +379,8 @@
    "url": "https://committees.westminster.gov.uk/documents/s26120/Appendix%204.doc.pdf",
    "notes": "Enumerates all seven Nolan principles with definitions, but as an appendix 'to remind Members' that 'do not form part of the Code of Conduct' (advisory, not binding clauses).",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": true,
     "doc_type": "Members' Code of Conduct",
@@ -240,6 +428,8 @@
    "url": "https://www.ofcom.org.uk/siteassets/resources/documents/about-ofcom/how-ofcom-is-run/content-board/content-board-code-of-conduct.pdf",
    "notes": "Members must ensure their conduct accords with the Seven Principles of Public Life, defined in an annex to the Code.",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": true,
     "doc_type": "Board Code of Conduct",
@@ -287,6 +477,8 @@
    "url": "https://www.guysandstthomas.nhs.uk/media/13582/Trust-constitution",
    "notes": "Governors' Code requires members to 'uphold the Nolan principles of public life'; the constitution enumerates all seven.",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": true,
     "doc_type": "Governors' Code of Conduct (Trust constitution)",
@@ -334,6 +526,8 @@
    "url": "https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code",
    "notes": "Uses four own values (integrity, honesty, objectivity, impartiality); does not name the Seven Principles, but substantively covers most.",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": true,
     "doc_type": "The Civil Service Code",
@@ -381,6 +575,8 @@
    "url": "https://www.nmc.org.uk/globalassets/sitedocuments/nmc-publications/nmc-code.pdf",
    "notes": "Structured around four themes, not the Seven Principles; substantively covers most.",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": true,
     "doc_type": "The Code (professional standards)",
@@ -428,6 +624,8 @@
    "url": "https://www.legislation.gov.uk/uksi/2008/2864/schedule/made",
    "notes": "The statutory Standards of Professional Behaviour focus on conduct; the College of Policing Code of Ethics separately states its principles are based on the Seven Principles of Public Life.",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": true,
     "doc_type": "Standards of Professional Behaviour (Police Conduct Regs)",
@@ -475,6 +673,8 @@
    "url": "https://www.harrisfederation.org.uk/39/policies-documents",
    "notes": "Borderline public-authority case; a published staff code of conduct was not located in public search. Coded as insufficient evidence pending the document.",
    "coded": true,
+   "is_umbrella": false,
+   "umbrella": null,
    "coc": {
     "found": false,
     "doc_type": "Staff code of conduct (not located)",
@@ -522,198 +722,228 @@
    "url": "",
    "notes": "ONS has carried out a classification assessment of 2023 Cycling World Championships Ltd (2023 CWC Ltd), in the context of internationally agreed statistical guidance as described in the United Nations System of National Accounts (SNA) 2008, European System of Accounts (ESA) 2010 and the accompanying Manual on Government Deficit and Debt (MGDD) 2019. 2023 CWC Ltd is a wholly owned subsidiary of Vis",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
   {
-   "id": "annecy-catholic-primary-school-seaford",
-   "name": "Annecy Catholic Primary School, Seaford",
+   "id": "amroth-community-council-pembrokeshire",
+   "name": "Amroth Community Council, Pembrokeshire",
+   "classification": "Local government",
+   "category": "Welsh Council",
+   "scope": "IS",
+   "url": "http://www.pembstcc.co.uk/amroth-community-council",
+   "notes": "",
+   "coded": false,
+   "umbrella": "LGA",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "balliol-primary-school-bedford",
+   "name": "Balliol Primary School, Bedford",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "https://annecy.org.uk",
+   "url": "http://www.balliolschool.co.uk/",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "bankwood-community-primary-school-sheffield",
-   "name": "Bankwood Community Primary School, Sheffield",
+   "id": "bentham-town-council",
+   "name": "Bentham Town Council",
+   "classification": "Local government",
+   "category": "Town Council",
+   "scope": "IS",
+   "url": "https://www.benthamtowncouncil.co.uk",
+   "notes": "",
+   "coded": false,
+   "umbrella": "LGA",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "bosley-parish-council",
+   "name": "Bosley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.supanet.com",
+   "notes": "",
+   "coded": false,
+   "umbrella": "LGA",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "bromstone-primary-school-broadstairs",
+   "name": "Bromstone Primary School, Broadstairs",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "http://www.bankwood.sheffield.sch.uk/",
+   "url": "http://www.bromstoneschool.com/",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "bickerton-and-egerton-parish-council",
-   "name": "Bickerton and Egerton Parish Council",
+   "id": "canonbury-primary-school-london",
+   "name": "Canonbury Primary School, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.canonburyprimaryschool.co.uk/",
+   "notes": "",
+   "coded": false,
+   "umbrella": "DfE",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "chesterton-parish-council",
+   "name": "Chesterton Parish Council",
    "classification": "Local government",
    "category": "Parish Council",
    "scope": "IS",
    "url": "",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "bracken-edge-primary-school-leeds",
-   "name": "Bracken Edge Primary School, Leeds",
-   "classification": "Central government",
-   "category": "Education",
+   "id": "coldwaltham-parish-council",
+   "name": "Coldwaltham Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
    "scope": "IS",
-   "url": "http://www.brackenedge.leeds.sch.uk/",
+   "url": "https://coldwalthampc.org.uk/",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "buckland-filleigh-parish-council",
-   "name": "Buckland Filleigh Parish Council",
+   "id": "cromer-town-council",
+   "name": "Cromer Town Council",
+   "classification": "Local government",
+   "category": "Town Council",
+   "scope": "IS",
+   "url": "http://www.cromer-tc.gov.uk",
+   "notes": "",
+   "coded": false,
+   "umbrella": "LGA",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "dolton-parish-council",
+   "name": "Dolton Parish Council",
    "classification": "Local government",
    "category": "Parish Council",
    "scope": "IS",
    "url": "",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "castle-view-primary-school-matlock",
-   "name": "Castle View Primary School, Matlock",
+   "id": "eden-boys-school-bolton-bolton",
+   "name": "Eden Boys' School Bolton, Bolton",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "https://www.castleview.derbyshire.sch.uk",
+   "url": "http://www.edenboysbolton.com/",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "chudleigh-church-of-england-community-primary-sc",
-   "name": "Chudleigh Church of England Community Primary School, Newton Abbot",
+   "id": "featherby-infant-and-nursery-school-gillingham",
+   "name": "Featherby Infant and Nursery School, Gillingham",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "http://www.chudleigh.devon.sch.uk",
+   "url": "http://www.featherby-inf.medway.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "coppice-primary-school-four-oaks-sutton-coldfiel",
-   "name": "Coppice Primary School, Four Oaks, Sutton Coldfield",
+   "id": "gateway-academy-london",
+   "name": "Gateway Academy, London",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "http://www.coppice.bham.sch.uk",
+   "url": "http://www.gateway-academy.co.uk/",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "dbw-investments-10-ltd",
-   "name": "DBW Investments (10) Ltd",
-   "classification": "Central government",
-   "category": "Economic or financial",
+   "id": "greater-london-authority",
+   "name": "Greater London Authority",
+   "classification": "Local government",
+   "category": "Local and regional",
    "scope": "IS",
-   "url": "",
-   "notes": "DBW Investments (10) Ltd performs fund investing activities from the funds it received from a State aid notified scheme where prior approval was required for funding. It provides loans and equity for Small Medium Enterprises (SMEs) across Wales on a Non-Market Economic Operator Principle (operating under State-Aid notification) basis.\nThe assessment concluded that DBW Investments (10) Ltd is an in",
+   "url": "https://www.london.gov.uk",
+   "notes": "Elected regional assemblies were included in the guide as an en bloc entry, and were intended to be established as an additional tier of government for the nine English Regions under the Regional Development Agencies Act 1998. Other than the Greater London Authority, no elected assemblies were created.",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
   {
-   "id": "earlham-primary-school-london",
-   "name": "Earlham Primary School, London",
-   "classification": "Central government",
-   "category": "Education",
-   "scope": "IS",
-   "url": "http://www.earlham.newham.sch.uk/",
-   "notes": "",
-   "coded": false,
-   "coc": null,
-   "nolan": null
-  },
-  {
-   "id": "eversley-parish-council",
-   "name": "Eversley Parish Council",
+   "id": "hartburn-parish-council",
+   "name": "Hartburn Parish Council",
    "classification": "Local government",
    "category": "Parish Council",
    "scope": "IS",
-   "url": "",
+   "url": "https://www.homecall.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "freshfield-primary-school-liverpool",
-   "name": "Freshfield Primary School, Liverpool",
-   "classification": "Central government",
-   "category": "Education",
-   "scope": "IS",
-   "url": "http://www.freshfieldprimaryschool.com",
-   "notes": "",
-   "coded": false,
-   "coc": null,
-   "nolan": null
-  },
-  {
-   "id": "great-bradley-parish-council",
-   "name": "Great Bradley Parish Council",
+   "id": "hertford-town-council",
+   "name": "Hertford Town Council",
    "classification": "Local government",
-   "category": "Parish Council",
+   "category": "Town Council",
    "scope": "IS",
-   "url": "",
+   "url": "https://www.hertford.gov.uk/",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "hardwick-primary-school-banbury",
-   "name": "Hardwick Primary School, Banbury",
+   "id": "homerton-early-years-centre-cambridge",
+   "name": "Homerton Early Years Centre, Cambridge",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "https://www.hardwick.oxon.sch.uk",
+   "url": "http://www.homerton.cambs.sch.uk",
    "notes": "",
    "coded": false,
-   "coc": null,
-   "nolan": null
-  },
-  {
-   "id": "hepple-parish-council",
-   "name": "Hepple Parish Council",
-   "classification": "Local government",
-   "category": "Parish Council",
-   "scope": "IS",
-   "url": "",
-   "notes": "",
-   "coded": false,
-   "coc": null,
-   "nolan": null
-  },
-  {
-   "id": "holy-trinity-primary-school-cookstown",
-   "name": "Holy Trinity Primary School, Cookstown",
-   "classification": "Central government",
-   "category": "Education",
-   "scope": "IS",
-   "url": "https://www.holytrinity.cookstown.ni.sch.uk",
-   "notes": "",
-   "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -726,102 +956,124 @@
    "url": "http://www.woodlandview.notts.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "knightlow-cofe-primary-school-rugby",
-   "name": "Knightlow CofE Primary School, Rugby",
-   "classification": "Central government",
-   "category": "Education",
-   "scope": "IS",
-   "url": "http://www.knightlowprimary.co.uk",
-   "notes": "",
-   "coded": false,
-   "coc": null,
-   "nolan": null
-  },
-  {
-   "id": "lipa-primary-school-liverpool",
-   "name": "LIPA Primary School, Liverpool",
-   "classification": "Central government",
-   "category": "Education",
-   "scope": "IS",
-   "url": "http://www.lipaprimary.org",
-   "notes": "",
-   "coded": false,
-   "coc": null,
-   "nolan": null
-  },
-  {
-   "id": "lowick-and-slipton-parish-council",
-   "name": "Lowick and Slipton Parish Council",
+   "id": "kirton-parish-council-boston",
+   "name": "Kirton Parish Council, Boston",
    "classification": "Local government",
    "category": "Parish Council",
    "scope": "IS",
    "url": "",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "meath-green-infant-school-horley",
-   "name": "Meath Green Infant School, Horley",
+   "id": "limehurst-academy-loughborough",
+   "name": "Limehurst Academy, Loughborough",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "http://www.meathgreeninfant.org",
+   "url": "http://www.limehurst.org.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "mourne-independent-christian-school-kilkeel",
-   "name": "Mourne Independent Christian School, Kilkeel",
-   "classification": "Central government",
-   "category": "Education",
+   "id": "longstanton-parish-council",
+   "name": "Longstanton Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
    "scope": "IS",
-   "url": "https://www.independentchristianschool.org",
+   "url": "http://www.longstanton-pc.gov.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "north-durham-academy",
-   "name": "North Durham Academy",
-   "classification": "Central government",
-   "category": "Education",
+   "id": "marton-parish-council-rugby",
+   "name": "Marton Parish Council, Rugby",
+   "classification": "Local government",
+   "category": "Parish Council",
    "scope": "IS",
-   "url": "http://www.northdurhamacademy.co.uk/",
+   "url": "https://www.martonvillage.com",
    "notes": "",
    "coded": false,
+   "umbrella": "LGA",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "oliver-goldsmith-primary-school-kingsbury",
-   "name": "Oliver Goldsmith Primary School, Kingsbury",
+   "id": "moor-allerton-hall-primary-school-leeds",
+   "name": "Moor Allerton Hall Primary School, Leeds",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "http://www.olivergoldsmith.brent.sch.uk",
+   "url": "http://www.moorallertonhall.leeds.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
   {
-   "id": "pembrokeshire-college",
-   "name": "Pembrokeshire College",
+   "id": "newlands-primary-school-southampton",
+   "name": "Newlands Primary School, Southampton",
    "classification": "Central government",
    "category": "Education",
    "scope": "IS",
-   "url": "http://www.pembrokeshire.ac.uk",
+   "url": "http://www.newlandsprimary.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "oakfield-community-primary-school-widnes",
+   "name": "Oakfield Community Primary School, Widnes",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.oakfield-widnes.co.uk/",
+   "notes": "",
+   "coded": false,
+   "umbrella": "DfE",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "oxspring-parish-council",
+   "name": "Oxspring Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.oxspring-parish.com",
+   "notes": "",
+   "coded": false,
+   "umbrella": "LGA",
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "polehampton-church-of-england-infant-school-read",
+   "name": "Polehampton Church of England Infant School, Reading",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.polehampton-inf.wokingham.sch.uk/",
+   "notes": "",
+   "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -834,6 +1086,7 @@
    "url": "https://www.aapct.scot.nhs.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -846,6 +1099,7 @@
    "url": "https://www.yorkconsort.gov.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -858,6 +1112,7 @@
    "url": "http://www.smileforlife.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -870,6 +1125,7 @@
    "url": "https://www.nhs.net",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -882,6 +1138,7 @@
    "url": "https://www.mydentist.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -894,6 +1151,7 @@
    "url": "https://www.mydentist.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -906,6 +1164,7 @@
    "url": "https://www.mydentist.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -918,6 +1177,7 @@
    "url": "http://dentalcare.ltd.uk/pangbourne/",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -930,6 +1190,7 @@
    "url": "http://www.eildon.org.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -942,6 +1203,7 @@
    "url": "https://www.gatewayhousing.org.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -954,6 +1216,7 @@
    "url": "",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -966,6 +1229,7 @@
    "url": "https://www.hoptondental.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -978,6 +1242,7 @@
    "url": "http://www.stedmundsbury.gov.uk/sebc/play/abbeygardens.cfm",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -990,6 +1255,7 @@
    "url": "https://www.actionfraud.police.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1002,6 +1268,7 @@
    "url": "https://www.hawkswoodgroup.org.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1014,6 +1281,7 @@
    "url": "http://ccfl.camden.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1026,6 +1294,7 @@
    "url": "http://www.goldenhill.lancs.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1038,6 +1307,7 @@
    "url": "https://www.greateranglia.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1050,6 +1320,7 @@
    "url": "https://www.eastmidlandsrailway.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1062,6 +1333,7 @@
    "url": "https://www.rgu.ac.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1074,6 +1346,7 @@
    "url": "http://www.aomrc.org.uk/",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1086,6 +1359,7 @@
    "url": "http://www.bankofengland.co.uk/pra/Pages/default.aspx",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1098,6 +1372,7 @@
    "url": "https://www.abbeymeadows.cambs.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1110,6 +1385,7 @@
    "url": "https://www.abbeypark.calderdale.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1122,6 +1398,7 @@
    "url": "https://www.abbeyfield-scotland.com/",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1134,6 +1411,7 @@
    "url": "https://www.abbotsgreen.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1146,6 +1424,7 @@
    "url": "https://www.abbotsmede.peterborough.sch.uk",
    "notes": "",
    "coded": false,
+   "umbrella": "DfE",
    "coc": null,
    "nolan": null
   },
@@ -1158,6 +1437,7 @@
    "url": "",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1170,6 +1450,7 @@
    "url": "https://www.ppf.co.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1182,6 +1463,7 @@
    "url": "https://www.chorustrust.org",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1194,6 +1476,7 @@
    "url": "https://www.forthports.co.uk/forth-tay/environment-legislation/dundee-port-authority-general-directions/",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1206,6 +1489,7 @@
    "url": "https://www.goeast.gov.uk",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   },
@@ -1218,6 +1502,7 @@
    "url": "https://www.imb.org.uk/",
    "notes": "",
    "coded": false,
+   "umbrella": null,
    "coc": null,
    "nolan": null
   }
