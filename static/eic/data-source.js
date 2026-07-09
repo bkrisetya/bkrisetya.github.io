@@ -24,6 +24,9 @@ const DATA_CONFIG = {
     database: "", // e.g. "public_authorities"          <-- fill in
     table: "", // e.g. "organisations"                  <-- fill in
     pageSize: 100,
+    // umbrella inheritance: schools -> DfE, councils -> LGA. Paste umbrella codings into `umbrellas` to enable inheritance in datasette mode.
+    umbrellaByCategory: { "Education": "DfE", "Parish Council": "LGA", "Town Council": "LGA", "City Council": "LGA", "Borough Council": "LGA", "County Council": "LGA", "District Council": "LGA", "Welsh Council": "LGA", "Parish Meeting": "LGA", "Council": "LGA", "Combined Authority": "LGA" },
+    umbrellas: {},
     // dashboard field -> Datasette column name
     columns: {
       id: "rowid",
@@ -101,6 +104,7 @@ const DataSource = (() => {
       notes: row[c.notes] || "",
       coded: anyCoded,
       nolan: anyCoded ? nolan : null,
+      umbrella: (cfg.datasette.umbrellaByCategory || {})[row[c.category]] || null,
       coc: null,
     };
   }
@@ -140,6 +144,8 @@ const DataSource = (() => {
         categoryFacets: m.category_facets,
         scopeLabels: _cache.scope_labels || SCOPE_LABELS_FALLBACK,
         principles: _cache.principles || PRINCIPLES_FALLBACK,
+        umbrellas: _cache.umbrellas || {},
+        assessed: m.assessed, inherited_total: m.inherited_total,
       };
     }
     // datasette
@@ -159,6 +165,8 @@ const DataSource = (() => {
       categoryFacets: toFacets(cfg.datasette.columns.category),
       scopeLabels: SCOPE_LABELS_FALLBACK,
       principles: PRINCIPLES_FALLBACK,
+      umbrellas: cfg.datasette.umbrellas || {},
+      assessed: null, inherited_total: null,
     };
   }
 

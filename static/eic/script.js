@@ -22,6 +22,23 @@ function el(tag, props = {}, children = []) {
 }
 const $ = (id) => document.getElementById(id);
 const covOf = (o, pid) => (o.nolan && o.nolan[pid] && o.nolan[pid].covered) || "unknown";
+function resolveNolan(o) {
+  if (o.coded && o.nolan) return { mode: "own", nolan: o.nolan };
+  const u = o.umbrella && S.umbrellas[o.umbrella];
+  if (u) return { mode: "inherited", nolan: u.nolan, from: u.name, fromId: o.umbrella, coc: u.coc };
+  return { mode: "none", nolan: null };
+}
+const rCov = (nolan, pid) => (nolan && nolan[pid] && nolan[pid].covered) || "unknown";
+const rScore = (nolan) => S.principles.filter((p) => rCov(nolan, p.id) === "yes").length;
+function renderPrinciples(nolan) {
+  const grid = el("div", { class: "d-princ" });
+  S.principles.forEach((p) => {
+    const cov = rCov(nolan, p.id);
+    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot cov-${cov}` }),
+      el("div", {}, [el("b", { text: `${p.name} — ${cov}` }), el("span", { class: "ev", text: (nolan[p.id] && nolan[p.id].evidence) || "" })])]));
+  });
+  return grid;
+}
 const scopeClass = (s) => "sc-" + (s && S.scopeLabels[s] !== undefined ? s : (s || "none"));
 const scopeLabel = (s) => S.scopeLabels[s] || "Not scoped";
 const scoreYes = (o) => S.principles.filter((p) => covOf(o, p.id) === "yes").length;
@@ -35,7 +52,7 @@ function renderSnapshot() {
     ["Organisations", fmt(m.total)],
     ["In scope", fmt(scopeCount("IS"))],
     ["Possibly out", fmt(scopeCount("POS"))],
-    ["Nolan coded", `${fmt(m.coded)} / ${fmt(m.total)}`],
+    ["Nolan assessed", `${fmt(m.assessed != null ? m.assessed : m.coded)} / ${fmt(m.total)}`],
   ];
   $("snapshot").replaceChildren(...items.map(([k, v]) => el("div", {}, [el("dt", { text: k }), el("dd", { text: String(v) })])));
 }
@@ -87,10 +104,12 @@ function renderPrincipleStrip() {
 
 /* ---------- table + detail (per query) ---------- */
 function nolanMini(o) {
-  if (!o.coded) return el("span", { class: "nolan-pending", text: "pending" });
+  const r = resolveNolan(o);
+  if (r.mode === "none") return el("span", { class: "nolan-pending", text: "pending" });
   const wrap = el("span", { class: "nolan-mini" });
-  S.principles.forEach((p) => wrap.appendChild(el("i", { class: `cov-${covOf(o, p.id)}`, title: `${p.name}: ${covOf(o, p.id)}` })));
-  wrap.appendChild(el("span", { class: "score", text: `${scoreYes(o)}/7` }));
+  S.principles.forEach((p) => wrap.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${rCov(r.nolan, p.id)}` })));
+  wrap.appendChild(el("span", { class: "score", text: `${rScore(r.nolan)}/7` }));
+  if (r.mode === "inherited") wrap.appendChild(el("span", { class: "inh-badge", title: `Inherited from ${r.from}`, text: `↳ ${r.fromId}` }));
   return wrap;
 }
 
@@ -132,19 +151,21 @@ function renderDetail(o) {
   if (o.notes) parts.push(el("p", { class: "d-notes", text: o.notes }));
 
   const safeUrl = o.url && /^https?:\/\//i.test(o.url) ? o.url : null;
-  if (o.coded && o.coc) {
+  const r = resolveNolan(o);
+  if (r.mode === "own") {
     const coc = el("p", { class: "d-coc" }, [el("b", { text: o.coc.doc_type })]);
     if (safeUrl) { coc.appendChild(document.createTextNode(" · ")); coc.appendChild(el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "source" })); }
     if (o.coc.note) coc.appendChild(el("span", { text: " · " + o.coc.note }));
     parts.push(coc);
-    parts.push(el("p", { class: "d-nolan-head", text: `Nolan coverage — ${scoreYes(o)}/7 clear` }));
-    const grid = el("div", { class: "d-princ" });
-    S.principles.forEach((p) => {
-      const cov = covOf(o, p.id);
-      grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot cov-${cov}` }),
-        el("div", {}, [el("b", { text: `${p.name} — ${cov}` }), el("span", { class: "ev", text: (o.nolan[p.id] && o.nolan[p.id].evidence) || "" })])]));
-    });
-    parts.push(grid);
+    parts.push(el("p", { class: "d-nolan-head", text: `Nolan coverage — ${rScore(r.nolan)}/7 clear` }));
+    parts.push(renderPrinciples(r.nolan));
+  } else if (r.mode === "inherited") {
+    if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
+    const box = el("div", { class: "d-inherited" }, [el("b", { text: `Nolan coverage inherited from ${r.from}` }),
+      el("span", { text: ` — ${rScore(r.nolan)}/7. Covered by the umbrella code, not assessed individually.` })]);
+    if (r.coc && r.coc.url && /^https?:\/\//i.test(r.coc.url)) { box.appendChild(document.createTextNode(" ")); box.appendChild(el("a", { href: r.coc.url, target: "_blank", rel: "noopener", text: "umbrella source" })); }
+    parts.push(box);
+    parts.push(renderPrinciples(r.nolan));
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     parts.push(el("div", { class: "d-pending", text: "Nolan coding pending. The seven-principle assessment fills in as the code-of-conduct review progresses across the register." }));
@@ -186,9 +207,9 @@ function renderLegend() {
 
 async function boot() {
   const meta = await DataSource.init();
-  S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels;
+  S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   $("subtitle").textContent = meta.note || $("subtitle").textContent;
-  $("table-hint").textContent = "Nolan shows as a seven-dot column: coloured where a code has been coded, greyed where the assessment is still to be done.";
+  $("table-hint").textContent = "Nolan is a seven-dot column: coded directly, inherited from an umbrella code (↳ DfE for schools, ↳ LGA for councils), or pending.";
   $("foot").textContent = `Front end for a Datasette-backed register (${meta.mode} mode). Scope/classification totals are the full dataset; Nolan tags are evidenced from each coded organisation's published code.`;
   renderSnapshot(); renderScope(); renderLegend();
   renderFacet("facet-class", meta.classificationFacets);
@@ -197,7 +218,7 @@ async function boot() {
   fillSelect("f-class", meta.classificationFacets, "All classifications");
   fillSelect("f-cat", meta.categoryFacets, "All categories");
   const all = await DataSource.query({});
-  S.coded = all.orgs.filter((o) => o.coded);
+  S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
   renderPrincipleStrip();
   $("search").addEventListener("input", refresh);
   ["f-scope", "f-class", "f-cat"].forEach((id) => $(id).addEventListener("change", refresh));
