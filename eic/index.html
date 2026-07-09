@@ -12,68 +12,78 @@
         <div class="head-left">
           <p class="eyebrow">EIC working dataset</p>
           <h1>Public Authority Assessment Dashboard</h1>
-          <p class="subtitle" id="subtitle">Public-authority status, and how each body's code of conduct covers the seven Nolan principles.</p>
+          <p class="subtitle" id="subtitle">Which organisations count as public authorities, and how their codes of conduct cover the seven Nolan principles.</p>
         </div>
         <dl class="snapshot" id="snapshot" aria-label="Snapshot"></dl>
       </header>
 
+      <section class="panel scope-panel" aria-label="Scope">
+        <div class="panel-head">
+          <h2>Scope of the register</h2>
+          <p class="hint" id="scope-hint"></p>
+        </div>
+        <div id="scope-spectrum" class="scope-spectrum"></div>
+        <div id="scope-legend" class="scope-legend"></div>
+      </section>
+
       <section class="controls" aria-label="Filters">
         <div class="ctl grow">
           <label for="search">Search</label>
-          <input id="search" type="search" placeholder="Organisation or sector…" autocomplete="off" />
+          <input id="search" type="search" placeholder="Organisation, category, classification…" autocomplete="off" />
         </div>
         <div class="ctl">
-          <label for="sector">Sector</label>
-          <select id="sector"></select>
+          <label for="f-scope">Scope</label>
+          <select id="f-scope"></select>
         </div>
         <div class="ctl">
-          <label for="coverage">Show</label>
-          <select id="coverage">
-            <option value="all">All organisations</option>
-            <option value="explicit">Explicitly adopt the Seven Principles</option>
-            <option value="meets-all">Meet all seven substantively</option>
-            <option value="gaps">Have at least one gap</option>
-            <option value="missing">Code not located</option>
-          </select>
+          <label for="f-class">Classification</label>
+          <select id="f-class"></select>
+        </div>
+        <div class="ctl">
+          <label for="f-cat">Category</label>
+          <select id="f-cat"></select>
         </div>
         <span class="result-count" id="result-count" aria-live="polite"></span>
       </section>
 
-      <section class="strip panel" aria-label="Coverage by principle">
-        <div class="panel-head">
-          <h2>Coverage by principle</h2>
-          <p class="hint">Across the organisations in view. The weakest principles sit at the bottom.</p>
-        </div>
-        <div id="principle-strip" class="strip-rows"></div>
-      </section>
-
       <section class="grid">
-        <div class="matrix-wrap panel">
+        <div class="table-wrap panel">
           <div class="panel-head">
-            <h2>Nolan coverage by organisation</h2>
-            <span class="legend" id="legend"></span>
+            <h2>Organisations</h2>
+            <span class="legend" id="nolan-legend"></span>
           </div>
-          <div class="matrix-scroll">
-            <table class="matrix" id="matrix">
-              <thead id="matrix-head"></thead>
-              <tbody id="matrix-body"></tbody>
+          <div class="table-scroll">
+            <table class="orgtable" id="orgtable">
+              <thead id="orgtable-head"></thead>
+              <tbody id="orgtable-body"></tbody>
             </table>
           </div>
-          <p class="hint">Select an organisation to see its classification and the evidence behind each tag.</p>
+          <p class="hint" id="table-hint"></p>
         </div>
         <aside class="detail panel" id="detail" aria-live="polite"></aside>
       </section>
 
-      <section class="classification panel" aria-label="Classification">
-        <div class="panel-head">
-          <h2>Public authority classification</h2>
-          <span class="panel-tag amber">two layers: status, then conduct</span>
+      <section class="lower-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>By classification</h2></div>
+          <div id="facet-class" class="facet-list"></div>
         </div>
-        <div id="classification" class="class-rows"></div>
+        <div class="panel">
+          <div class="panel-head"><h2>By category</h2></div>
+          <div id="facet-cat" class="facet-list"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Nolan coverage</h2>
+            <span class="panel-tag amber" id="nolan-strip-tag">coded exemplars</span>
+          </div>
+          <div id="principle-strip" class="strip-rows"></div>
+        </div>
       </section>
 
       <p class="foot" id="foot"></p>
     </main>
+    <script src="./data-source.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

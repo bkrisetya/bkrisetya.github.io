@@ -1,0 +1,1225 @@
+{
+ "meta": {
+  "total": 49557,
+  "coded": 7,
+  "sample_size": 66,
+  "snapshot": "July 2026",
+  "note": "Sample of a Datasette-backed register of 49,557 organisations. Scope and classification totals are the full dataset; the table shows a representative slice plus the seven coded Nolan exemplars. Nolan coding is in progress (the live NP columns are unfilled; seven worked exemplars are shown).",
+  "scope_facets": [
+   {
+    "value": "IS",
+    "label": "In Scope",
+    "count": 36890
+   },
+   {
+    "value": "",
+    "label": "Not yet scoped",
+    "count": 9359
+   },
+   {
+    "value": "POS",
+    "label": "Possibly Out of Scope",
+    "count": 3242
+   },
+   {
+    "value": "LIS",
+    "label": "Likely In Scope",
+    "count": 47
+   },
+   {
+    "value": "NA",
+    "label": "Not Applicable",
+    "count": 14
+   },
+   {
+    "value": "LOOS",
+    "label": "Likely Out Of Scope",
+    "count": 5
+   }
+  ],
+  "classification_facets": [
+   {
+    "value": "Central government",
+    "count": 25530
+   },
+   {
+    "value": "Local government",
+    "count": 10784
+   },
+   {
+    "value": "DEFUNCT",
+    "count": 4141
+   },
+   {
+    "value": "Public Non-Financial Corporations",
+    "count": 235
+   },
+   {
+    "value": "NDPB",
+    "count": 188
+   },
+   {
+    "value": "Public Financial",
+    "count": 64
+   },
+   {
+    "value": "Executive Agency",
+    "count": 34
+   },
+   {
+    "value": "Non-profit institutions serving households",
+    "count": 22
+   },
+   {
+    "value": "Non-Ministerial Department | Central Government",
+    "count": 11
+   },
+   {
+    "value": "Non-Ministerial Department",
+    "count": 9
+   },
+   {
+    "value": "PLC",
+    "count": 7
+   },
+   {
+    "value": "Foreign controlled Non-financial corporations",
+    "count": 4
+   }
+  ],
+  "category_facets": [
+   {
+    "value": "Education",
+    "count": 27464
+   },
+   {
+    "value": "Parish Council",
+    "count": 7728
+   },
+   {
+    "value": "Health and social care",
+    "count": 4290
+   },
+   {
+    "value": "Local and regional",
+    "count": 1069
+   },
+   {
+    "value": "Parish Meeting",
+    "count": 811
+   },
+   {
+    "value": "Town Council",
+    "count": 806
+   },
+   {
+    "value": "Welsh Council",
+    "count": 784
+   },
+   {
+    "value": "Emergency services",
+    "count": 697
+   },
+   {
+    "value": "Transport and infrastructure",
+    "count": 529
+   },
+   {
+    "value": "Housing and communities",
+    "count": 413
+   },
+   {
+    "value": "Justice, prosecutorial and enforcement",
+    "count": 276
+   },
+   {
+    "value": "Energy, power and utilities",
+    "count": 245
+   }
+  ]
+ },
+ "scope_labels": {
+  "IS": "In Scope",
+  "LIS": "Likely In Scope",
+  "POS": "Possibly Out of Scope",
+  "LOOS": "Likely Out Of Scope",
+  "NA": "Not Applicable",
+  "": "Not yet scoped"
+ },
+ "principles": [
+  {
+   "id": "selflessness",
+   "name": "Selflessness",
+   "def": "Act solely in the public interest."
+  },
+  {
+   "id": "integrity",
+   "name": "Integrity",
+   "def": "Avoid obligations that could influence official duties."
+  },
+  {
+   "id": "objectivity",
+   "name": "Objectivity",
+   "def": "Make choices on merit and evidence."
+  },
+  {
+   "id": "accountability",
+   "name": "Accountability",
+   "def": "Be accountable and submit to scrutiny."
+  },
+  {
+   "id": "openness",
+   "name": "Openness",
+   "def": "Be as open as possible about decisions and actions."
+  },
+  {
+   "id": "honesty",
+   "name": "Honesty",
+   "def": "Be truthful."
+  },
+  {
+   "id": "leadership",
+   "name": "Leadership",
+   "def": "Promote and support these principles by example."
+  }
+ ],
+ "orgs": [
+  {
+   "id": "westminster",
+   "name": "Westminster City Council",
+   "classification": "Local government",
+   "category": "City Council",
+   "scope": "IS",
+   "url": "https://committees.westminster.gov.uk/documents/s26120/Appendix%204.doc.pdf",
+   "notes": "Enumerates all seven Nolan principles with definitions, but as an appendix 'to remind Members' that 'do not form part of the Code of Conduct' (advisory, not binding clauses).",
+   "coded": true,
+   "coc": {
+    "found": true,
+    "doc_type": "Members' Code of Conduct",
+    "url": "https://committees.westminster.gov.uk/documents/s26120/Appendix%204.doc.pdf",
+    "explicit_seven_ref": true,
+    "note": "Enumerates all seven Nolan principles with definitions, but as an appendix 'to remind Members' that 'do not form part of the Code of Conduct' (advisory, not binding clauses)."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Holders of public office should act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Should not place themselves under any financial or other obligation to outside individuals or organisations that might seek to influence them."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Should make choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountable for their decisions and actions to the public and must submit themselves to whatever scrutiny is appropriate."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Should be as open as possible about all the decisions and actions that they take."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "A duty to declare any private interests relating to their public duties."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Should promote and support these principles by leadership and example (Seven Principles appendix)."
+    }
+   }
+  },
+  {
+   "id": "ofcom",
+   "name": "Ofcom",
+   "classification": "Central government",
+   "category": "Regulatory",
+   "scope": "IS",
+   "url": "https://www.ofcom.org.uk/siteassets/resources/documents/about-ofcom/how-ofcom-is-run/content-board/content-board-code-of-conduct.pdf",
+   "notes": "Members must ensure their conduct accords with the Seven Principles of Public Life, defined in an annex to the Code.",
+   "coded": true,
+   "coc": {
+    "found": true,
+    "doc_type": "Board Code of Conduct",
+    "url": "https://www.ofcom.org.uk/siteassets/resources/documents/about-ofcom/how-ofcom-is-run/content-board/content-board-code-of-conduct.pdf",
+    "explicit_seven_ref": true,
+    "note": "Members must ensure their conduct accords with the Seven Principles of Public Life, defined in an annex to the Code."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Listed and defined in the Code's Seven Principles of Public Life annex."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Ofcom must maintain a reputation for impartiality, integrity and high professional standards; Seven Principles annex."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Members must not bring Ofcom's impartiality and objectivity into question; Seven Principles annex."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Listed and defined in the Code's Seven Principles annex."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Listed and defined in the Code's Seven Principles annex."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Listed and defined in the Code's Seven Principles annex."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Listed and defined in the Code's Seven Principles annex."
+    }
+   }
+  },
+  {
+   "id": "gstt",
+   "name": "Guy's & St Thomas' NHS Foundation Trust",
+   "classification": "Central government",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "https://www.guysandstthomas.nhs.uk/media/13582/Trust-constitution",
+   "notes": "Governors' Code requires members to 'uphold the Nolan principles of public life'; the constitution enumerates all seven.",
+   "coded": true,
+   "coc": {
+    "found": true,
+    "doc_type": "Governors' Code of Conduct (Trust constitution)",
+    "url": "https://www.guysandstthomas.nhs.uk/media/13582/Trust-constitution",
+    "explicit_seven_ref": true,
+    "note": "Governors' Code requires members to 'uphold the Nolan principles of public life'; the constitution enumerates all seven."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Uphold the Nolan principles of public life; Selflessness enumerated: take decisions solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Enumerated in the Trust constitution's Seven Principles of Public Life."
+    }
+   }
+  },
+  {
+   "id": "civil-service",
+   "name": "Civil Service",
+   "classification": "Central government",
+   "category": "Central government",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code",
+   "notes": "Uses four own values (integrity, honesty, objectivity, impartiality); does not name the Seven Principles, but substantively covers most.",
+   "coded": true,
+   "coc": {
+    "found": true,
+    "doc_type": "The Civil Service Code",
+    "url": "https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code",
+    "explicit_seven_ref": false,
+    "note": "Uses four own values (integrity, honesty, objectivity, impartiality); does not name the Seven Principles, but substantively covers most."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "You must not misuse your official position... to further your private interests; must not be influenced by the prospect of personal gain."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Named core value; must not accept gifts or hospitality which might reasonably be seen to compromise your integrity."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Named core value; provide advice on the basis of the evidence; take decisions on the merits of the case."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Civil servants are accountable to ministers, who in turn are accountable to Parliament; keep accurate official records."
+    },
+    "openness": {
+     "covered": "partial",
+     "evidence": "Handle information as openly as possible within the legal framework (qualified, sits against a non-disclosure duty)."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Named core value; set out the facts truthfully and correct any errors; must not deceive or knowingly mislead."
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": "No leadership-by-example provision in the Nolan sense."
+    }
+   }
+  },
+  {
+   "id": "nmc",
+   "name": "Nursing & Midwifery Council",
+   "classification": "NDPB",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "https://www.nmc.org.uk/globalassets/sitedocuments/nmc-publications/nmc-code.pdf",
+   "notes": "Structured around four themes, not the Seven Principles; substantively covers most.",
+   "coded": true,
+   "coc": {
+    "found": true,
+    "doc_type": "The Code (professional standards)",
+    "url": "https://www.nmc.org.uk/globalassets/sitedocuments/nmc-publications/nmc-code.pdf",
+    "explicit_seven_ref": false,
+    "note": "Structured around four themes, not the Seven Principles; substantively covers most."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Prioritise people: you put the interests of people using or needing nursing or midwifery services first."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Promote professionalism and trust; act with honesty and integrity, upholding the reputation of your profession."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Always practise in line with the best available evidence; make sure any advice given is evidence-based."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "The professions we regulate exercise professional judgement and are accountable for their work."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Be open and candid with all service users about all aspects of care, including when mistakes or harm have taken place."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Provide honest, accurate and constructive feedback; be open and honest when something goes wrong."
+    },
+    "leadership": {
+     "covered": "partial",
+     "evidence": "Uphold the reputation of your profession at all times (professional leadership, not the Nolan championing-by-example sense)."
+    }
+   }
+  },
+  {
+   "id": "met-police",
+   "name": "Metropolitan Police Service",
+   "classification": "Central government",
+   "category": "Emergency services",
+   "scope": "IS",
+   "url": "https://www.legislation.gov.uk/uksi/2008/2864/schedule/made",
+   "notes": "The statutory Standards of Professional Behaviour focus on conduct; the College of Policing Code of Ethics separately states its principles are based on the Seven Principles of Public Life.",
+   "coded": true,
+   "coc": {
+    "found": true,
+    "doc_type": "Standards of Professional Behaviour (Police Conduct Regs)",
+    "url": "https://www.legislation.gov.uk/uksi/2008/2864/schedule/made",
+    "explicit_seven_ref": false,
+    "note": "The statutory Standards of Professional Behaviour focus on conduct; the College of Policing Code of Ethics separately states its principles are based on the Seven Principles of Public Life."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "partial",
+     "evidence": "Officers do not abuse their powers or authority and do not compromise or abuse their position (anti-self-interest, not a full public-interest duty)."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Honesty and Integrity: officers are honest, act with integrity and do not compromise or abuse their position."
+    },
+    "objectivity": {
+     "covered": "partial",
+     "evidence": "Only give and carry out lawful orders; use force only where necessary, proportionate and reasonable (no explicit merit/evidence standard)."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Report, challenge or take action against colleagues' conduct that falls below the Standards; report any action taken against them."
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": "No openness provision; the Confidentiality standard restricts disclosure to the proper course of police duties."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty and Integrity: officers are honest and do not compromise their position."
+    },
+    "leadership": {
+     "covered": "partial",
+     "evidence": "Challenging and Reporting Improper Conduct implies leading by example, but no explicit leadership duty."
+    }
+   }
+  },
+  {
+   "id": "harris-federation",
+   "name": "Harris Federation",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.harrisfederation.org.uk/39/policies-documents",
+   "notes": "Borderline public-authority case; a published staff code of conduct was not located in public search. Coded as insufficient evidence pending the document.",
+   "coded": true,
+   "coc": {
+    "found": false,
+    "doc_type": "Staff code of conduct (not located)",
+    "url": "https://www.harrisfederation.org.uk/39/policies-documents",
+    "explicit_seven_ref": null,
+    "note": "Borderline public-authority case; a published staff code of conduct was not located in public search. Coded as insufficient evidence pending the document."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    },
+    "integrity": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    },
+    "objectivity": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    },
+    "accountability": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    },
+    "openness": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    },
+    "honesty": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    },
+    "leadership": {
+     "covered": "unknown",
+     "evidence": "Source not located."
+    }
+   }
+  },
+  {
+   "id": "2023-cycling-world-championships-ltd",
+   "name": "2023 Cycling World Championships Ltd",
+   "classification": "",
+   "category": "Media, culture and sport",
+   "scope": "IS",
+   "url": "",
+   "notes": "ONS has carried out a classification assessment of 2023 Cycling World Championships Ltd (2023 CWC Ltd), in the context of internationally agreed statistical guidance as described in the United Nations System of National Accounts (SNA) 2008, European System of Accounts (ESA) 2010 and the accompanying Manual on Government Deficit and Debt (MGDD) 2019. 2023 CWC Ltd is a wholly owned subsidiary of Vis",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "annecy-catholic-primary-school-seaford",
+   "name": "Annecy Catholic Primary School, Seaford",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://annecy.org.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "bankwood-community-primary-school-sheffield",
+   "name": "Bankwood Community Primary School, Sheffield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.bankwood.sheffield.sch.uk/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "bickerton-and-egerton-parish-council",
+   "name": "Bickerton and Egerton Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "bracken-edge-primary-school-leeds",
+   "name": "Bracken Edge Primary School, Leeds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.brackenedge.leeds.sch.uk/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "buckland-filleigh-parish-council",
+   "name": "Buckland Filleigh Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "castle-view-primary-school-matlock",
+   "name": "Castle View Primary School, Matlock",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.castleview.derbyshire.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "chudleigh-church-of-england-community-primary-sc",
+   "name": "Chudleigh Church of England Community Primary School, Newton Abbot",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.chudleigh.devon.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "coppice-primary-school-four-oaks-sutton-coldfiel",
+   "name": "Coppice Primary School, Four Oaks, Sutton Coldfield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.coppice.bham.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "dbw-investments-10-ltd",
+   "name": "DBW Investments (10) Ltd",
+   "classification": "Central government",
+   "category": "Economic or financial",
+   "scope": "IS",
+   "url": "",
+   "notes": "DBW Investments (10) Ltd performs fund investing activities from the funds it received from a State aid notified scheme where prior approval was required for funding. It provides loans and equity for Small Medium Enterprises (SMEs) across Wales on a Non-Market Economic Operator Principle (operating under State-Aid notification) basis.\nThe assessment concluded that DBW Investments (10) Ltd is an in",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "earlham-primary-school-london",
+   "name": "Earlham Primary School, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.earlham.newham.sch.uk/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "eversley-parish-council",
+   "name": "Eversley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "freshfield-primary-school-liverpool",
+   "name": "Freshfield Primary School, Liverpool",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.freshfieldprimaryschool.com",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "great-bradley-parish-council",
+   "name": "Great Bradley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "hardwick-primary-school-banbury",
+   "name": "Hardwick Primary School, Banbury",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.hardwick.oxon.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "hepple-parish-council",
+   "name": "Hepple Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "holy-trinity-primary-school-cookstown",
+   "name": "Holy Trinity Primary School, Cookstown",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.holytrinity.cookstown.ni.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "john-davies-primary-and-nursery-school-sutton-in",
+   "name": "John Davies Primary and Nursery School, Sutton-in-Ashfield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.woodlandview.notts.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "knightlow-cofe-primary-school-rugby",
+   "name": "Knightlow CofE Primary School, Rugby",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.knightlowprimary.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "lipa-primary-school-liverpool",
+   "name": "LIPA Primary School, Liverpool",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.lipaprimary.org",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "lowick-and-slipton-parish-council",
+   "name": "Lowick and Slipton Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "meath-green-infant-school-horley",
+   "name": "Meath Green Infant School, Horley",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.meathgreeninfant.org",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "mourne-independent-christian-school-kilkeel",
+   "name": "Mourne Independent Christian School, Kilkeel",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.independentchristianschool.org",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "north-durham-academy",
+   "name": "North Durham Academy",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.northdurhamacademy.co.uk/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "oliver-goldsmith-primary-school-kingsbury",
+   "name": "Oliver Goldsmith Primary School, Kingsbury",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.olivergoldsmith.brent.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "pembrokeshire-college",
+   "name": "Pembrokeshire College",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.pembrokeshire.ac.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "101-medical-practice-troon",
+   "name": "101 Medical Practice, Troon",
+   "classification": "DEFUNCT",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.aapct.scot.nhs.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "ainsty-2008-internal-drainage-board",
+   "name": "Ainsty (2008) Internal Drainage Board",
+   "classification": "",
+   "category": "Energy, power and utilities",
+   "scope": "POS",
+   "url": "https://www.yorkconsort.gov.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "backwell-dental-care-ltd",
+   "name": "Backwell Dental Care Ltd",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://www.smileforlife.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "bracondale-medical-centre-greater-manchester",
+   "name": "Bracondale Medical Centre, Greater Manchester",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.nhs.net",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "canon-street-dental-centre",
+   "name": "Canon Street Dental Centre",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.mydentist.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "city-airport-dental-surgery",
+   "name": "City Airport Dental Surgery",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.mydentist.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "cromwell-dental-practice-ltd",
+   "name": "Cromwell Dental Practice Ltd",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.mydentist.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "dentalcare-pangbourne",
+   "name": "Dentalcare Pangbourne",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://dentalcare.ltd.uk/pangbourne/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "eildon-housing-association-ltd",
+   "name": "Eildon Housing Association Ltd",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "http://www.eildon.org.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "gateway-housing-association",
+   "name": "Gateway Housing Association",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "https://www.gatewayhousing.org.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "hardhorn-road-dental-practice",
+   "name": "Hardhorn Road Dental Practice",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "hopton-dental-surgery-great-yarmouth",
+   "name": "Hopton Dental Surgery, Great Yarmouth",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.hoptondental.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abbey-gardens-angel-hill",
+   "name": "Abbey Gardens, Angel Hill",
+   "classification": "",
+   "category": "Media, culture and sport",
+   "scope": "LIS",
+   "url": "http://www.stedmundsbury.gov.uk/sebc/play/abbeygardens.cfm",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "action-fraud",
+   "name": "Action Fraud",
+   "classification": "PLC",
+   "category": "Emergency services",
+   "scope": "LIS",
+   "url": "https://www.actionfraud.police.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "burnside-secondary-pru-london",
+   "name": "Burnside Secondary PRU, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "LIS",
+   "url": "https://www.hawkswoodgroup.org.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "ccfl-key-stage-3-pru-london",
+   "name": "CCfL Key Stage 3 PRU, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "LIS",
+   "url": "http://ccfl.camden.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "golden-hill-pupil-referral-unit-leyland",
+   "name": "Golden Hill Pupil Referral Unit, Leyland",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "LIS",
+   "url": "http://www.goldenhill.lancs.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abellio-east-anglia-ltd",
+   "name": "Abellio East Anglia Ltd",
+   "classification": "",
+   "category": "Transport and infrastructure",
+   "scope": "LOOS",
+   "url": "https://www.greateranglia.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abellio-east-midlands-ltd",
+   "name": "Abellio East Midlands Ltd",
+   "classification": "",
+   "category": "Transport and infrastructure",
+   "scope": "LOOS",
+   "url": "https://www.eastmidlandsrailway.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "aberdeen-management-centre-ltd",
+   "name": "Aberdeen Management Centre Ltd",
+   "classification": "",
+   "category": "Education",
+   "scope": "LOOS",
+   "url": "https://www.rgu.ac.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "academy-of-medical-royal-colleges",
+   "name": "Academy of Medical Royal Colleges",
+   "classification": "PLC",
+   "category": "Education",
+   "scope": "LOOS",
+   "url": "http://www.aomrc.org.uk/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "prudential-regulation-authority",
+   "name": "Prudential Regulation Authority",
+   "classification": "",
+   "category": "",
+   "scope": "LOOS",
+   "url": "http://www.bankofengland.co.uk/pra/Pages/default.aspx",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abbey-meadows-primary-school-cambridge",
+   "name": "Abbey Meadows Primary School, Cambridge",
+   "classification": "DEFUNCT",
+   "category": "Education",
+   "scope": "NA",
+   "url": "https://www.abbeymeadows.cambs.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abbey-park-junior-infant-and-nursery-school-hali",
+   "name": "Abbey Park Junior, Infant and Nursery School, Halifax",
+   "classification": "DEFUNCT",
+   "category": "Education",
+   "scope": "NA",
+   "url": "https://www.abbeypark.calderdale.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abbeyfield-scotland-limited",
+   "name": "Abbeyfield Scotland Limited",
+   "classification": "DEFUNCT",
+   "category": "Housing and communities",
+   "scope": "NA",
+   "url": "https://www.abbeyfield-scotland.com/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abbots-green-community-primary-school-bury-st-ed",
+   "name": "Abbots Green Community Primary School, Bury St Edmunds",
+   "classification": "DEFUNCT",
+   "category": "Education",
+   "scope": "NA",
+   "url": "https://www.abbotsgreen.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "abbotsmede-primary-school-peterborough",
+   "name": "Abbotsmede Primary School, Peterborough",
+   "classification": "DEFUNCT",
+   "category": "Education",
+   "scope": "NA",
+   "url": "https://www.abbotsmede.peterborough.sch.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "2010-rotherham-limited",
+   "name": "2010 Rotherham Limited",
+   "classification": "DEFUNCT",
+   "category": "Media, culture and sport",
+   "scope": "",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "board-of-the-pension-protection-fund",
+   "name": "Board of the Pension Protection Fund",
+   "classification": "",
+   "category": "",
+   "scope": "",
+   "url": "https://www.ppf.co.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "chorus-education-trust",
+   "name": "Chorus Education Trust",
+   "classification": "",
+   "category": "",
+   "scope": "",
+   "url": "https://www.chorustrust.org",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "dundee-port-authority",
+   "name": "Dundee Port Authority",
+   "classification": "",
+   "category": "Transport and infrastructure",
+   "scope": "",
+   "url": "https://www.forthports.co.uk/forth-tay/environment-legislation/dundee-port-authority-general-directions/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "government-office-for-the-east-of-england",
+   "name": "Government Office for the East of England",
+   "classification": "DEFUNCT",
+   "category": "",
+   "scope": "",
+   "url": "https://www.goeast.gov.uk",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  },
+  {
+   "id": "hmp-haverigg-imb",
+   "name": "HMP Haverigg IMB",
+   "classification": "",
+   "category": "Justice, prosecutorial and enforcement",
+   "scope": "",
+   "url": "https://www.imb.org.uk/",
+   "notes": "",
+   "coded": false,
+   "coc": null,
+   "nolan": null
+  }
+ ]
+}
