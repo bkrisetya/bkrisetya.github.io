@@ -39,14 +39,14 @@
 
       <section class="overview">
         <div class="panel cov-panel">
-          <div class="panel-head"><h2>How far the project has got</h2></div>
+          <div class="panel-head"><h2>Coverage so far</h2></div>
           <div class="coverage-bar" id="coverage-bar" role="img" aria-label="Project coverage"></div>
           <div class="coverage-legend" id="coverage-legend"></div>
         </div>
         <div class="ov-grid">
-          <div class="panel ov-card"><h3>In or out of scope</h3><div class="mini-bars" id="ov-scope"></div></div>
-          <div class="panel ov-card"><h3>Type of body</h3><div class="mini-bars" id="ov-class"></div></div>
-          <div class="panel ov-card"><h3>Sector</h3><div class="mini-bars" id="ov-cat"></div></div>
+          <div class="panel ov-card"><h3>In or out of scope</h3><div class="donut-wrap" id="ov-scope"></div></div>
+          <div class="panel ov-card"><h3>Type of body</h3><div class="treemap" id="ov-class"></div></div>
+          <div class="panel ov-card"><h3>Sector</h3><div class="treemap" id="ov-cat"></div></div>
         </div>
       </section>
 
@@ -90,8 +90,8 @@
 
       <section class="lenses">
         <div class="panel lens-1">
-          <div class="panel-head"><h2>Why some bodies are hard to place</h2></div>
-          <p class="hint lens-intro">Public money and a public job do not always point the same way. A body can do a public job on private money, or take public money for a private job. That is where the judgement calls sit.</p>
+          <div class="panel-head"><h2>Why some bodies are hard to classify</h2></div>
+          <p class="hint lens-intro">Public funding and a public function do not always line up, which is what makes some bodies hard to classify.</p>
           <div class="matrix" id="pa-matrix" role="img" aria-label="Public money against public function"></div>
           <div class="scope-spectrum" id="scope-spectrum" aria-label="How the register breaks down by scope"></div>
           <div id="scope-legend" class="scope-legend"></div>
@@ -99,7 +99,7 @@
 
         <div class="panel lens-2">
           <div class="panel-head"><h2>What kind of code is it?</h2></div>
-          <p class="hint lens-intro">Codes of conduct are not all the same. Some are just a statement of values; others name the seven principles, set binding rules, and say what happens if you break them. This is the scale we place each code on.</p>
+          <p class="hint lens-intro">Codes vary in strength, from a general statement of values to a named code with binding, enforced rules. This is the scale each code is placed on.</p>
           <ol class="ladder" id="coc-ladder"></ol>
           <p class="hint" id="naming-intro">What bodies call their code, so far:</p>
           <div id="naming-list" class="naming-list"></div>
@@ -110,7 +110,7 @@
             <h2>The seven principles, one by one</h2>
             <span class="panel-tag" id="nolan-strip-tag"></span>
           </div>
-          <p class="hint lens-intro">Across the codes we have checked, how often each principle is covered. The ones at the bottom are the ones codes most often leave out.</p>
+          <p class="hint lens-intro">How often each principle is covered, across the codes checked so far. The principles at the bottom are covered least often.</p>
           <div id="principle-strip" class="strip-rows"></div>
         </div>
       </section>

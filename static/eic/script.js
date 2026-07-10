@@ -2,6 +2,8 @@
 
 const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0 };
 const PAGE_SIZE = 12;
+const NAVY_RAMP = ["#1b2c49","#23395d","#31517d","#456a99","#5f80ac","#8098c0","#a6b6d2","#c9d3e2"];
+const TEAL_RAMP = ["#0f4a47","#146b66","#197d78","#38928a","#5aa69d","#82bab2","#aacfc9","#d3e2de"];
 
 function el(tag, props = {}, children = []) {
   const n = document.createElement(tag);
@@ -43,7 +45,7 @@ function renderSummary() {
   const m = S.meta;
   const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
   $("q1-figure").textContent = `${fmt(scope("IS"))} in scope`;
-  $("q1-note").textContent = `of ${fmt(m.total)} bodies. ${fmt(scope("POS") + scope("LOOS"))} look out of scope; ${fmt(scope(""))} are still to be checked.`;
+  $("q1-note").textContent = `of ${fmt(m.total)} bodies. ${fmt(scope("POS"))} are possibly out of scope, and ${fmt(scope(""))} are not yet scoped.`;
 
   const codes = [...S.coded, ...Object.values(S.umbrellas)];
   const explicit = codes.filter((c) => (c.coc && c.coc.explicit_seven_ref) === true).length;
@@ -155,14 +157,14 @@ function renderDetail(o) {
 function renderMatrix() {
   const q = (cls, label) => el("div", { class: `quad ${cls}`, text: label });
   $("pa-matrix").replaceChildren(
-    el("span", { class: "axis y-top", text: "Does a public job" }),
-    el("span", { class: "axis y-bot", text: "Does a private job" }),
-    el("span", { class: "axis x-left", text: "Private money" }),
-    el("span", { class: "axis x-right", text: "Public money" }),
-    q("q-tl", "Public job, private money: usually a judgement call"),
-    q("q-tr", "Public job, public money: usually a public authority"),
-    q("q-bl", "Private job, private money: usually not a public authority"),
-    q("q-br", "Private job, public money: usually a judgement call"),
+    el("span", { class: "axis y-top", text: "Public function" }),
+    el("span", { class: "axis y-bot", text: "No public function" }),
+    el("span", { class: "axis x-left", text: "Privately funded" }),
+    el("span", { class: "axis x-right", text: "Publicly funded" }),
+    q("q-tl", "Public function, private funding: often borderline"),
+    q("q-tr", "Public function, public funding: usually a public authority"),
+    q("q-bl", "No public function, private funding: usually not"),
+    q("q-br", "Public funding, no clear function: often borderline"),
   );
 }
 function renderScope() {
@@ -224,15 +226,54 @@ function renderCoverage() {
   $("coverage-legend").replaceChildren(...segs.map((x) =>
     el("span", {}, [el("i", { class: x.cls }), el("b", { text: x.label }), ` ${fmt(x.n)}`])));
 }
-function renderMiniBars(elId, facets, topN, hueFn) {
-  const items = facets.filter((f) => f.value).slice(0, topN);
-  const max = Math.max(1, ...items.map((f) => f.count));
-  $(elId).replaceChildren(...items.map((f) =>
-    el("div", { class: "mini-row" }, [
-      el("div", { class: "mini-name", text: f.label || f.value, title: f.label || f.value }),
-      el("div", { class: "mini-track" }, [el("b", { class: hueFn(f), style: `width:${(f.count / max) * 100}%` })]),
-      el("div", { class: "mini-num", text: fmt(f.count) }),
-    ])));
+function renderDonut(elId, facets) {
+  const box = $(elId); if (!box) return;
+  const colors = { IS: "#197d78", LIS: "#4a9e93", POS: "#b7791f", LOOS: "#a14d43", NA: "#6b7482", "": "#c3cad5" };
+  const total = facets.reduce((a, f) => a + f.count, 0) || 1;
+  let acc = 0; const stops = [];
+  facets.forEach((f) => { const from = (acc / total) * 100, to = ((acc + f.count) / total) * 100; stops.push(`${colors[f.value] || "#c3cad5"} ${from}% ${to}%`); acc += f.count; });
+  const inScope = (facets.find((f) => f.value === "IS") || {}).count || 0;
+  box.replaceChildren(
+    el("div", { class: "donut", style: `background:conic-gradient(${stops.join(",")})` }, [
+      el("div", { class: "donut-hole" }, [el("div", { class: "donut-pct", text: Math.round((inScope / total) * 100) + "%" }), el("div", { class: "donut-lbl", text: "in scope" })])]),
+    el("div", { class: "donut-legend" }, facets.filter((f) => f.count > 0).map((f) =>
+      el("span", {}, [el("i", { style: `background:${colors[f.value] || "#c3cad5"}` }), el("b", { text: f.label }), ` ${fmt(f.count)}`]))));
+}
+function treemapLayout(items, x, y, w, h, out) {
+  if (!items.length) return;
+  if (items.length === 1) { out.push(Object.assign({ x, y, w, h }, items[0])); return; }
+  const total = items.reduce((a, i) => a + i.value, 0);
+  let acc = 0, k = 0;
+  while (k < items.length - 1 && acc + items[k].value < total / 2) { acc += items[k].value; k++; }
+  const a = items.slice(0, k + 1), b = items.slice(k + 1);
+  const f = a.reduce((sm, i) => sm + i.value, 0) / total;
+  if (w >= h) { treemapLayout(a, x, y, w * f, h, out); treemapLayout(b, x + w * f, y, w * (1 - f), h, out); }
+  else { treemapLayout(a, x, y, w, h * f, out); treemapLayout(b, x, y + h * f, w, h * (1 - f), out); }
+}
+function renderTreemap(elId, facets, topN, ramp) {
+  const box = $(elId); if (!box) return;
+  const w = Math.max(240, Math.round(box.getBoundingClientRect().width || 300)), h = 210;
+  let items = facets.filter((f) => f.value).map((f) => ({ name: f.value, value: f.count }));
+  if (items.length > topN) {
+    const tail = items.slice(topN).reduce((sm, i) => sm + i.value, 0);
+    items = items.slice(0, topN); items.push({ name: "Other", value: tail });
+  }
+  items.sort((a, b) => b.value - a.value);
+  const rankOf = new Map(items.map((it, i) => [it.name, i]));
+  const rects = []; treemapLayout(items, 0, 0, w, h, rects);
+  box.style.height = h + "px";
+  box.replaceChildren(...rects.map((r) => {
+    const rank = rankOf.get(r.name) || 0, dark = rank < 4;
+    const cell = el("div", { class: "tm-cell", title: `${r.name}: ${fmt(r.value)}`,
+      style: `left:${r.x}px;top:${r.y}px;width:${Math.max(0, r.w - 2)}px;height:${Math.max(0, r.h - 2)}px;background:${ramp[Math.min(rank, ramp.length - 1)]};color:${dark ? "#fff" : "#172033"}` });
+    if (r.w > 66 && r.h > 30) { cell.appendChild(el("div", { class: "tm-name", text: r.name })); cell.appendChild(el("div", { class: "tm-val", text: fmt(r.value) })); }
+    return cell;
+  }));
+}
+function renderOverviewCharts() {
+  renderDonut("ov-scope", S.meta.scopeFacets);
+  renderTreemap("ov-class", S.meta.classificationFacets, 8, NAVY_RAMP);
+  renderTreemap("ov-cat", S.meta.categoryFacets, 8, TEAL_RAMP);
 }
 
 function renderLegend() {
@@ -295,7 +336,8 @@ async function boot() {
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Scope and type totals cover the whole register; codes are read from each body's own published code, or from the shared code its sector follows.";
   const all = await DataSource.query({});
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
-  renderSummary(); renderCoverage(); renderMiniBars("ov-scope", meta.scopeFacets, 6, (f) => "sc-" + (f.value || "none")); renderMiniBars("ov-class", meta.classificationFacets, 8, () => "b-navy"); renderMiniBars("ov-cat", meta.categoryFacets, 8, () => "b-teal"); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
+  renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
+  let _rt; window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(renderOverviewCharts, 150); });
   fillSelect("f-scope", meta.scopeFacets, "Any scope");
   fillSelect("f-class", meta.classificationFacets, "Any type");
   fillSelect("f-cat", meta.categoryFacets, "Any sector");
