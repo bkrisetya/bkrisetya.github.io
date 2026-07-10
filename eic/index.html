@@ -3,44 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Public Authority Assessment Dashboard</title>
+    <title>Public authorities and their codes of conduct</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="wrap" aria-label="Public Authority Assessment Dashboard">
+    <main class="wrap" aria-label="Public authorities and their codes of conduct">
       <header class="topbar">
         <div class="head-left">
           <p class="eyebrow">EIC working dataset</p>
-          <h1>Public Authority Assessment Dashboard</h1>
-          <p class="subtitle" id="subtitle">Which organisations count as public authorities, and how their codes of conduct cover the seven Nolan principles.</p>
+          <h1>Public authorities and their codes of conduct</h1>
+          <p class="subtitle" id="subtitle">A working view of which bodies in England count as public authorities, what codes of conduct they have, and how far those codes follow the seven principles of public life.</p>
         </div>
-        <dl class="snapshot" id="snapshot" aria-label="Snapshot"></dl>
       </header>
 
-      <section class="panel scope-panel" aria-label="Scope">
-        <div class="panel-head">
-          <h2>Scope of the register</h2>
-          <p class="hint" id="scope-hint"></p>
-        </div>
-        <div id="scope-spectrum" class="scope-spectrum"></div>
-        <div id="scope-legend" class="scope-legend"></div>
+      <section class="summary" aria-label="The three questions">
+        <article class="q-card q1">
+          <p class="q-label">Question 1</p>
+          <h2>Is it a public authority?</h2>
+          <p class="q-figure" id="q1-figure">&mdash;</p>
+          <p class="q-note" id="q1-note"></p>
+        </article>
+        <article class="q-card q2">
+          <p class="q-label">Question 2</p>
+          <h2>What code do they have?</h2>
+          <p class="q-figure" id="q2-figure">&mdash;</p>
+          <p class="q-note" id="q2-note"></p>
+        </article>
+        <article class="q-card q3">
+          <p class="q-label">Question 3</p>
+          <h2>Does it follow the seven principles?</h2>
+          <p class="q-figure" id="q3-figure">&mdash;</p>
+          <p class="q-note" id="q3-note"></p>
+        </article>
       </section>
 
-      <section class="controls" aria-label="Filters">
+      <section class="controls" aria-label="Find an organisation">
         <div class="ctl grow">
           <label for="search">Search</label>
-          <input id="search" type="search" placeholder="Organisation, category, classification…" autocomplete="off" />
+          <input id="search" type="search" placeholder="Type an organisation, sector or type of body&hellip;" autocomplete="off" />
         </div>
         <div class="ctl">
-          <label for="f-scope">Scope</label>
+          <label for="f-scope">In or out of scope</label>
           <select id="f-scope"></select>
         </div>
         <div class="ctl">
-          <label for="f-class">Classification</label>
+          <label for="f-class">Type of body</label>
           <select id="f-class"></select>
         </div>
         <div class="ctl">
-          <label for="f-cat">Category</label>
+          <label for="f-cat">Sector</label>
           <select id="f-cat"></select>
         </div>
         <span class="result-count" id="result-count" aria-live="polite"></span>
@@ -49,7 +60,7 @@
       <section class="grid">
         <div class="table-wrap panel">
           <div class="panel-head">
-            <h2>Organisations</h2>
+            <h2>The organisations</h2>
             <span class="legend" id="nolan-legend"></span>
           </div>
           <div class="table-scroll">
@@ -63,20 +74,29 @@
         <aside class="detail panel" id="detail" aria-live="polite"></aside>
       </section>
 
-      <section class="lower-grid">
-        <div class="panel">
-          <div class="panel-head"><h2>By classification</h2></div>
-          <div id="facet-class" class="facet-list"></div>
+      <section class="lenses">
+        <div class="panel lens-1">
+          <div class="panel-head"><h2>Why some bodies are hard to place</h2></div>
+          <p class="hint lens-intro">Public money and a public job do not always point the same way. A body can do a public job on private money, or take public money for a private job. That is where the judgement calls sit.</p>
+          <div class="matrix" id="pa-matrix" role="img" aria-label="Public money against public function"></div>
+          <div class="scope-spectrum" id="scope-spectrum" aria-label="How the register breaks down by scope"></div>
+          <div id="scope-legend" class="scope-legend"></div>
         </div>
-        <div class="panel">
-          <div class="panel-head"><h2>By category</h2></div>
-          <div id="facet-cat" class="facet-list"></div>
+
+        <div class="panel lens-2">
+          <div class="panel-head"><h2>What kind of code is it?</h2></div>
+          <p class="hint lens-intro">Codes of conduct are not all the same. Some are just a statement of values; others name the seven principles, set binding rules, and say what happens if you break them. This is the scale we place each code on.</p>
+          <ol class="ladder" id="coc-ladder"></ol>
+          <p class="hint" id="naming-intro">What bodies call their code, so far:</p>
+          <div id="naming-list" class="naming-list"></div>
         </div>
-        <div class="panel">
+
+        <div class="panel lens-3">
           <div class="panel-head">
-            <h2>Nolan coverage</h2>
-            <span class="panel-tag amber" id="nolan-strip-tag">coded exemplars</span>
+            <h2>The seven principles, one by one</h2>
+            <span class="panel-tag" id="nolan-strip-tag"></span>
           </div>
+          <p class="hint lens-intro">Across the codes we have checked, how often each principle is covered. The ones at the bottom are the ones codes most often leave out.</p>
           <div id="principle-strip" class="strip-rows"></div>
         </div>
       </section>

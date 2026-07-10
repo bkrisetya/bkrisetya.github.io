@@ -25,7 +25,7 @@ const DATA_CONFIG = {
     table: "", // e.g. "organisations"                  <-- fill in
     pageSize: 100,
     // umbrella inheritance: schools -> DfE, councils -> LGA. Paste umbrella codings into `umbrellas` to enable inheritance in datasette mode.
-    umbrellaByCategory: { "Education": "DfE", "Parish Council": "LGA", "Town Council": "LGA", "City Council": "LGA", "Borough Council": "LGA", "County Council": "LGA", "District Council": "LGA", "Welsh Council": "LGA", "Parish Meeting": "LGA", "Council": "LGA", "Combined Authority": "LGA" },
+    umbrellaByCategory: { "Education": "DfE", "Parish Council": "LGA", "Town Council": "LGA", "City Council": "LGA", "Borough Council": "LGA", "County Council": "LGA", "District Council": "LGA", "Welsh Council": "LGA", "Parish Meeting": "LGA", "Council": "LGA", "Combined Authority": "LGA", "Health and social care": "NHS", "Emergency services": "Police" },
     umbrellas: {},
     // dashboard field -> Datasette column name
     columns: {
@@ -104,7 +104,7 @@ const DataSource = (() => {
       notes: row[c.notes] || "",
       coded: anyCoded,
       nolan: anyCoded ? nolan : null,
-      umbrella: (cfg.datasette.umbrellaByCategory || {})[row[c.category]] || null,
+      umbrella: (["IS","LIS"].includes(row[c.scope]) ? (cfg.datasette.umbrellaByCategory || {})[row[c.category]] : null) || null,
       coc: null,
     };
   }
