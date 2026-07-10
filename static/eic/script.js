@@ -284,22 +284,26 @@ function renderLegend() {
 /* ---------- query cycle ---------- */
 function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetail(orgs.find((o) => o.id === id)); }
 async function refresh() {
-  const mode = DataSource.config.mode;
-  const q = { search: $("search").value, scope: $("f-scope").value, classification: $("f-class").value, category: $("f-cat").value };
-  if (mode === "datasette") q.page = S.page;
-  const res = await DataSource.query(q);
-  const orgs = res.orgs;
-  const total = mode === "datasette" ? res.total : orgs.length;
-  let pageOrgs = orgs;
-  if (mode !== "datasette") {
-    const pages = Math.max(1, Math.ceil(orgs.length / PAGE_SIZE));
-    if (S.page >= pages) S.page = pages - 1;
-    pageOrgs = orgs.slice(S.page * PAGE_SIZE, (S.page + 1) * PAGE_SIZE);
+  try {
+    const mode = DataSource.config.mode;
+    const q = { search: $("search").value, scope: $("f-scope").value, classification: $("f-class").value, category: $("f-cat").value };
+    if (mode === "datasette") q.page = S.page;
+    const res = await DataSource.query(q);
+    const orgs = res.orgs;
+    const total = mode === "datasette" ? res.total : orgs.length;
+    let pageOrgs = orgs;
+    if (mode !== "datasette") {
+      const pages = Math.max(1, Math.ceil(orgs.length / PAGE_SIZE));
+      if (S.page >= pages) S.page = pages - 1;
+      pageOrgs = orgs.slice(S.page * PAGE_SIZE, (S.page + 1) * PAGE_SIZE);
+    }
+    if (S.selectedId && !pageOrgs.some((o) => o.id === S.selectedId)) S.selectedId = null;
+    renderTable(pageOrgs);
+    renderPager(total, mode, res.hasMore);
+    renderDetail(S.selectedId ? pageOrgs.find((o) => o.id === S.selectedId) : null);
+  } catch (err) {
+    $("orgtable-body").replaceChildren(el("tr", {}, [el("td", { colspan: 4, class: "load-error", text: `Could not load the organisations (${err.message}).` })]));
   }
-  if (S.selectedId && !pageOrgs.some((o) => o.id === S.selectedId)) S.selectedId = null;
-  renderTable(pageOrgs);
-  renderPager(total, mode, res.hasMore);
-  renderDetail(S.selectedId ? pageOrgs.find((o) => o.id === S.selectedId) : null);
 }
 function pagerBtn(label, disabled, onClick) {
   return el("button", { class: "pager-btn", type: "button", disabled: disabled ? "disabled" : null, onclick: onClick }, [label]);
