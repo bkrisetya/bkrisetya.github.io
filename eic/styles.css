@@ -168,3 +168,17 @@ h1{margin:0;font-size:28px;font-weight:780;line-height:1.15}
 .mini-track b.sc-IS{background:var(--teal)} .mini-track b.sc-LIS{background:#4a9e93} .mini-track b.sc-POS{background:var(--amber)} .mini-track b.sc-LOOS{background:var(--red)} .mini-track b.sc-NA{background:#6b7482} .mini-track b.sc-none{background:#c3cad5}
 .mini-track b.b-navy{background:var(--navy)} .mini-track b.b-teal{background:var(--teal)}
 .mini-num{font-size:12px;color:var(--muted);text-align:right;font-weight:700}
+
+.donut-wrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.donut{position:relative;width:118px;height:118px;border-radius:50%;flex:none}
+.donut-hole{position:absolute;inset:25px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-pct{font-size:22px;font-weight:800;line-height:1}
+.donut-lbl{font-size:11px;color:var(--muted)}
+.donut-legend{display:grid;gap:5px;font-size:12px;color:var(--muted)}
+.donut-legend span{display:inline-flex;align-items:center;gap:6px}
+.donut-legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.donut-legend b{color:var(--ink)}
+.treemap{position:relative;width:100%;height:210px;border-radius:3px;overflow:hidden;background:var(--soft)}
+.tm-cell{position:absolute;border-radius:2px;padding:5px 7px;overflow:hidden;line-height:1.15}
+.tm-name{font-size:11px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.tm-val{font-size:11px;opacity:.85;margin-top:1px}
