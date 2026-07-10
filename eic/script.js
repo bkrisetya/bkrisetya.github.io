@@ -1,6 +1,7 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0 };
+const PAGE_SIZE = 12;
 
 function el(tag, props = {}, children = []) {
   const n = document.createElement(tag);
@@ -19,7 +20,7 @@ function el(tag, props = {}, children = []) {
   return n;
 }
 const $ = (id) => document.getElementById(id);
-const fmt = (n) => (n == null ? "—" : n.toLocaleString("en-GB"));
+const fmt = (n) => (n == null ? "-" : n.toLocaleString("en-GB"));
 
 const OUT_OF_SCOPE = ["POS", "LOOS", "NA"];
 const SCOPE_SHORT = { IS: "In scope", LIS: "Likely in", POS: "Possibly out", LOOS: "Likely out", NA: "Not applicable", "": "Not yet scoped" };
@@ -74,7 +75,7 @@ function codeCell(o) {
 }
 function nolanCell(o) {
   const r = resolveNolan(o);
-  if (r.mode === "na") return el("span", { class: "muted-cell", text: "—" });
+  if (r.mode === "na") return el("span", { class: "muted-cell", text: "-" });
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "not checked" });
   const wrap = el("span", { class: "nolan-mini" });
   S.principles.forEach((p) => wrap.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
@@ -115,11 +116,11 @@ function renderDetail(o) {
   if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see whether it is a public authority, what code it has, and how well the code follows the seven principles." })); return; }
   const parts = [
     el("h3", { text: o.name }),
-    el("p", { class: "d-sub", text: [o.category, o.classification].filter(Boolean).join(" · ") || "—" }),
+    el("p", { class: "d-sub", text: [o.category, o.classification].filter(Boolean).join(" · ") || "-" }),
     el("div", { class: "d-class" }, [
       el("div", { class: "row" }, [el("span", { text: "In scope?" }), el("span", { text: S.scopeLabels[o.scope] || "Not yet scoped" })]),
-      el("div", { class: "row" }, [el("span", { text: "Type of body" }), el("span", { text: o.classification || "—" })]),
-      el("div", { class: "row" }, [el("span", { text: "Sector" }), el("span", { text: o.category || "—" })]),
+      el("div", { class: "row" }, [el("span", { text: "Type of body" }), el("span", { text: o.classification || "-" })]),
+      el("div", { class: "row" }, [el("span", { text: "Sector" }), el("span", { text: o.category || "-" })]),
     ]),
   ];
   if (o.notes) parts.push(el("p", { class: "d-notes", text: o.notes }));
@@ -203,6 +204,37 @@ function renderStrip() {
   }));
 }
 
+function renderCoverage() {
+  const m = S.meta;
+  const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
+  const inScope = scope("IS") + scope("LIS");
+  const assessed = m.assessed || 0;
+  const toCheck = Math.max(0, inScope - assessed);
+  const out = (m.out_of_scope != null) ? m.out_of_scope : (scope("POS") + scope("LOOS") + scope("NA"));
+  const notScoped = scope("");
+  const segs = [
+    { cls: "c-done", label: "In scope, code checked", n: assessed },
+    { cls: "c-todo", label: "In scope, still to check", n: toCheck },
+    { cls: "c-out", label: "Possibly out of scope", n: out },
+    { cls: "c-none", label: "Not yet scoped", n: notScoped },
+  ];
+  const total = segs.reduce((a, x) => a + x.n, 0) || 1;
+  $("coverage-bar").replaceChildren(...segs.filter((x) => x.n > 0).map((x) =>
+    el("div", { class: `cov-seg ${x.cls}`, style: `width:${(x.n / total) * 100}%`, title: `${x.label}: ${fmt(x.n)}` })));
+  $("coverage-legend").replaceChildren(...segs.map((x) =>
+    el("span", {}, [el("i", { class: x.cls }), el("b", { text: x.label }), ` ${fmt(x.n)}`])));
+}
+function renderMiniBars(elId, facets, topN, hueFn) {
+  const items = facets.filter((f) => f.value).slice(0, topN);
+  const max = Math.max(1, ...items.map((f) => f.count));
+  $(elId).replaceChildren(...items.map((f) =>
+    el("div", { class: "mini-row" }, [
+      el("div", { class: "mini-name", text: f.label || f.value, title: f.label || f.value }),
+      el("div", { class: "mini-track" }, [el("b", { class: hueFn(f), style: `width:${(f.count / max) * 100}%` })]),
+      el("div", { class: "mini-num", text: fmt(f.count) }),
+    ])));
+}
+
 function renderLegend() {
   $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-partial", "partly"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: c }), l])));
@@ -211,13 +243,44 @@ function renderLegend() {
 /* ---------- query cycle ---------- */
 function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetail(orgs.find((o) => o.id === id)); }
 async function refresh() {
-  const res = await DataSource.query({ search: $("search").value, scope: $("f-scope").value, classification: $("f-class").value, category: $("f-cat").value });
+  const mode = DataSource.config.mode;
+  const q = { search: $("search").value, scope: $("f-scope").value, classification: $("f-class").value, category: $("f-cat").value };
+  if (mode === "datasette") q.page = S.page;
+  const res = await DataSource.query(q);
   const orgs = res.orgs;
-  if (S.selectedId && !orgs.some((o) => o.id === S.selectedId)) S.selectedId = null;
-  const shown = res.total != null ? res.total : orgs.length;
-  $("result-count").textContent = `Showing ${fmt(shown)} of ${fmt(S.meta.total)}`;
-  renderTable(orgs);
-  renderDetail(S.selectedId ? orgs.find((o) => o.id === S.selectedId) : null);
+  const total = mode === "datasette" ? res.total : orgs.length;
+  let pageOrgs = orgs;
+  if (mode !== "datasette") {
+    const pages = Math.max(1, Math.ceil(orgs.length / PAGE_SIZE));
+    if (S.page >= pages) S.page = pages - 1;
+    pageOrgs = orgs.slice(S.page * PAGE_SIZE, (S.page + 1) * PAGE_SIZE);
+  }
+  if (S.selectedId && !pageOrgs.some((o) => o.id === S.selectedId)) S.selectedId = null;
+  renderTable(pageOrgs);
+  renderPager(total, mode, res.hasMore);
+  renderDetail(S.selectedId ? pageOrgs.find((o) => o.id === S.selectedId) : null);
+}
+function pagerBtn(label, disabled, onClick) {
+  return el("button", { class: "pager-btn", type: "button", disabled: disabled ? "disabled" : null, onclick: onClick }, [label]);
+}
+function renderPager(total, mode, hasMore) {
+  const box = $("pager"); if (!box) return;
+  if (mode === "datasette") {
+    box.replaceChildren(
+      pagerBtn("Previous", S.page <= 0, () => { S.page = Math.max(0, S.page - 1); refresh(); }),
+      el("span", { class: "pager-info", text: `Page ${S.page + 1}` }),
+      pagerBtn("Next", !hasMore, () => { S.page += 1; refresh(); }));
+    $("result-count").textContent = total != null ? `${fmt(total)} in total` : "";
+    return;
+  }
+  const pages = Math.max(1, Math.ceil((total || 0) / PAGE_SIZE));
+  const from = total ? S.page * PAGE_SIZE + 1 : 0;
+  const to = Math.min(total, (S.page + 1) * PAGE_SIZE);
+  box.replaceChildren(
+    pagerBtn("Previous", S.page <= 0, () => { S.page = Math.max(0, S.page - 1); refresh(); }),
+    el("span", { class: "pager-info", text: `Showing ${from} to ${to} of ${fmt(total)}` }),
+    pagerBtn("Next", S.page >= pages - 1, () => { S.page += 1; refresh(); }));
+  $("result-count").textContent = `${fmt(total)} found`;
 }
 function fillSelect(id, facets, allLabel) {
   const sel = $(id);
@@ -232,12 +295,12 @@ async function boot() {
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Scope and type totals cover the whole register; codes are read from each body's own published code, or from the shared code its sector follows.";
   const all = await DataSource.query({});
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
-  renderSummary(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
+  renderSummary(); renderCoverage(); renderMiniBars("ov-scope", meta.scopeFacets, 6, (f) => "sc-" + (f.value || "none")); renderMiniBars("ov-class", meta.classificationFacets, 8, () => "b-navy"); renderMiniBars("ov-cat", meta.categoryFacets, 8, () => "b-teal"); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
   fillSelect("f-scope", meta.scopeFacets, "Any scope");
   fillSelect("f-class", meta.classificationFacets, "Any type");
   fillSelect("f-cat", meta.categoryFacets, "Any sector");
-  $("search").addEventListener("input", refresh);
-  ["f-scope", "f-class", "f-cat"].forEach((id) => $(id).addEventListener("change", refresh));
+  $("search").addEventListener("input", () => { S.page = 0; refresh(); });
+  ["f-scope", "f-class", "f-cat"].forEach((id) => $(id).addEventListener("change", () => { S.page = 0; refresh(); }));
   await refresh();
 }
 

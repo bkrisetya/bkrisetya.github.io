@@ -20,21 +20,34 @@
         <article class="q-card q1">
           <p class="q-label">Question 1</p>
           <h2>Is it a public authority?</h2>
-          <p class="q-figure" id="q1-figure">&mdash;</p>
+          <p class="q-figure" id="q1-figure"></p>
           <p class="q-note" id="q1-note"></p>
         </article>
         <article class="q-card q2">
           <p class="q-label">Question 2</p>
           <h2>What code do they have?</h2>
-          <p class="q-figure" id="q2-figure">&mdash;</p>
+          <p class="q-figure" id="q2-figure"></p>
           <p class="q-note" id="q2-note"></p>
         </article>
         <article class="q-card q3">
           <p class="q-label">Question 3</p>
           <h2>Does it follow the seven principles?</h2>
-          <p class="q-figure" id="q3-figure">&mdash;</p>
+          <p class="q-figure" id="q3-figure"></p>
           <p class="q-note" id="q3-note"></p>
         </article>
+      </section>
+
+      <section class="overview">
+        <div class="panel cov-panel">
+          <div class="panel-head"><h2>How far the project has got</h2></div>
+          <div class="coverage-bar" id="coverage-bar" role="img" aria-label="Project coverage"></div>
+          <div class="coverage-legend" id="coverage-legend"></div>
+        </div>
+        <div class="ov-grid">
+          <div class="panel ov-card"><h3>In or out of scope</h3><div class="mini-bars" id="ov-scope"></div></div>
+          <div class="panel ov-card"><h3>Type of body</h3><div class="mini-bars" id="ov-class"></div></div>
+          <div class="panel ov-card"><h3>Sector</h3><div class="mini-bars" id="ov-cat"></div></div>
+        </div>
       </section>
 
       <section class="controls" aria-label="Find an organisation">
@@ -69,6 +82,7 @@
               <tbody id="orgtable-body"></tbody>
             </table>
           </div>
+          <div class="pager" id="pager"></div>
           <p class="hint" id="table-hint"></p>
         </div>
         <aside class="detail panel" id="detail" aria-live="polite"></aside>
