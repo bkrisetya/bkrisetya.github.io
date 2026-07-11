@@ -25,7 +25,7 @@ const $ = (id) => document.getElementById(id);
 const fmt = (n) => (n == null ? "-" : n.toLocaleString("en-GB"));
 
 const OUT_OF_SCOPE = ["POS", "LOOS", "NA"];
-const SCOPE_SHORT = { IS: "In scope", LIS: "Likely in", POS: "Possibly out", LOOS: "Likely out", NA: "Not applicable", "": "Not yet scoped" };
+const SCOPE_SHORT = { IS: "In scope", LIS: "Likely in", POS: "Periphery", LOOS: "Likely out", NA: "Not applicable", "": "Not yet scoped" };
 const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code" };
 const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not covered", unknown: "not checked" }[c] || c);
 const scopeClass = (s) => "sc-" + (s && S.scopeLabels[s] !== undefined ? s : (s || "none"));
@@ -45,7 +45,7 @@ function renderSummary() {
   const m = S.meta;
   const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
   $("q1-figure").textContent = `${fmt(scope("IS"))} in scope`;
-  $("q1-note").textContent = `of ${fmt(m.total)} bodies. ${fmt(scope("POS"))} are possibly out of scope, and ${fmt(scope(""))} are not yet scoped.`;
+  $("q1-note").textContent = `of ${fmt(m.total)} bodies. ${fmt(scope("POS"))} are on the periphery of scope, and ${fmt(scope(""))} are not yet scoped.`;
 
   const codes = [...S.coded, ...Object.values(S.umbrellas)];
   const explicit = codes.filter((c) => (c.coc && c.coc.explicit_seven_ref) === true).length;
@@ -66,7 +66,7 @@ function scopePill(o) {
 }
 function codeCell(o) {
   const r = resolveNolan(o);
-  if (r.mode === "na") return el("span", { class: "muted-cell", text: "Out of scope" });
+  if (r.mode === "na") return el("span", { class: "muted-cell", text: o.scope === "POS" ? "Periphery of scope" : "Out of scope" });
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked yet" });
   const explicit = r.mode === "own" ? (o.coc && o.coc.explicit_seven_ref === true) : true;
   const name = r.mode === "own" ? o.coc.doc_type : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
@@ -145,7 +145,9 @@ function renderDetail(o) {
     parts.push(principleList(r.nolan));
   } else if (r.mode === "na") {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
-    parts.push(el("div", { class: "d-pending", text: "This body looks to be out of scope, so we have not checked its code against the seven principles. That changes if it is brought into scope." }));
+    parts.push(el("div", { class: "d-pending", text: o.scope === "POS"
+      ? "This body sits on the periphery of scope, so we have not checked its code against the seven principles yet. That changes if it is brought fully into scope."
+      : "This body looks to be out of scope, so we have not checked its code against the seven principles. That changes if it is brought into scope." }));
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     parts.push(el("div", { class: "d-pending", text: "We have not checked this body's code yet. It is in scope, so it is on the list to look at." }));
@@ -217,7 +219,7 @@ function renderCoverage() {
   const segs = [
     { cls: "c-done", label: "In scope, code checked", n: assessed },
     { cls: "c-todo", label: "In scope, still to check", n: toCheck },
-    { cls: "c-out", label: "Possibly out of scope", n: out },
+    { cls: "c-out", label: "Out of scope or periphery", n: out },
     { cls: "c-none", label: "Not yet scoped", n: notScoped },
   ];
   const total = segs.reduce((a, x) => a + x.n, 0) || 1;

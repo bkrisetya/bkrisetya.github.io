@@ -53,7 +53,7 @@ const DATA_CONFIG = {
 const SCOPE_LABELS_FALLBACK = {
   IS: "In Scope",
   LIS: "Likely In Scope",
-  POS: "Possibly Out of Scope",
+  POS: "Periphery/proximity of scope",
   LOOS: "Likely Out Of Scope",
   NA: "Not Applicable",
   "": "Not yet scoped",

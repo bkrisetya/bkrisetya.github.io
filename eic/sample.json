@@ -7,7 +7,7 @@
   "assessed": 35272,
   "out_of_scope": 3261,
   "snapshot": "July 2026",
-  "note": "Front end for a Datasette-backed register of 49,557 organisations. Scope/classification totals are the full dataset. Nolan coverage is coded directly for distinct bodies and inherited via umbrella codes (DfE schools, LGA councils, NHS health, College of Policing) for in-scope bodies; possibly-out-of-scope bodies are marked out of scope. A representative slice is shown.",
+  "note": "Front end for a Datasette-backed register of 49,557 organisations. Scope/classification totals are the full dataset. Nolan coverage is coded directly for distinct bodies and inherited via umbrella codes (DfE schools, LGA councils, NHS health, College of Policing) for in-scope bodies; bodies on the periphery/proximity of scope (POS) are shown as a distinct, borderline category rather than out of scope. A representative slice is shown.",
   "scope_facets": [
    {
     "value": "IS",
@@ -21,7 +21,7 @@
    },
    {
     "value": "POS",
-    "label": "Possibly Out of Scope",
+    "label": "Periphery/proximity of scope",
     "count": 3242
    },
    {
@@ -144,7 +144,7 @@
  "scope_labels": {
   "IS": "In Scope",
   "LIS": "Likely In Scope",
-  "POS": "Possibly Out of Scope",
+  "POS": "Periphery/proximity of scope",
   "LOOS": "Likely Out Of Scope",
   "NA": "Not Applicable",
   "": "Not yet scoped"
