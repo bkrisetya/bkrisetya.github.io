@@ -12,24 +12,12 @@
  * To go live: fill DATA_CONFIG.datasette.{baseUrl,database,table}, set mode
  * to "datasette", and (on the Datasette side) run it with `--cors` so the
  * dashboard on krisetya.com can fetch it cross-origin. Nothing else changes.
- *
- * PRE-STAGED 2026-07-11 to Ammara's agreed column schema (match / level /
- * code_url / NP_* as Y-N / NP_all / NP_score). Before cutover, confirm with
- * Ammara:
- *   (a) her DB carries the master-list `scope` column (IS/POS/LIS/LOOS/NA) -
- *       it is NOT in her scraper column list, but the dashboard's Q1 and the
- *       scope facet/filter need it;
- *   (b) type-of-body vs sector - she has ONE `category`; the dashboard splits
- *       classification (type of body) from category (sector). Currently both
- *       read her `category` (see columns.classification below);
- *   (c) umbrella codings loaded into datasette.umbrellas so DfE/LGA/NHS/Police
- *       inheritance works in datasette mode (bug #2).
  * ==========================================================================*/
 
 const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
-  local: { url: "./data.json" }, // 13 Jul 2026 snapshot from Ammara's backend data.db (Datasette Lite exposes no server API, so the snapshot is bundled; datasette mode below is for a future hosted instance)
+  local: { url: "./sample.json" },
 
   datasette: {
     baseUrl: "", // e.g. "https://data.krisetya.com"   <-- fill in
@@ -39,20 +27,16 @@ const DATA_CONFIG = {
     // umbrella inheritance: schools -> DfE, councils -> LGA. Paste umbrella codings into `umbrellas` to enable inheritance in datasette mode.
     umbrellaByCategory: { "Education": "DfE", "Parish Council": "LGA", "Town Council": "LGA", "City Council": "LGA", "Borough Council": "LGA", "County Council": "LGA", "District Council": "LGA", "Welsh Council": "LGA", "Parish Meeting": "LGA", "Council": "LGA", "Combined Authority": "LGA", "Health and social care": "NHS", "Emergency services": "Police" },
     umbrellas: {},
-    // dashboard field -> Datasette column name (Ammara's agreed schema, Emma-revised, accepted 11 Jul 2026)
+    // dashboard field -> Datasette column name
     columns: {
       id: "rowid",
       name: "name",
-      category: "category", // Ammara: type/sector (e.g. Local government, Regulators, Health and social care)
-      classification: "category", // CONFIRM: Ammara has ONE `category`; dashboard splits type-of-body vs sector. Reusing `category` until she confirms a separate field.
-      scope: "scope", // master-list public-authority scope IS/POS/LIS/LOOS/NA. CONFIRM: not in Ammara's scraper columns; her DB must carry it for Q1/scope facet.
-      level: "level", // umbrella vs individual (LGA/DfE/NHS/Police). Was `scope` in Ammara's first draft.
-      match: "match", // which CoC term matched (e.g. "Code of Conduct", "Ministerial Code"). Was `source` in Ammara's first draft.
-      codeUrl: "code_url", // scraped direct link to the code document
+      classification: "classification",
+      category: "category",
+      scope: "scope",
       url: "url",
-      notes: "notes", // optional; not in Ammara's list
-      nolanAll: "NP_all", // Y/N meets all 7
-      nolanScore: "NP_score", // 0-7 count of clear hits
+      notes: "notes",
+      nolanAll: "NP_all",
       nolan: {
         selflessness: "NP_selflessness",
         integrity: "NP_integrity",
@@ -93,9 +77,8 @@ const DataSource = (() => {
     v = String(v).toLowerCase().trim();
     if (["1", "y", "yes", "true", "clear", "explicit"].includes(v)) return "yes";
     if (["p", "partial", "part", "0.5"].includes(v)) return "partial";
-    if (["0", "n", "no", "false", "none"].includes(v)) return "no";
-    // "not located" / blank / anything unrecognised -> unknown (never silently "yes")
-    return "unknown";
+    if (["0", "n", "no", "false"].includes(v)) return "no";
+    return v ? "yes" : "unknown";
   };
 
   function mapDatasetteRow(row) {
@@ -111,31 +94,18 @@ const DataSource = (() => {
         nolan[pid] = { covered: "unknown", evidence: "" };
       }
     }
-    const match = row[c.match], codeUrl = row[c.codeUrl], level = row[c.level];
-    const UMBRELLA_LEVELS = ["DfE", "LGA", "NHS", "Police"];
-    // Synthesise a code-of-conduct object from Ammara's match/code_url columns so
-    // codeCell/renderDetail (which deref o.coc) do not throw (was coc:null, bug #1).
-    // Y/N Nolan does not reveal whether the code NAMES the seven principles, so
-    // explicit_seven_ref stays null (unknown).
-    const coc = (match || codeUrl) ? { doc_type: match || "Code of conduct", url: codeUrl || "", explicit_seven_ref: null } : null;
     return {
       id: String(row[c.id] ?? row.rowid ?? row[c.name]),
       name: row[c.name] || "",
       classification: row[c.classification] || "",
       category: row[c.category] || "",
       scope: row[c.scope] || "",
-      level: level || "",
       url: row[c.url] || "",
       notes: row[c.notes] || "",
       coded: anyCoded,
       nolan: anyCoded ? nolan : null,
-      // Prefer the row's own coding; otherwise inherit from an umbrella. `level`
-      // names the umbrella directly (LGA/DfE/NHS/Police); fall back to category mapping.
-      umbrella: (level && UMBRELLA_LEVELS.includes(level)) ? level
-        : ((["IS", "LIS"].includes(row[c.scope]) ? (cfg.datasette.umbrellaByCategory || {})[row[c.category]] : null) || null),
-      coc,
-      nolanAll: row[c.nolanAll],
-      nolanScore: row[c.nolanScore],
+      umbrella: (["IS","LIS"].includes(row[c.scope]) ? (cfg.datasette.umbrellaByCategory || {})[row[c.category]] : null) || null,
+      coc: null,
     };
   }
 
@@ -223,7 +193,7 @@ const DataSource = (() => {
     return { facet: facetUrl(), query: queryUrl({ search: "council", scope: "IS", page: 1 }) };
   }
 
-  return { init, query, debugUrls, mapRow: mapDatasetteRow, config: cfg };
+  return { init, query, debugUrls, config: cfg };
 })();
 
 if (typeof module !== "undefined" && module.exports) module.exports = { DataSource, DATA_CONFIG };
