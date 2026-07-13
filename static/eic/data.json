@@ -266,7 +266,14 @@
     "value": "Local authority",
     "count": 1
    }
-  ]
+  ],
+  "coverage": {
+   "own": 110,
+   "shared": 35150,
+   "tocheck": 1694,
+   "periphery_out": 3235,
+   "notscoped": 9369
+  }
  },
  "scope_labels": {
   "IS": "In Scope",
