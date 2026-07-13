@@ -49,9 +49,9 @@ function renderSummary() {
 
   const codes = [...S.coded, ...Object.values(S.umbrellas)];
   const explicit = codes.filter((c) => (c.coc && c.coc.explicit_seven_ref) === true).length;
-  const implicit = codes.filter((c) => c.coc && c.coc.explicit_seven_ref === false).length;
-  $("q2-figure").textContent = `${fmt(m.assessed)} covered by a code`;
-  $("q2-note").textContent = `Most bodies fall under a shared code. Of the codes read closely, ${explicit} name the seven principles and ${implicit} cover them without naming them.`;
+  const cov = m.coverage || {};
+  $("q2-figure").textContent = `${fmt(codes.length)} codes read`;
+  $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. ${explicit} of the codes name the seven principles.`;
 
   const counts = S.principles.map((p) => ({ p, yes: S.coded.filter((o) => rCov(o.nolan, p.id) === "yes").length }));
   counts.sort((a, b) => a.yes - b.yes);
@@ -211,16 +211,18 @@ function renderStrip() {
 function renderCoverage() {
   const m = S.meta;
   const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
-  const inScope = scope("IS") + scope("LIS");
-  const assessed = m.assessed || 0;
-  const toCheck = Math.max(0, inScope - assessed);
-  const out = (m.out_of_scope != null) ? m.out_of_scope : (scope("POS") + scope("LOOS") + scope("NA"));
-  const notScoped = scope("");
-  const segs = [
-    { cls: "c-done", label: "In scope, code checked", n: assessed },
-    { cls: "c-todo", label: "In scope, still to check", n: toCheck },
-    { cls: "c-out", label: "Out of scope or periphery", n: out },
-    { cls: "c-none", label: "Not yet scoped", n: notScoped },
+  const cov = m.coverage || {};
+  // one bucket per body, so the four numbers sum to the whole register
+  const segs = (cov.own != null) ? [
+    { cls: "c-done", label: "Covered by a shared sector code", n: cov.shared },
+    { cls: "c-own", label: "Own code read", n: cov.own },
+    { cls: "c-todo", label: "In scope, still to check", n: cov.tocheck },
+    { cls: "c-none", label: "Periphery, out of scope or not yet scoped", n: cov.periphery_out + cov.notscoped },
+  ] : [
+    { cls: "c-done", label: "In scope, code checked", n: m.assessed || 0 },
+    { cls: "c-todo", label: "In scope, still to check", n: Math.max(0, scope("IS") + scope("LIS") - (m.assessed || 0)) },
+    { cls: "c-out", label: "Out of scope or periphery", n: (m.out_of_scope != null) ? m.out_of_scope : (scope("POS") + scope("LOOS") + scope("NA")) },
+    { cls: "c-none", label: "Not yet scoped", n: scope("") },
   ];
   const total = segs.reduce((a, x) => a + x.n, 0) || 1;
   $("coverage-bar").replaceChildren(...segs.filter((x) => x.n > 0).map((x) =>
