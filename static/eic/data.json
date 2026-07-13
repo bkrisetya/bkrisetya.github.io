@@ -1,0 +1,6102 @@
+{
+ "meta": {
+  "total": 49558,
+  "coded": 114,
+  "umbrella_count": 4,
+  "inherited_total": 35235,
+  "assessed": 35260,
+  "out_of_scope": 3247,
+  "snapshot": "13 July 2026",
+  "note": "Front end for the project backend built by Ammara Yasin (snapshot 13 July 2026). Scope and type totals cover the whole register of 49,558 organisations. 110 bodies carry an automated reading of their code against the seven principles (the validated batch from the first scraper run); schools, councils, health and police bodies inherit the shared code for their sector. A representative slice of unchecked bodies is included for browsing.",
+  "scope_facets": [
+   {
+    "value": "IS",
+    "count": 36890,
+    "label": "In Scope"
+   },
+   {
+    "value": "",
+    "count": 9374,
+    "label": "Not yet scoped"
+   },
+   {
+    "value": "POS",
+    "count": 3242,
+    "label": "Periphery/proximity of scope"
+   },
+   {
+    "value": "LIS",
+    "count": 47,
+    "label": "Likely In Scope"
+   },
+   {
+    "value": "LOOS",
+    "count": 5,
+    "label": "Likely Out Of Scope"
+   }
+  ],
+  "classification_facets": [
+   {
+    "value": "Central government",
+    "count": 25530
+   },
+   {
+    "value": "Local government",
+    "count": 10784
+   },
+   {
+    "value": "",
+    "count": 8525
+   },
+   {
+    "value": "Defunct",
+    "count": 4141
+   },
+   {
+    "value": "Public Non-Financial Corporations",
+    "count": 235
+   },
+   {
+    "value": "NDPB",
+    "count": 188
+   },
+   {
+    "value": "Public Financial",
+    "count": 64
+   },
+   {
+    "value": "Executive Agency",
+    "count": 34
+   },
+   {
+    "value": "Non-profit institutions serving households",
+    "count": 22
+   },
+   {
+    "value": "Non-Ministerial Department | Central Government",
+    "count": 11
+   },
+   {
+    "value": "Non-Ministerial Department",
+    "count": 9
+   },
+   {
+    "value": "PLC",
+    "count": 7
+   },
+   {
+    "value": "Foreign controlled Non-financial corporations",
+    "count": 4
+   },
+   {
+    "value": "CIC",
+    "count": 1
+   },
+   {
+    "value": "NDPB | Public Non-Financial Corporations",
+    "count": 1
+   },
+   {
+    "value": "Non-profit institutions serving households | Central Government",
+    "count": 1
+   },
+   {
+    "value": "Foreign controlled non-financial corporations",
+    "count": 1
+   }
+  ],
+  "category_facets": [
+   {
+    "value": "Education",
+    "count": 27464
+   },
+   {
+    "value": "Parish Council",
+    "count": 7728
+   },
+   {
+    "value": "Health and social care",
+    "count": 4290
+   },
+   {
+    "value": "",
+    "count": 2850
+   },
+   {
+    "value": "Local and regional",
+    "count": 1069
+   },
+   {
+    "value": "Parish Meeting",
+    "count": 811
+   },
+   {
+    "value": "Town Council",
+    "count": 806
+   },
+   {
+    "value": "Welsh Council",
+    "count": 784
+   },
+   {
+    "value": "Emergency services",
+    "count": 697
+   },
+   {
+    "value": "Transport and infrastructure",
+    "count": 529
+   },
+   {
+    "value": "Housing and communities",
+    "count": 413
+   },
+   {
+    "value": "Justice, prosecutorial and enforcement",
+    "count": 276
+   },
+   {
+    "value": "Energy, power and utilities",
+    "count": 245
+   },
+   {
+    "value": "Economic or financial",
+    "count": 235
+   },
+   {
+    "value": "Media, culture and sport",
+    "count": 226
+   },
+   {
+    "value": "Advisory body",
+    "count": 206
+   },
+   {
+    "value": "Borough Council",
+    "count": 174
+   },
+   {
+    "value": "District Council",
+    "count": 118
+   },
+   {
+    "value": "Regulatory",
+    "count": 96
+   },
+   {
+    "value": "Other",
+    "count": 66
+   },
+   {
+    "value": "Science, research and innovation",
+    "count": 56
+   },
+   {
+    "value": "City Council",
+    "count": 56
+   },
+   {
+    "value": "Environment and agriculture",
+    "count": 56
+   },
+   {
+    "value": "Military and security services",
+    "count": 55
+   },
+   {
+    "value": "County Council",
+    "count": 41
+   },
+   {
+    "value": "Scottish Council",
+    "count": 35
+   },
+   {
+    "value": "Council Association",
+    "count": 34
+   },
+   {
+    "value": "London Borough",
+    "count": 34
+   },
+   {
+    "value": "Major programmes and delivery organisation",
+    "count": 28
+   },
+   {
+    "value": "Metropolitan Borough",
+    "count": 27
+   },
+   {
+    "value": "Combined authority",
+    "count": 14
+   },
+   {
+    "value": "Grant and subsidy issuing body",
+    "count": 9
+   },
+   {
+    "value": "Local and regional | Parish Council",
+    "count": 8
+   },
+   {
+    "value": "Village Council",
+    "count": 6
+   },
+   {
+    "value": "Neighbourhood Council",
+    "count": 4
+   },
+   {
+    "value": "Council",
+    "count": 4
+   },
+   {
+    "value": "Charities",
+    "count": 3
+   },
+   {
+    "value": "Environment and Agriculture",
+    "count": 3
+   },
+   {
+    "value": "Combined Authority",
+    "count": 1
+   },
+   {
+    "value": "Local authority",
+    "count": 1
+   }
+  ]
+ },
+ "scope_labels": {
+  "IS": "In Scope",
+  "LIS": "Likely In Scope",
+  "POS": "Periphery/proximity of scope",
+  "LOOS": "Likely Out Of Scope",
+  "NA": "Not Applicable",
+  "": "Not yet scoped"
+ },
+ "principles": [
+  {
+   "id": "selflessness",
+   "name": "Selflessness",
+   "def": "Act solely in the public interest."
+  },
+  {
+   "id": "integrity",
+   "name": "Integrity",
+   "def": "Avoid obligations that could influence official duties."
+  },
+  {
+   "id": "objectivity",
+   "name": "Objectivity",
+   "def": "Make choices on merit and evidence."
+  },
+  {
+   "id": "accountability",
+   "name": "Accountability",
+   "def": "Be accountable and submit to scrutiny."
+  },
+  {
+   "id": "openness",
+   "name": "Openness",
+   "def": "Be as open as possible about decisions and actions."
+  },
+  {
+   "id": "honesty",
+   "name": "Honesty",
+   "def": "Be truthful."
+  },
+  {
+   "id": "leadership",
+   "name": "Leadership",
+   "def": "Promote and support these principles by example."
+  }
+ ],
+ "umbrellas": {
+  "LGA": {
+   "id": "LGA",
+   "name": "Local Government Association: Model Councillor Code of Conduct",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Holders of public office should act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Should not place themselves under any financial or other obligation to outside individuals or organisations that might seek to influence them."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Should make choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountable for their decisions and actions to the public and must submit themselves to whatever scrutiny is appropriate."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Should be as open as possible about all the decisions and actions that they take."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "A duty to declare any private interests relating to their public duties."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Should promote and support these principles by leadership and example (Seven Principles appendix)."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "LGA Model Councillor Code of Conduct",
+    "url": "https://www.local.gov.uk/publications/councillors-guide-2022-23-model-member-code-conduct",
+    "explicit_seven_ref": true,
+    "note": "Local councils adopt the LGA model code, which sets out the Seven Principles of Public Life; individual councils' codes are not separately assessed."
+   }
+  },
+  "DfE": {
+   "id": "DfE",
+   "name": "Department for Education: governance framework (schools & academies)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "DfE Academy Trust Handbook / governance guide (Seven Principles)",
+    "url": "https://www.gov.uk/government/publications/academy-trust-handbook/academy-trust-handbook-2025-effective-from-1-september-2025",
+    "explicit_seven_ref": true,
+    "note": "Schools and academies follow the DfE governance framework, which requires adherence to the Seven Principles of Public Life; individual schools' codes are not separately assessed."
+   }
+  },
+  "NHS": {
+   "id": "NHS",
+   "name": "NHS: Code of Conduct for NHS Managers / NHS Constitution",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Code of Conduct for NHS Managers (2002) + NHS Constitution",
+    "url": "https://www.elft.nhs.uk/sites/default/files/2022-01/Code%20of%20Conduct%20for%20NHS%20Managers.pdf",
+    "explicit_seven_ref": true,
+    "note": "In-scope NHS bodies follow the Code of Conduct for NHS Managers / NHS Constitution, which incorporate the Seven Principles; individual bodies are not separately assessed."
+   }
+  },
+  "Police": {
+   "id": "Police",
+   "name": "College of Policing: Code of Ethics",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "College of Policing Code of Ethics",
+    "url": "https://www.college.police.uk/ethics/code-of-ethics",
+    "explicit_seven_ref": true,
+    "note": "Police forces follow the College of Policing Code of Ethics, which incorporates the Seven Principles; individual forces are not separately assessed."
+   }
+  }
+ },
+ "orgs": [
+  {
+   "id": "umbrella-lga",
+   "name": "Local Government Association: Model Councillor Code of Conduct",
+   "classification": "Local government",
+   "category": "Umbrella body",
+   "scope": "IS",
+   "url": "https://www.local.gov.uk/publications/councillors-guide-2022-23-model-member-code-conduct",
+   "notes": "Local councils adopt the LGA model code, which sets out the Seven Principles of Public Life; individual councils' codes are not separately assessed.",
+   "coded": true,
+   "is_umbrella": true,
+   "umbrella_id": "LGA",
+   "umbrella": null,
+   "coc": {
+    "found": true,
+    "doc_type": "LGA Model Councillor Code of Conduct",
+    "url": "https://www.local.gov.uk/publications/councillors-guide-2022-23-model-member-code-conduct",
+    "explicit_seven_ref": true,
+    "note": "Local councils adopt the LGA model code, which sets out the Seven Principles of Public Life; individual councils' codes are not separately assessed."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Holders of public office should act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Should not place themselves under any financial or other obligation to outside individuals or organisations that might seek to influence them."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Should make choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountable for their decisions and actions to the public and must submit themselves to whatever scrutiny is appropriate."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Should be as open as possible about all the decisions and actions that they take."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "A duty to declare any private interests relating to their public duties."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Should promote and support these principles by leadership and example (Seven Principles appendix)."
+    }
+   }
+  },
+  {
+   "id": "umbrella-dfe",
+   "name": "Department for Education: governance framework (schools & academies)",
+   "classification": "Central government",
+   "category": "Umbrella body",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/publications/academy-trust-handbook/academy-trust-handbook-2025-effective-from-1-september-2025",
+   "notes": "Schools and academies follow the DfE governance framework, which requires adherence to the Seven Principles of Public Life; individual schools' codes are not separately assessed.",
+   "coded": true,
+   "is_umbrella": true,
+   "umbrella_id": "DfE",
+   "umbrella": null,
+   "coc": {
+    "found": true,
+    "doc_type": "DfE Academy Trust Handbook / governance guide (Seven Principles)",
+    "url": "https://www.gov.uk/government/publications/academy-trust-handbook/academy-trust-handbook-2025-effective-from-1-september-2025",
+    "explicit_seven_ref": true,
+    "note": "Schools and academies follow the DfE governance framework, which requires adherence to the Seven Principles of Public Life; individual schools' codes are not separately assessed."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership: adopted via the DfE Academy Trust Handbook / Academy Trust Governance Guide, which requires those in school and academy governance to follow the Seven Principles of Public Life."
+    }
+   }
+  },
+  {
+   "id": "umbrella-nhs",
+   "name": "NHS: Code of Conduct for NHS Managers / NHS Constitution",
+   "classification": "Central government",
+   "category": "Umbrella body",
+   "scope": "IS",
+   "url": "https://www.elft.nhs.uk/sites/default/files/2022-01/Code%20of%20Conduct%20for%20NHS%20Managers.pdf",
+   "notes": "In-scope NHS bodies follow the Code of Conduct for NHS Managers / NHS Constitution, which incorporate the Seven Principles; individual bodies are not separately assessed.",
+   "coded": true,
+   "is_umbrella": true,
+   "umbrella_id": "NHS",
+   "umbrella": null,
+   "coc": {
+    "found": true,
+    "doc_type": "Code of Conduct for NHS Managers (2002) + NHS Constitution",
+    "url": "https://www.elft.nhs.uk/sites/default/files/2022-01/Code%20of%20Conduct%20for%20NHS%20Managers.pdf",
+    "explicit_seven_ref": true,
+    "note": "In-scope NHS bodies follow the Code of Conduct for NHS Managers / NHS Constitution, which incorporate the Seven Principles; individual bodies are not separately assessed."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership: NHS managers must follow the Nolan Principles on Conduct in Public Life; NHS Codes of Conduct for Board Members and Managers incorporate the Seven Principles of Public Life."
+    }
+   }
+  },
+  {
+   "id": "umbrella-police",
+   "name": "College of Policing: Code of Ethics",
+   "classification": "Central government",
+   "category": "Umbrella body",
+   "scope": "IS",
+   "url": "https://www.college.police.uk/ethics/code-of-ethics",
+   "notes": "Police forces follow the College of Policing Code of Ethics, which incorporates the Seven Principles; individual forces are not separately assessed.",
+   "coded": true,
+   "is_umbrella": true,
+   "umbrella_id": "Police",
+   "umbrella": null,
+   "coc": {
+    "found": true,
+    "doc_type": "College of Policing Code of Ethics",
+    "url": "https://www.college.police.uk/ethics/code-of-ethics",
+    "explicit_seven_ref": true,
+    "note": "Police forces follow the College of Policing Code of Ethics, which incorporates the Seven Principles; individual forces are not separately assessed."
+   },
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Selflessness: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Integrity: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Objectivity: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Accountability: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Openness: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Honesty: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Leadership: the College of Policing Code of Ethics incorporates the Seven Principles of Public Life; the Code maps the Nolan Principles to its policing principles."
+    }
+   }
+  },
+  {
+   "id": "db13",
+   "name": "207 Dental Care",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://207dentalcare.com/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.207dentalcare.com/code-of-practice-for-patient-complaints/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db19",
+   "name": "3SFire Ltd",
+   "classification": "",
+   "category": "Emergency services",
+   "scope": "IS",
+   "url": "https://3sfire.co.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of ethics",
+    "url": "https://3sfire.co.uk/community/fireinspire/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db29",
+   "name": "Abberley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.abberleyparish.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abberleyparish.org.uk/policies-documents-regulations",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db33",
+   "name": "95 Alive, The North Yorkshire Road Safety Partnership",
+   "classification": "",
+   "category": "Transport and infrastructure",
+   "scope": "IS",
+   "url": "https://www.northyorks.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.northyorks.gov.uk/your-council/websites-and-media/terms-and-conditions",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db55",
+   "name": "Abberley Parochial VC Primary School, Worcester",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abberley.worcs.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abberley.worcs.sch.uk/page/?title=Policies&pid=13",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db61",
+   "name": "Abbey Court Foundation Special School, Rochester",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeycourt.medway.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeycourt.medway.sch.uk/Governor-Information/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db62",
+   "name": "Abbey Dental Care, Selby",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://www.abbeydentalcare.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.abbeydentalcare.co.uk?p=23",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db71",
+   "name": "Abbey Grange Academy",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.abbeygrangeacademy.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeygrangeacademy.co.uk/parents-carers/send",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db72",
+   "name": "Abbey Grange Church of England Academy, Leeds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeygrangeacademy.co.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeygrangeacademy.co.uk/parents-carers/send",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db73",
+   "name": "Abbey Green Nursery School, Bradford",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeygreen.org",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://abbeygreen.org/our-staff/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db79",
+   "name": "Abbey Hulton Primary School, Stoke-on-Trent",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.abbeyhultonprimary.org.uk",
+   "notes": "Automated reading, low confidence; flagged for human review.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyhultonprimary.org.uk/ofsted",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db80",
+   "name": "Abbey Infant School, Smethwick",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyfederation.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyfederation.co.uk/key-information/policies",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db83",
+   "name": "Abbey Junior School, Smethwick",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyfederation.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyfederation.co.uk/key-information/policies",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db84",
+   "name": "Abbey Lane Primary School, Sheffield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeylaneprimaryschool.com",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeylaneprimaryschool.com/page/?title=Policies&pid=20",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db85",
+   "name": "Abbey Manor College, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeymanorcollege.com",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeymanorcollege.com/1356/amc-staff-body",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db88",
+   "name": "Abbey Meads Community Primary School, Swindon",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.abbeymeads.swindon.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeymeads.swindon.sch.uk/admissions",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db92",
+   "name": "Abbey Multi Academy Trust",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeymat.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeymat.co.uk/governance/trust-documentation",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db94",
+   "name": "Abbey Park Academy, Halifax",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://apa.northerneducationtrust.org/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://apa.northerneducationtrust.org/about-us/vision/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db97",
+   "name": "Abbey Park Middle School, Pershore",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyparkmiddle.worcs.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeypark.worcs.sch.uk/key-information/policies/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db98",
+   "name": "Abbey Park School, Swindon",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyparkschool.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyparkschool.org.uk/parents/policies--procedures",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db99",
+   "name": "Abbey Primary School, Mansfield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyprimaryschool.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyprimaryschool.co.uk/policies/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db102",
+   "name": "Abbey Primary School, Walsall",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbey.walsall.sch.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbey.walsall.sch.uk/about-us/policies/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db106",
+   "name": "Abbots Bromley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.abbotsbromley.com",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://abbotsbromley.com/parish-council/documents",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db109",
+   "name": "Abbey Village Primary School, Chorley",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyvillage.lancs.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyvillage.lancs.sch.uk/page/vision-mission-statement-values/100449",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db114",
+   "name": "Abbots Langley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.abbotslangley-pc.gov.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbotslangley-pc.gov.uk/parish-council/about-the-parish-council/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db119",
+   "name": "Abbeyfield School, Chippenham",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeyfield.wilts.sch.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeyfield.wilts.sch.uk/british-values",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db125",
+   "name": "Abbotsley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.abbotsleyparishcouncil.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://abbotsleyparishcouncil.gov.uk/council-documents",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db128",
+   "name": "Abbeygate Sixth Form College, Bury St Edmunds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.abbeygatesfc.ac.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeygatesfc.ac.uk/courses/application-guidance",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db130",
+   "name": "Abbeys Primary School, Milton Keynes",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeysprimary.org",
+   "notes": "Automated reading, low confidence; flagged for human review.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbeysprimary.org/page/?title=Our+Learning&pid=39",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db132",
+   "name": "Abbotts Ann Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.abbottsann-pc.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbottsann-pc.gov.uk/community/abbotts-ann-parish-council-12724/council-policies-and-procedures/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db133",
+   "name": "Abbeywood Community School, Bristol",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbeywoodschool.com",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.abbeywoodschool.com/SEN",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db140",
+   "name": "Abbots Farm Junior School, Rugby",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbotsfarm.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://abbotsfarm.co.uk/key-information/send/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db142",
+   "name": "Abbots Green Primary Academy, Bury St Edmunds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbotsgreenacademy.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://abbotsgreenacademy.co.uk/special-educational-needs/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db143",
+   "name": "Abbot's Hall Community Primary School, Stowmarket",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.abbotshall.suffolk.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbotshall.suffolk.sch.uk/page/?title=Policies&pid=116",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db145",
+   "name": "Abbots Langley School",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbotslangley.herts.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://abbotslangley.herts.sch.uk/2020/09/02/special-educational-needs-and-disabilities/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db146",
+   "name": "Abbot's Lea School, Liverpool",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbotsleaschool.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbotsleaschool.co.uk/about/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db154",
+   "name": "Abbott Community Primary School, Manchester",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbott.manchester.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbott.manchester.sch.uk/page/parent-partnership/20949",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db155",
+   "name": "Abbotts Ann CE Primary School, Andover",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbottsann.hants.sch.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbottsann.hants.sch.uk/Governing-Body/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db157",
+   "name": "Abbs Cross Academy and Arts College, Hornchurch",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abbscross.net",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abbscross.net/1115/year-11",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db164",
+   "name": "Aber Valley Community Council, Caerphilly",
+   "classification": "Local government",
+   "category": "Welsh Council",
+   "scope": "IS",
+   "url": "http://www.abervalleycommunitycouncil.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.abervalleycommunitycouncil.org.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db171",
+   "name": "Abercrombie Primary School, Chesterfield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abercrombie.derbyshire.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.abercrombie.derbyshire.sch.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db173",
+   "name": "Abercromby Nursery School",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abercrombynurseryschool.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://abercrombynurseryschool.co.uk/school-information/child-protection/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db179",
+   "name": "Aberdeen Business School Ltd",
+   "classification": "",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.rgu.ac.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.rgu.ac.uk/about/university-policies",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db180",
+   "name": "Aberford and District Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.aberford-pc.gov.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.aberford-pc.gov.uk/parish-council-information/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db183",
+   "name": "Aberdeen City Health and Social Care Partnership",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "https://www.aberdeencityhscp.scot",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.aberdeencityhscp.scot/about-us/our-governance/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db191",
+   "name": "Aberdeen Management Centre Ltd",
+   "classification": "",
+   "category": "Education",
+   "scope": "LOOS",
+   "url": "https://www.rgu.ac.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.rgu.ac.uk/about/university-policies",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db192",
+   "name": "Aberdeen Performing Arts",
+   "classification": "",
+   "category": "Media, culture and sport",
+   "scope": "POS",
+   "url": "https://www.aberdeenperformingarts.com",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.aberdeenperformingarts.com/our-environment/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db193",
+   "name": "Aberdeen Soroptimist Housing Society Ltd",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "https://www.ospreyhousing.org.uk/soroptimists",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.ospreyhousing.org.uk/page/class-1",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db203",
+   "name": "Aberford Church of England Voluntary Controlled Primary School, Leeds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.aberfordprimaryschool.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Values and behaviours",
+    "url": "https://www.aberfordprimaryschool.co.uk/our-school/curriculum",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db212",
+   "name": "Abermule with Llandyssil Community Council",
+   "classification": "Local government",
+   "category": "Welsh Council",
+   "scope": "IS",
+   "url": "http://www.abermulewithllandyssilcommunitycouncil.org.uk/default.aspx",
+   "notes": "Automated reading, medium confidence; flagged for human review.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.abermulewithllandyssilcommunitycouncil.org.uk/Documents_and_Policies_9986.aspx",
+    "explicit_seven_ref": true
+   }
+  },
+  {
+   "id": "db232",
+   "name": "Aberystwyth Town Council",
+   "classification": "",
+   "category": "Town Council",
+   "scope": "IS",
+   "url": "http://www.aberystwyth.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://aberystwyth.gov.uk/your-council/policies-procedures-plans/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db233",
+   "name": "Aberystwyth University",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.aber.ac.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.aber.ac.uk/en/clearing/accommodation/?from=globalnav",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db236",
+   "name": "Abingdon Learning Trust",
+   "classification": "",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.abingdonlearningtrust.org",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abingdonlearningtrust.org/resources/policies/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db237",
+   "name": "Abingdon Primary School, Middlesbrough",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abingdonprimary.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.abingdonprimary.org.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db238",
+   "name": "Abingdon Primary School, Stockport",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abingdon.stockport.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.abingdon.stockport.sch.uk/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db240",
+   "name": "Abington Dental Practice",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://www.abingtondental.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://abingtondental.co.uk/complaints-procedure/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db241",
+   "name": "Abington High School, Wigston",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.wigstonacademy.org",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://wigstonacademy.org/about-us/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db242",
+   "name": "Abington Vale Primary School, Northampton",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.abingtonvaleprimary.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abingtonvaleprimary.org.uk/index.php/school/local-governing-body",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db243",
+   "name": "Acaster Malbis Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.acastermalbis-pc.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://acastermalbis-pc.gov.uk/meetings/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db249",
+   "name": "Abronhill Housing Association Ltd",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "https://www.abronhillha.org.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.abronhillha.org.uk/general-information/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db251",
+   "name": "Acacia Nursery, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acacianursery.co.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.acacianursery.co.uk/send",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db259",
+   "name": "Academy of Medical Royal Colleges",
+   "classification": "PLC",
+   "category": "Education",
+   "scope": "LOOS",
+   "url": "http://www.aomrc.org.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.aomrc.org.uk/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db265",
+   "name": "Accent Group Housing",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "https://www.accentgroup.org",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.accentgroup.org/about-us/work-with-us/how-to-apply-for-a-job-with-accent/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db271",
+   "name": "Accomplish Multi Academy Trust",
+   "classification": "",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.veritau.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://veritau.co.uk/about/modern-slavery-statement/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db277",
+   "name": "Ackworth Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.ackworthparishcouncil.gov.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.ackworthparishcouncil.gov.uk/Your_Council_28590.aspx",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db281",
+   "name": "Accrington Huncoat Primary School",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.huncoat.lancs.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.huncoat.lancs.sch.uk/key-info/safeguarding",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db287",
+   "name": "Accrington St John with St Augustine CE Primary School",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.st-john-augustine.lancs.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.st-john-augustine.lancs.sch.uk/welcome",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db289",
+   "name": "Accrington St Mary Magdalen's Church of England Primary School, Accrington",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.st-marymagdalens.lancs.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.st-marymagdalens.lancs.sch.uk/page/school-policies-key-information/40561",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db295",
+   "name": "Acer Trust",
+   "classification": "",
+   "category": "Education",
+   "scope": "",
+   "url": "https://www.acertrust.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acertrust.org.uk/our-schools/the-cooper-school",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db302",
+   "name": "Ackworth Howard Church of England Voluntary Controlled Junior and Infant School, Pontefract",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.ackworthhowardschool.co.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.ackworthhowardschool.co.uk/information/governors",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db304",
+   "name": "Acland Burghley School, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.aclandburghley.camden.sch.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.aclandburghley.camden.sch.uk/Policies",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db307",
+   "name": "Aclet Close Nursery School, Bishop Auckland",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acletclose.durham.sch.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://acletclose.durham.sch.uk/about-us/our-governing-body/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db308",
+   "name": "ACM Guildford Ltd",
+   "classification": "PLC",
+   "category": "Education",
+   "scope": "LIS",
+   "url": "https://www.acm.ac.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acm.ac.uk/policies/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db311",
+   "name": "Acomb First School, Hexham",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acomb.northumberland.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.acomb.northumberland.sch.uk/web/british_values/613698",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db312",
+   "name": "Acomb Primary School, York",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acombprimary.org.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://acombprimary.org.uk/parents/send/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db316",
+   "name": "Acorn Academy, Witham",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acornacademy.net",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acornacademy.net/Key-Info",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db326",
+   "name": "Acorns Primary School, Preston",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acorns.lancs.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acorns.lancs.sch.uk/page/acorns-curriculum/146216",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db327",
+   "name": "Acorns Primary School, Shipston-on-Stour",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acornsprimary.co.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acornsprimary.co.uk/page/?title=Welcome&pid=12",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db329",
+   "name": "Acre Rigg Academy, Peterlee",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acreriggacademy.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.acreriggacademy.co.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db330",
+   "name": "Acre Rigg Infant School, Peterlee",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.acrerigg-inf.durham.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acrerigg-inf.durham.sch.uk/page/?title=Meet+the+Governors&pid=14",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db332",
+   "name": "Acres Hill Community Primary School, Sheffield",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.acreshillschool.co.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.acreshillschool.co.uk/send/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db342",
+   "name": "Adderley Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.adderleyparish.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://adderleyparish.co.uk/policies-and-procedures/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db343",
+   "name": "Active Stirling Ltd",
+   "classification": "",
+   "category": "Media, culture and sport",
+   "scope": "",
+   "url": "http://www.activestirling.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.activestirling.org.uk/classes/summer-holiday-club",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db345",
+   "name": "Active Travel England",
+   "classification": "Executive Agency",
+   "category": "Major programmes and delivery organisation",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/organisations/active-travel-england",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/consultations/make-work-pay-draft-code-of-practice-on-trade-union-right-of-access",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db347",
+   "name": "Addingham Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.addingham-pc.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.addingham-pc.gov.uk/the-council/policies-procedures/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db352",
+   "name": "Acton Community Council, Wrexham",
+   "classification": "Local government",
+   "category": "Welsh Council",
+   "scope": "IS",
+   "url": "https://www.actoncommunitycouncil.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.actoncommunitycouncil.gov.uk/Who_Represents_Me_29975.aspx",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db364",
+   "name": "Adisham Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.adisham-pc.gov.uk",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://adisham-pc.gov.uk/polices-for-adisham-parish-council/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db368",
+   "name": "Adamsrill Primary School, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.adamsrill.lewisham.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.adamsrill.lewisham.sch.uk/Meet-our-Governors",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db372",
+   "name": "Adderley Nursery School, Birmingham",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.addleyn.bham.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.addleyn.bham.sch.uk/Page/Detail/staff",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db373",
+   "name": "Adderley Primary School, Birmingham",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.adderleyprimary.co.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.adderleyprimary.co.uk/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db374",
+   "name": "Addey and Stanhope School, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.as.lewisham.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://www.as.lewisham.sch.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db376",
+   "name": "Addingham Primary School, Ilkley",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.addingham.bradford.sch.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.addingham.bradford.sch.uk/our-school/local-offer",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db377",
+   "name": "Addington School, Reading",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://addington.schooljotter2.com/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://addington.schooljotter2.com/our-school/curriculum/welcome-to-middle-school-1",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db378",
+   "name": "Addington Valley Academy, Croydon",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.addingtonvalley.org",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://addingtonvalley.org/about_us/governors/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db380",
+   "name": "Adel Beck, Leeds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.leeds.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.leeds.gov.uk/residents/bins-and-recycling/get-rid-of-unwanted-items",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db381",
+   "name": "Adel Primary School, Leeds",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.adelprimary.org.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.adelprimary.org.uk/page/?title=Governors&pid=13",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db386",
+   "name": "Adelphi Dental Practice",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://www.adelphidentalcare.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.adelphidentalcare.co.uk//privacy-policy.php",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db397",
+   "name": "Admiral Lord Nelson School, Portsmouth",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.alns.co.uk/",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.alns.co.uk/about-us/school-policies/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db435",
+   "name": "Adshall Road Medical Practice, Greater Manchester",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://www.adshallroadmedicalpractice.co.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of practice",
+    "url": "https://www.adshallroadmedicalpractice.co.uk/privacy-policy",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db437",
+   "name": "Adswood Primary School, Stockport",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.adswood-pri.stockport.sch.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.adswood-pri.stockport.sch.uk/page/british-values/115355",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db439",
+   "name": "Adult Learning Wales",
+   "classification": "",
+   "category": "Education",
+   "scope": "POS",
+   "url": "https://www.adultlearning.wales",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.adultlearning.wales/learner-support/learner-resources/",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db444",
+   "name": "Advanced Research and Invention Agency",
+   "classification": "NDPB",
+   "category": "Science, research and innovation",
+   "scope": "IS",
+   "url": "https://www.aria.org.uk/",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://aria.org.uk/supply-to-us",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db450",
+   "name": "Advisory Board on the Registration of Homoeopathic Products",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/groups/advisory-board-on-the-registration-of-homeopathic-products",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/groups/advisory-board-on-the-registration-of-homeopathic-products",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db451",
+   "name": "Advisory Committee for Social Science",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "",
+   "url": "https://acss.food.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://acss.food.gov.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db453",
+   "name": "Advisory Committee on Animal Feedingstuffs",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "IS",
+   "url": "http://acaf.food.gov.uk",
+   "notes": "Automated reading, medium confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "http://acaf.food.gov.uk",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db454",
+   "name": "Advisory Committee on Antimicrobial Resistance and Healthcare Associated Infection",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "",
+   "url": "https://www.gov.uk/government/groups/advisory-committee-on-antimicrobial-prescribing-resistance-and-healthcare-associated-infections",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/groups/advisory-committee-on-antimicrobial-prescribing-resistance-and-healthcare-associated-infections",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db455",
+   "name": "Advisory Committee on Borderline Substances",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/groups/advisory-committee-on-borderline-substances",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/groups/advisory-committee-on-borderline-substances",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db456",
+   "name": "Advisory Committee on Business Appointments",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/organisations/advisory-committee-on-business-appointments",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/consultations/make-work-pay-draft-code-of-practice-on-trade-union-right-of-access",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db459",
+   "name": "Advisory Committee on Clinical Excellence Awards",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "",
+   "url": "https://www.gov.uk/government/organisations/advisory-committee-on-clinical-excellence-awards",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/consultations/make-work-pay-draft-code-of-practice-on-trade-union-right-of-access",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db461",
+   "name": "Advisory Committee on Conscientious Objectors",
+   "classification": "NDPB",
+   "category": "Advisory body",
+   "scope": "IS",
+   "url": "https://www.gov.uk/government/organisations/advisory-committee-on-conscientious-objectors",
+   "notes": "Automated reading, high confidence.",
+   "coded": true,
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "objectivity": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "accountability": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": ""
+    },
+    "honesty": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "doc_type": "Code of conduct",
+    "url": "https://www.gov.uk/government/consultations/make-work-pay-draft-code-of-practice-on-trade-union-right-of-access",
+    "explicit_seven_ref": false
+   }
+  },
+  {
+   "id": "db8664",
+   "name": "Clase Primary School, Swansea",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.swansea-edunet.gov.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "DfE"
+  },
+  {
+   "id": "db689",
+   "name": "Alder Brook, Salford",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://alderbrook.salfordpru.org.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "DfE"
+  },
+  {
+   "id": "db43862",
+   "name": "Thomas Buxton Primary School, London",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.thomasbuxton.towerhamlets.sch.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "DfE"
+  },
+  {
+   "id": "db39580",
+   "name": "St Paul's CE Primary School, Nuneaton",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.stpaulsnuneaton.org.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "DfE"
+  },
+  {
+   "id": "db40187",
+   "name": "St William's Catholic Primary School, Wigan",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "https://www.admin.saintwilliams.wigan.sch.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "DfE"
+  },
+  {
+   "id": "db40438",
+   "name": "Stanley (Crook) Primary School, Crook",
+   "classification": "Central government",
+   "category": "Education",
+   "scope": "IS",
+   "url": "http://www.stanleycrook.durham.sch.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "DfE"
+  },
+  {
+   "id": "db23085",
+   "name": "Little Glemham Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.littleglemhampc.org.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "LGA"
+  },
+  {
+   "id": "db24759",
+   "name": "Marden Parish Council, Kent",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.mardenkent-pc.gov.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "LGA"
+  },
+  {
+   "id": "db1361",
+   "name": "Appleton-le-Moors Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "LGA"
+  },
+  {
+   "id": "db9014",
+   "name": "Cold Norton Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "LGA"
+  },
+  {
+   "id": "db19685",
+   "name": "Hovingham and Scackleton Parish Council",
+   "classification": "Local government",
+   "category": "Parish Council",
+   "scope": "IS",
+   "url": "https://www.hovingham.org.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "LGA"
+  },
+  {
+   "id": "db24700",
+   "name": "Manordeifi Community Council, Pembrokeshire",
+   "classification": "Local government",
+   "category": "Welsh Council",
+   "scope": "IS",
+   "url": "http://www.virgin.net",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "LGA"
+  },
+  {
+   "id": "db7343",
+   "name": "Central London Community Healthcare NHS Trust",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "http://www.clch.nhs.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "NHS"
+  },
+  {
+   "id": "db14942",
+   "name": "George Eliot Hospital NHS Trust",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "http://www.geh.nhs.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "NHS"
+  },
+  {
+   "id": "db36129",
+   "name": "South Tees Hospitals NHS Foundation Trust",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "https://www.southtees.nhs.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "NHS"
+  },
+  {
+   "id": "db49000",
+   "name": "Wye Valley NHS Trust",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "IS",
+   "url": "http://www.wyevalley.nhs.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "NHS"
+  },
+  {
+   "id": "db36223",
+   "name": "South Yorkshire Fire and Rescue Service",
+   "classification": "",
+   "category": "Emergency services",
+   "scope": "IS",
+   "url": "https://www.syfire.gov.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "Police"
+  },
+  {
+   "id": "db25483",
+   "name": "Merseyside Fire and Rescue Service",
+   "classification": "",
+   "category": "Emergency services",
+   "scope": "IS",
+   "url": "https://www.merseyfire.gov.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "Police"
+  },
+  {
+   "id": "db20199",
+   "name": "Independent Police Complaints Commission",
+   "classification": "Central government",
+   "category": "Emergency services",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": "Police"
+  },
+  {
+   "id": "db28442",
+   "name": "North London Waste Authority",
+   "classification": "Local government",
+   "category": "Energy, power and utilities",
+   "scope": "IS",
+   "url": "http://www.nlwa.gov.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db29439",
+   "name": "Office of Communications (Ofcom) (Former ITC) Pension Plan ",
+   "classification": "Public Financial",
+   "category": "Regulatory",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db23735",
+   "name": "London North Eastern Railway Ltd. (LNER)",
+   "classification": "Public Non-Financial Corporations",
+   "category": "Transport and infrastructure",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db10121",
+   "name": "Criminal Justice Inspection Northern Ireland / the Chief Inspector of Criminal Justice in Northern Ireland",
+   "classification": "Central government",
+   "category": "",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db20198",
+   "name": "Independent Parliamentary Standards Authority",
+   "classification": "Central government",
+   "category": "",
+   "scope": "IS",
+   "url": "http://www.parliamentarystandards.org.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db29492",
+   "name": "Office of the Public Guardian (England and Wales)",
+   "classification": "Central government",
+   "category": "Regulatory",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db1441",
+   "name": "Architecture and Design Scotland",
+   "classification": "Central government",
+   "category": "",
+   "scope": "IS",
+   "url": "https://www.ads.org.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db19808",
+   "name": "Hull Marina Ltd",
+   "classification": "Local government",
+   "category": "Transport and infrastructure",
+   "scope": "IS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db32274",
+   "name": "R Kumar Dental Spa",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db14297",
+   "name": "Forgewood Housing Co-operative Ltd",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "http://www.forgewoodcoop.org.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db16600",
+   "name": "Hall Lane Dental Practice",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "https://www.10halllane.co.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db16050",
+   "name": "Green Walk Dental Surgery",
+   "classification": "",
+   "category": "Health and social care",
+   "scope": "POS",
+   "url": "http://www.2greendental.co.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db23617",
+   "name": "Lochaber Housing Association Ltd",
+   "classification": "",
+   "category": "Housing and communities",
+   "scope": "POS",
+   "url": "https://lochaberhousing.org.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db43569",
+   "name": "The Solicitors Disciplinary Tribunal",
+   "classification": "",
+   "category": "",
+   "scope": "",
+   "url": "https://www.solicitorstribunal.org.uk/",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db46322",
+   "name": "Waverley Abbey Junior School, Farnham",
+   "classification": "Defunct",
+   "category": "Education",
+   "scope": "",
+   "url": "https://www.waverley-abbey.surrey.sch.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db8477",
+   "name": "City and Islington College",
+   "classification": "Defunct",
+   "category": "Education",
+   "scope": "",
+   "url": "https://www.candi.ac.uk",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  },
+  {
+   "id": "db7012",
+   "name": "Castle Bolton with East and West Bolton Parish Meeting",
+   "classification": "Local government",
+   "category": "Parish Meeting",
+   "scope": "",
+   "url": "",
+   "notes": "",
+   "coded": false,
+   "nolan": null,
+   "coc": null,
+   "umbrella": null
+  }
+ ]
+}
