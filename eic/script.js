@@ -359,7 +359,7 @@ async function boot() {
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   const covB = meta.coverage || {};
   $("table-hint").textContent = `The table lists every body whose own code has been read (${fmt(covB.own)}), the ${Object.keys(S.umbrellas).length} shared sector codes, and a small sample of the wider register; the charts above cover the full register of ${fmt(meta.total)}. The seven dots show which principles a code covers.`;
-  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Scope and type totals cover the whole register; codes are read from each body's own published code, or from the shared code its sector follows.";
+  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. A body with its own published code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
   S.allCount = all.orgs.length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
