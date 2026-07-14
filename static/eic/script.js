@@ -70,7 +70,7 @@ function codeCell(o) {
   const name = r.mode === "own" ? o.coc.doc_type : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
   const cell = el("span", { class: "code-cell" }, [el("span", { class: "code-name", text: name })]);
   const sc = rScore(r.nolan);
-  const [cls, txt] = sc === 7 ? ["exp", "fully covered"] : sc > 0 ? ["imp", "partially covered"] : ["imp", "not covered"];
+  const [cls, txt] = sc === 7 ? ["exp", "fully covered"] : sc > 0 ? ["imp", "partially covered"] : ["non", "None covered"];
   cell.appendChild(el("span", { class: `code-badge ${cls}`, text: txt }));
   return cell;
 }
