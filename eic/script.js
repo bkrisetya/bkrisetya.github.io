@@ -293,7 +293,7 @@ function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetai
 async function refresh() {
   try {
     const mode = DataSource.config.mode;
-    const q = { search: $("search").value, scope: $("f-scope").value, classification: $("f-class").value, category: $("f-cat").value };
+    const q = { search: $("search").value, scope: checkedVals("f-scope"), classification: checkedVals("f-class"), category: checkedVals("f-cat") };
     if (mode === "datasette") q.page = S.page;
     const res = await DataSource.query(q);
     const orgs = res.orgs;
@@ -336,11 +336,25 @@ function renderPager(total, mode, hasMore) {
     ? `${fmt(total)} of the ${fmt(S.allCount)} listed match`
     : `${fmt(total)} listed here, of ${fmt((S.meta && S.meta.total) || 0)} on the register`;
 }
-function fillSelect(id, facets, allLabel) {
-  const sel = $(id);
-  sel.replaceChildren(el("option", { value: "", text: allLabel }));
-  facets.filter((f) => f.value).forEach((f) => sel.appendChild(el("option", { value: f.value, text: `${f.label || f.value} (${fmt(f.count)})` })));
+const FILTER_TOP = { "f-scope": 99, "f-class": 8, "f-cat": 10 };
+function fillChecks(id, facets) {
+  const box = $(id); if (!box) return;
+  const vals = facets.filter((f) => f.value);
+  const top = FILTER_TOP[id] || 8;
+  const make = (f) => {
+    const cb = el("input", { type: "checkbox", value: f.value });
+    const lab = el("label", { class: "fcheck" }, [cb, `${f.label || f.value} (${fmt(f.count)})`]);
+    cb.addEventListener("change", () => { lab.classList.toggle("on", cb.checked); S.page = 0; refresh(); });
+    return lab;
+  };
+  box.replaceChildren(...vals.slice(0, top).map(make));
+  if (vals.length > top) {
+    const more = el("button", { class: "fmore", type: "button", text: `+ ${vals.length - top} more` });
+    more.addEventListener("click", () => { more.remove(); vals.slice(top).forEach((f) => box.appendChild(make(f))); });
+    box.appendChild(more);
+  }
 }
+function checkedVals(id) { return [...$(id).querySelectorAll("input:checked")].map((c) => c.value); }
 
 async function boot() {
   const meta = await DataSource.init();
@@ -353,11 +367,10 @@ async function boot() {
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
   renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
   let _rt; window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(renderOverviewCharts, 150); });
-  fillSelect("f-scope", meta.scopeFacets, "Any scope");
-  fillSelect("f-class", meta.classificationFacets, "Any type");
-  fillSelect("f-cat", meta.categoryFacets, "Any sector");
+  fillChecks("f-scope", meta.scopeFacets);
+  fillChecks("f-class", meta.classificationFacets);
+  fillChecks("f-cat", meta.categoryFacets);
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
-  ["f-scope", "f-class", "f-cat"].forEach((id) => $(id).addEventListener("change", () => { S.page = 0; refresh(); }));
   await refresh();
 }
 
