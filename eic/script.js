@@ -184,7 +184,7 @@ function renderScope() {
 
 /* ---------- lens 2: what kind of code ---------- */
 function renderLadder() {
-  const rungs = ["No code we can find", "A general statement of values", "A published policy", "A named code of conduct", "Binding rules staff must follow", "Rules that are actually enforced"];
+  const rungs = ["No discoverable code", "General statement", "Published document", "Code of Conduct (or its variants)", "Binding rules", "Enforced rules"];
   $("coc-ladder").replaceChildren(...rungs.map((t, i) =>
     el("li", {}, [el("span", { class: "rung-n", text: String(i + 1) }), el("span", { text: t })])));
 }
