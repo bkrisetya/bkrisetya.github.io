@@ -60,9 +60,14 @@ function renderSummary() {
   counts.sort((a, b) => a.yes - b.yes);
   const least = counts[0], most = counts[counts.length - 1];
   const none = S.coded.filter((o) => rScore(o.nolan) === 0).length;
-  const anyFull = S.coded.some((o) => rScore(o.nolan) === 7);
-  $("q3-figure").textContent = "Unevenly, and only in part";
-  $("q3-note").textContent = `${anyFull ? "Few codes mention" : "No code so far mentions"} all seven; most mention only a few, and ${fmt(none)} mention none at all. ${most.p.name} comes up most (${most.yes} of the ${fmt(S.coded.length)} read); ${least.p.name.toLowerCase()} least.`;
+  const codedFull = S.coded.filter((o) => rScore(o.nolan) === 7).length;
+  const nUmb = Object.keys(S.umbrellas).length;
+  const umbAll7 = nUmb > 0 && Object.values(S.umbrellas).every((u) => S.principles.filter((p) => rCov(u.nolan, p.id) === "yes").length === 7);
+  const ownClause = codedFull === 0 ? `none of the ${fmt(S.coded.length)} bodies with their own code do` : `as do ${fmt(codedFull)} of the ${fmt(S.coded.length)} bodies with their own code`;
+  $("q3-figure").textContent = umbAll7 ? "Full in shared codes, patchy elsewhere" : "Unevenly, and only in part";
+  $("q3-note").textContent = umbAll7
+    ? `The ${nUmb} shared sector codes each mention all seven; ${ownClause}. Most mention only a few, and ${fmt(none)} mention none at all. ${most.p.name} comes up most; ${least.p.name.toLowerCase()} least.`
+    : `Most mention only a few of the seven, and ${fmt(none)} of the ${fmt(S.coded.length)} read mention none. ${most.p.name} comes up most; ${least.p.name.toLowerCase()} least.`;
 }
 
 /* ---------- table: one row answers all three ---------- */
