@@ -196,7 +196,8 @@ function renderNaming() {
 /* ---------- lens 3: the seven principles ---------- */
 function renderStrip() {
   const coded = S.coded, n = coded.length || 1;
-  $("nolan-strip-tag").textContent = `${coded.length} codes read closely`;
+  $("nolan-strip-tag").textContent = `${coded.length} codes`;
+  const si = $("strip-intro"); if (si) si.textContent = `How each principle is covered across the ${fmt(coded.length)} codes of conduct.`;
   const rows = S.principles.map((p) => {
     const c = { yes: 0, partial: 0, no: 0, unknown: 0 };
     coded.forEach((o) => { c[rCov(o.nolan, p.id)]++; });
