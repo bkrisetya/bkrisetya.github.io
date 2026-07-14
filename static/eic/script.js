@@ -227,7 +227,7 @@ function renderCoverage() {
   // one bucket per body, so the four numbers sum to the whole register
   const segs = (cov.own != null) ? [
     { cls: "c-done", label: "Covered by a shared sector code", n: cov.shared },
-    { cls: "c-own", label: "Own code read", n: cov.own },
+    { cls: "c-own", label: "Covered by its own code", n: cov.own },
     { cls: "c-todo", label: "In scope, still to check", n: cov.tocheck },
     { cls: "c-none", label: "Periphery, out of scope or not yet scoped", n: cov.periphery_out + cov.notscoped },
   ] : [
