@@ -51,7 +51,7 @@ function renderSummary() {
   const explicit = codes.filter((c) => (c.coc && c.coc.explicit_seven_ref) === true).length;
   const cov = m.coverage || {};
   $("q2-figure").textContent = `${fmt(codes.length)} codes read`;
-  $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. All ${explicit} shared codes name the seven principles.`;
+  $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. The shared codes mention all seven principles.`;
 
   const counts = S.principles.map((p) => ({ p, yes: S.coded.filter((o) => rCov(o.nolan, p.id) === "yes").length }));
   counts.sort((a, b) => a.yes - b.yes);
@@ -68,11 +68,11 @@ function codeCell(o) {
   const r = resolveNolan(o);
   if (r.mode === "na") return el("span", { class: "muted-cell", text: o.scope === "POS" ? "Periphery of scope" : "Out of scope" });
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked yet" });
-  const e7 = r.mode === "own" ? (o.coc ? o.coc.explicit_seven_ref : null) : true;
   const name = r.mode === "own" ? o.coc.doc_type : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
   const cell = el("span", { class: "code-cell" }, [el("span", { class: "code-name", text: name })]);
-  if (e7 === true) cell.appendChild(el("span", { class: "code-badge exp", text: "names the principles" }));
-  else if (e7 === false) cell.appendChild(el("span", { class: "code-badge imp", text: "doesn't name them" }));
+  const sc = rScore(r.nolan);
+  const [cls, txt] = sc === 7 ? ["exp", "fully covered"] : sc > 0 ? ["imp", "partially covered"] : ["imp", "not covered"];
+  cell.appendChild(el("span", { class: `code-badge ${cls}`, text: txt }));
   return cell;
 }
 function nolanCell(o) {
@@ -134,15 +134,13 @@ function renderDetail(o) {
     if (codeUrl) { coc.appendChild(document.createTextNode(" ")); coc.appendChild(el("a", { href: codeUrl, target: "_blank", rel: "noopener", text: "read it" })); }
     parts.push(coc);
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
-    if (o.coc.explicit_seven_ref === true) parts.push(el("p", { class: "d-coc", text: "This code names the seven principles." }));
-    else if (o.coc.explicit_seven_ref === false) parts.push(el("p", { class: "d-coc", text: "This code does not name the seven principles." }));
     if (o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
-    parts.push(el("p", { class: "d-nolan-head", text: `Follows ${rScore(r.nolan)} of the 7 principles` }));
+    parts.push(el("p", { class: "d-nolan-head", text: `Mentions ${rScore(r.nolan)} of the 7 principles` }));
     parts.push(principleList(r.nolan));
   } else if (r.mode === "inherited") {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     const box2 = el("div", { class: "d-inherited" }, [el("b", { text: `Covered by ${UMBRELLA_SHORT[r.fromId] || r.from}.` }),
-      el("span", { text: ` We have not read this body's own code; it falls under the shared code, which follows ${rScore(r.nolan)} of the 7 principles.` })]);
+      el("span", { text: ` We have not read this body's own code; it falls under the shared code, which mentions ${rScore(r.nolan)} of the 7 principles.` })]);
     if (r.coc && r.coc.url && /^https?:\/\//i.test(r.coc.url)) { box2.appendChild(document.createTextNode(" ")); box2.appendChild(el("a", { href: r.coc.url, target: "_blank", rel: "noopener", text: "read the shared code" })); }
     parts.push(box2);
     parts.push(principleList(r.nolan));
