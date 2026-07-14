@@ -125,7 +125,7 @@ function principleList(nolan) {
 }
 function renderDetail(o) {
   const box = $("detail");
-  if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see whether it is a public authority, what code it has, and how well the code follows the seven principles." })); return; }
+  if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see whether it is a public authority, what code it has, and how many of the seven principles its code mentions." })); return; }
   const parts = [
     el("h3", { text: o.name }),
     el("p", { class: "d-sub", text: [o.category, o.classification].filter(Boolean).join(" · ") || "-" }),
@@ -214,8 +214,8 @@ function renderStrip() {
   });
   rows.sort((a, b) => b.c.yes - a.c.yes || b.c.partial - a.c.partial);
   $("principle-strip").replaceChildren(...rows.map(({ p, c }) => {
-    const bar = el("div", { class: "strip-bar", title: `${c.yes} covered, ${c.partial} partly, ${c.no} not` });
-    for (const k of ["yes", "partial", "no", "unknown"]) { const w = (c[k] / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` })); }
+    const bar = el("div", { class: "strip-bar", title: `${c.yes} covered, ${c.no} not` });
+    for (const k of ["yes", "no", "unknown"]) { const w = (c[k] / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` })); }
     return el("div", { class: "strip-row" }, [el("div", { class: "p-name", text: p.name }), bar, el("div", { class: "p-count", text: `${c.yes} of ${coded.length}` })]);
   }));
 }
@@ -293,7 +293,7 @@ function renderOverviewCharts() {
 }
 
 function renderLegend() {
-  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-partial", "partly"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
+  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: c }), l])));
 }
 
@@ -305,7 +305,7 @@ async function refresh() {
     const q = { search: $("search").value, scope: checkedVals("f-scope"), classification: checkedVals("f-class"), category: checkedVals("f-cat") };
     if (mode === "datasette") q.page = S.page;
     const res = await DataSource.query(q);
-    const orgs = res.orgs;
+    const orgs = res.orgs.filter((o) => !o.is_umbrella);
     const total = mode === "datasette" ? res.total : orgs.length;
     let pageOrgs = orgs;
     if (mode !== "datasette") {
@@ -368,10 +368,11 @@ function checkedVals(id) { return [...$(id).querySelectorAll("input:checked")].m
 async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
+  { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
   $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. A body with its own published code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
-  S.allCount = all.orgs.length;
+  S.allCount = all.orgs.filter((o) => !o.is_umbrella).length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
   renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
   let _rt; window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(renderOverviewCharts, 150); });
