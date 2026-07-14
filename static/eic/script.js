@@ -51,7 +51,7 @@ function renderSummary() {
   const explicit = codes.filter((c) => (c.coc && c.coc.explicit_seven_ref) === true).length;
   const cov = m.coverage || {};
   $("q2-figure").textContent = `${fmt(codes.length)} codes read`;
-  $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. ${explicit} of the codes name the seven principles.`;
+  $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. All ${explicit} shared codes name the seven principles.`;
 
   const counts = S.principles.map((p) => ({ p, yes: S.coded.filter((o) => rCov(o.nolan, p.id) === "yes").length }));
   counts.sort((a, b) => a.yes - b.yes);
@@ -68,12 +68,12 @@ function codeCell(o) {
   const r = resolveNolan(o);
   if (r.mode === "na") return el("span", { class: "muted-cell", text: o.scope === "POS" ? "Periphery of scope" : "Out of scope" });
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked yet" });
-  const explicit = r.mode === "own" ? (o.coc && o.coc.explicit_seven_ref === true) : true;
+  const e7 = r.mode === "own" ? (o.coc ? o.coc.explicit_seven_ref : null) : true;
   const name = r.mode === "own" ? o.coc.doc_type : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
-  return el("span", { class: "code-cell" }, [
-    el("span", { class: "code-name", text: name }),
-    el("span", { class: `code-badge ${explicit ? "exp" : "imp"}`, text: explicit ? "names the principles" : "covers without naming" }),
-  ]);
+  const cell = el("span", { class: "code-cell" }, [el("span", { class: "code-name", text: name })]);
+  if (e7 === true) cell.appendChild(el("span", { class: "code-badge exp", text: "names the principles" }));
+  else if (e7 === false) cell.appendChild(el("span", { class: "code-badge imp", text: "doesn't name them" }));
+  return cell;
 }
 function nolanCell(o) {
   const r = resolveNolan(o);
@@ -134,7 +134,8 @@ function renderDetail(o) {
     if (codeUrl) { coc.appendChild(document.createTextNode(" ")); coc.appendChild(el("a", { href: codeUrl, target: "_blank", rel: "noopener", text: "read it" })); }
     parts.push(coc);
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
-    parts.push(el("p", { class: "d-coc", text: o.coc.explicit_seven_ref ? "This code names the seven principles." : "This code does not name the seven principles." }));
+    if (o.coc.explicit_seven_ref === true) parts.push(el("p", { class: "d-coc", text: "This code names the seven principles." }));
+    else if (o.coc.explicit_seven_ref === false) parts.push(el("p", { class: "d-coc", text: "This code does not name the seven principles." }));
     if (o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
     parts.push(el("p", { class: "d-nolan-head", text: `Follows ${rScore(r.nolan)} of the 7 principles` }));
     parts.push(principleList(r.nolan));
