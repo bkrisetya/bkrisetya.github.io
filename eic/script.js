@@ -53,7 +53,7 @@ function renderSummary() {
 
   // Q2 — what code do they have?
   $("q2-figure").textContent = "Usually a shared sector code";
-  $("q2-note").textContent = `So far ${fmt(cov.own)} bodies have had their own code read. Most schools, councils, health and police bodies are covered by a single shared code for their whole sector.`;
+  $("q2-note").textContent = `We have read the individual codes of ${fmt(cov.own)} bodies so far. Most others, including schools, councils, health and police, are covered by a single shared code for their sector.`;
 
   // Q3 — do the codes cover the seven principles?
   const counts = S.principles.map((p) => ({ p, yes: S.coded.filter((o) => rCov(o.nolan, p.id) === "yes").length }));
@@ -370,7 +370,7 @@ async function boot() {
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
   $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
-  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. A body with its own published code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
+  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
   S.allCount = all.orgs.filter((o) => !o.is_umbrella).length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
