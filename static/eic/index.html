@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Public authorities and their codes of conduct</title>
-    <link rel="stylesheet" href="./styles.css?v=20260714c" />
+    <link rel="stylesheet" href="./styles.css?v=20260714d" />
   </head>
   <body>
     <main class="wrap" aria-label="Public authorities and their codes of conduct">
@@ -51,23 +51,16 @@
       </section>
 
       <section class="controls" aria-label="Find an organisation">
-        <div class="ctl grow">
+        <div class="ctl search-row">
           <label for="search">Search</label>
           <input id="search" type="search" placeholder="Type an organisation, sector or type of body&hellip;" autocomplete="off" />
         </div>
-        <div class="ctl">
-          <label for="f-scope">In or out of scope</label>
-          <select id="f-scope"></select>
+        <div class="filter-row">
+          <fieldset class="fgroup"><legend>In or out of scope</legend><div class="fchecks" id="f-scope"></div></fieldset>
+          <fieldset class="fgroup"><legend>Type of body</legend><div class="fchecks" id="f-class"></div></fieldset>
+          <fieldset class="fgroup"><legend>Sector</legend><div class="fchecks" id="f-cat"></div></fieldset>
         </div>
-        <div class="ctl">
-          <label for="f-class">Type of body</label>
-          <select id="f-class"></select>
-        </div>
-        <div class="ctl">
-          <label for="f-cat">Sector</label>
-          <select id="f-cat"></select>
-        </div>
-        <span class="result-count" id="result-count" aria-live="polite"></span>
+        <div class="count-row"><span class="result-count" id="result-count" aria-live="polite"></span></div>
       </section>
 
       <section class="grid">
@@ -117,7 +110,7 @@
 
       <p class="foot" id="foot"></p>
     </main>
-    <script src="./data-source.js?v=20260714c"></script>
-    <script src="./script.js?v=20260714c"></script>
+    <script src="./data-source.js?v=20260714d"></script>
+    <script src="./script.js?v=20260714d"></script>
   </body>
 </html>

@@ -29,7 +29,7 @@
 const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
-  local: { url: "./data.json?v=20260714c" }, // bump ?v on every deploy so HTML, code and data move as one locked set // 13 Jul 2026 snapshot from Ammara's backend data.db (Datasette Lite exposes no server API, so the snapshot is bundled; datasette mode below is for a future hosted instance)
+  local: { url: "./data.json?v=20260714d" }, // bump ?v on every deploy so HTML, code and data move as one locked set // 13 Jul 2026 snapshot from Ammara's backend data.db (Datasette Lite exposes no server API, so the snapshot is bundled; datasette mode below is for a future hosted instance)
 
   datasette: {
     baseUrl: "", // e.g. "https://data.krisetya.com"   <-- fill in
@@ -153,9 +153,13 @@ const DataSource = (() => {
     p.set("_shape", "array");
     p.set("_size", String(d.pageSize));
     if (search) p.set("_search", search);
-    if (scope) p.set(`${c.scope}__exact`, scope);
-    if (classification) p.set(`${c.classification}__exact`, classification);
-    if (category) p.set(`${c.category}__exact`, category);
+    const setF = (col, v) => {
+      if (!v || !v.length) return;
+      if (!Array.isArray(v)) p.set(`${col}__exact`, v);
+      else if (v.length === 1) p.set(`${col}__exact`, v[0]);
+      else p.set(`${col}__in`, JSON.stringify(v)); // Datasette JSON-array form (values may contain commas)
+    };
+    setF(c.scope, scope); setF(c.classification, classification); setF(c.category, category);
     if (page) p.set("_offset", String(page * d.pageSize));
     return `${d.baseUrl}/${d.database}/${d.table}.json?${p.toString()}`;
   }
@@ -206,9 +210,8 @@ const DataSource = (() => {
       let list = _cache.orgs.slice();
       const q = search.trim().toLowerCase();
       if (q) list = list.filter((o) => `${o.name} ${o.category} ${o.classification}`.toLowerCase().includes(q));
-      if (scope) list = list.filter((o) => o.scope === scope);
-      if (classification) list = list.filter((o) => o.classification === classification);
-      if (category) list = list.filter((o) => o.category === category);
+      const inSel = (sel, v) => !sel || !sel.length || (Array.isArray(sel) ? sel.includes(v) : sel === v);
+      list = list.filter((o) => inSel(scope, o.scope) && inSel(classification, o.classification) && inSel(category, o.category));
       return { orgs: list, total: list.length, hasMore: false };
     }
     const url = queryUrl(opts);
