@@ -331,7 +331,9 @@ function renderPager(total, mode, hasMore) {
     pagerBtn("Previous", S.page <= 0, () => { S.page = Math.max(0, S.page - 1); refresh(); }),
     el("span", { class: "pager-info", text: `Showing ${from} to ${to} of ${fmt(total)}` }),
     pagerBtn("Next", S.page >= pages - 1, () => { S.page += 1; refresh(); }));
-  $("result-count").textContent = `${fmt(total)} found`;
+  $("result-count").textContent = (S.allCount && total < S.allCount)
+    ? `${fmt(total)} of the ${fmt(S.allCount)} listed match`
+    : `${fmt(total)} listed here, of ${fmt((S.meta && S.meta.total) || 0)} on the register`;
 }
 function fillSelect(id, facets, allLabel) {
   const sel = $(id);
@@ -342,9 +344,11 @@ function fillSelect(id, facets, allLabel) {
 async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
-  $("table-hint").textContent = "Each row answers the three questions. The seven dots show which principles that body's code covers; “not checked” means we have not read a code for it yet.";
+  const covB = meta.coverage || {};
+  $("table-hint").textContent = `The table lists every body whose own code has been read (${fmt(covB.own)}), the ${Object.keys(S.umbrellas).length} shared sector codes, and a small sample of the wider register; the charts above cover the full register of ${fmt(meta.total)}. The seven dots show which principles a code covers.`;
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Scope and type totals cover the whole register; codes are read from each body's own published code, or from the shared code its sector follows.";
   const all = await DataSource.query({});
+  S.allCount = all.orgs.length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
   renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
   let _rt; window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(renderOverviewCharts, 150); });
