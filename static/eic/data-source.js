@@ -29,7 +29,7 @@
 const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
-  local: { url: "./data.json?v=20260714o" }, // bump ?v on every deploy so HTML, code and data move as one locked set // 13 Jul 2026 snapshot from Ammara's backend data.db (Datasette Lite exposes no server API, so the snapshot is bundled; datasette mode below is for a future hosted instance)
+  local: { url: "./data.json?v=20260714p" }, // bump ?v on every deploy so HTML, code and data move as one locked set // 13 Jul 2026 snapshot from Ammara's backend data.db (Datasette Lite exposes no server API, so the snapshot is bundled; datasette mode below is for a future hosted instance)
 
   datasette: {
     baseUrl: "", // e.g. "https://data.krisetya.com"   <-- fill in
