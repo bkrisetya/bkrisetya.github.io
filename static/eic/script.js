@@ -129,10 +129,12 @@ function renderDetail(o) {
   const safeUrl = o.url && /^https?:\/\//i.test(o.url) ? o.url : null;
   const r = resolveNolan(o);
   if (r.mode === "own") {
+    const codeUrl = o.coc && o.coc.url && /^https?:\/\//i.test(o.coc.url) ? o.coc.url : null;
     const coc = el("p", { class: "d-coc" }, [el("b", { text: `Their code: ${o.coc.doc_type}` })]);
-    if (safeUrl) { coc.appendChild(document.createTextNode(" ")); coc.appendChild(el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "read it" })); }
+    if (codeUrl) { coc.appendChild(document.createTextNode(" ")); coc.appendChild(el("a", { href: codeUrl, target: "_blank", rel: "noopener", text: "read it" })); }
     parts.push(coc);
-    parts.push(el("p", { class: "d-coc", text: o.coc.explicit_seven_ref ? "This code names the seven principles." : "This code does not name the seven principles, but covers most of them in substance." }));
+    if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
+    parts.push(el("p", { class: "d-coc", text: o.coc.explicit_seven_ref ? "This code names the seven principles." : "This code does not name the seven principles." }));
     if (o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
     parts.push(el("p", { class: "d-nolan-head", text: `Follows ${rScore(r.nolan)} of the 7 principles` }));
     parts.push(principleList(r.nolan));
