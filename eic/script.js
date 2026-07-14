@@ -337,8 +337,8 @@ function renderPager(total, mode, hasMore) {
     el("span", { class: "pager-info", text: `Showing ${from} to ${to} of ${fmt(total)}` }),
     pagerBtn("Next", S.page >= pages - 1, () => { S.page += 1; refresh(); }));
   $("result-count").textContent = (S.allCount && total < S.allCount)
-    ? `${fmt(total)} of the ${fmt(S.allCount)} listed match`
-    : `${fmt(total)} listed here, of ${fmt((S.meta && S.meta.total) || 0)} on the register`;
+    ? `${fmt(total)} of the ${fmt(S.allCount)} sampled bodies match`
+    : `${fmt(total)} sampled out of ${fmt((S.meta && S.meta.total) || 0)} listed bodies. Samples will grow as the dashboard develops.`;
 }
 const FILTER_TOP = { "f-scope": 99, "f-class": 8, "f-cat": 10 };
 function fillChecks(id, facets) {
@@ -363,8 +363,7 @@ function checkedVals(id) { return [...$(id).querySelectorAll("input:checked")].m
 async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
-  const covB = meta.coverage || {};
-  $("table-hint").textContent = `The table lists every body whose own code has been read (${fmt(covB.own)}), the ${Object.keys(S.umbrellas).length} shared sector codes, and a small sample of the wider register; the charts above cover the full register of ${fmt(meta.total)}. The seven dots show which principles a code covers.`;
+  $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. A body with its own published code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
   S.allCount = all.orgs.length;
