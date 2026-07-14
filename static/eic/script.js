@@ -44,19 +44,25 @@ const rScore = (n) => S.principles.filter((p) => rCov(n, p.id) === "yes").length
 function renderSummary() {
   const m = S.meta;
   const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
-  $("q1-figure").textContent = `${fmt(scope("IS"))} in scope`;
-  $("q1-note").textContent = `of ${fmt(m.total)} bodies. ${fmt(scope("POS"))} are on the periphery of scope, and ${fmt(scope(""))} are not yet scoped.`;
-
-  const codes = [...S.coded, ...Object.values(S.umbrellas)];
   const cov = m.coverage || {};
-  $("q2-figure").textContent = `${fmt(codes.length)} codes read`;
-  $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. The shared codes mention all seven principles.`;
 
+  // Q1 — is it a public authority?
+  const inScope = scope("IS"), frac = m.total ? Math.round((inScope / m.total) * 100) : 0;
+  $("q1-figure").textContent = "Yes, for most";
+  $("q1-note").textContent = `${fmt(inScope)} of the ${fmt(m.total)} bodies are in scope (about ${frac}%). Another ${fmt(scope("POS"))} sit on the edge of scope, and ${fmt(scope(""))} are not yet classified.`;
+
+  // Q2 — what code do they have?
+  $("q2-figure").textContent = "Usually a shared sector code";
+  $("q2-note").textContent = `So far ${fmt(cov.own)} bodies have had their own code read. Most schools, councils, health and police bodies are covered by a single shared code for their whole sector.`;
+
+  // Q3 — do the codes cover the seven principles?
   const counts = S.principles.map((p) => ({ p, yes: S.coded.filter((o) => rCov(o.nolan, p.id) === "yes").length }));
   counts.sort((a, b) => a.yes - b.yes);
-  const weak = counts[0], strong = counts[counts.length - 1];
-  $("q3-figure").textContent = `${weak.p.name} is left out most`;
-  $("q3-note").textContent = `Nearly every code covers ${strong.p.name.toLowerCase()}; ${weak.p.name.toLowerCase()} is the one codes most often miss.`;
+  const least = counts[0], most = counts[counts.length - 1];
+  const none = S.coded.filter((o) => rScore(o.nolan) === 0).length;
+  const anyFull = S.coded.some((o) => rScore(o.nolan) === 7);
+  $("q3-figure").textContent = "Unevenly, and only in part";
+  $("q3-note").textContent = `${anyFull ? "Few codes mention" : "No code so far mentions"} all seven; most mention only a few, and ${fmt(none)} mention none at all. ${most.p.name} comes up most (${most.yes} of the ${fmt(S.coded.length)} read); ${least.p.name.toLowerCase()} least.`;
 }
 
 /* ---------- table: one row answers all three ---------- */
