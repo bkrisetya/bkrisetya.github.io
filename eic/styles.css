@@ -75,6 +75,7 @@ h1{margin:0;font-size:28px;font-weight:780;line-height:1.15}
 /* code cell */
 .code-cell{display:flex;flex-direction:column;gap:3px}
 .code-name{font-size:13px;font-weight:600}
+.code-badge.non{background:#eef1f5;color:#6b7482;border:1px solid #d5dbe4}
 .code-badge{align-self:flex-start;font-size:11px;font-weight:700;padding:1px 6px;border-radius:3px}
 .code-badge.exp{color:#145e5a;background:var(--teal-soft)}
 .code-badge.imp{color:#7a4e10;background:var(--amber-soft)}
