@@ -48,7 +48,6 @@ function renderSummary() {
   $("q1-note").textContent = `of ${fmt(m.total)} bodies. ${fmt(scope("POS"))} are on the periphery of scope, and ${fmt(scope(""))} are not yet scoped.`;
 
   const codes = [...S.coded, ...Object.values(S.umbrellas)];
-  const explicit = codes.filter((c) => (c.coc && c.coc.explicit_seven_ref) === true).length;
   const cov = m.coverage || {};
   $("q2-figure").textContent = `${fmt(codes.length)} codes read`;
   $("q2-note").textContent = `${fmt(cov.own)} bodies' own codes, plus ${Object.keys(S.umbrellas).length} shared sector codes that cover ${fmt(cov.shared)} schools, councils, health and police bodies. The shared codes mention all seven principles.`;
@@ -188,7 +187,7 @@ function renderLadder() {
     el("li", {}, [el("span", { class: "rung-n", text: String(i + 1) }), el("span", { text: t })])));
 }
 function renderNaming() {
-  const names = [...new Set(S.coded.filter((o) => o.coc && o.coc.found).map((o) => o.coc.doc_type))];
+  const names = [...new Set(S.coded.filter((o) => o.coc && o.coc.doc_type).map((o) => o.coc.doc_type))];
   $("naming-list").replaceChildren(...names.map((n) => el("span", { class: "name-chip", text: n })));
 }
 
