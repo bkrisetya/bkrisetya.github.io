@@ -273,7 +273,139 @@
    "tocheck": 1694,
    "periphery_out": 3235,
    "notscoped": 9369
-  }
+  },
+  "coverage_by_category": [
+   {
+    "name": "Education",
+    "own": 72,
+    "shared": 24805,
+    "tocheck": 0,
+    "rest": 2587,
+    "total": 27464
+   },
+   {
+    "name": "Parish Council",
+    "own": 11,
+    "shared": 7709,
+    "tocheck": 0,
+    "rest": 8,
+    "total": 7728
+   },
+   {
+    "name": "Health and social care",
+    "own": 6,
+    "shared": 480,
+    "tocheck": 0,
+    "rest": 3804,
+    "total": 4290
+   },
+   {
+    "name": "Local and regional",
+    "own": 0,
+    "shared": 0,
+    "tocheck": 27,
+    "rest": 1042,
+    "total": 1069
+   },
+   {
+    "name": "Parish Meeting",
+    "own": 0,
+    "shared": 2,
+    "tocheck": 0,
+    "rest": 809,
+    "total": 811
+   },
+   {
+    "name": "Town Council",
+    "own": 1,
+    "shared": 802,
+    "tocheck": 0,
+    "rest": 3,
+    "total": 806
+   },
+   {
+    "name": "Welsh Council",
+    "own": 3,
+    "shared": 781,
+    "tocheck": 0,
+    "rest": 0,
+    "total": 784
+   },
+   {
+    "name": "Other",
+    "own": 17,
+    "shared": 571,
+    "tocheck": 1667,
+    "rest": 4351,
+    "total": 6606
+   }
+  ],
+  "coverage_by_classification": [
+   {
+    "name": "Central government",
+    "own": 64,
+    "shared": 24809,
+    "tocheck": 556,
+    "rest": 101,
+    "total": 25530
+   },
+   {
+    "name": "Local government",
+    "own": 14,
+    "shared": 9553,
+    "tocheck": 382,
+    "rest": 835,
+    "total": 10784
+   },
+   {
+    "name": "Defunct",
+    "own": 0,
+    "shared": 4,
+    "tocheck": 18,
+    "rest": 4119,
+    "total": 4141
+   },
+   {
+    "name": "Public Non-Financial Corporations",
+    "own": 0,
+    "shared": 8,
+    "tocheck": 226,
+    "rest": 1,
+    "total": 235
+   },
+   {
+    "name": "NDPB",
+    "own": 9,
+    "shared": 12,
+    "tocheck": 166,
+    "rest": 1,
+    "total": 188
+   },
+   {
+    "name": "Public Financial",
+    "own": 0,
+    "shared": 0,
+    "tocheck": 64,
+    "rest": 0,
+    "total": 64
+   },
+   {
+    "name": "Executive Agency",
+    "own": 1,
+    "shared": 3,
+    "tocheck": 30,
+    "rest": 0,
+    "total": 34
+   },
+   {
+    "name": "Other",
+    "own": 22,
+    "shared": 761,
+    "tocheck": 252,
+    "rest": 7547,
+    "total": 8582
+   }
+  ]
  },
  "scope_labels": {
   "IS": "In Scope",
