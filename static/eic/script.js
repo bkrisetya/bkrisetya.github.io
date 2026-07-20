@@ -1,6 +1,6 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0 };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, covMode: "cat" };
 const PAGE_SIZE = 12;
 const NAVY_RAMP = ["#1b2c49","#23395d","#31517d","#456a99","#5f80ac","#8098c0","#a6b6d2","#c9d3e2"];
 const TEAL_RAMP = ["#0f4a47","#146b66","#197d78","#38928a","#5aa69d","#82bab2","#aacfc9","#d3e2de"];
@@ -241,6 +241,45 @@ function renderCoverage() {
     el("div", { class: `cov-seg ${x.cls}`, style: `width:${(x.n / total) * 100}%`, title: `${x.label}: ${fmt(x.n)}` })));
   $("coverage-legend").replaceChildren(...segs.map((x) =>
     el("span", {}, [el("i", { class: x.cls }), el("b", { text: x.label }), ` ${fmt(x.n)}`])));
+  renderCovDonut(segs, total);
+  renderCoverageGroups();
+}
+function covColor(cls) {
+  const css = getComputedStyle(document.documentElement);
+  return { "c-done": css.getPropertyValue("--teal").trim() || "#197d78", "c-own": "#0f5c57",
+    "c-todo": css.getPropertyValue("--amber").trim() || "#b7791f", "c-none": "#d3d9e1" }[cls] || "#d3d9e1";
+}
+function renderCovDonut(segs, total) {
+  const box = $("cov-donut"); if (!box) return;
+  let acc = 0; const stops = [];
+  segs.forEach((x) => { const from = (acc / total) * 100, to = ((acc + x.n) / total) * 100;
+    stops.push(`${covColor(x.cls)} ${from}% ${to}%`); acc += x.n; });
+  const covered = segs.filter((x) => x.cls === "c-done" || x.cls === "c-own").reduce((a, x) => a + x.n, 0);
+  const pct = Math.round((covered / total) * 100);
+  box.replaceChildren(el("div", { class: "donut", style: `background:conic-gradient(${stops.join(",")})`,
+    role: "img", "aria-label": `${pct}% of the register is covered by a code` },
+    [el("div", { class: "donut-hole" }, [el("b", { text: `${pct}%` }), el("span", { text: "covered" })])]));
+}
+const GROUP_SEGS = [
+  ["own", "c-own", "Covered by its own code"],
+  ["shared", "c-done", "Covered by a shared sector code"],
+  ["tocheck", "c-todo", "In scope, still to check"],
+  ["rest", "c-none", "Periphery, out of scope or not yet scoped"],
+];
+function renderCoverageGroups() {
+  const box = $("cov-group-rows"); if (!box) return;
+  const table = S.covMode === "class" ? S.meta.coverageByClassification : S.meta.coverageByCategory;
+  if (!table || !table.length) { box.replaceChildren(); return; }
+  box.replaceChildren(...table.map((g) => {
+    const bar = el("div", { class: "cg-bar" });
+    for (const [key, cls, label] of GROUP_SEGS) {
+      const w = (g[key] / (g.total || 1)) * 100;
+      if (w > 0) bar.appendChild(el("span", { class: `cov-seg ${cls}`, style: `width:${w}%`, title: `${g.name} - ${label}: ${fmt(g[key])}` }));
+    }
+    return el("div", { class: "cg-row" }, [
+      el("div", { class: "cg-name", text: g.name, title: g.name }), bar,
+      el("div", { class: "cg-total", text: fmt(g.total) })]);
+  }));
 }
 function renderDonut(elId, facets) {
   const box = $(elId); if (!box) return;
@@ -369,6 +408,12 @@ async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
+  const cgc = $("cg-cat"), cgl = $("cg-class");
+  if (cgc && cgl) {
+    const setMode = (m) => { S.covMode = m; cgc.classList.toggle("on", m === "cat"); cgl.classList.toggle("on", m === "class"); renderCoverageGroups(); };
+    cgc.addEventListener("click", () => setMode("cat"));
+    cgl.addEventListener("click", () => setMode("class"));
+  }
   $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
