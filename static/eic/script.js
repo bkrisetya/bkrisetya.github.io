@@ -268,7 +268,9 @@ const GROUP_SEGS = [
 ];
 function renderCoverageGroups() {
   const box = $("cov-group-rows"); if (!box) return;
-  const table = S.covMode === "class" ? S.meta.coverageByClassification : S.meta.coverageByCategory;
+  const table = S.covMode === "class" ? S.meta.coverageByClassification
+    : S.covMode === "scope" ? S.meta.coverageByScope
+    : S.meta.coverageByCategory;
   if (!table || !table.length) { box.replaceChildren(); return; }
   box.replaceChildren(...table.map((g) => {
     const bar = el("div", { class: "cg-bar" });
@@ -408,11 +410,12 @@ async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
-  const cgc = $("cg-cat"), cgl = $("cg-class");
-  if (cgc && cgl) {
-    const setMode = (m) => { S.covMode = m; cgc.classList.toggle("on", m === "cat"); cgl.classList.toggle("on", m === "class"); renderCoverageGroups(); };
+  const cgc = $("cg-cat"), cgl = $("cg-class"), cgs = $("cg-scope");
+  if (cgc && cgl && cgs) {
+    const setMode = (m) => { S.covMode = m; cgc.classList.toggle("on", m === "cat"); cgl.classList.toggle("on", m === "class"); cgs.classList.toggle("on", m === "scope"); renderCoverageGroups(); };
     cgc.addEventListener("click", () => setMode("cat"));
     cgl.addEventListener("click", () => setMode("class"));
+    cgs.addEventListener("click", () => setMode("scope"));
   }
   $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";

@@ -405,6 +405,48 @@
     "rest": 7547,
     "total": 8582
    }
+  ],
+  "coverage_by_scope": [
+   {
+    "name": "In scope",
+    "own": 92,
+    "shared": 35105,
+    "tocheck": 1693,
+    "rest": 0,
+    "total": 36890
+   },
+   {
+    "name": "Likely in scope",
+    "own": 1,
+    "shared": 45,
+    "tocheck": 1,
+    "rest": 0,
+    "total": 47
+   },
+   {
+    "name": "Periphery/proximity of scope",
+    "own": 10,
+    "shared": 0,
+    "tocheck": 0,
+    "rest": 3232,
+    "total": 3242
+   },
+   {
+    "name": "Likely out of scope",
+    "own": 2,
+    "shared": 0,
+    "tocheck": 0,
+    "rest": 3,
+    "total": 5
+   },
+   {
+    "name": "Not yet scoped",
+    "own": 5,
+    "shared": 0,
+    "tocheck": 0,
+    "rest": 9369,
+    "total": 9374
+   }
   ]
  },
  "scope_labels": {
