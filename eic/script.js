@@ -2,7 +2,6 @@
 
 const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, covMode: "cat" };
 const PAGE_SIZE = 12;
-const NAVY_RAMP = ["#1b2c49","#23395d","#31517d","#456a99","#5f80ac","#8098c0","#a6b6d2","#c9d3e2"];
 const TEAL_RAMP = ["#0f4a47","#146b66","#197d78","#38928a","#5aa69d","#82bab2","#aacfc9","#d3e2de"];
 
 function el(tag, props = {}, children = []) {
@@ -128,10 +127,9 @@ function renderDetail(o) {
   if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see whether it is a public authority, what code it has, and how many of the seven principles its code mentions." })); return; }
   const parts = [
     el("h3", { text: o.name }),
-    el("p", { class: "d-sub", text: [o.category, o.classification].filter(Boolean).join(" · ") || "-" }),
+    el("p", { class: "d-sub", text: o.category || "-" }),
     el("div", { class: "d-class" }, [
       el("div", { class: "row" }, [el("span", { text: "In scope?" }), el("span", { text: S.scopeLabels[o.scope] || "Not yet scoped" })]),
-      el("div", { class: "row" }, [el("span", { text: "Type of body" }), el("span", { text: o.classification || "-" })]),
       el("div", { class: "row" }, [el("span", { text: "Sector" }), el("span", { text: o.category || "-" })]),
     ]),
   ];
@@ -329,7 +327,6 @@ function renderTreemap(elId, facets, topN, ramp) {
 }
 function renderOverviewCharts() {
   renderDonut("ov-scope", S.meta.scopeFacets);
-  renderTreemap("ov-class", S.meta.classificationFacets, 8, NAVY_RAMP);
   renderTreemap("ov-cat", S.meta.categoryFacets, 8, TEAL_RAMP);
 }
 
@@ -343,10 +340,10 @@ function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetai
 async function refresh() {
   try {
     const mode = DataSource.config.mode;
-    const q = { search: $("search").value, scope: checkedVals("f-scope"), classification: checkedVals("f-class"), category: checkedVals("f-cat") };
+    const q = { search: $("search").value, scope: checkedVals("f-scope"), category: checkedVals("f-cat") };
     if (mode === "datasette") q.page = S.page;
     const res = await DataSource.query(q);
-    const orgs = res.orgs.filter((o) => !o.is_umbrella);
+    const orgs = res.orgs.filter((o) => !o.is_umbrella && String(o.classification || "").toLowerCase() !== "defunct");
     const total = mode === "datasette" ? res.total : orgs.length;
     let pageOrgs = orgs;
     if (mode !== "datasette") {
@@ -386,7 +383,7 @@ function renderPager(total, mode, hasMore) {
     ? `${fmt(total)} of the ${fmt(S.allCount)} sampled bodies match`
     : `${fmt(total)} sampled out of ${fmt((S.meta && S.meta.total) || 0)} listed bodies. Samples will grow as the dashboard develops.`;
 }
-const FILTER_TOP = { "f-scope": 99, "f-class": 8, "f-cat": 10 };
+const FILTER_TOP = { "f-scope": 99, "f-cat": 10 };
 function fillChecks(id, facets) {
   const box = $(id); if (!box) return;
   const vals = facets.filter((f) => f.value);
@@ -410,22 +407,21 @@ async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
-  const cgc = $("cg-cat"), cgl = $("cg-class"), cgs = $("cg-scope");
-  if (cgc && cgl && cgs) {
-    const setMode = (m) => { S.covMode = m; cgc.classList.toggle("on", m === "cat"); cgl.classList.toggle("on", m === "class"); cgs.classList.toggle("on", m === "scope"); renderCoverageGroups(); };
+  const cgc = $("cg-cat"), cgs = $("cg-scope");
+  if (cgc && cgs) {
+    const setMode = (m) => { S.covMode = m; cgc.classList.toggle("on", m === "cat"); cgs.classList.toggle("on", m === "scope"); renderCoverageGroups(); };
     cgc.addEventListener("click", () => setMode("cat"));
-    cgl.addEventListener("click", () => setMode("class"));
     cgs.addEventListener("click", () => setMode("scope"));
   }
   $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
-  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope and type figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
+  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
-  S.allCount = all.orgs.filter((o) => !o.is_umbrella).length;
-  S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella);
+  const isDefunct = (o) => String(o.classification || "").toLowerCase() === "defunct";
+  S.allCount = all.orgs.filter((o) => !o.is_umbrella && !isDefunct(o)).length;
+  S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella && !isDefunct(o));
   renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
   let _rt; window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(renderOverviewCharts, 150); });
   fillChecks("f-scope", meta.scopeFacets);
-  fillChecks("f-class", meta.classificationFacets);
   fillChecks("f-cat", meta.categoryFacets);
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
   await refresh();
