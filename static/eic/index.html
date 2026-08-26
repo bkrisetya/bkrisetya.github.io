@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Codes of conduct and the Nolan principles</title>
-    <link rel="stylesheet" href="./styles.css?v=20260821a" />
+    <link rel="stylesheet" href="./styles.css?v=20260826a" />
   </head>
   <body>
     <main class="wrap" aria-label="Codes of conduct and the Nolan principles">
@@ -53,7 +53,6 @@
               <h3>Coverage by</h3>
               <div class="cov-toggle" role="group" aria-label="Compare coverage by">
                 <button type="button" id="cg-cat" class="on">Sector</button>
-                <button type="button" id="cg-class">Type of body</button>
                 <button type="button" id="cg-scope">Scope</button>
               </div>
             </div>
@@ -62,7 +61,6 @@
         </div>
         <div class="ov-grid">
           <div class="panel ov-card"><h3>In or out of scope</h3><div class="donut-wrap" id="ov-scope"></div></div>
-          <div class="panel ov-card"><h3>Type of body</h3><div class="treemap" id="ov-class"></div></div>
           <div class="panel ov-card"><h3>Sector</h3><div class="treemap" id="ov-cat"></div></div>
         </div>
       </section>
@@ -70,11 +68,10 @@
       <section class="controls" aria-label="Find an organisation">
         <div class="ctl search-row">
           <label for="search">Search</label>
-          <input id="search" type="search" placeholder="Type an organisation, sector or type of body&hellip;" autocomplete="off" />
+          <input id="search" type="search" placeholder="Type an organisation or sector&hellip;" autocomplete="off" />
         </div>
         <div class="filter-row">
           <fieldset class="fgroup"><legend>In or out of scope</legend><div class="fchecks" id="f-scope"></div></fieldset>
-          <fieldset class="fgroup"><legend>Type of body</legend><div class="fchecks" id="f-class"></div></fieldset>
           <fieldset class="fgroup"><legend>Sector</legend><div class="fchecks" id="f-cat"></div></fieldset>
         </div>
         <div class="count-row"><span class="result-count" id="result-count" aria-live="polite"></span></div>
@@ -127,7 +124,7 @@
 
       <p class="foot" id="foot"></p>
     </main>
-    <script src="./data-source.js?v=20260821a"></script>
-    <script src="./script.js?v=20260821a"></script>
+    <script src="./data-source.js?v=20260826a"></script>
+    <script src="./script.js?v=20260826a"></script>
   </body>
 </html>
