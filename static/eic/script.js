@@ -24,6 +24,95 @@ const $ = (id) => document.getElementById(id);
 const fmt = (n) => (n == null ? "-" : n.toLocaleString("en-GB"));
 
 const OUT_OF_SCOPE = ["POS", "LOOS", "NA"];
+// Emma (26 Aug 2026): keep the 'type of body' (classification) field in the data,
+// never visualise it, but use it as a filtering rule to exclude defunct bodies.
+const isDefunct = (o) => String(o.classification || "").toLowerCase() === "defunct";
+const isDefunctName = (v) => String(v || "").toLowerCase() === "defunct";
+function takeFromGroup(g, n, split) {
+  if (!g || !n) return;
+  g.total = Math.max(0, (g.total || 0) - n);
+  if (split) {
+    for (const k of ["own", "shared", "tocheck", "rest"]) {
+      if (split[k]) g[k] = Math.max(0, (g[k] || 0) - split[k]);
+    }
+    return;
+  }
+  for (const k of ["rest", "tocheck", "shared", "own"]) {
+    const take = Math.min(g[k] || 0, n);
+    g[k] = (g[k] || 0) - take;
+    n -= take;
+    if (!n) break;
+  }
+}
+function holdBackDefunct(meta) {
+  // Rows stay in data.json / data.db. This only subtracts defunct from the charts.
+  const held = meta.defunctHeldBack;
+  const facets = meta.classificationFacets || [];
+  const groups = meta.coverageByClassification || [];
+  const defFacet = facets.find((f) => isDefunctName(f.value));
+  const defGroup = groups.find((g) => isDefunctName(g.name));
+  const n = (held && held.count) || (defGroup && defGroup.total) || (defFacet && defFacet.count) || 0;
+  if (!n) return;
+  if (meta.total != null) meta.total -= n;
+  if (meta.coverage && defGroup) {
+    const c = meta.coverage;
+    c.own = Math.max(0, (c.own || 0) - (defGroup.own || 0));
+    c.shared = Math.max(0, (c.shared || 0) - (defGroup.shared || 0));
+    c.tocheck = Math.max(0, (c.tocheck || 0) - (defGroup.tocheck || 0));
+    const peri = (held && held.coverage && held.coverage.periphery_out) || 0;
+    const unsc = (held && held.coverage && held.coverage.notscoped) || 0;
+    if (peri || unsc) {
+      c.periphery_out = Math.max(0, (c.periphery_out || 0) - peri);
+      c.notscoped = Math.max(0, (c.notscoped || 0) - unsc);
+    } else {
+      let rest = defGroup.rest || 0;
+      const takeU = Math.min(c.notscoped || 0, rest);
+      c.notscoped -= takeU;
+      rest -= takeU;
+      c.periphery_out = Math.max(0, (c.periphery_out || 0) - rest);
+    }
+  }
+  if (meta.out_of_scope != null && held && held.coverage) {
+    meta.out_of_scope -= (held.coverage.periphery_out || 0);
+  }
+  meta.classificationFacets = facets.filter((f) => !isDefunctName(f.value));
+  meta.coverageByClassification = groups.filter((g) => !isDefunctName(g.name));
+  const byScope = held && held.by_scope;
+  if (meta.scopeFacets && byScope) {
+    meta.scopeFacets = meta.scopeFacets.map((f) => {
+      const cut = byScope[f.value] || 0;
+      return cut ? Object.assign({}, f, { count: Math.max(0, f.count - cut) }) : f;
+    });
+  }
+  if (meta.coverageByScope && byScope) {
+    const nameOf = { IS: "In scope", LIS: "Likely in scope", POS: "Periphery/proximity of scope", LOOS: "Likely out of scope", "": "Not yet scoped" };
+    const splitOf = (held && held.by_scope_coverage) || {};
+    meta.coverageByScope.forEach((g) => {
+      const val = Object.keys(nameOf).find((k) => nameOf[k] === g.name);
+      if (val === undefined) return;
+      takeFromGroup(g, byScope[val] || 0, splitOf[val]);
+    });
+  }
+  const byCat = held && held.by_category;
+  if (meta.categoryFacets && byCat) {
+    meta.categoryFacets = meta.categoryFacets.map((f) => {
+      const cut = byCat[f.value] || 0;
+      return cut ? Object.assign({}, f, { count: Math.max(0, f.count - cut) }) : f;
+    }).filter((f) => f.count > 0);
+  }
+  if (meta.coverageByCategory && byCat) {
+    const named = (meta.coverageByCategory || []).filter((g) => g.name !== "Other");
+    const catchAll = (meta.coverageByCategory || []).find((g) => g.name === "Other");
+    let leftover = 0;
+    Object.entries(byCat).forEach(([name, cut]) => {
+      if (!cut) return;
+      const g = named.find((x) => x.name === name);
+      if (g) takeFromGroup(g, cut);
+      else leftover += cut;
+    });
+    if (catchAll && leftover) takeFromGroup(catchAll, leftover);
+  }
+}
 const SCOPE_SHORT = { IS: "In scope", LIS: "Likely in", POS: "Periphery", LOOS: "Likely out", NA: "Not applicable", "": "Not yet scoped" };
 const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code" };
 const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not covered", unknown: "not checked" }[c] || c);
@@ -343,7 +432,7 @@ async function refresh() {
     const q = { search: $("search").value, scope: checkedVals("f-scope"), category: checkedVals("f-cat") };
     if (mode === "datasette") q.page = S.page;
     const res = await DataSource.query(q);
-    const orgs = res.orgs.filter((o) => !o.is_umbrella && String(o.classification || "").toLowerCase() !== "defunct");
+    const orgs = res.orgs.filter((o) => !o.is_umbrella && !isDefunct(o));
     const total = mode === "datasette" ? res.total : orgs.length;
     let pageOrgs = orgs;
     if (mode !== "datasette") {
@@ -405,6 +494,7 @@ function checkedVals(id) { return [...$(id).querySelectorAll("input:checked")].m
 
 async function boot() {
   const meta = await DataSource.init();
+  holdBackDefunct(meta);
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
   const cgc = $("cg-cat"), cgs = $("cg-scope");
@@ -416,7 +506,6 @@ async function boot() {
   $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
-  const isDefunct = (o) => String(o.classification || "").toLowerCase() === "defunct";
   S.allCount = all.orgs.filter((o) => !o.is_umbrella && !isDefunct(o)).length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella && !isDefunct(o));
   renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();

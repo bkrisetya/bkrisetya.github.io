@@ -8,6 +8,49 @@
   "out_of_scope": 3247,
   "snapshot": "13 July 2026",
   "note": "Front end for the project backend built by Ammara Yasin (snapshot 13 July 2026). Scope and type totals cover the whole register of 49,558 organisations. 110 bodies carry an automated reading of their code against the seven principles (the validated batch from the first scraper run); schools, councils, health and police bodies inherit the shared code for their sector. A representative slice of unchecked bodies is included for browsing.",
+  "defunct_held_back": {
+   "count": 4141,
+   "coverage": {
+    "own": 0,
+    "shared": 4,
+    "tocheck": 18,
+    "periphery_out": 3,
+    "notscoped": 4116
+   },
+   "by_scope": {
+    "IS": 22,
+    "POS": 3,
+    "": 4116
+   },
+   "by_scope_coverage": {
+    "IS": {"own": 0, "shared": 4, "tocheck": 18, "rest": 0},
+    "POS": {"own": 0, "shared": 0, "tocheck": 0, "rest": 3},
+    "": {"own": 0, "shared": 0, "tocheck": 0, "rest": 4116}
+   },
+   "by_category": {
+    "Education": 2127,
+    "": 1125,
+    "Health and social care": 540,
+    "Emergency services": 88,
+    "Housing and communities": 69,
+    "Local and regional": 42,
+    "Borough Council": 40,
+    "Justice, prosecutorial and enforcement": 28,
+    "Advisory body": 22,
+    "Transport and infrastructure": 19,
+    "Energy, power and utilities": 19,
+    "Media, culture and sport": 6,
+    "Parish Council": 6,
+    "Science, research and innovation": 2,
+    "Major programmes and delivery organisation": 2,
+    "Charities": 1,
+    "District Council": 1,
+    "Military and security services": 1,
+    "Grant and subsidy issuing body": 1,
+    "Combined authority": 1,
+    "Other": 1
+   }
+  },
   "scope_facets": [
    {
     "value": "IS",
