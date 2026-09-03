@@ -119,9 +119,10 @@ const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not c
 const scopeClass = (s) => "sc-" + (s && S.scopeLabels[s] !== undefined ? s : (s || "none"));
 
 function resolveNolan(o) {
+  const uid = o.umbrella_id || o.umbrella;
+  const u = uid && S.umbrellas[uid];
+  if (u) return { mode: "inherited", nolan: u.nolan, from: u.name, fromId: uid, coc: u.coc };
   if (o.coded && o.nolan) return { mode: "own", nolan: o.nolan, coc: o.coc };
-  const u = o.umbrella && S.umbrellas[o.umbrella];
-  if (u) return { mode: "inherited", nolan: u.nolan, from: u.name, fromId: o.umbrella, coc: u.coc };
   if (OUT_OF_SCOPE.includes(o.scope)) return { mode: "na", nolan: null };
   return { mode: "none", nolan: null };
 }
@@ -137,7 +138,7 @@ function renderSummary() {
   // Q1 — who is on the list?
   if (m.allInScope) {
     $("q1-figure").textContent = `${fmt(m.total)} bodies`;
-    $("q1-note").textContent = "Every organisation on this register is treated as in scope. Defunct bodies are excluded.";
+    $("q1-note").textContent = "The EIC list, with defunct bodies excluded.";
   } else {
     const inScope = scope("IS"), frac = m.total ? Math.round((inScope / m.total) * 100) : 0;
     $("q1-figure").textContent = "Yes, for most";
@@ -254,7 +255,7 @@ function renderDetail(o) {
       : "This body looks to be out of scope, so we have not checked its code against the seven principles. That changes if it is brought into scope." }));
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
-    parts.push(el("div", { class: "d-pending", text: "We have not checked this body's code yet. It is in scope, so it is on the list to look at." }));
+    parts.push(el("div", { class: "d-pending", text: "We have not checked this body's code yet." }));
   }
   box.replaceChildren(...parts);
 }
@@ -356,7 +357,7 @@ function renderCovDonut(segs, total) {
 const GROUP_SEGS = [
   ["own", "c-own", "Covered by its own code"],
   ["shared", "c-done", "Covered by a shared sector code"],
-  ["tocheck", "c-todo", "In scope, still to check"],
+  ["tocheck", "c-todo", "Still to check"],
   ["rest", "c-none", "Periphery, out of scope or not yet scoped"],
 ];
 function renderCoverageGroups() {
@@ -516,7 +517,7 @@ async function boot() {
     cgs.addEventListener("click", () => setMode("scope"));
   }
   $("table-hint").textContent = "Search the full register. The seven dots show which principles a code mentions.";
-  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Every body on this list is treated as in scope. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
+  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
   S.allCount = all.orgs.filter((o) => !o.is_umbrella && !isDefunct(o)).length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella && !isDefunct(o));
