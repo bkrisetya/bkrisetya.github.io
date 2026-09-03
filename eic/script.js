@@ -1,7 +1,7 @@
 "use strict";
 
 const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, covMode: "cat" };
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 25;
 const TEAL_RAMP = ["#0f4a47","#146b66","#197d78","#38928a","#5aa69d","#82bab2","#aacfc9","#d3e2de"];
 
 function el(tag, props = {}, children = []) {
@@ -131,13 +131,18 @@ const rScore = (n) => S.principles.filter((p) => rCov(n, p.id) === "yes").length
 /* ---------- summary: the three questions ---------- */
 function renderSummary() {
   const m = S.meta;
-  const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
+  const scope = (v) => ((m.scopeFacets || []).find((f) => f.value === v) || {}).count || 0;
   const cov = m.coverage || {};
 
-  // Q1 — is it a public authority?
-  const inScope = scope("IS"), frac = m.total ? Math.round((inScope / m.total) * 100) : 0;
-  $("q1-figure").textContent = "Yes, for most";
-  $("q1-note").textContent = `${fmt(inScope)} of the ${fmt(m.total)} bodies are in scope (about ${frac}%). Another ${fmt(scope("POS"))} sit on the edge of scope, and ${fmt(scope(""))} are not yet classified.`;
+  // Q1 — who is on the list?
+  if (m.allInScope) {
+    $("q1-figure").textContent = `${fmt(m.total)} bodies`;
+    $("q1-note").textContent = "Every organisation on this register is treated as in scope. Defunct bodies are excluded.";
+  } else {
+    const inScope = scope("IS"), frac = m.total ? Math.round((inScope / m.total) * 100) : 0;
+    $("q1-figure").textContent = "Yes, for most";
+    $("q1-note").textContent = `${fmt(inScope)} of the ${fmt(m.total)} bodies are in scope (about ${frac}%). Another ${fmt(scope("POS"))} sit on the edge of scope, and ${fmt(scope(""))} are not yet classified.`;
+  }
 
   // Q2 — what code do they have?
   $("q2-figure").textContent = "Usually a shared sector code";
@@ -166,7 +171,7 @@ function codeCell(o) {
   const r = resolveNolan(o);
   if (r.mode === "na") return el("span", { class: "muted-cell", text: o.scope === "POS" ? "Periphery of scope" : "Out of scope" });
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked yet" });
-  const name = r.mode === "own" ? o.coc.doc_type : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
+  const name = r.mode === "own" ? ((o.coc && o.coc.doc_type) || "Own code") : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
   const cell = el("span", { class: "code-cell" }, [el("span", { class: "code-name", text: name })]);
   const sc = rScore(r.nolan);
   const [cls, txt] = sc === 7 ? ["exp", "fully covered"] : sc > 0 ? ["imp", "partially covered"] : ["non", "None covered"];
@@ -184,8 +189,9 @@ function nolanCell(o) {
 }
 function renderTable(orgs) {
   const head = $("orgtable-head"), body = $("orgtable-body");
-  head.replaceChildren(el("tr", {}, ["Organisation", "In scope?", "Their code", "Seven principles"].map((h) => el("th", { text: h }))));
-  if (!orgs.length) { body.replaceChildren(el("tr", {}, [el("td", { colspan: 4, text: "Nothing matches that search." })])); return; }
+  const cols = (S.meta && S.meta.allInScope) ? ["Organisation", "Their code", "Seven principles"] : ["Organisation", "In scope?", "Their code", "Seven principles"];
+  head.replaceChildren(el("tr", {}, cols.map((h) => el("th", { text: h }))));
+  if (!orgs.length) { body.replaceChildren(el("tr", {}, [el("td", { colspan: cols.length, text: "Nothing matches that search." })])); return; }
   body.replaceChildren(...orgs.map((o) => {
     const row = el("tr", {
       class: o.id === S.selectedId ? "active" : "", tabindex: "0", role: "button",
@@ -194,7 +200,7 @@ function renderTable(orgs) {
       onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectOrg(o.id, orgs); } },
     });
     row.appendChild(el("td", {}, [el("span", { class: "org-name", text: o.name })]));
-    row.appendChild(el("td", {}, [scopePill(o)]));
+    if (!(S.meta && S.meta.allInScope)) row.appendChild(el("td", {}, [scopePill(o)]));
     row.appendChild(el("td", {}, [codeCell(o)]));
     row.appendChild(el("td", {}, [nolanCell(o)]));
     return row;
@@ -213,25 +219,25 @@ function principleList(nolan) {
 }
 function renderDetail(o) {
   const box = $("detail");
-  if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see whether it is a public authority, what code it has, and how many of the seven principles its code mentions." })); return; }
+  if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see what code it has, and how many of the seven principles its code mentions." })); return; }
   const parts = [
     el("h3", { text: o.name }),
     el("p", { class: "d-sub", text: o.category || "-" }),
     el("div", { class: "d-class" }, [
-      el("div", { class: "row" }, [el("span", { text: "In scope?" }), el("span", { text: S.scopeLabels[o.scope] || "Not yet scoped" })]),
+      S.meta && S.meta.allInScope ? null : el("div", { class: "row" }, [el("span", { text: "In scope?" }), el("span", { text: S.scopeLabels[o.scope] || "Not yet scoped" })]),
       el("div", { class: "row" }, [el("span", { text: "Sector" }), el("span", { text: o.category || "-" })]),
-    ]),
+    ].filter(Boolean)),
   ];
   if (o.notes) parts.push(el("p", { class: "d-notes", text: o.notes }));
   const safeUrl = o.url && /^https?:\/\//i.test(o.url) ? o.url : null;
   const r = resolveNolan(o);
   if (r.mode === "own") {
     const codeUrl = o.coc && o.coc.url && /^https?:\/\//i.test(o.coc.url) ? o.coc.url : null;
-    const coc = el("p", { class: "d-coc" }, [el("b", { text: `Their code: ${o.coc.doc_type}` })]);
+    const coc = el("p", { class: "d-coc" }, [el("b", { text: `Their code: ${(o.coc && o.coc.doc_type) || "Own code"}` })]);
     if (codeUrl) { coc.appendChild(document.createTextNode(" ")); coc.appendChild(el("a", { href: codeUrl, target: "_blank", rel: "noopener", text: "read it" })); }
     parts.push(coc);
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
-    if (o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
+    if (o.coc && o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
     parts.push(el("p", { class: "d-nolan-head", text: `Mentions ${rScore(r.nolan)} of the 7 principles` }));
     parts.push(principleList(r.nolan));
   } else if (r.mode === "inherited") {
@@ -309,15 +315,15 @@ function renderStrip() {
 
 function renderCoverage() {
   const m = S.meta;
-  const scope = (v) => (m.scopeFacets.find((f) => f.value === v) || {}).count || 0;
+  const scope = (v) => ((m.scopeFacets || []).find((f) => f.value === v) || {}).count || 0;
   const cov = m.coverage || {};
   // one bucket per body, so the four numbers sum to the whole register
   const segs = (cov.own != null) ? [
     { cls: "c-done", label: "Covered by a shared sector code", n: cov.shared },
     { cls: "c-own", label: "Covered by its own code", n: cov.own },
-    { cls: "c-todo", label: "In scope, still to check", n: cov.tocheck },
-    { cls: "c-none", label: "Periphery, out of scope or not yet scoped", n: cov.periphery_out + cov.notscoped },
-  ] : [
+    { cls: "c-todo", label: "Still to check", n: cov.tocheck },
+    { cls: "c-none", label: "Periphery, out of scope or not yet scoped", n: (cov.periphery_out || 0) + (cov.notscoped || 0) },
+  ].filter((x) => x.n > 0) : [
     { cls: "c-done", label: "In scope, code checked", n: m.assessed || 0 },
     { cls: "c-todo", label: "In scope, still to check", n: Math.max(0, scope("IS") + scope("LIS") - (m.assessed || 0)) },
     { cls: "c-out", label: "Out of scope or periphery", n: (m.out_of_scope != null) ? m.out_of_scope : (scope("POS") + scope("LOOS") + scope("NA")) },
@@ -415,8 +421,8 @@ function renderTreemap(elId, facets, topN, ramp) {
   }));
 }
 function renderOverviewCharts() {
-  renderDonut("ov-scope", S.meta.scopeFacets);
-  renderTreemap("ov-cat", S.meta.categoryFacets, 8, TEAL_RAMP);
+  if ($("ov-scope")) renderDonut("ov-scope", S.meta.scopeFacets || []);
+  renderTreemap("ov-cat", S.meta.categoryFacets || [], 8, TEAL_RAMP);
 }
 
 function renderLegend() {
@@ -429,7 +435,9 @@ function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetai
 async function refresh() {
   try {
     const mode = DataSource.config.mode;
-    const q = { search: $("search").value, scope: checkedVals("f-scope"), category: checkedVals("f-cat") };
+    const q = { search: $("search").value, category: checkedVals("f-cat") };
+    const scopes = checkedVals("f-scope");
+    if (scopes.length) q.scope = scopes;
     if (mode === "datasette") q.page = S.page;
     const res = await DataSource.query(q);
     const orgs = res.orgs.filter((o) => !o.is_umbrella && !isDefunct(o));
@@ -469,8 +477,8 @@ function renderPager(total, mode, hasMore) {
     el("span", { class: "pager-info", text: `Showing ${from} to ${to} of ${fmt(total)}` }),
     pagerBtn("Next", S.page >= pages - 1, () => { S.page += 1; refresh(); }));
   $("result-count").textContent = (S.allCount && total < S.allCount)
-    ? `${fmt(total)} of the ${fmt(S.allCount)} sampled bodies match`
-    : `${fmt(total)} sampled out of ${fmt((S.meta && S.meta.total) || 0)} listed bodies. Samples will grow as the dashboard develops.`;
+    ? `${fmt(total)} of the ${fmt(S.allCount)} bodies match`
+    : `${fmt(total)} of ${fmt((S.meta && S.meta.total) || 0)} bodies on the register`;
 }
 const FILTER_TOP = { "f-scope": 99, "f-cat": 10 };
 function fillChecks(id, facets) {
@@ -490,27 +498,33 @@ function fillChecks(id, facets) {
     box.appendChild(more);
   }
 }
-function checkedVals(id) { return [...$(id).querySelectorAll("input:checked")].map((c) => c.value); }
+function checkedVals(id) {
+  const box = $(id);
+  if (!box) return [];
+  return [...box.querySelectorAll("input:checked")].map((c) => c.value);
+}
 
 async function boot() {
   const meta = await DataSource.init();
-  holdBackDefunct(meta);
+  if (!meta.allInScope) holdBackDefunct(meta);
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
-  { const cap = $("snapshot"); if (cap) cap.textContent = meta.snapshot ? `Data snapshot: ${meta.snapshot}` : ""; }
+  { const cap = $("snapshot"); if (cap) cap.textContent = (meta.correctAsOf || meta.snapshot) ? `Correct as of ${meta.correctAsOf || meta.snapshot}` : ""; }
   const cgc = $("cg-cat"), cgs = $("cg-scope");
   if (cgc && cgs) {
     const setMode = (m) => { S.covMode = m; cgc.classList.toggle("on", m === "cat"); cgs.classList.toggle("on", m === "scope"); renderCoverageGroups(); };
     cgc.addEventListener("click", () => setMode("cat"));
     cgs.addEventListener("click", () => setMode("scope"));
   }
-  $("table-hint").textContent = "A sample of the register: the bodies whose own code has been read, the shared sector codes, and a selection of others. The charts above use the full register. The seven dots show which principles a code mentions.";
-  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. The scope figures cover the whole register. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
+  $("table-hint").textContent = "Search the full register. The seven dots show which principles a code mentions.";
+  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Every body on this list is treated as in scope. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
   const all = await DataSource.query({});
   S.allCount = all.orgs.filter((o) => !o.is_umbrella && !isDefunct(o)).length;
   S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella && !isDefunct(o));
-  renderSummary(); renderCoverage(); renderOverviewCharts(); renderMatrix(); renderScope(); renderLadder(); renderNaming(); renderStrip(); renderLegend();
+  renderSummary(); renderCoverage(); renderOverviewCharts();
+  if (!meta.allInScope) { renderMatrix(); renderScope(); }
+  renderLadder(); renderNaming(); renderStrip(); renderLegend();
   let _rt; window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(renderOverviewCharts, 150); });
-  fillChecks("f-scope", meta.scopeFacets);
+  if ($("f-scope")) fillChecks("f-scope", meta.scopeFacets);
   fillChecks("f-cat", meta.categoryFacets);
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
   await refresh();
