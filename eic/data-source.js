@@ -29,7 +29,7 @@
 const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
-  local: { url: "./data.json?v=20260903b" }, // bump ?v on every deploy so HTML, code and data move as one locked set
+  local: { url: "./data.json?v=20260903c" }, // bump ?v on every deploy so HTML, code and data move as one locked set
 
   datasette: {
     baseUrl: "", // e.g. "https://data.krisetya.com"   <-- fill in
