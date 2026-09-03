@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Codes of conduct and the Nolan principles</title>
-    <link rel="stylesheet" href="./styles.css?v=20260826a" />
+    <link rel="stylesheet" href="./styles.css?v=20260903a" />
   </head>
   <body>
     <main class="wrap" aria-label="Codes of conduct and the Nolan principles">
@@ -12,7 +12,7 @@
         <div class="head-left">
           <p class="eyebrow">EIC working dataset</p>
           <h1>Codes of conduct and the Nolan principles</h1>
-          <p class="subtitle" id="subtitle">A working map of England’s public authorities, including their scope, type of code, and the extent of coverage of the seven principles of public life.</p>
+          <p class="subtitle" id="subtitle">A working map of England’s public authorities: the bodies on the EIC list, the type of code they have, and how far those codes cover the seven principles of public life.</p>
           <p class="snapshot" id="snapshot"></p>
         </div>
       </header>
@@ -20,7 +20,7 @@
       <section class="summary" aria-label="The three questions">
         <article class="q-card q1">
           <p class="q-label">Question 1</p>
-          <h2>Is it a public authority?</h2>
+          <h2>Who is on the list?</h2>
           <p class="q-figure" id="q1-figure"></p>
           <p class="q-note" id="q1-note"></p>
         </article>
@@ -53,15 +53,13 @@
               <h3>Coverage by</h3>
               <div class="cov-toggle" role="group" aria-label="Compare coverage by">
                 <button type="button" id="cg-cat" class="on">Sector</button>
-                <button type="button" id="cg-scope">Scope</button>
               </div>
             </div>
             <div id="cov-group-rows" class="cg-rows"></div>
           </div>
         </div>
         <div class="ov-grid">
-          <div class="panel ov-card"><h3>In or out of scope</h3><div class="donut-wrap" id="ov-scope"></div></div>
-          <div class="panel ov-card"><h3>Sector</h3><div class="treemap" id="ov-cat"></div></div>
+          <div class="panel ov-card ov-card-wide"><h3>Sector</h3><div class="treemap" id="ov-cat"></div></div>
         </div>
       </section>
 
@@ -71,7 +69,6 @@
           <input id="search" type="search" placeholder="Type an organisation or sector&hellip;" autocomplete="off" />
         </div>
         <div class="filter-row">
-          <fieldset class="fgroup"><legend>In or out of scope</legend><div class="fchecks" id="f-scope"></div></fieldset>
           <fieldset class="fgroup"><legend>Sector</legend><div class="fchecks" id="f-cat"></div></fieldset>
         </div>
         <div class="count-row"><span class="result-count" id="result-count" aria-live="polite"></span></div>
@@ -96,11 +93,11 @@
       </section>
 
       <section class="lenses">
-        <div class="panel lens-1">
+        <div class="panel lens-1" hidden>
           <div class="panel-head"><h2>Why some bodies are hard to classify</h2></div>
           <p class="hint lens-intro">Public funding and a public function do not always line up, which is what makes some bodies hard to classify.</p>
-          <div class="matrix" id="pa-matrix" aria-label="Public function against public funding, with the likely outcome in each quadrant"></div>
-          <div class="scope-spectrum" id="scope-spectrum" aria-label="How the register breaks down by scope"></div>
+          <div class="matrix" id="pa-matrix"></div>
+          <div class="scope-spectrum" id="scope-spectrum"></div>
           <div id="scope-legend" class="scope-legend"></div>
         </div>
 
@@ -124,7 +121,7 @@
 
       <p class="foot" id="foot"></p>
     </main>
-    <script src="./data-source.js?v=20260826b"></script>
-    <script src="./script.js?v=20260826b"></script>
+    <script src="./data-source.js?v=20260903a"></script>
+    <script src="./script.js?v=20260903a"></script>
   </body>
 </html>

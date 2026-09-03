@@ -29,7 +29,7 @@
 const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
-  local: { url: "./data.json?v=20260826b" }, // bump ?v on every deploy so HTML, code and data move as one locked set // 13 Jul 2026 snapshot from Ammara's backend data.db (Datasette Lite exposes no server API, so the snapshot is bundled; datasette mode below is for a future hosted instance)
+  local: { url: "./data.json?v=20260903a" }, // bump ?v on every deploy so HTML, code and data move as one locked set
 
   datasette: {
     baseUrl: "", // e.g. "https://data.krisetya.com"   <-- fill in
@@ -173,17 +173,20 @@ const DataSource = (() => {
       return {
         mode: "local",
         total: m.total, coded: m.coded, snapshot: m.snapshot, note: m.note,
-        scopeFacets: m.scope_facets,
-        classificationFacets: m.classification_facets,
-        categoryFacets: m.category_facets,
+        correctAsOf: m.correctAsOf || m.correct_as_of || m.snapshot,
+        allInScope: !!(m.allInScope || m.all_in_scope || m.scopeDropped),
+        scopeFacets: m.scopeFacets || m.scope_facets || [],
+        classificationFacets: m.classificationFacets || m.classification_facets || [],
+        categoryFacets: m.categoryFacets || m.category_facets || [],
         scopeLabels: _cache.scope_labels || SCOPE_LABELS_FALLBACK,
         principles: _cache.principles || PRINCIPLES_FALLBACK,
         umbrellas: _cache.umbrellas || {},
         assessed: m.assessed, inherited_total: m.inherited_total,
-        coverage: m.coverage, out_of_scope: m.out_of_scope,
-        coverageByCategory: m.coverage_by_category || null, coverageByClassification: m.coverage_by_classification || null,
-        coverageByScope: m.coverage_by_scope || null,
-        defunctHeldBack: m.defunct_held_back || null,
+        coverage: m.coverage, out_of_scope: m.out_of_scope, in_scope: m.in_scope,
+        coverageByCategory: m.coverageByCategory || m.coverage_by_category || null,
+        coverageByClassification: m.coverageByClassification || m.coverage_by_classification || null,
+        coverageByScope: m.coverageByScope || m.coverage_by_scope || null,
+        defunctHeldBack: m.defunctHeldBack || m.defunct_held_back || null,
       };
     }
     // datasette
