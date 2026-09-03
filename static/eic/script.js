@@ -436,19 +436,12 @@ function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetai
 async function refresh() {
   try {
     const mode = DataSource.config.mode;
-    const q = { search: $("search").value, category: checkedVals("f-cat") };
+    const q = { search: $("search").value, category: checkedVals("f-cat"), page: S.page, pageSize: PAGE_SIZE };
     const scopes = checkedVals("f-scope");
     if (scopes.length) q.scope = scopes;
-    if (mode === "datasette") q.page = S.page;
     const res = await DataSource.query(q);
-    const orgs = res.orgs.filter((o) => !o.is_umbrella && !isDefunct(o));
-    const total = mode === "datasette" ? res.total : orgs.length;
-    let pageOrgs = orgs;
-    if (mode !== "datasette") {
-      const pages = Math.max(1, Math.ceil(orgs.length / PAGE_SIZE));
-      if (S.page >= pages) S.page = pages - 1;
-      pageOrgs = orgs.slice(S.page * PAGE_SIZE, (S.page + 1) * PAGE_SIZE);
-    }
+    const pageOrgs = res.orgs.filter((o) => !o.is_umbrella && !isDefunct(o));
+    const total = res.total != null ? res.total : pageOrgs.length;
     if (S.selectedId && !pageOrgs.some((o) => o.id === S.selectedId)) S.selectedId = null;
     renderTable(pageOrgs);
     renderPager(total, mode, res.hasMore);
@@ -518,9 +511,8 @@ async function boot() {
   }
   $("table-hint").textContent = "Search the full register. The seven dots show which principles a code mentions.";
   $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
-  const all = await DataSource.query({});
-  S.allCount = all.orgs.filter((o) => !o.is_umbrella && !isDefunct(o)).length;
-  S.coded = all.orgs.filter((o) => o.coded && !o.is_umbrella && !isDefunct(o));
+  S.allCount = meta.total;
+  S.coded = meta.ownOrgs || [];
   renderSummary(); renderCoverage(); renderOverviewCharts();
   if (!meta.allInScope) { renderMatrix(); renderScope(); }
   renderLadder(); renderNaming(); renderStrip(); renderLegend();

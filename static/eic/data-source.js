@@ -29,7 +29,10 @@
 const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
-  local: { url: "./data.json?v=20260903c" }, // bump ?v on every deploy so HTML, code and data move as one locked set
+  local: {
+    meta: "./data-meta.json?v=20260903d",
+    orgs: "./data-orgs.json?v=20260903d",
+  },
 
   datasette: {
     baseUrl: "", // e.g. "https://data.krisetya.com"   <-- fill in
@@ -164,11 +167,22 @@ const DataSource = (() => {
     return `${d.baseUrl}/${d.database}/${d.table}.json?${p.toString()}`;
   }
 
+  let _rows = null;
+  let _orgsReady = null;
+
+  function asOrg(row) {
+    return { id: row[0], name: row[1], category: row[2] || "", umbrella: row[3] || "" };
+  }
+
   async function init() {
     if (cfg.mode === "local") {
-      const r = await fetch(cfg.local.url);
-      if (!r.ok) throw new Error(`sample.json ${r.status}`);
+      const r = await fetch(cfg.local.meta);
+      if (!r.ok) throw new Error(`data-meta.json ${r.status}`);
       _cache = await r.json();
+      _orgsReady = fetch(cfg.local.orgs).then((res) => {
+        if (!res.ok) throw new Error(`data-orgs.json ${res.status}`);
+        return res.json();
+      }).then((rows) => { _rows = rows; });
       const m = _cache.meta;
       return {
         mode: "local",
@@ -181,6 +195,7 @@ const DataSource = (() => {
         scopeLabels: _cache.scope_labels || SCOPE_LABELS_FALLBACK,
         principles: _cache.principles || PRINCIPLES_FALLBACK,
         umbrellas: _cache.umbrellas || {},
+        ownOrgs: m.ownOrgs || [],
         assessed: m.assessed, inherited_total: m.inherited_total,
         coverage: m.coverage, out_of_scope: m.out_of_scope, in_scope: m.in_scope,
         coverageByCategory: m.coverageByCategory || m.coverage_by_category || null,
@@ -215,13 +230,18 @@ const DataSource = (() => {
 
   async function query(opts = {}) {
     if (cfg.mode === "local") {
-      const { search = "", scope = "", classification = "", category = "" } = opts;
-      let list = _cache.orgs.slice();
+      if (_orgsReady) await _orgsReady;
+      const { search = "", category = "", page = 0, pageSize = 25 } = opts;
       const q = search.trim().toLowerCase();
-      if (q) list = list.filter((o) => `${o.name} ${o.category} ${o.classification}`.toLowerCase().includes(q));
-      const inSel = (sel, v) => !sel || !sel.length || (Array.isArray(sel) ? sel.includes(v) : sel === v);
-      list = list.filter((o) => inSel(scope, o.scope) && inSel(classification, o.classification) && inSel(category, o.category));
-      return { orgs: list, total: list.length, hasMore: false };
+      const cats = !category || !category.length ? [] : (Array.isArray(category) ? category : [category]);
+      const matched = [];
+      for (const row of (_rows || [])) {
+        if (q && !String(row[1]).toLowerCase().includes(q) && !String(row[2] || "").toLowerCase().includes(q)) continue;
+        if (cats.length && !cats.includes(row[2])) continue;
+        matched.push(row);
+      }
+      const from = page * pageSize;
+      return { orgs: matched.slice(from, from + pageSize).map(asOrg), total: matched.length, hasMore: from + pageSize < matched.length };
     }
     const url = queryUrl(opts);
     const r = await fetch(url);
