@@ -362,19 +362,36 @@ const GROUP_SEGS = [
 ];
 function renderCoverageGroups() {
   const box = $("cov-group-rows"); if (!box) return;
-  const table = S.covMode === "class" ? S.meta.coverageByClassification
-    : S.covMode === "scope" ? S.meta.coverageByScope
-    : S.meta.coverageByCategory;
-  if (!table || !table.length) { box.replaceChildren(); return; }
-  box.replaceChildren(...table.map((g) => {
+  const table = S.meta.coverageByCategory || [];
+  if (!table.length) { box.replaceChildren(); return; }
+  const sorted = table.slice().sort((a, b) => (b.total || 0) - (a.total || 0));
+  const topN = 6;
+  const top = sorted.slice(0, topN);
+  const rest = sorted.slice(topN);
+  const rows = top.map((g) => ({
+    name: g.name,
+    covered: (g.own || 0) + (g.shared || 0),
+    tocheck: g.tocheck || 0,
+    total: g.total || 0,
+  }));
+  if (rest.length) {
+    rows.push({
+      name: "Other",
+      covered: rest.reduce((s, g) => s + (g.own || 0) + (g.shared || 0), 0),
+      tocheck: rest.reduce((s, g) => s + (g.tocheck || 0), 0),
+      total: rest.reduce((s, g) => s + (g.total || 0), 0),
+    });
+  }
+  const max = Math.max(...rows.map((r) => r.total)) || 1;
+  box.replaceChildren(...rows.map((r) => {
     const bar = el("div", { class: "cg-bar" });
-    for (const [key, cls, label] of GROUP_SEGS) {
-      const w = (g[key] / (g.total || 1)) * 100;
-      if (w > 0) bar.appendChild(el("span", { class: `cov-seg ${cls}`, style: `width:${w}%`, title: `${g.name} - ${label}: ${fmt(g[key])}` }));
-    }
+    if (r.covered) bar.appendChild(el("span", { class: "cov-seg c-done", style: `width:${(r.covered / max) * 100}%`, title: `${r.name}: ${fmt(r.covered)} covered` }));
+    if (r.tocheck) bar.appendChild(el("span", { class: "cov-seg c-todo", style: `width:${(r.tocheck / max) * 100}%`, title: `${r.name}: ${fmt(r.tocheck)} still to check` }));
     return el("div", { class: "cg-row" }, [
-      el("div", { class: "cg-name", text: g.name, title: g.name }), bar,
-      el("div", { class: "cg-total", text: fmt(g.total) })]);
+      el("div", { class: "cg-name", text: r.name, title: r.name }),
+      bar,
+      el("div", { class: "cg-total", text: fmt(r.total) }),
+    ]);
   }));
 }
 function renderDonut(elId, facets) {
