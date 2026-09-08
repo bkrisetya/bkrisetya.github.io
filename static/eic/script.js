@@ -106,7 +106,7 @@ function renderStrip() {
     for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
     }
-    return el("div", { class: "strip-row" }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${yes} of ${coded.length}` })]);
+    return el("div", { class: "strip-row", title: `${yes} of ${coded.length.toLocaleString("en-GB")} codes mention ${name}` }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${Math.round((yes / n) * 100)}%` })]);
   }));
 }
 

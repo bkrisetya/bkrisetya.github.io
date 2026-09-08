@@ -5,21 +5,28 @@
 
 const Charts = (() => {
   const TEAL = [0x18, 0x99, 0xa2], MAGENTA = [0xe4, 0x1e, 0x7c], GREY = "#C3CAD5";
+  const MID = [0xed, 0xe8, 0xf5]; // calm lavender-grey centre: "mixed", neither good nor bad
   const FAINT = [0xea, 0xe7, 0xf2]; // neutral wash for cells backed by very few codes
   const FULL_EVIDENCE = 25; // a cell reaches full colour strength at 25 codes read
 
   const hex = (rgb) => "#" + rgb.map((v) => Math.round(v).toString(16).padStart(2, "0")).join("");
   const lerp = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
 
+  /* Three-stop diverging scale: magenta (none mention it) -> calm neutral centre
+   * (mixed) -> teal (all mention it). The midpoint stays clean and readable instead
+   * of muddying into purple, and 0% sits visibly apart from 20%. */
+  function shareColour(share) {
+    const s = Math.max(0, Math.min(1, share));
+    return s <= 0.5 ? lerp(MAGENTA, MID, s * 2) : lerp(MID, TEAL, (s - 0.5) * 2);
+  }
+
   /* Colour = share of codes mentioning the principle; strength = how much evidence
    * backs the cell. A 100%-yes cell based on one code is nearly neutral; the same
    * share based on 25+ codes is full teal. */
   function cellColor(share, total) {
     if (share === null || share === undefined || isNaN(share)) return GREY;
-    const s = Math.max(0, Math.min(1, share));
-    const shareColour = lerp(TEAL, MAGENTA, 1 - s);
     const confidence = Math.min(1, (total || 0) / FULL_EVIDENCE);
-    return hex(lerp(FAINT, shareColour, confidence));
+    return hex(lerp(FAINT, shareColour(share), confidence));
   }
 
   function available() {
@@ -108,7 +115,8 @@ const Charts = (() => {
   }
 
   /* ---------- score waffle ---------- */
-  const BAND_COLOURS = ["#E41E7C", "#F4A4CC", "#ADF4F3", "#1899A2"]; // none / 1-2 / 3-5 / 6-7
+  /* EIC families as a readable progression: magenta -> purple -> sky -> teal */
+  const BAND_COLOURS = ["#E41E7C", "#9851FB", "#3CB7F4", "#1899A2"]; // none / 1-2 / 3-5 / 6-7
 
   /* 100 squares, worst band first. Largest-remainder rounding so squares sum to 100. */
   function waffleSquares(bands, total) {

@@ -4,11 +4,18 @@ const assert = require("node:assert/strict");
 const path = require("node:path");
 const C = require(path.join(__dirname, "../../static/eic/charts.js"));
 
-test("cellColor: full evidence -> pure share colour; null share -> grey", () => {
+test("cellColor: full evidence -> pure endpoint colours; null share -> grey", () => {
   assert.equal(C.cellColor(1, 100).toLowerCase(), "#1899a2");   // teal
   assert.equal(C.cellColor(0, 100).toLowerCase(), "#e41e7c");   // magenta
-  assert.equal(C.cellColor(0.5, 100).toLowerCase(), "#7e5c8f"); // midpoint
+  assert.equal(C.cellColor(0.5, 100).toLowerCase(), "#ede8f5"); // calm neutral centre
   assert.equal(C.cellColor(null, 5).toLowerCase(), "#c3cad5");  // nothing read
+});
+
+test("cellColor: 0-of-5 and 1-of-5 are visibly different", () => {
+  const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const dist = (a, b) => Math.hypot(...p(a).map((v, i) => v - p(b)[i]));
+  assert.ok(dist(C.cellColor(0, 100), C.cellColor(0.2, 100)) > 40);
+  assert.ok(dist(C.cellColor(0.8, 100), C.cellColor(1, 100)) > 40);
 });
 
 test("cellColor: thin evidence is washed toward neutral, regardless of share", () => {
