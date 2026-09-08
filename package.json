@@ -1,0 +1,10 @@
+{
+  "name": "bkrisetya-github-io",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Dev-only helpers for local preview. Not used by GitHub Pages.",
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "test": "node --test \"tests/eic/**/*.test.js\""
+  }
+}
