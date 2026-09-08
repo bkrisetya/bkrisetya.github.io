@@ -39,6 +39,7 @@ h3 { font-size: 1.15rem; margin: 0 0 8px; }
 
 /* ---------- sections ---------- */
 section { margin-bottom: 48px; }
+.hl { font-style: normal; color: var(--magenta); }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; margin-bottom: 20px; }
 
 /* ---------- safety net ---------- */
