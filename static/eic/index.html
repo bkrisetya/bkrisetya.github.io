@@ -4,118 +4,95 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Codes of conduct and the Nolan principles</title>
-    <link rel="stylesheet" href="./styles.css?v=20260908b" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260908a" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js" defer></script>
   </head>
   <body>
     <main class="wrap" aria-label="Codes of conduct and the Nolan principles">
-      <header class="topbar">
-        <div class="head-left">
-          <p class="eyebrow">EIC working dataset</p>
-          <h1>Codes of conduct and the Nolan principles</h1>
-          <p class="subtitle" id="subtitle">A working map of the bodies on the EIC list, the type of code they have, and how far those codes cover the seven principles of public life.</p>
-          <p class="snapshot" id="snapshot">Loading the register…</p>
-        </div>
+
+      <header class="hero">
+        <p class="kicker">Ethics and Integrity Commission · working dataset</p>
+        <h1>Codes of conduct and the Nolan principles</h1>
+        <p class="verdict" id="verdict">Some codes cover all seven principles. Many cover only a few.</p>
+        <div class="hero-stats" id="hero-stats" role="list"></div>
+        <p class="snapshot" id="snapshot"></p>
       </header>
 
-      <section class="summary" aria-label="The three questions">
-        <article class="q-card q1">
-          <p class="q-label">Question 1</p>
-          <h2>Who is on the list?</h2>
-          <p class="q-figure" id="q1-figure">Loading…</p>
-          <p class="q-note" id="q1-note"></p>
-        </article>
-        <article class="q-card q2">
-          <p class="q-label">Question 2</p>
-          <h2>What code do they have?</h2>
-          <p class="q-figure" id="q2-figure"></p>
-          <p class="q-note" id="q2-note"></p>
-        </article>
-        <article class="q-card q3">
-          <p class="q-label">Question 3</p>
-          <h2>Do the codes cover the seven principles?</h2>
-          <p class="q-figure" id="q3-figure"></p>
-          <p class="q-note" id="q3-note"></p>
-        </article>
+      <section class="net" aria-label="The safety net">
+        <h2>The safety net</h2>
+        <p class="intro">Schools, councils, health and police staff answer to a shared sector code. Each one covers all seven principles.</p>
+        <div id="net-rows" class="net-rows"></div>
       </section>
 
-      <section class="overview">
-        <div class="panel cov-panel">
-          <div class="panel-head"><h2>Coverage so far</h2></div>
-          <div class="cov-top">
-            <div class="cov-donut" id="cov-donut"></div>
-            <div class="cov-main">
-              <div class="coverage-bar" id="coverage-bar" role="img" aria-label="Project coverage"></div>
-              <div class="coverage-legend" id="coverage-legend"></div>
+      <section class="patchwork" aria-label="The patchwork">
+        <h2>The patchwork</h2>
+        <p class="intro" id="patchwork-intro"></p>
+
+        <div class="panel">
+          <h3>Which principles does each sector's code mention?</h3>
+          <p class="hint">Share of each sector's own codes that mention each principle. Click a cell to see those bodies in the register below.</p>
+          <div id="heatmap" class="heatmap" role="img" aria-label="Heatmap of principle coverage by sector"></div>
+          <div class="scale-legend" id="heatmap-legend"></div>
+        </div>
+
+        <div class="patch-duo">
+          <div class="panel">
+            <h3>How many principles do codes mention?</h3>
+            <div id="dist-chart" class="dist-chart" role="img" aria-label="Distribution of principle scores"></div>
+          </div>
+          <div class="panel">
+            <h3>The seven principles, weakest first</h3>
+            <div id="strip-rows" class="strip-rows"></div>
+          </div>
+        </div>
+
+        <p class="ladder-note" id="ladder-note"></p>
+      </section>
+
+      <section class="register" aria-label="The register">
+        <h2>The register</h2>
+        <p class="intro">Search any body on the register. The seven dots show which principles its code mentions.</p>
+
+        <div class="controls">
+          <div class="ctl search-row">
+            <label for="search">Search</label>
+            <input id="search" type="search" placeholder="Type an organisation or sector&hellip;" autocomplete="off" />
+          </div>
+          <div class="filter-row">
+            <fieldset class="fgroup"><legend>Sector</legend><div class="fchecks" id="f-cat"></div></fieldset>
+            <fieldset class="fgroup"><legend>Codes that miss&hellip;</legend><div class="fchecks" id="f-principle"></div></fieldset>
+          </div>
+          <div class="count-row"><span class="result-count" id="result-count" aria-live="polite"></span></div>
+        </div>
+
+        <div class="grid">
+          <div class="table-wrap panel">
+            <div class="panel-head">
+              <h3>The organisations</h3>
+              <span class="legend" id="nolan-legend"></span>
             </div>
-          </div>
-          <div class="cov-groups">
-            <div class="cov-groups-head">
-              <h3>By sector</h3>
-              <div class="cg-mini-legend" aria-hidden="true">
-                <span><i class="c-done"></i> Covered</span>
-                <span><i class="c-todo"></i> Still to check</span>
-              </div>
+            <div class="table-scroll">
+              <table class="orgtable" id="orgtable">
+                <thead id="orgtable-head"></thead>
+                <tbody id="orgtable-body"></tbody>
+              </table>
             </div>
-            <div id="cov-group-rows" class="cg-rows"></div>
+            <div class="pager" id="pager"></div>
+            <p class="hint" id="table-hint"></p>
           </div>
-        </div>
-        <div class="ov-grid">
-          <div class="panel ov-card ov-card-wide"><h3>Sector</h3><div class="treemap" id="ov-cat"></div></div>
-        </div>
-      </section>
-
-      <section class="controls" aria-label="Find an organisation">
-        <div class="ctl search-row">
-          <label for="search">Search</label>
-          <input id="search" type="search" placeholder="Type an organisation or sector&hellip;" autocomplete="off" />
-        </div>
-        <div class="filter-row">
-          <fieldset class="fgroup"><legend>Sector</legend><div class="fchecks" id="f-cat"></div></fieldset>
-        </div>
-        <div class="count-row"><span class="result-count" id="result-count" aria-live="polite"></span></div>
-      </section>
-
-      <section class="grid">
-        <div class="table-wrap panel">
-          <div class="panel-head">
-            <h2>The organisations</h2>
-            <span class="legend" id="nolan-legend"></span>
-          </div>
-          <div class="table-scroll">
-            <table class="orgtable" id="orgtable">
-              <thead id="orgtable-head"></thead>
-              <tbody id="orgtable-body"></tbody>
-            </table>
-          </div>
-          <div class="pager" id="pager"></div>
-          <p class="hint" id="table-hint"></p>
-        </div>
-        <aside class="detail panel" id="detail" aria-live="polite"></aside>
-      </section>
-
-      <section class="lenses">
-        <div class="panel lens-2">
-          <div class="panel-head"><h2>What kind of code is it?</h2></div>
-          <p class="hint lens-intro">Varieties of code formality</p>
-          <ol class="ladder" id="coc-ladder"></ol>
-          <p class="hint" id="naming-intro">What bodies call their code, so far:</p>
-          <div id="naming-list" class="naming-list"></div>
-        </div>
-
-        <div class="panel lens-3">
-          <div class="panel-head">
-            <h2>Nolan Principles coverage</h2>
-            <span class="panel-tag" id="nolan-strip-tag"></span>
-          </div>
-          <p class="hint lens-intro" id="strip-intro"></p>
-          <div id="principle-strip" class="strip-rows"></div>
+          <aside class="detail panel" id="detail" aria-live="polite"></aside>
         </div>
       </section>
 
       <p class="foot" id="foot"></p>
     </main>
     <noscript><p class="load-error">This page needs JavaScript to load the register.</p></noscript>
-    <script src="./data-source.js?v=20260908b"></script>
-    <script src="./script.js?v=20260908b"></script>
+    <script src="./data-source.js?v=20260908a"></script>
+    <script src="./aggregates.js?v=20260908a"></script>
+    <script src="./charts.js?v=20260908a"></script>
+    <script src="./script.js?v=20260908a"></script>
   </body>
 </html>
