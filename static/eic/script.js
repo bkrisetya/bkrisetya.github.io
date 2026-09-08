@@ -106,11 +106,12 @@ function renderStrip() {
   const rows = Aggregates.principleBars(coded, S.principles);
   const n = coded.length || 1;
   $("strip-rows").replaceChildren(...rows.map(({ name, yes, partial, no, unknown }) => {
-    const bar = el("div", { class: "strip-bar", title: `${yes} covered, ${no} not, ${unknown} not checked` });
+    const tip = `${yes} of ${coded.length.toLocaleString("en-GB")} codes mention ${name}`;
+    const bar = el("div", { class: "strip-bar", title: tip });
     for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
     }
-    return el("div", { class: "strip-row", title: `${yes} of ${coded.length.toLocaleString("en-GB")} codes mention ${name}` }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${Math.round((yes / n) * 100)}%` })]);
+    return el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${Math.round((yes / n) * 100)}%` })]);
   }));
 }
 
