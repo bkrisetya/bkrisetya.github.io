@@ -92,7 +92,7 @@ function renderPatchwork() {
   S.hm = Aggregates.heatmap(own, catNames, S.principles);
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
   Charts.renderScaleLegend($("heatmap-legend"));
-  Charts.renderDistribution($("dist-chart"), Aggregates.scoreDistribution(own));
+  Charts.renderScoreWaffle($("dist-chart"), Aggregates.scoreBands(own));
   renderStrip();
 }
 

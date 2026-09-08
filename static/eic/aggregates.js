@@ -22,6 +22,18 @@ function scoreDistribution(ownOrgs) {
   return bins;
 }
 
+/* Four human bands for the waffle: none / a couple / some / nearly all. */
+function scoreBands(ownOrgs) {
+  const bins = scoreDistribution(ownOrgs);
+  const at = (i) => bins[i].count;
+  return [
+    { label: "None", count: at(0) },
+    { label: "1–2", count: at(1) + at(2) },
+    { label: "3–5", count: at(3) + at(4) + at(5) },
+    { label: "6–7", count: at(6) + at(7) },
+  ];
+}
+
 function principleBars(ownOrgs, principles) {
   const rows = (principles || []).map((p) => ({ id: p.id, name: p.name, yes: 0, partial: 0, no: 0, unknown: 0 }));
   (ownOrgs || []).forEach((o) => {
@@ -66,6 +78,6 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { PRINCIPLE_IDS, scoreOf, heroNumbers, scoreDistribution, principleBars, heatmap, safetyNetRows };
+  module.exports = { PRINCIPLE_IDS, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
 }
-if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, scoreOf, heroNumbers, scoreDistribution, principleBars, heatmap, safetyNetRows };
+if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };

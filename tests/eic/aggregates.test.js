@@ -34,6 +34,19 @@ test("scoreDistribution bins 0..7 and sums to input length", () => {
   assert.equal(d.reduce((a, b) => a + b.count, 0), 4);
 });
 
+test("scoreBands groups into none / 1-2 / 3-5 / 6-7", () => {
+  const orgs = [
+    { nolan: n("nnnnnnn") }, // none
+    { nolan: n("ynnnnnn") }, { nolan: n("yynnnnn") }, // 1-2
+    { nolan: n("yyyyynn") }, // 3-5
+    { nolan: n("yyyyyyn") }, { nolan: n("yyyyyyy") }, // 6-7
+  ];
+  const bands = A.scoreBands(orgs);
+  assert.deepEqual(bands.map((b) => b.label), ["None", "1–2", "3–5", "6–7"]);
+  assert.deepEqual(bands.map((b) => b.count), [1, 2, 1, 2]);
+  assert.equal(bands.reduce((a, b) => a + b.count, 0), 6);
+});
+
 test("principleBars sorted weakest first", () => {
   const orgs = [{ nolan: n("yyyyyyy") }, { nolan: n("yyyynnn") }];
   const rows = A.principleBars(orgs, PRINCIPLES);

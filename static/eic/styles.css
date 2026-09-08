@@ -70,14 +70,13 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .scale-legend { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--ink-soft); margin-top: 10px; }
 .scale-legend .sw { width: 18px; height: 12px; display: inline-block; }
 
-/* ---------- distribution + strips ---------- */
+/* ---------- waffle + strips ---------- */
 .patch-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.dist-chart { height: 260px; }
-.dist-fallback { display: flex; align-items: flex-end; gap: 6px; height: 220px; padding-top: 10px; }
-.dist-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%; }
-.dist-col .bar { width: 100%; background: var(--teal); border-radius: 4px 4px 0 0; }
-.dist-col .n { font-size: 0.8rem; font-weight: 600; }
-.dist-col .s { font-size: 0.75rem; color: var(--ink-soft); }
+.dist-chart { min-height: 200px; }
+.waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 340px; margin: 6px 0 14px; }
+.waffle-sq { display: block; aspect-ratio: 1; border-radius: 3px; }
+.waffle-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.85rem; color: var(--ink-soft); }
+.waffle-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; vertical-align: -1px; }
 .strip-row { display: grid; grid-template-columns: 130px 1fr 70px; gap: 10px; align-items: center; padding: 5px 0; }
 .p-name { font-weight: 600; font-size: 0.95rem; }
 .strip-bar { display: flex; height: 16px; border-radius: 3px; overflow: hidden; background: var(--grey); }
