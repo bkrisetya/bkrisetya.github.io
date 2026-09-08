@@ -30,8 +30,8 @@ const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
   local: {
-    meta: "./data-meta.json?v=20260908a",
-    orgs: "./data-orgs.json?v=20260908a",
+    meta: "./data-meta.json?v=20260908b",
+    orgs: "./data-orgs.json?v=20260908b",
   },
 
   datasette: {
@@ -171,12 +171,23 @@ const DataSource = (() => {
   let _orgsReady = null;
   let _ownById = {};
 
+  const NOLAN_IDS = ["selflessness","integrity","objectivity","accountability","openness","honesty","leadership"];
+  function expandNolan(raw) {
+    if (raw && typeof raw === "object" && !Array.isArray(raw)) return raw;
+    const map = { y: "yes", n: "no", p: "partial", u: "unknown" };
+    const out = {};
+    String(raw || "").split("").forEach((ch, i) => {
+      if (NOLAN_IDS[i]) out[NOLAN_IDS[i]] = { covered: map[ch] || "unknown" };
+    });
+    return out;
+  }
+
   function asOrg(row) {
     const o = { id: row[0], name: row[1], category: row[2] || "", umbrella: row[3] || "" };
     const extra = _ownById[o.id];
     if (extra) {
       o.coded = true;
-      if (extra.nolan) o.nolan = extra.nolan;
+      if (extra.nolan) o.nolan = expandNolan(extra.nolan);
       if (extra.coc) o.coc = extra.coc;
       if (extra.url) o.url = extra.url;
     }
@@ -208,7 +219,7 @@ const DataSource = (() => {
         scopeLabels: _cache.scope_labels || SCOPE_LABELS_FALLBACK,
         principles: _cache.principles || PRINCIPLES_FALLBACK,
         umbrellas: _cache.umbrellas || {},
-        ownOrgs: m.ownOrgs || [],
+        ownOrgs: (m.ownOrgs || []).map((o) => Object.assign({}, o, { nolan: expandNolan(o.nolan) })),
         assessed: m.assessed, inherited_total: m.inherited_total,
         coverage: m.coverage, out_of_scope: m.out_of_scope, in_scope: m.in_scope,
         coverageByCategory: m.coverageByCategory || m.coverage_by_category || null,
