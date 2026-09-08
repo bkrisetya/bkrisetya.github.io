@@ -118,3 +118,15 @@ test("real data: hero numbers reconcile with data-meta.json", () => {
   const h = A.heroNumbers({ total: raw.meta.total, coverage: raw.meta.coverage });
   assert.equal(h.reconciles, true, `total ${h.total} != ${h.shared}+${h.own}+${h.tocheck}`);
 });
+
+test("real data: every umbrella carries provenance (strength, basis, source url)", () => {
+  const raw = require(path.join(__dirname, "../../static/eic/data-meta.json"));
+  for (const [id, u] of Object.entries(raw.umbrellas)) {
+    assert.ok(u.strength, `${id} missing strength`);
+    assert.ok(u.basis, `${id} missing basis`);
+    assert.ok(u.source && /^https:\/\//.test(u.source.url) && u.source.label, `${id} missing source`);
+  }
+  // and safetyNetRows passes provenance through to the renderer
+  const out = A.safetyNetRows(raw.umbrellas, [], raw.meta.ownOrgs);
+  assert.ok(out.every((r) => r.strength && r.basis && r.source && r.source.url));
+});

@@ -94,7 +94,7 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
   const ownByUmb = {};
   (ownOrgs || []).forEach((o) => { if (o.umbrella) ownByUmb[o.umbrella] = (ownByUmb[o.umbrella] || 0) + 1; });
   return Object.entries(umbrellas || {})
-    .map(([id, u]) => ({ id, name: u.name || id, bodies: (counts[id] || 0) - (ownByUmb[id] || 0), allSeven: scoreOf(u.nolan) === 7, nolan: u.nolan || null }))
+    .map(([id, u]) => ({ id, name: u.name || id, bodies: (counts[id] || 0) - (ownByUmb[id] || 0), allSeven: scoreOf(u.nolan) === 7, nolan: u.nolan || null, strength: u.strength || null, basis: u.basis || null, source: u.source || null }))
     .sort((a, b) => b.bodies - a.bodies);
 }
 

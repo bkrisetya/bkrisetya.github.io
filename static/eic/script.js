@@ -54,7 +54,11 @@ function renderSafetyNet(orgRows) {
   const rows = Aggregates.safetyNetRows(S.umbrellas, orgRows, S.coded);
   $("net-rows").replaceChildren(...rows.map((r) =>
     el("div", { class: "net-row" }, [
-      el("div", { class: "net-name" }, [r.name, el("small", { text: r.id })]),
+      el("div", { class: "net-name" }, [r.name, el("small", { text: r.id }),
+        r.strength ? el("span", { class: "net-strength", text: r.strength }) : null,
+        r.basis ? el("small", { class: "net-basis", text: r.basis }) : null,
+        r.source ? el("a", { class: "net-source", href: r.source.url, target: "_blank", rel: "noopener", text: `Source: ${r.source.label}` }) : null,
+      ].filter(Boolean)),
       el("div", { class: "net-bodies" }, [el("b", { text: fmt(r.bodies) }), " bodies covered"]),
       (() => { const w = el("span", { class: "nolan-mini" });
         S.principles.forEach((p) => w.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));

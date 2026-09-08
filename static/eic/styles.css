@@ -48,6 +48,10 @@ section { margin-bottom: 48px; }
 .net-name small { display: block; font-weight: 400; color: var(--ink-soft); }
 .net-bodies { font-size: 1.05rem; }
 .net-bodies b { font-size: 1.4rem; }
+.net-strength { display: inline-block; margin: 4px 0 2px; padding: 2px 8px; border-radius: 999px; background: var(--navy); color: #fff; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.net-basis { display: block; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
+.net-source { display: block; font-size: 0.8rem; margin-top: 2px; }
+.note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 12px; }
 
 /* seven-dot rows (shared by net rows, table, detail) */
 .nolan-mini { display: inline-flex; gap: 4px; align-items: center; }
