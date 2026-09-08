@@ -68,7 +68,7 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .hm-cell.active { outline: 3px solid var(--navy); outline-offset: -3px; }
 .hm-count { font-size: 0.75rem; color: var(--ink-soft); text-align: right; padding-left: 8px; }
 .scale-legend { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--ink-soft); margin-top: 10px; }
-.scale-legend .sw { width: 18px; height: 12px; display: inline-block; }
+.scale-legend .sw { width: 18px; height: 12px; display: inline-block; border: 1px solid #C3CAD5; }
 
 /* ---------- waffle + strips ---------- */
 .patch-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }

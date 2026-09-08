@@ -4,35 +4,31 @@ const assert = require("node:assert/strict");
 const path = require("node:path");
 const C = require(path.join(__dirname, "../../static/eic/charts.js"));
 
-test("cellColor: full evidence -> pure endpoint colours; null share -> grey", () => {
-  assert.equal(C.cellColor(1, 100).toLowerCase(), "#1899a2");   // teal
-  assert.equal(C.cellColor(0, 100).toLowerCase(), "#e41e7c");   // magenta
-  assert.equal(C.cellColor(0.5, 100).toLowerCase(), "#ede8f5"); // calm neutral centre
-  assert.equal(C.cellColor(null, 5).toLowerCase(), "#c3cad5");  // nothing read
+test("cellColor: sequential teal — 0% is paper, 100% is deep teal; null share -> grey", () => {
+  assert.equal(C.cellColor(1).toLowerCase(), "#08454c");   // deep teal
+  assert.equal(C.cellColor(0.5).toLowerCase(), "#1899a2"); // EIC teal at the midpoint
+  assert.equal(C.cellColor(0).toLowerCase(), "#f4f6fe");   // paper: nothing here, no colour reward
+  assert.equal(C.cellColor(null).toLowerCase(), "#c3cad5"); // nothing read
 });
 
-test("cellColor: 0-of-5 and 1-of-5 are visibly different", () => {
+test("cellColor: shares stay distinguishable along the whole scale", () => {
   const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
   const dist = (a, b) => Math.hypot(...p(a).map((v, i) => v - p(b)[i]));
-  assert.ok(dist(C.cellColor(0, 100), C.cellColor(0.2, 100)) > 40);
-  assert.ok(dist(C.cellColor(0.8, 100), C.cellColor(1, 100)) > 40);
-});
-
-test("cellColor: thin evidence is washed toward neutral, regardless of share", () => {
-  const oneCodeAllYes = C.cellColor(1, 1);
-  const neutral = C.cellColor(0.5, 0);
-  // a 100%-yes cell backed by a single code must be much closer to neutral than to teal
-  const dist = (hexA, hexB) => {
-    const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
-    const a = p(hexA), b = p(hexB);
-    return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
-  };
-  assert.ok(dist(oneCodeAllYes, neutral) < dist(oneCodeAllYes, "#1899a2") / 2);
+  assert.ok(dist(C.cellColor(0), C.cellColor(0.2)) > 40);
+  assert.ok(dist(C.cellColor(0.8), C.cellColor(1)) > 40);
 });
 
 test("cellColor: out-of-range shares clamp to endpoints", () => {
-  assert.equal(C.cellColor(2, 100).toLowerCase(), "#1899a2");
-  assert.equal(C.cellColor(-1, 100).toLowerCase(), "#e41e7c");
+  assert.equal(C.cellColor(2).toLowerCase(), "#08454c");
+  assert.equal(C.cellColor(-1).toLowerCase(), "#f4f6fe");
+});
+
+test("lowEvidence: dashed-border rule — only cells with 1..24 codes read", () => {
+  assert.equal(C.lowEvidence(0), false); // grey "none read" cell, nothing to flag
+  assert.equal(C.lowEvidence(1), true);
+  assert.equal(C.lowEvidence(24), true);
+  assert.equal(C.lowEvidence(25), false);
+  assert.equal(C.lowEvidence(5000), false);
 });
 
 test("waffleSquares: 100 squares, worst band first, counts sum to total", () => {
