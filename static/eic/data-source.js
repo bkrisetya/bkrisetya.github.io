@@ -30,8 +30,8 @@ const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
   local: {
-    meta: "./data-meta.json?v=20260903e",
-    orgs: "./data-orgs.json?v=20260903e",
+    meta: "./data-meta.json?v=20260908a",
+    orgs: "./data-orgs.json?v=20260908a",
   },
 
   datasette: {
@@ -169,9 +169,18 @@ const DataSource = (() => {
 
   let _rows = null;
   let _orgsReady = null;
+  let _ownById = {};
 
   function asOrg(row) {
-    return { id: row[0], name: row[1], category: row[2] || "", umbrella: row[3] || "" };
+    const o = { id: row[0], name: row[1], category: row[2] || "", umbrella: row[3] || "" };
+    const extra = _ownById[o.id];
+    if (extra) {
+      o.coded = true;
+      if (extra.nolan) o.nolan = extra.nolan;
+      if (extra.coc) o.coc = extra.coc;
+      if (extra.url) o.url = extra.url;
+    }
+    return o;
   }
 
   async function init() {
@@ -179,6 +188,10 @@ const DataSource = (() => {
       const r = await fetch(cfg.local.meta);
       if (!r.ok) throw new Error(`data-meta.json ${r.status}`);
       _cache = await r.json();
+      _ownById = {};
+      for (const o of ((_cache.meta && _cache.meta.ownOrgs) || [])) {
+        if (o && o.id) _ownById[o.id] = o;
+      }
       _orgsReady = fetch(cfg.local.orgs).then((res) => {
         if (!res.ok) throw new Error(`data-orgs.json ${res.status}`);
         return res.json();
