@@ -53,11 +53,15 @@ function heatmap(ownOrgs, categoryNames, principles) {
   return { rows, cols, cells };
 }
 
-function safetyNetRows(umbrellas, orgRows) {
+/* Scrape-wins: a body whose own code has been read counts under its own code,
+ * not under the umbrella. bodies = umbrella rows − own-coded orgs in that umbrella. */
+function safetyNetRows(umbrellas, orgRows, ownOrgs) {
   const counts = {};
   (orgRows || []).forEach((r) => { if (r[3]) counts[r[3]] = (counts[r[3]] || 0) + 1; });
+  const ownByUmb = {};
+  (ownOrgs || []).forEach((o) => { if (o.umbrella) ownByUmb[o.umbrella] = (ownByUmb[o.umbrella] || 0) + 1; });
   return Object.entries(umbrellas || {})
-    .map(([id, u]) => ({ id, name: u.name || id, bodies: counts[id] || 0, allSeven: scoreOf(u.nolan) === 7, nolan: u.nolan || null }))
+    .map(([id, u]) => ({ id, name: u.name || id, bodies: (counts[id] || 0) - (ownByUmb[id] || 0), allSeven: scoreOf(u.nolan) === 7, nolan: u.nolan || null }))
     .sort((a, b) => b.bodies - a.bodies);
 }
 

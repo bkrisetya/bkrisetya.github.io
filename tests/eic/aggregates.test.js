@@ -62,10 +62,25 @@ test("heatmap cells carry counts and share; empty cells share null", () => {
 test("safetyNetRows counts bodies per umbrella from org rows", () => {
   const umbrellas = { LGA: { name: "Local Government Association code", nolan: n("yyyyyyy") }, DfE: { name: "DfE code", nolan: n("yyyyyny") } };
   const rows = [["1", "A council", "Council", "LGA"], ["2", "B council", "Council", "LGA"], ["3", "A school", "Education", "DfE"], ["4", "Body", "Other", ""]];
-  const out = A.safetyNetRows(umbrellas, rows);
+  const out = A.safetyNetRows(umbrellas, rows, []);
   assert.equal(out.length, 2);
   assert.equal(out[0].id, "LGA"); assert.equal(out[0].bodies, 2); assert.equal(out[0].allSeven, true);
   assert.equal(out[1].allSeven, false);
+});
+
+test("safetyNetRows: scrape-wins — own-coded bodies are subtracted from their umbrella", () => {
+  const umbrellas = { LGA: { name: "LGA code", nolan: n("yyyyyyy") } };
+  const rows = [["1", "A council", "Council", "LGA"], ["2", "B council", "Council", "LGA"], ["3", "C council", "Council", "LGA"]];
+  const ownOrgs = [{ id: "2", umbrella: "LGA" }]; // body 2 has its own code read; its own code wins
+  const out = A.safetyNetRows(umbrellas, rows, ownOrgs);
+  assert.equal(out[0].bodies, 2);
+});
+
+test("real data: per-umbrella covered counts sum to coverage.shared", () => {
+  const raw = require(path.join(__dirname, "../../static/eic/data-meta.json"));
+  const rows = require(path.join(__dirname, "../../static/eic/data-orgs.json"));
+  const out = A.safetyNetRows(raw.umbrellas, rows, raw.meta.ownOrgs);
+  assert.equal(out.reduce((a, r) => a + r.bodies, 0), raw.meta.coverage.shared);
 });
 
 test("real data: hero numbers reconcile with data-meta.json", () => {
