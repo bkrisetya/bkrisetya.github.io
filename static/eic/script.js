@@ -133,13 +133,13 @@ function renderLadderNote() {
 /* ---------- table ---------- */
 function codeCell(o) {
   const r = resolveNolan(o);
-  if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked yet" });
-  const name = r.mode === "own" ? ((o.coc && o.coc.doc_type) || "Own code") : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
-  const cell = el("span", { class: "code-cell" }, [el("span", { class: "code-name", text: name })]);
-  const sc = rScore(r.nolan);
-  const [cls, txt] = sc === 7 ? ["exp", "fully covered"] : sc > 0 ? ["imp", "partially covered"] : ["non", "None covered"];
-  cell.appendChild(el("span", { class: `code-badge ${cls}`, text: txt }));
-  return cell;
+  if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked" });
+  const own = r.mode === "own";
+  const name = own ? ((o.coc && o.coc.doc_type) || "Own code") : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
+  return el("span", { class: "code-cell" }, [
+    el("span", { class: "code-name", text: name }),
+    el("span", { class: `code-badge ${own ? "own" : "shared"}`, text: own ? "Own code" : "Shared code" }),
+  ]);
 }
 function nolanCell(o) {
   const r = resolveNolan(o);

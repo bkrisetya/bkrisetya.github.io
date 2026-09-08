@@ -5,6 +5,19 @@
 
 const PRINCIPLE_IDS = ["selflessness", "integrity", "objectivity", "accountability", "openness", "honesty", "leadership"];
 
+/* Plain-English display labels for the upstream register's own category names.
+ * Heatmap rows only — filtering still keys on the original category. */
+const CATEGORY_LABELS = {
+  "Education": "Schools & colleges",
+  "Parish Council or Meeting": "Parish & town councils",
+  "Council – other (England)": "Other councils (England)",
+  "Welsh council": "Councils (Wales)",
+  "Health and social care": "Health & social care",
+  "Emergency services": "Police & fire services",
+  "Advisory, regulatory, investigatory": "Regulators & watchdogs",
+  "Justice, prosecutorial and enforcement": "Justice & prosecution",
+};
+
 function scoreOf(nolan) {
   return PRINCIPLE_IDS.reduce((a, p) => a + ((nolan && nolan[p] && nolan[p].covered === "yes") ? 1 : 0), 0);
 }
@@ -64,7 +77,7 @@ function heatmap(ownOrgs, categoryNames, principles) {
     });
   });
   cells.forEach((cell) => { cell.share = cell.total ? cell.yes / cell.total : null; });
-  const all = (categoryNames || []).map((name) => ({ name, coded: codedByCat[name] || 0, cats: [name] }))
+  const all = (categoryNames || []).map((name) => ({ name, label: CATEGORY_LABELS[name] || name, coded: codedByCat[name] || 0, cats: [name] }))
     .sort((a, b) => b.coded - a.coded || a.name.localeCompare(b.name));
   const keep = all.filter((r) => r.coded >= HEATMAP_FOLD_MIN);
   const fold = all.filter((r) => r.coded > 0 && r.coded < HEATMAP_FOLD_MIN);
@@ -99,6 +112,6 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { PRINCIPLE_IDS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
 }
-if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };

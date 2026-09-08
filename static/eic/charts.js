@@ -53,8 +53,8 @@ const Charts = (() => {
     chart.setOption({
       grid: { left: 4, right: 8, top: 8, bottom: 8, containLabel: true },
       xAxis: { type: "category", data: hm.cols.map((c) => c.name), axisLabel: { fontSize: 11, interval: 0, rotate: 30 }, axisTick: { show: false }, axisLine: { show: false } },
-      yAxis: { type: "category", data: hm.rows.map((r) => r.name), inverse: true, axisLabel: { fontSize: 11 }, axisTick: { show: false }, axisLine: { show: false } },
-      tooltip: { formatter: (p) => tipText(hm.rows[p.value[1]].name, hm.cols[p.value[0]].name, p.data.cell).replace(/\n/g, "<br>") },
+      yAxis: { type: "category", data: hm.rows.map((r) => r.label || r.name), inverse: true, axisLabel: { fontSize: 11 }, axisTick: { show: false }, axisLine: { show: false } },
+      tooltip: { formatter: (p) => tipText(hm.rows[p.value[1]].label || hm.rows[p.value[1]].name, hm.cols[p.value[0]].name, p.data.cell).replace(/\n/g, "<br>") },
       series: [{ type: "heatmap", data, label: { show: false }, emphasis: { itemStyle: { borderColor: "#1A1463", borderWidth: 2 } } }],
     });
     chart.on("click", (p) => { const r = hm.rows[p.value[1]], c = hm.cols[p.value[0]]; const cell = hm.cells.get(r.name + "|" + c.id); if (cell && cell.total) onCellClick(r.name, c.id); });
@@ -72,14 +72,14 @@ const Charts = (() => {
     const body = table.createTBody();
     hm.rows.forEach((r) => {
       const tr = body.insertRow();
-      const th = document.createElement("th"); th.className = "hm-cat"; th.textContent = r.name; tr.appendChild(th);
+      const th = document.createElement("th"); th.className = "hm-cat"; th.textContent = r.label || r.name; tr.appendChild(th);
       hm.cols.forEach((c) => {
         const cell = hm.cells.get(r.name + "|" + c.id) || { share: null, total: 0, yes: 0 };
         const td = tr.insertCell();
         const btn = document.createElement("button");
         btn.className = "hm-cell"; btn.type = "button"; btn.style.width = "100%";
         btn.style.background = cellColor(cell.share);
-        btn.title = tipText(r.name, c.name, cell);
+        btn.title = tipText(r.label || r.name, c.name, cell);
         btn.dataset.cat = r.name; btn.dataset.pid = c.id;
         if (!cell.total) btn.disabled = true;
         else btn.addEventListener("click", () => onCellClick(r.name, c.id));

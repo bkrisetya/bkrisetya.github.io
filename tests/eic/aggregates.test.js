@@ -130,3 +130,11 @@ test("real data: every umbrella carries provenance (strength, basis, source url)
   const out = A.safetyNetRows(raw.umbrellas, [], raw.meta.ownOrgs);
   assert.ok(out.every((r) => r.strength && r.basis && r.source && r.source.url));
 });
+
+test("heatmap rows carry plain-English labels; identity stays the upstream category", () => {
+  const big = Array.from({ length: A.HEATMAP_FOLD_MIN }, () => ({ category: "Emergency services", nolan: n("yyyyyyy") }));
+  const hm = A.heatmap(big, ["Emergency services"], PRINCIPLES);
+  assert.equal(hm.rows[0].label, "Police & fire services"); // display
+  assert.equal(hm.rows[0].name, "Emergency services");      // filter identity unchanged
+  assert.deepEqual(hm.rows[0].cats, ["Emergency services"]);
+});
