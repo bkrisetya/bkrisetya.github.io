@@ -99,6 +99,15 @@ function renderPatchwork() {
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
   S.hm = Aggregates.heatmap(own, catNames, S.principles);
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
+  /* If the chart library has not finished loading yet, the fallback table was
+   * just drawn; swap in the real heatmap as soon as it is ready. */
+  if (!Charts.available()) {
+    Charts.onEchartsReady(() => {
+      const box = $("heatmap");
+      box.replaceChildren();
+      Charts.renderHeatmap(box, S.hm, onHeatmapCell);
+    });
+  }
   Charts.renderScaleLegend($("heatmap-legend"));
   Charts.renderScoreWaffle($("dist-chart"), Aggregates.scoreBands(own));
   renderStrip();

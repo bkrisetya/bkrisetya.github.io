@@ -1,7 +1,10 @@
 "use strict";
 
-/* Charts for the EIC dashboard. ECharts via CDN when available; otherwise a plain
- * DOM/SVG fallback. Force the fallback with ?nocharts=1 (test hook). */
+/* Charts for the EIC dashboard. ECharts is vendored at ./vendor/echarts.min.js
+ * (pinned 5.5.1) so the page does not depend on a CDN. If the library has not
+ * finished loading when a chart is first rendered, a plain DOM/SVG fallback is
+ * drawn immediately and upgraded to ECharts on the script's load event.
+ * Force the fallback with ?nocharts=1 (test hook). */
 
 const Charts = (() => {
   const TEAL = [0x18, 0x99, 0xa2], DEEP_TEAL = [0x08, 0x45, 0x4c], GREY = "#C3CAD5";
@@ -27,6 +30,21 @@ const Charts = (() => {
     if (typeof window === "undefined") return false;
     if (new URLSearchParams(window.location.search).has("nocharts")) return false;
     return !!window.echarts;
+  }
+
+  /* Run cb once window.echarts exists: immediately if already loaded, otherwise
+   * on the vendored script's load event. Never fires on ?nocharts=1 or if the
+   * script failed (the caller's fallback render simply stays). */
+  function onEchartsReady(cb) {
+    if (!available()) {
+      if (new URLSearchParams(window.location.search).has("nocharts")) return;
+      const tag = document.getElementById("echarts-lib");
+      if (!tag || window.__echartsFailed) return;
+      tag.addEventListener("load", () => { if (window.echarts) cb(); }, { once: true });
+      tag.addEventListener("error", () => { window.__echartsFailed = true; }, { once: true });
+      return;
+    }
+    cb();
   }
 
   /* ---------- heatmap ---------- */
@@ -145,7 +163,7 @@ const Charts = (() => {
     el.replaceChildren(wrap, legend);
   }
 
-  const api = { available, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
+  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   return api;
 })();
