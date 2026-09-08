@@ -119,10 +119,10 @@ const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not c
 const scopeClass = (s) => "sc-" + (s && S.scopeLabels[s] !== undefined ? s : (s || "none"));
 
 function resolveNolan(o) {
+  if (o.coded && o.nolan) return { mode: "own", nolan: o.nolan, coc: o.coc };
   const uid = o.umbrella_id || o.umbrella;
   const u = uid && S.umbrellas[uid];
   if (u) return { mode: "inherited", nolan: u.nolan, from: u.name, fromId: uid, coc: u.coc };
-  if (o.coded && o.nolan) return { mode: "own", nolan: o.nolan, coc: o.coc };
   if (OUT_OF_SCOPE.includes(o.scope)) return { mode: "na", nolan: null };
   return { mode: "none", nolan: null };
 }
@@ -292,8 +292,14 @@ function renderLadder() {
     el("li", {}, [el("span", { class: "rung-n", text: String(i + 1) }), el("span", { text: t })])));
 }
 function renderNaming() {
-  const names = [...new Set(S.coded.filter((o) => o.coc && o.coc.doc_type).map((o) => o.coc.doc_type))];
-  $("naming-list").replaceChildren(...names.map((n) => el("span", { class: "name-chip", text: n })));
+  const counts = {};
+  S.coded.forEach((o) => {
+    const n = o.coc && o.coc.doc_type;
+    if (!n) return;
+    counts[n] = (counts[n] || 0) + 1;
+  });
+  const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+  $("naming-list").replaceChildren(...names.map((n) => el("span", { class: "name-chip", text: `${n} (${fmt(counts[n])})` })));
 }
 
 /* ---------- lens 3: the seven principles ---------- */
