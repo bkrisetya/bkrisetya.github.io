@@ -74,6 +74,10 @@ async function renderSafetyNetFromQuery() {
 }
 
 /* ---------- patchwork ---------- */
+function hmRowCats(name) {
+  const r = S.hm && S.hm.rows.find((x) => x.name === name);
+  return r ? (r.cats || [r.name]) : [name];
+}
 function onHeatmapCell(cat, pid) {
   S.heatmapCat = (S.heatmapCat === cat && S.principleMissing === pid) ? null : cat;
   S.principleMissing = S.heatmapCat ? pid : null;
@@ -212,7 +216,7 @@ function renderLegend() {
 function selectOrg(id, orgs) { S.selectedId = id; renderTable(orgs); renderDetail(orgs.find((o) => o.id === id)); }
 async function refresh() {
   try {
-    const q = { search: $("search").value, category: [...new Set([...checkedVals("f-cat"), ...(S.heatmapCat ? [S.heatmapCat] : [])])], page: 0, pageSize: Number.MAX_SAFE_INTEGER };
+    const q = { search: $("search").value, category: [...new Set([...checkedVals("f-cat"), ...(S.heatmapCat ? hmRowCats(S.heatmapCat) : [])])], page: 0, pageSize: Number.MAX_SAFE_INTEGER };
     const res = await DataSource.query(q);
     let all = res.orgs.filter((o) => !o.is_umbrella);
     if (S.principleMissing) {
@@ -293,7 +297,7 @@ function syncFilterChips() {
   // heatmap selection is authoritative for sectors: clicking a cell replaces any
   // manual sector selection; toggling the cell off clears it entirely
   const cats = $("f-cat"); if (cats) cats.querySelectorAll("input").forEach((i) => {
-    i.checked = !!(S.heatmapCat && i.value === S.heatmapCat);
+    i.checked = !!(S.heatmapCat && hmRowCats(S.heatmapCat).includes(i.value));
     i.closest(".fchip").classList.toggle("on", i.checked);
   });
 }

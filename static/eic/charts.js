@@ -6,9 +6,6 @@
 const Charts = (() => {
   const TEAL = [0x18, 0x99, 0xa2], DEEP_TEAL = [0x08, 0x45, 0x4c], GREY = "#C3CAD5";
   const PAPER = [0xf4, 0xf6, 0xfe]; // 0% share: looks empty, because nothing is there
-  const NAVY = "#1A1463";
-  const NAVY_SOFT = "rgba(26, 20, 99, 0.45)"; // dashed low-evidence border: visible, not shouty
-  const FULL_EVIDENCE = 25; // below this many codes read, a cell gets a dashed border
 
   const hex = (rgb) => "#" + rgb.map((v) => Math.round(v).toString(16).padStart(2, "0")).join("");
   const lerp = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
@@ -26,12 +23,6 @@ const Charts = (() => {
     return hex(shareColour(share));
   }
 
-  /* Thin evidence is shown with a dashed border, a separate channel from colour, so
-   * a small-sample cell keeps its true share colour but is visibly marked fragile. */
-  function lowEvidence(total) {
-    return total > 0 && total < FULL_EVIDENCE;
-  }
-
   function available() {
     if (typeof window === "undefined") return false;
     if (new URLSearchParams(window.location.search).has("nocharts")) return false;
@@ -42,7 +33,7 @@ const Charts = (() => {
   function tipText(cat, principleName, cell) {
     if (!cell.total) return `${principleName} — ${cat}\nWe have not read any codes in this sector yet.`;
     let t = `${principleName} — ${cat}\n${cell.yes} of the ${cell.total} codes we read mention this principle.`;
-    if (lowEvidence(cell.total)) t += `\nOnly ${cell.total} codes read — treat this with care.`;
+    if (cell.note) t += `\n${cell.note}`;
     return t;
   }
 
@@ -57,9 +48,7 @@ const Charts = (() => {
     const data = [];
     hm.rows.forEach((r, y) => hm.cols.forEach((c, x) => {
       const cell = hm.cells.get(r.name + "|" + c.id) || { share: null, total: 0, yes: 0 };
-      const style = { color: cellColor(cell.share), borderColor: "#fff", borderWidth: 2 };
-      if (lowEvidence(cell.total)) { style.borderColor = NAVY_SOFT; style.borderType = "dashed"; }
-      data.push({ value: [x, y, cell.share], cell, itemStyle: style });
+      data.push({ value: [x, y, cell.share], cell, itemStyle: { color: cellColor(cell.share), borderColor: "#fff", borderWidth: 2 } });
     }));
     chart.setOption({
       grid: { left: 4, right: 8, top: 8, bottom: 8, containLabel: true },
@@ -90,7 +79,6 @@ const Charts = (() => {
         const btn = document.createElement("button");
         btn.className = "hm-cell"; btn.type = "button"; btn.style.width = "100%";
         btn.style.background = cellColor(cell.share);
-        if (lowEvidence(cell.total)) btn.style.border = "2px dashed " + NAVY_SOFT;
         btn.title = tipText(r.name, c.name, cell);
         btn.dataset.cat = r.name; btn.dataset.pid = c.id;
         if (!cell.total) btn.disabled = true;
@@ -110,10 +98,6 @@ const Charts = (() => {
       const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = cellColor(v); el.appendChild(sw);
     });
     el.appendChild(mk("All mention it"));
-    const few = document.createElement("span");
-    const fsw = document.createElement("i"); fsw.className = "sw"; fsw.style.border = "2px dashed " + NAVY; fsw.style.background = "transparent";
-    few.appendChild(fsw); few.appendChild(document.createTextNode(" only a few codes read"));
-    el.appendChild(few);
     const g = document.createElement("span");
     const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = GREY;
     g.appendChild(sw); g.appendChild(document.createTextNode(" none read yet"));
@@ -161,7 +145,7 @@ const Charts = (() => {
     el.replaceChildren(wrap, legend);
   }
 
-  const api = { available, cellColor, lowEvidence, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
+  const api = { available, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   return api;
 })();

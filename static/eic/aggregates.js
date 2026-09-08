@@ -43,7 +43,11 @@ function principleBars(ownOrgs, principles) {
   return rows;
 }
 
-/* Cells exist only where at least one coded org exists; missing cell = "no codes read yet". */
+/* Cells exist only where at least one coded org exists; missing cell = "no codes read yet".
+ * Sectors with 1..HEATMAP_FOLD_MIN-1 coded orgs are pooled into a single "Others" row
+ * (kept last, before zero-coded rows) so every visible cell rests on decent evidence. */
+const HEATMAP_FOLD_MIN = 25;
+
 function heatmap(ownOrgs, categoryNames, principles) {
   const cols = (principles || []).map((p) => ({ id: p.id, name: p.name }));
   const cells = new Map();
@@ -60,9 +64,26 @@ function heatmap(ownOrgs, categoryNames, principles) {
     });
   });
   cells.forEach((cell) => { cell.share = cell.total ? cell.yes / cell.total : null; });
-  const rows = (categoryNames || []).map((name) => ({ name, coded: codedByCat[name] || 0 }))
+  const all = (categoryNames || []).map((name) => ({ name, coded: codedByCat[name] || 0, cats: [name] }))
     .sort((a, b) => b.coded - a.coded || a.name.localeCompare(b.name));
-  return { rows, cols, cells };
+  const keep = all.filter((r) => r.coded >= HEATMAP_FOLD_MIN);
+  const fold = all.filter((r) => r.coded > 0 && r.coded < HEATMAP_FOLD_MIN);
+  const zero = all.filter((r) => r.coded === 0);
+  if (fold.length < 2) return { rows: all, cols, cells };
+  const pooled = { name: "Others", coded: 0, cats: [] };
+  fold.forEach((r) => {
+    pooled.coded += r.coded;
+    pooled.cats.push(r.name);
+    cols.forEach((c) => {
+      const key = "Others|" + c.id;
+      if (!cells.has(key)) cells.set(key, { yes: 0, partial: 0, no: 0, unknown: 0, total: 0, note: "Sectors where we have read only a few codes each, grouped together." });
+      const dst = cells.get(key), src = cells.get(r.name + "|" + c.id);
+      ["yes", "partial", "no", "unknown"].forEach((k) => { dst[k] += src[k]; });
+      dst.total += src.total;
+    });
+  });
+  cols.forEach((c) => { const cell = cells.get("Others|" + c.id); cell.share = cell.total ? cell.yes / cell.total : null; });
+  return { rows: [...keep, pooled, ...zero], cols, cells };
 }
 
 /* Scrape-wins: a body whose own code has been read counts under its own code,
@@ -78,6 +99,6 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { PRINCIPLE_IDS, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+  module.exports = { PRINCIPLE_IDS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
 }
-if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };

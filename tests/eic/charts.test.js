@@ -23,14 +23,6 @@ test("cellColor: out-of-range shares clamp to endpoints", () => {
   assert.equal(C.cellColor(-1).toLowerCase(), "#f4f6fe");
 });
 
-test("lowEvidence: dashed-border rule — only cells with 1..24 codes read", () => {
-  assert.equal(C.lowEvidence(0), false); // grey "none read" cell, nothing to flag
-  assert.equal(C.lowEvidence(1), true);
-  assert.equal(C.lowEvidence(24), true);
-  assert.equal(C.lowEvidence(25), false);
-  assert.equal(C.lowEvidence(5000), false);
-});
-
 test("waffleSquares: 100 squares, worst band first, counts sum to total", () => {
   // real data shape: 4189 none, 2310 one-or-two, 337 three-to-five, 232 six-or-seven of 7068
   const sq = C.waffleSquares([{ count: 4189 }, { count: 2310 }, { count: 337 }, { count: 232 }], 7068);

@@ -57,19 +57,36 @@ test("principleBars sorted weakest first", () => {
 });
 
 test("heatmap cells carry counts and share; empty cells share null", () => {
-  const orgs = [
-    { category: "Health", nolan: n("yyyyyyy") },
-    { category: "Health", nolan: n("nnnnnnn") },
-    { category: "Justice", nolan: n("ynnnnnn") },
-  ];
-  const hm = A.heatmap(orgs, ["Health", "Justice", "Empty"], PRINCIPLES);
-  assert.deepEqual(hm.rows.map((r) => r.name), ["Health", "Justice", "Empty"]);
-  assert.equal(hm.rows[0].coded, 2);
+  const health = Array.from({ length: A.HEATMAP_FOLD_MIN }, (_, i) => ({ category: "Health", nolan: n(i % 2 ? "yyyyyyy" : "nnnnnnn") }));
+  const hm = A.heatmap([...health], ["Health", "Empty"], PRINCIPLES);
+  assert.deepEqual(hm.rows.map((r) => r.name), ["Health", "Empty"]);
+  assert.equal(hm.rows[0].coded, A.HEATMAP_FOLD_MIN);
   const healthSelf = hm.cells.get("Health|selflessness");
-  assert.deepEqual([healthSelf.yes, healthSelf.no, healthSelf.total], [1, 1, 2]);
-  assert.equal(healthSelf.share, 0.5);
+  assert.equal(healthSelf.yes + healthSelf.no, healthSelf.total);
+  assert.equal(healthSelf.share, healthSelf.yes / healthSelf.total);
   assert.equal(hm.cells.get("Empty|selflessness"), undefined); // no coded orgs -> no cell
-  assert.equal(hm.rows[2].coded, 0);
+  assert.equal(hm.rows[1].coded, 0);
+});
+
+test("heatmap folds thin sectors into a pooled Others row", () => {
+  const big = Array.from({ length: A.HEATMAP_FOLD_MIN }, () => ({ category: "Health", nolan: n("yyyyyyy") }));
+  const thinA = Array.from({ length: 10 }, () => ({ category: "Thin A", nolan: n("ynnnnnn") }));
+  const thinB = Array.from({ length: 5 }, () => ({ category: "Thin B", nolan: n("nnnnnnn") }));
+  const hm = A.heatmap([...big, ...thinA, ...thinB], ["Health", "Thin A", "Thin B", "Empty"], PRINCIPLES);
+  assert.deepEqual(hm.rows.map((r) => r.name), ["Health", "Others", "Empty"]);
+  const others = hm.rows[1];
+  assert.equal(others.coded, 15);
+  assert.deepEqual(others.cats, ["Thin A", "Thin B"]);
+  const cell = hm.cells.get("Others|selflessness");
+  assert.deepEqual([cell.yes, cell.no, cell.total], [10, 5, 15]);
+  assert.equal(cell.share, 10 / 15);
+  assert.ok(cell.note); // tooltip explains the grouping
+});
+
+test("heatmap does not fold a single thin sector", () => {
+  const big = Array.from({ length: A.HEATMAP_FOLD_MIN }, () => ({ category: "Health", nolan: n("yyyyyyy") }));
+  const hm = A.heatmap([...big, { category: "Thin A", nolan: n("ynnnnnn") }], ["Health", "Thin A"], PRINCIPLES);
+  assert.deepEqual(hm.rows.map((r) => r.name), ["Health", "Thin A"]);
 });
 
 test("safetyNetRows counts bodies per umbrella from org rows", () => {
