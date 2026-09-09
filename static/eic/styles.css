@@ -12,6 +12,8 @@
   --magenta: #E41E7C;
   --grey: #C3CAD5;
   --grey-dark: #9AA3B2;
+  --shared: #9B97CF; /* shared-code layer: washed navy tint, weaker than teal on purpose */
+  --shared-soft: #E4E3F3;
   --font: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -60,8 +62,8 @@ section { margin-bottom: 48px; }
 .nolan-mini i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 .nolan-mini .score { margin-left: 8px; font-size: 0.85rem; color: var(--ink-soft); }
 i.cov-yes, .dot.cov-yes { background: var(--teal); }
-i.cov-yes-shared, .dot.cov-yes-shared { background: var(--navy); }
-i.cov-yes-both, .dot.cov-yes-both { background: linear-gradient(90deg, var(--teal) 50%, var(--navy) 50%); }
+i.cov-yes-shared, .dot.cov-yes-shared { background: var(--shared); }
+i.cov-yes-both, .dot.cov-yes-both { background: linear-gradient(90deg, var(--teal) 50%, var(--shared) 50%); }
 i.cov-partial, .dot.cov-partial { background: var(--teal-light); border: 1px solid var(--teal); }
 i.cov-no, .dot.cov-no { background: var(--magenta); }
 i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
@@ -77,7 +79,7 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .hm-count { font-size: 0.75rem; color: var(--ink-soft); text-align: right; padding-left: 8px; }
 .scale-legend { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--ink-soft); margin-top: 10px; flex-wrap: wrap; }
 .scale-legend .sw { width: 18px; height: 12px; display: inline-block; border: 1px solid #C3CAD5; }
-.hm-mark { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--navy); vertical-align: -1px; }
+.hm-mark { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--shared); vertical-align: -1px; }
 .hm-mark-note { margin-left: 10px; }
 
 /* ---------- waffle + strips ---------- */
@@ -91,13 +93,13 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .p-name { font-weight: 600; font-size: 0.95rem; }
 .strip-bar { display: flex; height: 16px; border-radius: 3px; overflow: hidden; background: var(--grey); }
 .strip-bar .s-yes { background: var(--teal); }
-.strip-bar .s-shared { background: var(--navy); }
+.strip-bar .s-shared { background: var(--shared); }
 .strip-bar .s-no { background: var(--grey-dark); }
 .strip-bar .s-unchecked { background: var(--grey); }
 .strip-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.8rem; color: var(--ink-soft); margin-top: 10px; }
 .strip-legend i.sl { width: 12px; height: 12px; border-radius: 3px; display: inline-block; vertical-align: -1px; margin-right: 4px; }
 .strip-legend .s-yes { background: var(--teal); }
-.strip-legend .s-shared { background: var(--navy); }
+.strip-legend .s-shared { background: var(--shared); }
 .strip-legend .s-no { background: var(--grey-dark); }
 .strip-legend .s-unchecked { background: var(--grey); }
 .p-count { font-size: 0.85rem; color: var(--ink-soft); text-align: right; }
@@ -136,7 +138,7 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .code-cell .code-name { display: block; }
 .code-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; border-radius: 999px; padding: 1px 9px; margin-top: 3px; }
 .code-badge.own { background: var(--teal); color: #fff; }
-.code-badge.shared { background: var(--navy); color: #fff; }
+.code-badge.shared { background: var(--shared-soft); color: var(--navy); }
 .muted-cell { color: var(--ink-soft); font-size: 0.9rem; }
 .pager { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
 .pager-btn { font: inherit; font-size: 0.9rem; padding: 6px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--navy); cursor: pointer; }

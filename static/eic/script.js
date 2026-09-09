@@ -165,13 +165,13 @@ function notChecked() {
   return (S.meta.coverage && S.meta.coverage.tocheck) || 0;
 }
 
-/* One story everywhere: teal = the body's own code, navy = the shared code
- * backstops it, grey = not covered / not checked. */
+/* One story everywhere: teal = the body's own code, soft periwinkle = the
+ * shared code backstops it, grey = not covered / not checked. */
 function renderDist() {
   const bands = Aggregates.scoreBands(S.coded, null).map((b, i) => ({
     label: `Own code: ${b.label.toLowerCase()}`, count: b.count, colour: Charts.BAND_COLOURS[i],
   }));
-  bands.push({ label: "Shared code: all 7", count: sharedBodies(), colour: "#1A1463" });
+  bands.push({ label: "Shared code: all 7", count: sharedBodies(), colour: Charts.SHARED });
   bands.push({ label: "Not checked", count: notChecked(), colour: "#C3CAD5" });
   Charts.renderScoreWaffle($("dist-chart"), bands);
   $("dist-hint").textContent = "Each square is one percent of the register.";

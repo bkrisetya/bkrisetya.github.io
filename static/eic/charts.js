@@ -95,7 +95,7 @@ const Charts = (() => {
       yAxis: { type: "category", data: hm.rows.map((r) => r.label || r.name), inverse: true,
         axisLabel: { fontSize: 11,
           formatter: (val, idx) => (marks && marks.has(hm.rows[idx].name) ? `{mk|●} ${val}` : val),
-          rich: { mk: { color: "#1A1463", fontSize: 11, fontWeight: 700 } } },
+          rich: { mk: { color: "#9B97CF", fontSize: 11, fontWeight: 700 } } },
         axisTick: { show: false }, axisLine: { show: false } },
       tooltip: { formatter: (p) => tipText(hm.rows[p.value[1]].label || hm.rows[p.value[1]].name, hm.cols[p.value[0]].name, p.data.cell, hm.unit).replace(/\n/g, "<br>") },
       series: [{ type: "heatmap", data, label: { show: false }, emphasis: { itemStyle: { borderColor: "#1A1463", borderWidth: 2 } } }],
@@ -159,7 +159,8 @@ const Charts = (() => {
   /* EIC families as a readable progression for own-code scores: magenta -> purple -> sky -> teal.
    * Bands passed to renderScoreWaffle carry their own colour, so shared-code and
    * not-checked bands can join the same waffle in navy and grey. */
-  const BAND_COLOURS = ["#E41E7C", "#9851FB", "#3CB7F4", "#1899A2"]; // none / 1-2 / 3-5 / 6-7
+  const BAND_COLOURS = ["#C9E9EA", "#7CC6C9", "#1899A2", "#08454C"]; // own-code score: none / 1-2 / 3-5 / 6-7 — teal ladder, more principles = deeper
+  const SHARED = "#9B97CF"; // shared-code layer: a washed tint of navy, deliberately weaker than teal
 
   /* 100 squares, worst band first. Largest-remainder rounding so squares sum to 100. */
   function waffleSquares(bands, total) {
@@ -198,7 +199,7 @@ const Charts = (() => {
     el.replaceChildren(wrap, legend);
   }
 
-  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
+  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS, SHARED };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   return api;
 })();
