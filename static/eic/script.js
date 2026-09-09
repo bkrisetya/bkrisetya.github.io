@@ -1,6 +1,6 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, docType: null, sharedRows: [], sharedByCat: {}, distTab: "individual", stripTab: "individual", hmTab: "individual" };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, docType: null, sharedRows: [], sharedByCat: {} };
 const PAGE_SIZE = 25;
 
 function el(tag, props = {}, children = []) {
@@ -88,7 +88,7 @@ function renderSafetyNet(rows) {
 /* The safety net needs raw [id,name,category,umbrella] rows, which DataSource.query
  * maps to objects. Re-derive the row shape from one big page; if the adapter later
  * grows a raw-rows accessor, only this function changes. The same rows feed the
- * "with shared codes" tabs of the waffle and strip charts. */
+ * shared-code layer of the waffle, strip and heatmap. */
 async function renderSafetyNetFromQuery() {
   try {
     const res = await DataSource.query({ page: 0, pageSize: Number.MAX_SAFE_INTEGER });
@@ -135,33 +135,25 @@ function renderPatchwork() {
 }
 
 function renderHm() {
-  const sharedOnly = S.hmTab === "shared";
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
-  S.hm = Aggregates.heatmap(sharedOnly ? [] : S.coded, catNames, S.principles, sharedOnly ? S.sharedByCat : null);
-  Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
+  S.hm = Aggregates.heatmap(S.coded, catNames, S.principles, null);
+  /* Navy dot on rows whose sector has a shared code (all four cover all seven). */
+  const marks = new Set(Object.keys(S.sharedByCat));
+  Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell, marks);
   /* If the chart library has not finished loading yet, the fallback table was
    * just drawn; swap in the real heatmap as soon as it is ready. */
   if (!Charts.available()) {
     Charts.onEchartsReady(() => {
       const box = $("heatmap");
       box.replaceChildren();
-      Charts.renderHeatmap(box, S.hm, onHeatmapCell);
+      Charts.renderHeatmap(box, S.hm, onHeatmapCell, marks);
     });
   }
-  Charts.renderScaleLegend($("heatmap-legend"), S.hm.unit);
-}
-
-/* ---------- shared tab plumbing for the waffle and the strip ---------- */
-function wireTabs(boxId, key, rerender) {
-  const box = $(boxId);
-  if (!box) return;
-  box.querySelectorAll("button[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x.dataset.tab === S[key])));
-  box.querySelectorAll("button[data-tab]").forEach((b) => b.addEventListener("click", () => {
-    if (S[key] === b.dataset.tab) return;
-    S[key] = b.dataset.tab;
-    box.querySelectorAll("button[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
-    rerender();
-  }));
+  Charts.renderScaleLegend($("heatmap-legend"), "codes");
+  if (marks.size) {
+    $("heatmap-legend").appendChild(el("span", { class: "hm-mark-note" },
+      [el("i", { class: "hm-mark" }), " A shared code covers all seven principles in this sector"]));
+  }
 }
 
 /* sharedRows are the umbrella totals after scrape-wins (bodies whose own code we
@@ -169,33 +161,45 @@ function wireTabs(boxId, key, rerender) {
 function sharedBodies() {
   return S.sharedRows.reduce((a, r) => a + r.bodies, 0);
 }
+function notChecked() {
+  return (S.meta.coverage && S.meta.coverage.tocheck) || 0;
+}
 
+/* One story everywhere: teal = the body's own code, navy = the shared code
+ * backstops it, grey = not covered / not checked. */
 function renderDist() {
-  const sharedOnly = S.distTab === "shared";
-  const bands = Aggregates.scoreBands(sharedOnly ? [] : S.coded, sharedOnly ? S.sharedRows : null);
-  Charts.renderScoreWaffle($("dist-chart"), bands, sharedOnly ? "bodies" : "codes");
-  $("dist-hint").textContent = sharedOnly
-    ? "Each square is one percent of the bodies covered by a shared sector code."
-    : "Each square is one percent of the codes we have read.";
+  const bands = Aggregates.scoreBands(S.coded, null).map((b, i) => ({
+    label: `Own code: ${b.label.toLowerCase()}`, count: b.count, colour: Charts.BAND_COLOURS[i],
+  }));
+  bands.push({ label: "Shared code: all 7", count: sharedBodies(), colour: "#1A1463" });
+  bands.push({ label: "Not checked", count: notChecked(), colour: "#C3CAD5" });
+  Charts.renderScoreWaffle($("dist-chart"), bands);
+  $("dist-hint").textContent = "Each square is one percent of the register.";
 }
 
 /* ---------- the seven principles strip, weakest first ---------- */
 function renderStrip() {
-  const sharedOnly = S.stripTab === "shared";
-  const rows = Aggregates.principleBars(sharedOnly ? [] : S.coded, S.principles, sharedOnly ? S.sharedRows : null);
-  const total = sharedOnly ? sharedBodies() : S.coded.length;
+  const rows = Aggregates.principleBars(S.coded, S.principles, null);
+  /* Bodies covered through a shared code, per principle. */
+  const sharedYes = {};
+  S.sharedRows.forEach((s) => S.principles.forEach((p) => {
+    if (rCov(s.nolan, p.id) === "yes") sharedYes[p.id] = (sharedYes[p.id] || 0) + s.bodies;
+  }));
+  rows.forEach((r) => { r.shared = sharedYes[r.id] || 0; });
+  rows.sort((a, b) => (a.yes + a.shared) - (b.yes + b.shared) || a.name.localeCompare(b.name));
+  const total = S.coded.length + sharedBodies() + notChecked();
   const n = total || 1;
-  $("strip-rows").classList.toggle("strip-shared", sharedOnly);
-  $("strip-rows").replaceChildren(...rows.map(({ name, yes, partial, no, unknown }) => {
-    const tip = sharedOnly
-      ? `${yes.toLocaleString("en-GB")} of ${total.toLocaleString("en-GB")} bodies have ${name} in their sector's shared code`
-      : `${yes} of ${total.toLocaleString("en-GB")} codes mention ${name}`;
+  $("strip-rows").replaceChildren(...rows.map((r) => {
+    const covered = r.yes + r.shared;
+    const tip = `${r.yes} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(notChecked())} bodies not checked.`;
     const bar = el("div", { class: "strip-bar", title: tip });
-    for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {
+    for (const [k, v] of [["yes", r.yes], ["shared", r.shared], ["no", r.no], ["unchecked", notChecked()]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
     }
-    return el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${yes === n ? 100 : Math.min(99, Math.round((yes / n) * 100))}%` })]);
+    return el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: r.name }), bar, el("div", { class: "p-count", text: `${covered === n ? 100 : Math.min(99, Math.round((covered / n) * 100))}%` })]);
   }));
+  $("strip-legend").replaceChildren(...[["s-yes", "own code mentions it"], ["s-shared", "shared code covers it"], ["s-no", "not mentioned"], ["s-unchecked", "not checked"]]
+    .map(([c, l]) => el("span", {}, [el("i", { class: `sl ${c}` }), l])));
 }
 
 /* ---------- footnote: what bodies call their code ---------- */
@@ -430,17 +434,12 @@ async function boot() {
   S.allCount = meta.total;
   S.coded = meta.ownOrgs || [];
   renderHero();
-  await renderSafetyNetFromQuery(); // populates S.sharedRows, needed by the chart tabs
+  await renderSafetyNetFromQuery(); // populates S.sharedRows, the shared-code layer
   renderPatchwork();
   renderLadderNote();
   renderLegend();
   fillChecks("f-cat", meta.categoryFacets);
   fillPrincipleChecks();
-  if (new URLSearchParams(window.location.search).get("tabs") === "shared") { S.distTab = "shared"; S.stripTab = "shared"; S.hmTab = "shared"; }
-  wireTabs("dist-tabs", "distTab", renderDist);
-  wireTabs("strip-tabs", "stripTab", renderStrip);
-  wireTabs("hm-tabs", "hmTab", renderHm);
-  if (S.distTab === "shared" || S.stripTab === "shared" || S.hmTab === "shared") { renderHm(); renderDist(); renderStrip(); }
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
   await refresh();
 }

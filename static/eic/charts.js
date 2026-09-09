@@ -64,17 +64,17 @@ const Charts = (() => {
     return t;
   }
 
-  function renderHeatmap(el, hm, onCellClick) {
+  function renderHeatmap(el, hm, onCellClick, marks) {
     if (available()) {
       /* If ECharts itself throws (blocked script, canvas/GPU issue, zero-size
        * init), fall back to the plain table rather than leaving a blank panel. */
-      try { return echartsHeatmap(el, hm, onCellClick); }
+      try { return echartsHeatmap(el, hm, onCellClick, marks); }
       catch (e) { console.warn("echarts heatmap failed, using table fallback", e); }
     }
-    return domHeatmap(el, hm, onCellClick);
+    return domHeatmap(el, hm, onCellClick, marks);
   }
 
-  function echartsHeatmap(el, hm, onCellClick) {
+  function echartsHeatmap(el, hm, onCellClick, marks) {
     const prev = echarts.getInstanceByDom(el);
     if (prev) prev.dispose();
     /* Height must be set before init: ECharts measures the element at init time
@@ -92,7 +92,11 @@ const Charts = (() => {
     chart.setOption({
       grid: { left: 4, right: 8, top: 8, bottom: 8, containLabel: true },
       xAxis: { type: "category", data: hm.cols.map((c) => c.name), axisLabel: { fontSize: 11, interval: 0, rotate: 30 }, axisTick: { show: false }, axisLine: { show: false } },
-      yAxis: { type: "category", data: hm.rows.map((r) => r.label || r.name), inverse: true, axisLabel: { fontSize: 11 }, axisTick: { show: false }, axisLine: { show: false } },
+      yAxis: { type: "category", data: hm.rows.map((r) => r.label || r.name), inverse: true,
+        axisLabel: { fontSize: 11,
+          formatter: (val, idx) => (marks && marks.has(hm.rows[idx].name) ? `{mk|●} ${val}` : val),
+          rich: { mk: { color: "#1A1463", fontSize: 11, fontWeight: 700 } } },
+        axisTick: { show: false }, axisLine: { show: false } },
       tooltip: { formatter: (p) => tipText(hm.rows[p.value[1]].label || hm.rows[p.value[1]].name, hm.cols[p.value[0]].name, p.data.cell, hm.unit).replace(/\n/g, "<br>") },
       series: [{ type: "heatmap", data, label: { show: false }, emphasis: { itemStyle: { borderColor: "#1A1463", borderWidth: 2 } } }],
     });
@@ -104,17 +108,22 @@ const Charts = (() => {
     return chart;
   }
 
-  function domHeatmap(el, hm, onCellClick) {
+  function domHeatmap(el, hm, onCellClick, marks) {
     const table = document.createElement("table");
     table.className = "hm-table";
     const head = table.createTHead().insertRow();
     head.appendChild(document.createElement("th")).className = "hm-cat";
     hm.cols.forEach((c) => { const th = document.createElement("th"); th.textContent = c.name; head.appendChild(th); });
-    head.appendChild(document.createElement("th")).textContent = hm.unit === "bodies" ? "Bodies" : "Codes read";
+    head.appendChild(document.createElement("th")).textContent = "Codes read";
     const body = table.createTBody();
     hm.rows.forEach((r) => {
       const tr = body.insertRow();
-      const th = document.createElement("th"); th.className = "hm-cat"; th.textContent = r.label || r.name; tr.appendChild(th);
+      const th = document.createElement("th"); th.className = "hm-cat";
+      if (marks && marks.has(r.name)) {
+        const d = document.createElement("i"); d.className = "hm-mark"; d.title = "A shared code covers all seven principles in this sector.";
+        th.appendChild(d); th.appendChild(document.createTextNode(" "));
+      }
+      th.appendChild(document.createTextNode(r.label || r.name)); tr.appendChild(th);
       hm.cols.forEach((c) => {
         const cell = hm.cells.get(r.name + "|" + c.id) || { share: null, total: 0, yes: 0 };
         const td = tr.insertCell();
@@ -147,11 +156,10 @@ const Charts = (() => {
   }
 
   /* ---------- score waffle ---------- */
-  /* EIC families as a readable progression: magenta -> purple -> sky -> teal.
-   * The shared-code tab switches to a navy ramp to match the "Shared code"
-   * badges and register dots. */
+  /* EIC families as a readable progression for own-code scores: magenta -> purple -> sky -> teal.
+   * Bands passed to renderScoreWaffle carry their own colour, so shared-code and
+   * not-checked bands can join the same waffle in navy and grey. */
   const BAND_COLOURS = ["#E41E7C", "#9851FB", "#3CB7F4", "#1899A2"]; // none / 1-2 / 3-5 / 6-7
-  const BAND_COLOURS_SHARED = ["#D8D6EE", "#9B97CF", "#56519E", "#1A1463"];
 
   /* 100 squares, worst band first. Largest-remainder rounding so squares sum to 100. */
   function waffleSquares(bands, total) {
@@ -167,24 +175,22 @@ const Charts = (() => {
     return out.slice(0, 100);
   }
 
-  function renderScoreWaffle(el, bands, unit) {
-    unit = unit || "codes";
-    const palette = unit === "bodies" ? BAND_COLOURS_SHARED : BAND_COLOURS;
+  function renderScoreWaffle(el, bands) {
     const total = bands.reduce((a, b) => a + b.count, 0);
     const wrap = document.createElement("div");
     wrap.className = "waffle";
     waffleSquares(bands, total).forEach((band) => {
       const sq = document.createElement("i");
       sq.className = "waffle-sq";
-      sq.style.background = palette[band];
-      sq.title = `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")} ${unit}`;
+      sq.style.background = bands[band].colour;
+      sq.title = `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")}`;
       wrap.appendChild(sq);
     });
     const legend = document.createElement("div");
     legend.className = "waffle-legend";
-    bands.forEach((b, i) => {
+    bands.forEach((b) => {
       const item = document.createElement("span");
-      const sw = document.createElement("i"); sw.style.background = palette[i];
+      const sw = document.createElement("i"); sw.style.background = b.colour;
       item.appendChild(sw);
       item.appendChild(document.createTextNode(` ${b.label} — ${b.count.toLocaleString("en-GB")}`));
       legend.appendChild(item);
@@ -192,7 +198,7 @@ const Charts = (() => {
     el.replaceChildren(wrap, legend);
   }
 
-  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS, BAND_COLOURS_SHARED };
+  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   return api;
 })();
