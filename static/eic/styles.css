@@ -61,6 +61,7 @@ section { margin-bottom: 48px; }
 .nolan-mini .score { margin-left: 8px; font-size: 0.85rem; color: var(--ink-soft); }
 i.cov-yes, .dot.cov-yes { background: var(--teal); }
 i.cov-yes-shared, .dot.cov-yes-shared { background: var(--navy); }
+i.cov-yes-both, .dot.cov-yes-both { background: linear-gradient(90deg, var(--teal) 50%, var(--navy) 50%); }
 i.cov-partial, .dot.cov-partial { background: var(--teal-light); border: 1px solid var(--teal); }
 i.cov-no, .dot.cov-no { background: var(--magenta); }
 i.cov-unknown, .dot.cov-unknown { background: var(--grey); }

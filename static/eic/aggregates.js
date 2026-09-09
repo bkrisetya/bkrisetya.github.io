@@ -22,6 +22,26 @@ function scoreOf(nolan) {
   return PRINCIPLE_IDS.reduce((a, p) => a + ((nolan && nolan[p] && nolan[p].covered === "yes") ? 1 : 0), 0);
 }
 
+/* "With shared codes" means the union: a principle counts as covered when the
+ * body's own code OR its sector's shared code mentions it. Bodies without an
+ * umbrella pass through untouched. Rank: yes > partial > no > unknown. */
+const COV_RANK = { yes: 3, partial: 2, no: 1, unknown: 0 };
+function mergeSharedCoverage(ownOrgs, umbrellas, principles) {
+  const ids = (principles || []).map((p) => p.id || p);
+  return (ownOrgs || []).map((o) => {
+    const uid = o.umbrella_id || o.umbrella;
+    const u = uid && umbrellas && umbrellas[uid];
+    if (!u || !u.nolan || !o.nolan) return o;
+    const nolan = {};
+    ids.forEach((pid) => {
+      const a = (o.nolan[pid] && o.nolan[pid].covered) || "unknown";
+      const b = (u.nolan[pid] && u.nolan[pid].covered) || "unknown";
+      nolan[pid] = { covered: (COV_RANK[a] || 0) >= (COV_RANK[b] || 0) ? a : b };
+    });
+    return { ...o, nolan };
+  });
+}
+
 function heroNumbers(meta) {
   const cov = meta.coverage || {};
   const shared = cov.shared || 0, own = cov.own || 0, tocheck = cov.tocheck || 0;
@@ -137,6 +157,6 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows, mergeSharedCoverage };
 }
-if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows, mergeSharedCoverage };
