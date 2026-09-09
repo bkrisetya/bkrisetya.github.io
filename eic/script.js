@@ -25,17 +25,34 @@ const fmt = (n) => (n == null ? "-" : n.toLocaleString("en-GB"));
 const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code" };
 const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not covered", unknown: "not checked" }[c] || c);
 
+/* A body can have its own code, a shared sector code, both, or neither.
+ * Each side is resolved separately so dots and badges can show both. */
 function resolveNolan(o) {
-  if (o.coded && o.nolan) return { mode: "own", nolan: o.nolan, coc: o.coc };
+  const own = o.coded && o.nolan ? { nolan: o.nolan, coc: o.coc } : null;
   const uid = o.umbrella_id || o.umbrella;
   const u = uid && S.umbrellas[uid];
-  if (u) return { mode: "inherited", nolan: u.nolan, from: u.name, fromId: uid, coc: u.coc };
-  return { mode: "none", nolan: null };
+  const shared = u ? { nolan: u.nolan, name: u.name, fromId: uid, coc: u.coc } : null;
+  return { own, shared };
 }
 const rCov = (n, pid) => (n && n[pid] && n[pid].covered) || "unknown";
 const rScore = (n) => S.principles.filter((p) => rCov(n, p.id) === "yes").length;
+/* Union score: principles covered by the body's own code or the shared code. */
+const uScore = (r) => S.principles.filter((p) =>
+  (r.own && rCov(r.own.nolan, p.id) === "yes") || (r.shared && rCov(r.shared.nolan, p.id) === "yes")).length;
+
+/* Per-principle dot: teal = their own code covers it, navy = the shared code
+ * does, split teal/navy = both do. */
+function dotInfo(r, pid) {
+  const ownC = r.own ? rCov(r.own.nolan, pid) : null;
+  const shrC = r.shared ? rCov(r.shared.nolan, pid) : null;
+  if (ownC === "yes" && shrC === "yes") return { cls: "cov-yes-both", label: "covered by both their own code and the shared code" };
+  if (ownC === "yes") return { cls: "cov-yes", label: "covered by their own code" };
+  if (shrC === "yes") return { cls: "cov-yes-shared", label: "covered by the shared code" };
+  const c = ownC || shrC || "unknown";
+  return { cls: `cov-${c}`, label: humanCov(c) };
+}
 /* Covered dots match the badge colours: teal = the body's own code, navy = a
- * shared sector code. */
+ * shared sector code. Used by the safety net, whose rows are the shared codes. */
 const covClass = (cov, mode) => (cov === "yes" && mode === "inherited" ? "cov-yes-shared" : `cov-${cov}`);
 
 /* ---------- hero ---------- */
@@ -118,7 +135,7 @@ function renderPatchwork() {
 }
 
 function renderHm() {
-  const own = S.coded;
+  const own = S.hmTab === "shared" ? Aggregates.mergeSharedCoverage(S.coded, S.umbrellas, S.principles) : S.coded;
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
   S.hm = Aggregates.heatmap(own, catNames, S.principles, S.hmTab === "shared" ? S.sharedByCat : null);
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
@@ -155,7 +172,8 @@ function sharedBodies() {
 
 function renderDist() {
   const withShared = S.distTab === "shared";
-  const bands = Aggregates.scoreBands(S.coded, withShared ? S.sharedRows : null);
+  const coded = withShared ? Aggregates.mergeSharedCoverage(S.coded, S.umbrellas, S.principles) : S.coded;
+  const bands = Aggregates.scoreBands(coded, withShared ? S.sharedRows : null);
   Charts.renderScoreWaffle($("dist-chart"), bands, withShared ? "bodies" : "codes");
   $("dist-hint").textContent = withShared
     ? "Each square is one percent of all covered bodies, shared sector codes included."
@@ -165,7 +183,7 @@ function renderDist() {
 /* ---------- the seven principles strip, weakest first ---------- */
 function renderStrip() {
   const withShared = S.stripTab === "shared";
-  const coded = S.coded;
+  const coded = withShared ? Aggregates.mergeSharedCoverage(S.coded, S.umbrellas, S.principles) : S.coded;
   const rows = Aggregates.principleBars(coded, S.principles, withShared ? S.sharedRows : null);
   const total = coded.length + (withShared ? sharedBodies() : 0);
   const n = total || 1;
@@ -178,7 +196,7 @@ function renderStrip() {
     for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
     }
-    return el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${Math.round((yes / n) * 100)}%` })]);
+    return el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: name }), bar, el("div", { class: "p-count", text: `${yes === n ? 100 : Math.min(99, Math.round((yes / n) * 100))}%` })]);
   }));
 }
 
@@ -207,20 +225,23 @@ function renderLadderNote() {
 /* ---------- table ---------- */
 function codeCell(o) {
   const r = resolveNolan(o);
-  if (r.mode === "none") return el("span", { class: "muted-cell", text: "Not checked" });
-  const own = r.mode === "own";
-  const name = own ? ((o.coc && o.coc.doc_type) || "Own code") : `Covered by ${UMBRELLA_SHORT[r.fromId] || r.fromId}`;
-  return el("span", { class: "code-cell" }, [
-    el("span", { class: "code-name", text: name }),
-    el("span", { class: `code-badge ${own ? "own" : "shared"}`, text: own ? "Own code" : "Shared code" }),
-  ]);
+  if (!r.own && !r.shared) return el("span", { class: "muted-cell", text: "Not checked" });
+  const name = r.own ? ((o.coc && o.coc.doc_type) || "Own code") : `Covered by ${UMBRELLA_SHORT[r.shared.fromId] || r.shared.fromId}`;
+  const badges = [];
+  if (r.own) badges.push(el("span", { class: "code-badge own", text: "Own code" }));
+  if (r.shared) badges.push(el("span", {
+    class: "code-badge shared",
+    title: r.own ? `Also covered by ${UMBRELLA_SHORT[r.shared.fromId] || r.shared.name}` : null,
+    text: "Shared code",
+  }));
+  return el("span", { class: "code-cell" }, [el("span", { class: "code-name", text: name }), ...badges]);
 }
 function nolanCell(o) {
   const r = resolveNolan(o);
-  if (r.mode === "none") return el("span", { class: "muted-cell", text: "not checked" });
+  if (!r.own && !r.shared) return el("span", { class: "muted-cell", text: "not checked" });
   const wrap = el("span", { class: "nolan-mini" });
-  S.principles.forEach((p) => wrap.appendChild(el("i", { class: covClass(rCov(r.nolan, p.id), r.mode), title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
-  wrap.appendChild(el("span", { class: "score", text: `${rScore(r.nolan)} of 7` }));
+  S.principles.forEach((p) => { const d = dotInfo(r, p.id); wrap.appendChild(el("i", { class: d.cls, title: `${p.name}: ${d.label}` })); });
+  wrap.appendChild(el("span", { class: "score", text: `${uScore(r)} of 7` }));
   return wrap;
 }
 function renderTable(orgs) {
@@ -243,12 +264,13 @@ function renderTable(orgs) {
 }
 
 /* ---------- detail ---------- */
-function principleList(nolan, mode) {
+function principleList(r) {
   const grid = el("div", { class: "d-princ" });
   S.principles.forEach((p) => {
-    const cov = rCov(nolan, p.id);
-    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot ${covClass(cov, mode)}` }),
-      el("div", {}, [el("b", { text: `${p.name}: ${humanCov(cov)}` }), el("span", { class: "ev", text: (nolan[p.id] && nolan[p.id].evidence) || "" })])]));
+    const d = dotInfo(r, p.id);
+    const ev = (r.own && r.own.nolan[p.id] && r.own.nolan[p.id].evidence) || (r.shared && r.shared.nolan[p.id] && r.shared.nolan[p.id].evidence) || "";
+    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot ${d.cls}` }),
+      el("div", {}, [el("b", { text: `${p.name}: ${d.label}` }), el("span", { class: "ev", text: ev })])]));
   });
   return grid;
 }
@@ -262,22 +284,29 @@ function renderDetail(o) {
   if (o.notes) parts.push(el("p", { class: "d-notes", text: o.notes }));
   const safeUrl = o.url && /^https?:\/\//i.test(o.url) ? o.url : null;
   const r = resolveNolan(o);
-  if (r.mode === "own") {
+  if (r.own) {
     const codeUrl = o.coc && o.coc.url && /^https?:\/\//i.test(o.coc.url) ? o.coc.url : null;
     const coc = el("p", { class: "d-coc" }, [el("b", { text: `Their code: ${(o.coc && o.coc.doc_type) || "Own code"}` })]);
     if (codeUrl) { coc.appendChild(document.createTextNode(" ")); coc.appendChild(el("a", { href: codeUrl, target: "_blank", rel: "noopener", text: "read it" })); }
     parts.push(coc);
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     if (o.coc && o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
-    parts.push(el("p", { class: "d-nolan-head", text: `Mentions ${rScore(r.nolan)} of the 7 principles` }));
-    parts.push(principleList(r.nolan, r.mode));
-  } else if (r.mode === "inherited") {
+    if (r.shared) {
+      const sharedName = UMBRELLA_SHORT[r.shared.fromId] || r.shared.name;
+      const also = el("p", { class: "d-coc" }, [el("b", { text: `Also covered by ${sharedName}.` }),
+        el("span", { text: ` On its own it mentions ${rScore(r.shared.nolan)} of the 7 principles.` })]);
+      if (r.shared.coc && r.shared.coc.url && /^https?:\/\//i.test(r.shared.coc.url)) { also.appendChild(document.createTextNode(" ")); also.appendChild(el("a", { href: r.shared.coc.url, target: "_blank", rel: "noopener", text: "read the shared code" })); }
+      parts.push(also);
+    }
+    parts.push(el("p", { class: "d-nolan-head", text: `Mentions ${uScore(r)} of the 7 principles` }));
+    parts.push(principleList(r));
+  } else if (r.shared) {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
-    const box2 = el("div", { class: "d-inherited" }, [el("b", { text: `Covered by ${UMBRELLA_SHORT[r.fromId] || r.from}.` }),
-      el("span", { text: ` We have not read this body's own code; it falls under the shared code, which mentions ${rScore(r.nolan)} of the 7 principles.` })]);
-    if (r.coc && r.coc.url && /^https?:\/\//i.test(r.coc.url)) { box2.appendChild(document.createTextNode(" ")); box2.appendChild(el("a", { href: r.coc.url, target: "_blank", rel: "noopener", text: "read the shared code" })); }
+    const box2 = el("div", { class: "d-inherited" }, [el("b", { text: `Covered by ${UMBRELLA_SHORT[r.shared.fromId] || r.shared.name}.` }),
+      el("span", { text: ` We have not read this body's own code; it falls under the shared code, which mentions ${rScore(r.shared.nolan)} of the 7 principles.` })]);
+    if (r.shared.coc && r.shared.coc.url && /^https?:\/\//i.test(r.shared.coc.url)) { box2.appendChild(document.createTextNode(" ")); box2.appendChild(el("a", { href: r.shared.coc.url, target: "_blank", rel: "noopener", text: "read the shared code" })); }
     parts.push(box2);
-    parts.push(principleList(r.nolan, r.mode));
+    parts.push(principleList(r));
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     parts.push(el("div", { class: "d-pending", text: "We have not checked this body's code yet." }));
@@ -287,7 +316,7 @@ function renderDetail(o) {
 
 /* ---------- legend ---------- */
 function renderLegend() {
-  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-yes-shared", "covered by a shared code"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
+  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-yes-shared", "covered by a shared code"], ["cov-yes-both", "covered by both"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: c }), l])));
 }
 
@@ -302,7 +331,9 @@ async function refresh() {
     if (S.principleMissing) {
       all = all.filter((o) => {
         const r = resolveNolan(o);
-        return r.nolan && rCov(r.nolan, S.principleMissing) !== "yes";
+        if (!r.own && !r.shared) return false;
+        return rCov(r.own && r.own.nolan, S.principleMissing) !== "yes"
+          && rCov(r.shared && r.shared.nolan, S.principleMissing) !== "yes";
       });
     }
     const total = all.length;
