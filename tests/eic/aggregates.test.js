@@ -185,20 +185,14 @@ test("heatmap folds shared bodies into sector cells, net of own codes", () => {
   assert.equal(hmOwn.cells.get("Education|selflessness").total, 2);
 });
 
-test("mergeSharedCoverage: union of own and shared, yes wins, no umbrella untouched", () => {
-  const umbrellas = { DfE: { nolan: n("nynnnnn") } }; // shared code covers integrity only
-  const orgs = [
-    { nolan: n("yynnnnn"), umbrella: "DfE" },  // own covers selflessness+integrity
-    { nolan: n("ynnnnnn") },                    // no umbrella
-    { nolan: n("nnnnnnn"), umbrella: "DfE" },  // own covers nothing; shared adds integrity
-  ];
-  const merged = A.mergeSharedCoverage(orgs, umbrellas, PRINCIPLES);
-  assert.equal(A.scoreOf(merged[0].nolan), 2); // union does not double-count integrity
-  assert.equal(A.scoreOf(merged[1].nolan), 1);
-  assert.equal(merged[2].nolan.integrity.covered, "yes"); // gained from the shared code
-  // partial beats no, no beats unknown
-  const u2 = { X: { nolan: n("pnnnnnn") } };
-  const m2 = A.mergeSharedCoverage([{ nolan: n("nunnnnn"), umbrella: "X" }], u2, PRINCIPLES);
-  assert.equal(m2[0].nolan.selflessness.covered, "partial");
-  assert.equal(m2[0].nolan.integrity.covered, "no");
+test("heatmap: shared-only lens counts shared bodies and nothing else", () => {
+  const cats = ["Education", "Charity"];
+  const shared = { Education: { nolan: n("yyyyyyy"), bodies: 8 } };
+  const hm = A.heatmap([], cats, PRINCIPLES, shared);
+  assert.equal(hm.unit, "bodies");
+  assert.equal(hm.cells.get("Education|selflessness").total, 8);
+  assert.equal(hm.cells.get("Education|selflessness").share, 1);
+  assert.equal(hm.rows.find((r) => r.name === "Education").coded, 0);
+  // sectors without a shared code stay empty
+  assert.equal(hm.cells.has("Charity|selflessness"), false);
 });
