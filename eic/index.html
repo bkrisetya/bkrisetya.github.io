@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260909c" />
+    <link rel="stylesheet" href="./styles.css?v=20260909e" />
     <script src="./vendor/echarts.min.js?v=5.5.1" id="echarts-lib" defer></script>
   </head>
   <body>
@@ -33,7 +33,13 @@
         <p class="intro" id="patchwork-intro"></p>
 
         <div class="panel">
-          <h3>Which principles do <em class="hl">individual</em> codes mention, by sector?</h3>
+          <div class="panel-head-row">
+            <h3>Which principles do codes mention, by sector?</h3>
+            <div class="tabs" role="tablist" id="hm-tabs" aria-label="Coverage basis">
+              <button type="button" role="tab" aria-selected="true" data-tab="individual">Individual codes only</button>
+              <button type="button" role="tab" aria-selected="false" data-tab="shared">With shared codes</button>
+            </div>
+          </div>
           <p class="hint">Hover over a cell for breakdowns, click a cell to list the bodies below.</p>
           <div id="heatmap" class="heatmap" role="img" aria-label="Heatmap of principle coverage by sector"></div>
           <div class="scale-legend" id="heatmap-legend"></div>
@@ -41,12 +47,24 @@
 
         <div class="patch-duo">
           <div class="panel">
-            <h3>How many of the seven principles do <em class="hl">individual</em> codes mention?</h3>
-            <p class="hint">Each square is one percent of the codes we have read.</p>
+            <div class="panel-head-row">
+              <h3>How many of the seven principles do codes mention?</h3>
+              <div class="tabs" role="tablist" id="dist-tabs" aria-label="Coverage basis">
+                <button type="button" role="tab" aria-selected="true" data-tab="individual">Individual codes only</button>
+                <button type="button" role="tab" aria-selected="false" data-tab="shared">With shared codes</button>
+              </div>
+            </div>
+            <p class="hint" id="dist-hint">Each square is one percent of the codes we have read.</p>
             <div id="dist-chart" class="dist-chart" role="img" aria-label="Share of codes by how many principles they mention"></div>
           </div>
           <div class="panel">
-            <h3>The seven principles coverage (individual codes only)</h3>
+            <div class="panel-head-row">
+              <h3>The seven principles coverage</h3>
+              <div class="tabs" role="tablist" id="strip-tabs" aria-label="Coverage basis">
+                <button type="button" role="tab" aria-selected="true" data-tab="individual">Individual codes only</button>
+                <button type="button" role="tab" aria-selected="false" data-tab="shared">With shared codes</button>
+              </div>
+            </div>
             <div id="strip-rows" class="strip-rows"></div>
           </div>
         </div>
@@ -92,9 +110,9 @@
       <p class="foot" id="foot"></p>
     </main>
     <noscript><p class="load-error">This page needs JavaScript to load the register.</p></noscript>
-    <script src="./data-source.js?v=20260909c"></script>
-    <script src="./aggregates.js?v=20260909c"></script>
-    <script src="./charts.js?v=20260909c"></script>
-    <script src="./script.js?v=20260909c"></script>
+    <script src="./data-source.js?v=20260909e"></script>
+    <script src="./aggregates.js?v=20260909e"></script>
+    <script src="./charts.js?v=20260909e"></script>
+    <script src="./script.js?v=20260909e"></script>
   </body>
 </html>

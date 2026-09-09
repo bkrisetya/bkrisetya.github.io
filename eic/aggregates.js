@@ -29,15 +29,18 @@ function heroNumbers(meta) {
   return { total: meta.total, shared, own, tocheck, reconciles: meta.total === shared + own + tocheck + rest };
 }
 
-function scoreDistribution(ownOrgs) {
+function scoreDistribution(ownOrgs, shared) {
   const bins = Array.from({ length: 8 }, (_, i) => ({ score: i, count: 0 }));
   (ownOrgs || []).forEach((o) => { bins[scoreOf(o.nolan)].count++; });
+  /* shared: rows of { nolan, bodies } — bodies under a shared sector code count
+   * with that code's coverage (scrape-wins already applied by safetyNetRows). */
+  (shared || []).forEach((s) => { if (s.bodies > 0) bins[scoreOf(s.nolan)].count += s.bodies; });
   return bins;
 }
 
 /* Four human bands for the waffle: none / a couple / some / nearly all. */
-function scoreBands(ownOrgs) {
-  const bins = scoreDistribution(ownOrgs);
+function scoreBands(ownOrgs, shared) {
+  const bins = scoreDistribution(ownOrgs, shared);
   const at = (i) => bins[i].count;
   return [
     { label: "None", count: at(0) },
@@ -47,10 +50,14 @@ function scoreBands(ownOrgs) {
   ];
 }
 
-function principleBars(ownOrgs, principles) {
+function principleBars(ownOrgs, principles, shared) {
   const rows = (principles || []).map((p) => ({ id: p.id, name: p.name, yes: 0, partial: 0, no: 0, unknown: 0 }));
   (ownOrgs || []).forEach((o) => {
     rows.forEach((r) => { const c = (o.nolan && o.nolan[r.id] && o.nolan[r.id].covered) || "unknown"; r[c]++; });
+  });
+  (shared || []).forEach((s) => {
+    if (!(s.bodies > 0)) return;
+    rows.forEach((r) => { const c = (s.nolan && s.nolan[r.id] && s.nolan[r.id].covered) || "unknown"; r[c] += s.bodies; });
   });
   rows.sort((a, b) => a.yes - b.yes || b.no - a.no || a.name.localeCompare(b.name)); // weakest first
   return rows;
@@ -61,7 +68,7 @@ function principleBars(ownOrgs, principles) {
  * (kept last, before zero-coded rows) so every visible cell rests on decent evidence. */
 const HEATMAP_FOLD_MIN = 25;
 
-function heatmap(ownOrgs, categoryNames, principles) {
+function heatmap(ownOrgs, categoryNames, principles, shared) {
   const cols = (principles || []).map((p) => ({ id: p.id, name: p.name }));
   const cells = new Map();
   const codedByCat = {};
@@ -76,27 +83,45 @@ function heatmap(ownOrgs, categoryNames, principles) {
       cell.total++;
     });
   });
+  /* shared: { catName: { nolan, bodies } } — bodies under a sector's shared code
+   * count with that code's coverage. Own-coded bodies are already counted above
+   * (scrape-wins), so callers must pass shared bodies net of own-coded ones. */
+  if (shared) {
+    Object.entries(shared).forEach(([cat, s]) => {
+      if (!(s.bodies > 0)) return;
+      cols.forEach((c) => {
+        const key = cat + "|" + c.id;
+        if (!cells.has(key)) cells.set(key, { yes: 0, partial: 0, no: 0, unknown: 0, total: 0 });
+        const cell = cells.get(key);
+        cell[(s.nolan && s.nolan[c.id] && s.nolan[c.id].covered) || "unknown"] += s.bodies;
+        cell.total += s.bodies;
+      });
+    });
+  }
   cells.forEach((cell) => { cell.share = cell.total ? cell.yes / cell.total : null; });
-  const all = (categoryNames || []).map((name) => ({ name, label: CATEGORY_LABELS[name] || name, coded: codedByCat[name] || 0, cats: [name] }))
+  const sharedBodies = (name) => (shared && shared[name] && shared[name].bodies) || 0;
+  const all = (categoryNames || []).map((name) => ({ name, label: CATEGORY_LABELS[name] || name, coded: codedByCat[name] || 0, bodies: (codedByCat[name] || 0) + sharedBodies(name), cats: [name] }))
     .sort((a, b) => b.coded - a.coded || a.name.localeCompare(b.name));
   const keep = all.filter((r) => r.coded >= HEATMAP_FOLD_MIN);
   const fold = all.filter((r) => r.coded > 0 && r.coded < HEATMAP_FOLD_MIN);
-  const zero = all.filter((r) => r.coded === 0);
-  if (fold.length < 2) return { rows: all, cols, cells };
-  const pooled = { name: "Others", coded: 0, cats: [] };
+  const zero = all.filter((r) => r.coded === 0 && r.bodies === 0);
+  const sharedOnly = all.filter((r) => r.coded === 0 && r.bodies > 0);
+  if (fold.length < 2) return { rows: all, cols, cells, unit: shared ? "bodies" : "codes" };
+  const pooled = { name: "Others", coded: 0, bodies: 0, cats: [] };
   fold.forEach((r) => {
     pooled.coded += r.coded;
+    pooled.bodies += r.bodies;
     pooled.cats.push(r.name);
     cols.forEach((c) => {
       const key = "Others|" + c.id;
-      if (!cells.has(key)) cells.set(key, { yes: 0, partial: 0, no: 0, unknown: 0, total: 0, note: "Sectors where we have read only a few codes each, grouped together." });
+      if (!cells.has(key)) cells.set(key, { yes: 0, partial: 0, no: 0, unknown: 0, total: 0, note: "Sectors with few codes read, grouped together." });
       const dst = cells.get(key), src = cells.get(r.name + "|" + c.id);
       ["yes", "partial", "no", "unknown"].forEach((k) => { dst[k] += src[k]; });
       dst.total += src.total;
     });
   });
   cols.forEach((c) => { const cell = cells.get("Others|" + c.id); cell.share = cell.total ? cell.yes / cell.total : null; });
-  return { rows: [...keep, pooled, ...zero], cols, cells };
+  return { rows: [...keep, pooled, ...sharedOnly, ...zero], cols, cells, unit: shared ? "bodies" : "codes" };
 }
 
 /* Scrape-wins: a body whose own code has been read counts under its own code,

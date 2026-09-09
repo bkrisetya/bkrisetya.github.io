@@ -1,6 +1,6 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, docType: null, sharedRows: [], sharedByCat: {}, distTab: "individual", stripTab: "individual", hmTab: "individual" };
 const PAGE_SIZE = 25;
 
 function el(tag, props = {}, children = []) {
@@ -34,6 +34,9 @@ function resolveNolan(o) {
 }
 const rCov = (n, pid) => (n && n[pid] && n[pid].covered) || "unknown";
 const rScore = (n) => S.principles.filter((p) => rCov(n, p.id) === "yes").length;
+/* Covered dots match the badge colours: teal = the body's own code, navy = a
+ * shared sector code. */
+const covClass = (cov, mode) => (cov === "yes" && mode === "inherited" ? "cov-yes-shared" : `cov-${cov}`);
 
 /* ---------- hero ---------- */
 function renderHero() {
@@ -50,8 +53,7 @@ function renderHero() {
 }
 
 /* ---------- safety net ---------- */
-function renderSafetyNet(orgRows) {
-  const rows = Aggregates.safetyNetRows(S.umbrellas, orgRows, S.coded);
+function renderSafetyNet(rows) {
   $("net-rows").replaceChildren(...rows.map((r) =>
     el("div", { class: "net-row" }, [
       el("div", { class: "net-name" }, [r.name, el("small", { text: r.id }),
@@ -61,19 +63,33 @@ function renderSafetyNet(orgRows) {
       ].filter(Boolean)),
       el("div", { class: "net-bodies" }, [el("b", { text: fmt(r.bodies) }), " bodies covered"]),
       (() => { const w = el("span", { class: "nolan-mini" });
-        S.principles.forEach((p) => w.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
+        S.principles.forEach((p) => w.appendChild(el("i", { class: covClass(rCov(r.nolan, p.id), "inherited"), title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
         return w; })(),
     ])));
 }
 
-/* renderSafetyNet needs raw [id,name,category,umbrella] rows, which DataSource.query
+/* The safety net needs raw [id,name,category,umbrella] rows, which DataSource.query
  * maps to objects. Re-derive the row shape from one big page; if the adapter later
- * grows a raw-rows accessor, only this function changes. */
+ * grows a raw-rows accessor, only this function changes. The same rows feed the
+ * "with shared codes" tabs of the waffle and strip charts. */
 async function renderSafetyNetFromQuery() {
   try {
     const res = await DataSource.query({ page: 0, pageSize: Number.MAX_SAFE_INTEGER });
     const rows = res.orgs.map((o) => [o.id, o.name, o.category, o.umbrella || ""]);
-    renderSafetyNet(rows);
+    S.sharedRows = Aggregates.safetyNetRows(S.umbrellas, rows, S.coded);
+    /* Per-category shared bodies (scrape-wins: net of own-coded), for the
+     * heatmap's "with shared codes" tab. */
+    const byCat = {};
+    rows.forEach((r) => { if (r[3]) byCat[r[2]] = byCat[r[2]] || { umbrella: r[3], bodies: 0 }, byCat[r[2]].bodies++; });
+    const ownByCat = {};
+    S.coded.forEach((o) => { if (o.umbrella) ownByCat[o.category] = (ownByCat[o.category] || 0) + 1; });
+    S.sharedByCat = {};
+    Object.entries(byCat).forEach(([cat, v]) => {
+      const u = S.umbrellas[v.umbrella];
+      const net = v.bodies - (ownByCat[cat] || 0);
+      if (u && net > 0) S.sharedByCat[cat] = { nolan: u.nolan, bodies: net };
+    });
+    renderSafetyNet(S.sharedRows);
   } catch (e) { $("net-rows").replaceChildren(el("p", { class: "hint", text: "Could not load umbrella coverage." })); }
 }
 
@@ -96,8 +112,15 @@ function renderPatchwork() {
   const none = own.filter((o) => Aggregates.scoreOf(o.nolan) === 0).length;
   $("patchwork-intro").textContent =
     `We have read ${fmt(own.length)} individual codes. Most mention only a few of the seven principles; ${fmt(none)} mention none.`;
+  renderHm();
+  renderDist();
+  renderStrip();
+}
+
+function renderHm() {
+  const own = S.coded;
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
-  S.hm = Aggregates.heatmap(own, catNames, S.principles);
+  S.hm = Aggregates.heatmap(own, catNames, S.principles, S.hmTab === "shared" ? S.sharedByCat : null);
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
   /* If the chart library has not finished loading yet, the fallback table was
    * just drawn; swap in the real heatmap as soon as it is ready. */
@@ -108,18 +131,49 @@ function renderPatchwork() {
       Charts.renderHeatmap(box, S.hm, onHeatmapCell);
     });
   }
-  Charts.renderScaleLegend($("heatmap-legend"));
-  Charts.renderScoreWaffle($("dist-chart"), Aggregates.scoreBands(own));
-  renderStrip();
+  Charts.renderScaleLegend($("heatmap-legend"), S.hm.unit);
+}
+
+/* ---------- shared tab plumbing for the waffle and the strip ---------- */
+function wireTabs(boxId, key, rerender) {
+  const box = $(boxId);
+  if (!box) return;
+  box.querySelectorAll("button[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x.dataset.tab === S[key])));
+  box.querySelectorAll("button[data-tab]").forEach((b) => b.addEventListener("click", () => {
+    if (S[key] === b.dataset.tab) return;
+    S[key] = b.dataset.tab;
+    box.querySelectorAll("button[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+    rerender();
+  }));
+}
+
+/* sharedRows are the umbrella totals after scrape-wins (bodies whose own code we
+ * read count under their own code, not the umbrella). */
+function sharedBodies() {
+  return S.sharedRows.reduce((a, r) => a + r.bodies, 0);
+}
+
+function renderDist() {
+  const withShared = S.distTab === "shared";
+  const bands = Aggregates.scoreBands(S.coded, withShared ? S.sharedRows : null);
+  Charts.renderScoreWaffle($("dist-chart"), bands, withShared ? "bodies" : "codes");
+  $("dist-hint").textContent = withShared
+    ? "Each square is one percent of all covered bodies, shared sector codes included."
+    : "Each square is one percent of the codes we have read.";
 }
 
 /* ---------- the seven principles strip, weakest first ---------- */
 function renderStrip() {
+  const withShared = S.stripTab === "shared";
   const coded = S.coded;
-  const rows = Aggregates.principleBars(coded, S.principles);
-  const n = coded.length || 1;
+  const rows = Aggregates.principleBars(coded, S.principles, withShared ? S.sharedRows : null);
+  const total = coded.length + (withShared ? sharedBodies() : 0);
+  const n = total || 1;
+  $("strip-rows").classList.toggle("strip-shared", withShared);
   $("strip-rows").replaceChildren(...rows.map(({ name, yes, partial, no, unknown }) => {
-    const tip = `${yes} of ${coded.length.toLocaleString("en-GB")} codes mention ${name}`;
+    const tip = withShared
+      ? `${yes.toLocaleString("en-GB")} of ${total.toLocaleString("en-GB")} bodies have ${name} in their code (own or shared)`
+      : `${yes} of ${total.toLocaleString("en-GB")} codes mention ${name}`;
     const bar = el("div", { class: "strip-bar", title: tip });
     for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
@@ -134,8 +188,19 @@ function renderLadderNote() {
   S.coded.forEach((o) => { const n2 = o.coc && o.coc.doc_type; if (n2) counts[n2] = (counts[n2] || 0) + 1; });
   const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
   const box = $("ladder-note");
-  box.appendChild(document.createTextNode("Bodies call their code different things — "));
-  names.forEach((n2) => box.appendChild(el("span", { class: "name-chip", text: `${n2} (${fmt(counts[n2])})` })));
+  box.replaceChildren(document.createTextNode("Bodies call their code different things — "));
+  names.forEach((n2) => {
+    const chip = el("button", { class: "name-chip", type: "button", text: `${n2} (${fmt(counts[n2])})` });
+    chip.setAttribute("aria-pressed", String(S.docType === n2));
+    chip.addEventListener("click", () => {
+      S.docType = S.docType === n2 ? null : n2;
+      S.page = 0;
+      renderLadderNote();
+      refresh();
+      if (S.docType) document.querySelector(".register").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    box.appendChild(chip);
+  });
   box.appendChild(document.createTextNode(" — from general statements to binding, enforced rules."));
 }
 
@@ -154,7 +219,7 @@ function nolanCell(o) {
   const r = resolveNolan(o);
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "not checked" });
   const wrap = el("span", { class: "nolan-mini" });
-  S.principles.forEach((p) => wrap.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
+  S.principles.forEach((p) => wrap.appendChild(el("i", { class: covClass(rCov(r.nolan, p.id), r.mode), title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
   wrap.appendChild(el("span", { class: "score", text: `${rScore(r.nolan)} of 7` }));
   return wrap;
 }
@@ -178,11 +243,11 @@ function renderTable(orgs) {
 }
 
 /* ---------- detail ---------- */
-function principleList(nolan) {
+function principleList(nolan, mode) {
   const grid = el("div", { class: "d-princ" });
   S.principles.forEach((p) => {
     const cov = rCov(nolan, p.id);
-    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot cov-${cov}` }),
+    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot ${covClass(cov, mode)}` }),
       el("div", {}, [el("b", { text: `${p.name}: ${humanCov(cov)}` }), el("span", { class: "ev", text: (nolan[p.id] && nolan[p.id].evidence) || "" })])]));
   });
   return grid;
@@ -205,14 +270,14 @@ function renderDetail(o) {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     if (o.coc && o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
     parts.push(el("p", { class: "d-nolan-head", text: `Mentions ${rScore(r.nolan)} of the 7 principles` }));
-    parts.push(principleList(r.nolan));
+    parts.push(principleList(r.nolan, r.mode));
   } else if (r.mode === "inherited") {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     const box2 = el("div", { class: "d-inherited" }, [el("b", { text: `Covered by ${UMBRELLA_SHORT[r.fromId] || r.from}.` }),
       el("span", { text: ` We have not read this body's own code; it falls under the shared code, which mentions ${rScore(r.nolan)} of the 7 principles.` })]);
     if (r.coc && r.coc.url && /^https?:\/\//i.test(r.coc.url)) { box2.appendChild(document.createTextNode(" ")); box2.appendChild(el("a", { href: r.coc.url, target: "_blank", rel: "noopener", text: "read the shared code" })); }
     parts.push(box2);
-    parts.push(principleList(r.nolan));
+    parts.push(principleList(r.nolan, r.mode));
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     parts.push(el("div", { class: "d-pending", text: "We have not checked this body's code yet." }));
@@ -222,7 +287,7 @@ function renderDetail(o) {
 
 /* ---------- legend ---------- */
 function renderLegend() {
-  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
+  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-yes-shared", "covered by a shared code"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: c }), l])));
 }
 
@@ -233,6 +298,7 @@ async function refresh() {
     const q = { search: $("search").value, category: [...new Set([...checkedVals("f-cat"), ...(S.heatmapCat ? hmRowCats(S.heatmapCat) : [])])], page: 0, pageSize: Number.MAX_SAFE_INTEGER };
     const res = await DataSource.query(q);
     let all = res.orgs.filter((o) => !o.is_umbrella);
+    if (S.docType) all = all.filter((o) => o.coded && o.coc && o.coc.doc_type === S.docType);
     if (S.principleMissing) {
       all = all.filter((o) => {
         const r = resolveNolan(o);
@@ -335,14 +401,19 @@ async function boot() {
   S.allCount = meta.total;
   S.coded = meta.ownOrgs || [];
   renderHero();
+  await renderSafetyNetFromQuery(); // populates S.sharedRows, needed by the chart tabs
   renderPatchwork();
   renderLadderNote();
   renderLegend();
   fillChecks("f-cat", meta.categoryFacets);
   fillPrincipleChecks();
+  if (new URLSearchParams(window.location.search).get("tabs") === "shared") { S.distTab = "shared"; S.stripTab = "shared"; S.hmTab = "shared"; }
+  wireTabs("dist-tabs", "distTab", renderDist);
+  wireTabs("strip-tabs", "stripTab", renderStrip);
+  wireTabs("hm-tabs", "hmTab", renderHm);
+  if (S.distTab === "shared" || S.stripTab === "shared" || S.hmTab === "shared") { renderHm(); renderDist(); renderStrip(); }
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
   await refresh();
-  renderSafetyNetFromQuery();
 }
 
 boot().catch((err) => {
