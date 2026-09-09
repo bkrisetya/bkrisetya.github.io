@@ -126,17 +126,17 @@ const Charts = (() => {
     el.replaceChildren(table);
   }
 
-  function renderScaleLegend(el, unit) {
+  function renderScaleLegend(el) {
     el.replaceChildren();
     const mk = (txt) => { const s = document.createElement("span"); s.textContent = txt; return s; };
-    el.appendChild(mk(unit === "bodies" ? "None have it" : "None mention it"));
+    el.appendChild(mk("0%"));
     [0, 0.25, 0.5, 0.75, 1].forEach((v) => {
       const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = cellColor(v); el.appendChild(sw);
     });
-    el.appendChild(mk(unit === "bodies" ? "All have it" : "All mention it"));
+    el.appendChild(mk("100%"));
     const g = document.createElement("span");
     const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = GREY;
-    g.appendChild(sw); g.appendChild(document.createTextNode(unit === "bodies" ? " no code known" : " none read yet"));
+    g.appendChild(sw); g.appendChild(document.createTextNode(" No data"));
     el.appendChild(g);
   }
 

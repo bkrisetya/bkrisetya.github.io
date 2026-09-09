@@ -1,6 +1,6 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, sharedRows: [], sharedByCat: {}, distTab: "individual", stripTab: "individual", hmTab: "individual" };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, docType: null, sharedRows: [], sharedByCat: {}, distTab: "individual", stripTab: "individual", hmTab: "individual" };
 const PAGE_SIZE = 25;
 
 function el(tag, props = {}, children = []) {
@@ -128,7 +128,7 @@ function renderHm() {
       Charts.renderHeatmap(box, S.hm, onHeatmapCell);
     });
   }
-  Charts.renderScaleLegend($("heatmap-legend"), S.hm.unit);
+  Charts.renderScaleLegend($("heatmap-legend"));
 }
 
 /* ---------- shared tab plumbing for the waffle and the strip ---------- */
@@ -184,8 +184,19 @@ function renderLadderNote() {
   S.coded.forEach((o) => { const n2 = o.coc && o.coc.doc_type; if (n2) counts[n2] = (counts[n2] || 0) + 1; });
   const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
   const box = $("ladder-note");
-  box.appendChild(document.createTextNode("Bodies call their code different things — "));
-  names.forEach((n2) => box.appendChild(el("span", { class: "name-chip", text: `${n2} (${fmt(counts[n2])})` })));
+  box.replaceChildren(document.createTextNode("Bodies call their code different things — "));
+  names.forEach((n2) => {
+    const chip = el("button", { class: "name-chip", type: "button", text: `${n2} (${fmt(counts[n2])})` });
+    chip.setAttribute("aria-pressed", String(S.docType === n2));
+    chip.addEventListener("click", () => {
+      S.docType = S.docType === n2 ? null : n2;
+      S.page = 0;
+      renderLadderNote();
+      refresh();
+      if (S.docType) document.querySelector(".register").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    box.appendChild(chip);
+  });
   box.appendChild(document.createTextNode(" — from general statements to binding, enforced rules."));
 }
 
@@ -283,6 +294,7 @@ async function refresh() {
     const q = { search: $("search").value, category: [...new Set([...checkedVals("f-cat"), ...(S.heatmapCat ? hmRowCats(S.heatmapCat) : [])])], page: 0, pageSize: Number.MAX_SAFE_INTEGER };
     const res = await DataSource.query(q);
     let all = res.orgs.filter((o) => !o.is_umbrella);
+    if (S.docType) all = all.filter((o) => o.coded && o.coc && o.coc.doc_type === S.docType);
     if (S.principleMissing) {
       all = all.filter((o) => {
         const r = resolveNolan(o);

@@ -101,7 +101,10 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .strip-bar .s-unknown { background: var(--grey); }
 .p-count { font-size: 0.85rem; color: var(--ink-soft); text-align: right; }
 .ladder-note { font-size: 0.9rem; color: var(--ink-soft); }
-.ladder-note .name-chip { display: inline-block; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin: 2px 4px 2px 0; font-size: 0.8rem; }
+.ladder-note .name-chip { display: inline-block; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin: 2px 4px 2px 0; font-size: 0.8rem; font-family: inherit; color: inherit; cursor: pointer; }
+.ladder-note .name-chip:hover { border-color: var(--teal); }
+.ladder-note .name-chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.ladder-note .name-chip:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
 
 /* ---------- register ---------- */
 .controls { margin-bottom: 18px; }
