@@ -159,7 +159,7 @@ const Charts = (() => {
   /* EIC families as a readable progression for own-code scores: magenta -> purple -> sky -> teal.
    * Bands passed to renderScoreWaffle carry their own colour, so shared-code and
    * not-checked bands can join the same waffle in navy and grey. */
-  const BAND_COLOURS = ["#92D8D9", "#45B4B9", "#1899A2", "#0E5C61"]; // own-code score: none / 1-2 / 3-5 / 6-7 — teal ladder, every step visibly teal
+  const BAND_COLOURS = ["#92D8D9", "#45B4B9", "#0E7E87", "#0E5C61"]; // own-code score: none / 1-2 / 3-5 / 6-7 — teal ladder, every step visibly teal
   const SHARED = "#8F89C6"; // shared-code layer: muted violet, deliberately weaker than teal
 
   /* 100 squares, worst band first. Largest-remainder rounding so squares sum to 100. */
