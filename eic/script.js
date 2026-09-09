@@ -135,9 +135,9 @@ function renderPatchwork() {
 }
 
 function renderHm() {
-  const own = S.hmTab === "shared" ? Aggregates.mergeSharedCoverage(S.coded, S.umbrellas, S.principles) : S.coded;
+  const sharedOnly = S.hmTab === "shared";
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
-  S.hm = Aggregates.heatmap(own, catNames, S.principles, S.hmTab === "shared" ? S.sharedByCat : null);
+  S.hm = Aggregates.heatmap(sharedOnly ? [] : S.coded, catNames, S.principles, sharedOnly ? S.sharedByCat : null);
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
   /* If the chart library has not finished loading yet, the fallback table was
    * just drawn; swap in the real heatmap as soon as it is ready. */
@@ -171,26 +171,24 @@ function sharedBodies() {
 }
 
 function renderDist() {
-  const withShared = S.distTab === "shared";
-  const coded = withShared ? Aggregates.mergeSharedCoverage(S.coded, S.umbrellas, S.principles) : S.coded;
-  const bands = Aggregates.scoreBands(coded, withShared ? S.sharedRows : null);
-  Charts.renderScoreWaffle($("dist-chart"), bands, withShared ? "bodies" : "codes");
-  $("dist-hint").textContent = withShared
-    ? "Each square is one percent of all covered bodies, shared sector codes included."
+  const sharedOnly = S.distTab === "shared";
+  const bands = Aggregates.scoreBands(sharedOnly ? [] : S.coded, sharedOnly ? S.sharedRows : null);
+  Charts.renderScoreWaffle($("dist-chart"), bands, sharedOnly ? "bodies" : "codes");
+  $("dist-hint").textContent = sharedOnly
+    ? "Each square is one percent of the bodies covered by a shared sector code."
     : "Each square is one percent of the codes we have read.";
 }
 
 /* ---------- the seven principles strip, weakest first ---------- */
 function renderStrip() {
-  const withShared = S.stripTab === "shared";
-  const coded = withShared ? Aggregates.mergeSharedCoverage(S.coded, S.umbrellas, S.principles) : S.coded;
-  const rows = Aggregates.principleBars(coded, S.principles, withShared ? S.sharedRows : null);
-  const total = coded.length + (withShared ? sharedBodies() : 0);
+  const sharedOnly = S.stripTab === "shared";
+  const rows = Aggregates.principleBars(sharedOnly ? [] : S.coded, S.principles, sharedOnly ? S.sharedRows : null);
+  const total = sharedOnly ? sharedBodies() : S.coded.length;
   const n = total || 1;
-  $("strip-rows").classList.toggle("strip-shared", withShared);
+  $("strip-rows").classList.toggle("strip-shared", sharedOnly);
   $("strip-rows").replaceChildren(...rows.map(({ name, yes, partial, no, unknown }) => {
-    const tip = withShared
-      ? `${yes.toLocaleString("en-GB")} of ${total.toLocaleString("en-GB")} bodies have ${name} in their code (own or shared)`
+    const tip = sharedOnly
+      ? `${yes.toLocaleString("en-GB")} of ${total.toLocaleString("en-GB")} bodies have ${name} in their sector's shared code`
       : `${yes} of ${total.toLocaleString("en-GB")} codes mention ${name}`;
     const bar = el("div", { class: "strip-bar", title: tip });
     for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {

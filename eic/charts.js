@@ -53,8 +53,8 @@ const Charts = (() => {
   /* ---------- heatmap ---------- */
   function tipText(cat, principleName, cell, unit) {
     if (unit === "bodies") {
-      if (!cell.total) return `${principleName} — ${cat}\nNo codes read and no shared code in this sector yet.`;
-      let t = `${principleName} — ${cat}\n${cell.yes.toLocaleString("en-GB")} of ${cell.total.toLocaleString("en-GB")} bodies have this principle in their code, counting shared sector codes.`;
+      if (!cell.total) return `${principleName} — ${cat}\nNo shared code in this sector.`;
+      let t = `${principleName} — ${cat}\n${cell.yes.toLocaleString("en-GB")} of ${cell.total.toLocaleString("en-GB")} bodies have this principle in their sector's shared code.`;
       if (cell.note) t += `\n${cell.note}`;
       return t;
     }
@@ -84,7 +84,10 @@ const Charts = (() => {
     const data = [];
     hm.rows.forEach((r, y) => hm.cols.forEach((c, x) => {
       const cell = hm.cells.get(r.name + "|" + c.id) || { share: null, total: 0, yes: 0 };
-      data.push({ value: [x, y, cell.share], cell, itemStyle: { color: cellColor(cell.share, hm.unit), borderColor: "#fff", borderWidth: 2 } });
+      /* ECharts skips null values entirely, so a "no data" cell would render
+       * transparent instead of grey — carry 0 in the value, grey in the style. */
+      const v = cell.share === null || cell.share === undefined || isNaN(cell.share) ? 0 : cell.share;
+      data.push({ value: [x, y, v], cell, itemStyle: { color: cellColor(cell.share, hm.unit), borderColor: "#fff", borderWidth: 2 } });
     }));
     chart.setOption({
       grid: { left: 4, right: 8, top: 8, bottom: 8, containLabel: true },
