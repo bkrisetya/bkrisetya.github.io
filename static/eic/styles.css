@@ -12,7 +12,7 @@
   --magenta: #E41E7C;
   --grey: #C3CAD5;
   --grey-dark: #9AA3B2;
-  --shared: #9B97CF; /* shared-code layer: washed navy tint, weaker than teal on purpose */
+  --shared: #8F89C6; /* shared-code layer: muted violet, weaker than teal on purpose */
   --shared-soft: #E4E3F3;
   --font: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -63,7 +63,7 @@ section { margin-bottom: 48px; }
 .nolan-mini .score { margin-left: 8px; font-size: 0.85rem; color: var(--ink-soft); }
 i.cov-yes, .dot.cov-yes { background: var(--teal); }
 i.cov-yes-shared, .dot.cov-yes-shared { background: var(--shared); }
-i.cov-yes-both, .dot.cov-yes-both { background: var(--teal); border: 2.5px solid var(--shared); box-sizing: border-box; }
+i.cov-yes-both, .dot.cov-yes-both { background: #6B64A8; }
 i.cov-partial, .dot.cov-partial { background: var(--teal-light); border: 1px solid var(--teal); }
 i.cov-no, .dot.cov-no { background: var(--magenta); }
 i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
