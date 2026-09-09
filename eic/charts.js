@@ -56,13 +56,20 @@ const Charts = (() => {
   }
 
   function renderHeatmap(el, hm, onCellClick) {
-    if (available()) return echartsHeatmap(el, hm, onCellClick);
+    if (available()) {
+      /* If ECharts itself throws (blocked script, canvas/GPU issue, zero-size
+       * init), fall back to the plain table rather than leaving a blank panel. */
+      try { return echartsHeatmap(el, hm, onCellClick); }
+      catch (e) { console.warn("echarts heatmap failed, using table fallback", e); }
+    }
     return domHeatmap(el, hm, onCellClick);
   }
 
   function echartsHeatmap(el, hm, onCellClick) {
-    const chart = echarts.init(el, null, { renderer: "canvas" });
+    /* Height must be set before init: ECharts measures the element at init time
+     * and a 0-height canvas stays blank even after the height changes. */
     el.style.height = Math.max(220, hm.rows.length * 34 + 60) + "px";
+    const chart = echarts.init(el, null, { renderer: "canvas" });
     const data = [];
     hm.rows.forEach((r, y) => hm.cols.forEach((c, x) => {
       const cell = hm.cells.get(r.name + "|" + c.id) || { share: null, total: 0, yes: 0 };
@@ -76,6 +83,9 @@ const Charts = (() => {
       series: [{ type: "heatmap", data, label: { show: false }, emphasis: { itemStyle: { borderColor: "#1A1463", borderWidth: 2 } } }],
     });
     chart.on("click", (p) => { const r = hm.rows[p.value[1]], c = hm.cols[p.value[0]]; const cell = hm.cells.get(r.name + "|" + c.id); if (cell && cell.total) onCellClick(r.name, c.id); });
+    /* Fonts and layout can settle after init; re-measure on the next frame and
+     * on resize so the canvas never stays at a stale size. */
+    requestAnimationFrame(() => chart.resize());
     window.addEventListener("resize", () => chart.resize());
     return chart;
   }
