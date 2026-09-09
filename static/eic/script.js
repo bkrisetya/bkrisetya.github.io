@@ -40,12 +40,11 @@ const rScore = (n) => S.principles.filter((p) => rCov(n, p.id) === "yes").length
 const uScore = (r) => S.principles.filter((p) =>
   (r.own && rCov(r.own.nolan, p.id) === "yes") || (r.shared && rCov(r.shared.nolan, p.id) === "yes")).length;
 
-/* Per-principle dot: teal = their own code covers it, navy = the shared code
- * does, split teal/navy = both do. */
+/* Per-principle dot: teal = their own code covers it, violet = the shared code
+ * does. Own code wins — same precedence as the original scrape. */
 function dotInfo(r, pid) {
   const ownC = r.own ? rCov(r.own.nolan, pid) : null;
   const shrC = r.shared ? rCov(r.shared.nolan, pid) : null;
-  if (ownC === "yes" && shrC === "yes") return { cls: "cov-yes-both", label: "covered by both their own code and the shared code" };
   if (ownC === "yes") return { cls: "cov-yes", label: "covered by their own code" };
   if (shrC === "yes") return { cls: "cov-yes-shared", label: "covered by the shared code" };
   const c = ownC || shrC || "unknown";
@@ -318,7 +317,7 @@ function renderDetail(o) {
 
 /* ---------- legend ---------- */
 function renderLegend() {
-  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-yes-shared", "covered by a shared code"], ["cov-yes-both", "covered by both"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
+  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-yes-shared", "covered by a shared code"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: c }), l])));
 }
 
