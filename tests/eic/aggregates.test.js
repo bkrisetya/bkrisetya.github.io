@@ -162,3 +162,25 @@ test("principleBars adds shared-code bodies per principle bucket", () => {
   assert.equal(byId.integrity.no, 1);
   assert.equal(byId.honesty.no, 11);
 });
+
+test("heatmap folds shared bodies into sector cells, net of own codes", () => {
+  const orgs = [{ nolan: n("ynnnnnn"), category: "Education" }, { nolan: n("nnnnnnn"), category: "Education" }];
+  const cats = ["Education", "Charity"];
+  const shared = { Education: { nolan: n("yyyyyyy"), bodies: 8 } };
+  const hm = A.heatmap(orgs, cats, PRINCIPLES, shared);
+  assert.equal(hm.unit, "bodies");
+  const eduSelf = hm.cells.get("Education|selflessness");
+  assert.equal(eduSelf.yes, 9);   // 1 own + 8 shared
+  assert.equal(eduSelf.total, 10);
+  const eduInt = hm.cells.get("Education|integrity");
+  assert.equal(eduInt.yes, 8);    // shared all-seven; both own codes say no
+  assert.equal(eduInt.no, 2);
+  // row bodies = own + shared
+  const edu = hm.rows.find((r) => r.name === "Education");
+  assert.equal(edu.bodies, 10);
+  assert.equal(edu.coded, 2);
+  // without shared, behaviour unchanged
+  const hmOwn = A.heatmap(orgs, cats, PRINCIPLES);
+  assert.equal(hmOwn.unit, "codes");
+  assert.equal(hmOwn.cells.get("Education|selflessness").total, 2);
+});

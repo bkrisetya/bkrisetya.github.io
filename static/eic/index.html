@@ -33,7 +33,13 @@
         <p class="intro" id="patchwork-intro"></p>
 
         <div class="panel">
-          <h3>Which principles do <em class="hl">individual</em> codes mention, by sector?</h3>
+          <div class="panel-head-row">
+            <h3>Which principles do codes mention, by sector?</h3>
+            <div class="tabs" role="tablist" id="hm-tabs" aria-label="Coverage basis">
+              <button type="button" role="tab" aria-selected="true" data-tab="individual">Individual codes only</button>
+              <button type="button" role="tab" aria-selected="false" data-tab="shared">With shared codes</button>
+            </div>
+          </div>
           <p class="hint">Hover over a cell for breakdowns, click a cell to list the bodies below.</p>
           <div id="heatmap" class="heatmap" role="img" aria-label="Heatmap of principle coverage by sector"></div>
           <div class="scale-legend" id="heatmap-legend"></div>

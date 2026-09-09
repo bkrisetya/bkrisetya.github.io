@@ -48,7 +48,13 @@ const Charts = (() => {
   }
 
   /* ---------- heatmap ---------- */
-  function tipText(cat, principleName, cell) {
+  function tipText(cat, principleName, cell, unit) {
+    if (unit === "bodies") {
+      if (!cell.total) return `${principleName} — ${cat}\nNo codes read and no shared code in this sector yet.`;
+      let t = `${principleName} — ${cat}\n${cell.yes.toLocaleString("en-GB")} of ${cell.total.toLocaleString("en-GB")} bodies have this principle in their code, counting shared sector codes.`;
+      if (cell.note) t += `\n${cell.note}`;
+      return t;
+    }
     if (!cell.total) return `${principleName} — ${cat}\nWe have not read any codes in this sector yet.`;
     let t = `${principleName} — ${cat}\n${cell.yes} of the ${cell.total} codes we read mention this principle.`;
     if (cell.note) t += `\n${cell.note}`;
@@ -61,6 +67,8 @@ const Charts = (() => {
   }
 
   function echartsHeatmap(el, hm, onCellClick) {
+    const prev = echarts.getInstanceByDom(el);
+    if (prev) prev.dispose();
     const chart = echarts.init(el, null, { renderer: "canvas" });
     el.style.height = Math.max(220, hm.rows.length * 34 + 60) + "px";
     const data = [];
@@ -72,7 +80,7 @@ const Charts = (() => {
       grid: { left: 4, right: 8, top: 8, bottom: 8, containLabel: true },
       xAxis: { type: "category", data: hm.cols.map((c) => c.name), axisLabel: { fontSize: 11, interval: 0, rotate: 30 }, axisTick: { show: false }, axisLine: { show: false } },
       yAxis: { type: "category", data: hm.rows.map((r) => r.label || r.name), inverse: true, axisLabel: { fontSize: 11 }, axisTick: { show: false }, axisLine: { show: false } },
-      tooltip: { formatter: (p) => tipText(hm.rows[p.value[1]].label || hm.rows[p.value[1]].name, hm.cols[p.value[0]].name, p.data.cell).replace(/\n/g, "<br>") },
+      tooltip: { formatter: (p) => tipText(hm.rows[p.value[1]].label || hm.rows[p.value[1]].name, hm.cols[p.value[0]].name, p.data.cell, hm.unit).replace(/\n/g, "<br>") },
       series: [{ type: "heatmap", data, label: { show: false }, emphasis: { itemStyle: { borderColor: "#1A1463", borderWidth: 2 } } }],
     });
     chart.on("click", (p) => { const r = hm.rows[p.value[1]], c = hm.cols[p.value[0]]; const cell = hm.cells.get(r.name + "|" + c.id); if (cell && cell.total) onCellClick(r.name, c.id); });
@@ -86,7 +94,7 @@ const Charts = (() => {
     const head = table.createTHead().insertRow();
     head.appendChild(document.createElement("th")).className = "hm-cat";
     hm.cols.forEach((c) => { const th = document.createElement("th"); th.textContent = c.name; head.appendChild(th); });
-    head.appendChild(document.createElement("th")).textContent = "Codes read";
+    head.appendChild(document.createElement("th")).textContent = hm.unit === "bodies" ? "Bodies" : "Codes read";
     const body = table.createTBody();
     hm.rows.forEach((r) => {
       const tr = body.insertRow();
@@ -97,28 +105,28 @@ const Charts = (() => {
         const btn = document.createElement("button");
         btn.className = "hm-cell"; btn.type = "button"; btn.style.width = "100%";
         btn.style.background = cellColor(cell.share);
-        btn.title = tipText(r.label || r.name, c.name, cell);
+        btn.title = tipText(r.label || r.name, c.name, cell, hm.unit);
         btn.dataset.cat = r.name; btn.dataset.pid = c.id;
         if (!cell.total) btn.disabled = true;
         else btn.addEventListener("click", () => onCellClick(r.name, c.id));
         td.appendChild(btn);
       });
-      const tdN = tr.insertCell(); tdN.className = "hm-count"; tdN.textContent = String(r.coded);
+      const tdN = tr.insertCell(); tdN.className = "hm-count"; tdN.textContent = (hm.unit === "bodies" ? r.bodies : r.coded).toLocaleString("en-GB");
     });
     el.replaceChildren(table);
   }
 
-  function renderScaleLegend(el) {
+  function renderScaleLegend(el, unit) {
     el.replaceChildren();
     const mk = (txt) => { const s = document.createElement("span"); s.textContent = txt; return s; };
-    el.appendChild(mk("None mention it"));
+    el.appendChild(mk(unit === "bodies" ? "None have it" : "None mention it"));
     [0, 0.25, 0.5, 0.75, 1].forEach((v) => {
       const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = cellColor(v); el.appendChild(sw);
     });
-    el.appendChild(mk("All mention it"));
+    el.appendChild(mk(unit === "bodies" ? "All have it" : "All mention it"));
     const g = document.createElement("span");
     const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = GREY;
-    g.appendChild(sw); g.appendChild(document.createTextNode(" none read yet"));
+    g.appendChild(sw); g.appendChild(document.createTextNode(unit === "bodies" ? " no code known" : " none read yet"));
     el.appendChild(g);
   }
 

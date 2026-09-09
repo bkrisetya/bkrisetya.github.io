@@ -1,6 +1,6 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, sharedRows: [], distTab: "individual", stripTab: "individual" };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, sharedRows: [], sharedByCat: {}, distTab: "individual", stripTab: "individual", hmTab: "individual" };
 const PAGE_SIZE = 25;
 
 function el(tag, props = {}, children = []) {
@@ -74,6 +74,18 @@ async function renderSafetyNetFromQuery() {
     const res = await DataSource.query({ page: 0, pageSize: Number.MAX_SAFE_INTEGER });
     const rows = res.orgs.map((o) => [o.id, o.name, o.category, o.umbrella || ""]);
     S.sharedRows = Aggregates.safetyNetRows(S.umbrellas, rows, S.coded);
+    /* Per-category shared bodies (scrape-wins: net of own-coded), for the
+     * heatmap's "with shared codes" tab. */
+    const byCat = {};
+    rows.forEach((r) => { if (r[3]) byCat[r[2]] = byCat[r[2]] || { umbrella: r[3], bodies: 0 }, byCat[r[2]].bodies++; });
+    const ownByCat = {};
+    S.coded.forEach((o) => { if (o.umbrella) ownByCat[o.category] = (ownByCat[o.category] || 0) + 1; });
+    S.sharedByCat = {};
+    Object.entries(byCat).forEach(([cat, v]) => {
+      const u = S.umbrellas[v.umbrella];
+      const net = v.bodies - (ownByCat[cat] || 0);
+      if (u && net > 0) S.sharedByCat[cat] = { nolan: u.nolan, bodies: net };
+    });
     renderSafetyNet(S.sharedRows);
   } catch (e) { $("net-rows").replaceChildren(el("p", { class: "hint", text: "Could not load umbrella coverage." })); }
 }
@@ -97,8 +109,15 @@ function renderPatchwork() {
   const none = own.filter((o) => Aggregates.scoreOf(o.nolan) === 0).length;
   $("patchwork-intro").textContent =
     `We have read ${fmt(own.length)} individual codes. Most mention only a few of the seven principles; ${fmt(none)} mention none.`;
+  renderHm();
+  renderDist();
+  renderStrip();
+}
+
+function renderHm() {
+  const own = S.coded;
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
-  S.hm = Aggregates.heatmap(own, catNames, S.principles);
+  S.hm = Aggregates.heatmap(own, catNames, S.principles, S.hmTab === "shared" ? S.sharedByCat : null);
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell);
   /* If the chart library has not finished loading yet, the fallback table was
    * just drawn; swap in the real heatmap as soon as it is ready. */
@@ -109,9 +128,7 @@ function renderPatchwork() {
       Charts.renderHeatmap(box, S.hm, onHeatmapCell);
     });
   }
-  Charts.renderScaleLegend($("heatmap-legend"));
-  renderDist();
-  renderStrip();
+  Charts.renderScaleLegend($("heatmap-legend"), S.hm.unit);
 }
 
 /* ---------- shared tab plumbing for the waffle and the strip ---------- */
@@ -138,7 +155,7 @@ function renderDist() {
   const bands = Aggregates.scoreBands(S.coded, withShared ? S.sharedRows : null);
   Charts.renderScoreWaffle($("dist-chart"), bands, withShared ? "bodies" : "codes");
   $("dist-hint").textContent = withShared
-    ? "Each square is one percent of every body whose code we know — its own, or its sector's shared code."
+    ? "Each square is one percent of all covered bodies, shared sector codes included."
     : "Each square is one percent of the codes we have read.";
 }
 
@@ -374,10 +391,11 @@ async function boot() {
   renderLegend();
   fillChecks("f-cat", meta.categoryFacets);
   fillPrincipleChecks();
-  if (new URLSearchParams(window.location.search).get("tabs") === "shared") { S.distTab = "shared"; S.stripTab = "shared"; }
+  if (new URLSearchParams(window.location.search).get("tabs") === "shared") { S.distTab = "shared"; S.stripTab = "shared"; S.hmTab = "shared"; }
   wireTabs("dist-tabs", "distTab", renderDist);
   wireTabs("strip-tabs", "stripTab", renderStrip);
-  if (S.distTab === "shared" || S.stripTab === "shared") { renderDist(); renderStrip(); }
+  wireTabs("hm-tabs", "hmTab", renderHm);
+  if (S.distTab === "shared" || S.stripTab === "shared" || S.hmTab === "shared") { renderHm(); renderDist(); renderStrip(); }
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
   await refresh();
 }
