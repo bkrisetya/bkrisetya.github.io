@@ -34,6 +34,9 @@ function resolveNolan(o) {
 }
 const rCov = (n, pid) => (n && n[pid] && n[pid].covered) || "unknown";
 const rScore = (n) => S.principles.filter((p) => rCov(n, p.id) === "yes").length;
+/* Covered dots match the badge colours: teal = the body's own code, navy = a
+ * shared sector code. */
+const covClass = (cov, mode) => (cov === "yes" && mode === "inherited" ? "cov-yes-shared" : `cov-${cov}`);
 
 /* ---------- hero ---------- */
 function renderHero() {
@@ -60,7 +63,7 @@ function renderSafetyNet(rows) {
       ].filter(Boolean)),
       el("div", { class: "net-bodies" }, [el("b", { text: fmt(r.bodies) }), " bodies covered"]),
       (() => { const w = el("span", { class: "nolan-mini" });
-        S.principles.forEach((p) => w.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
+        S.principles.forEach((p) => w.appendChild(el("i", { class: covClass(rCov(r.nolan, p.id), "inherited"), title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
         return w; })(),
     ])));
 }
@@ -128,7 +131,7 @@ function renderHm() {
       Charts.renderHeatmap(box, S.hm, onHeatmapCell);
     });
   }
-  Charts.renderScaleLegend($("heatmap-legend"));
+  Charts.renderScaleLegend($("heatmap-legend"), S.hm.unit);
 }
 
 /* ---------- shared tab plumbing for the waffle and the strip ---------- */
@@ -166,6 +169,7 @@ function renderStrip() {
   const rows = Aggregates.principleBars(coded, S.principles, withShared ? S.sharedRows : null);
   const total = coded.length + (withShared ? sharedBodies() : 0);
   const n = total || 1;
+  $("strip-rows").classList.toggle("strip-shared", withShared);
   $("strip-rows").replaceChildren(...rows.map(({ name, yes, partial, no, unknown }) => {
     const tip = withShared
       ? `${yes.toLocaleString("en-GB")} of ${total.toLocaleString("en-GB")} bodies have ${name} in their code (own or shared)`
@@ -215,7 +219,7 @@ function nolanCell(o) {
   const r = resolveNolan(o);
   if (r.mode === "none") return el("span", { class: "muted-cell", text: "not checked" });
   const wrap = el("span", { class: "nolan-mini" });
-  S.principles.forEach((p) => wrap.appendChild(el("i", { class: `cov-${rCov(r.nolan, p.id)}`, title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
+  S.principles.forEach((p) => wrap.appendChild(el("i", { class: covClass(rCov(r.nolan, p.id), r.mode), title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
   wrap.appendChild(el("span", { class: "score", text: `${rScore(r.nolan)} of 7` }));
   return wrap;
 }
@@ -239,11 +243,11 @@ function renderTable(orgs) {
 }
 
 /* ---------- detail ---------- */
-function principleList(nolan) {
+function principleList(nolan, mode) {
   const grid = el("div", { class: "d-princ" });
   S.principles.forEach((p) => {
     const cov = rCov(nolan, p.id);
-    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot cov-${cov}` }),
+    grid.appendChild(el("div", { class: "pr" }, [el("span", { class: `dot ${covClass(cov, mode)}` }),
       el("div", {}, [el("b", { text: `${p.name}: ${humanCov(cov)}` }), el("span", { class: "ev", text: (nolan[p.id] && nolan[p.id].evidence) || "" })])]));
   });
   return grid;
@@ -266,14 +270,14 @@ function renderDetail(o) {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     if (o.coc && o.coc.note) parts.push(el("p", { class: "d-notes", text: o.coc.note }));
     parts.push(el("p", { class: "d-nolan-head", text: `Mentions ${rScore(r.nolan)} of the 7 principles` }));
-    parts.push(principleList(r.nolan));
+    parts.push(principleList(r.nolan, r.mode));
   } else if (r.mode === "inherited") {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     const box2 = el("div", { class: "d-inherited" }, [el("b", { text: `Covered by ${UMBRELLA_SHORT[r.fromId] || r.from}.` }),
       el("span", { text: ` We have not read this body's own code; it falls under the shared code, which mentions ${rScore(r.nolan)} of the 7 principles.` })]);
     if (r.coc && r.coc.url && /^https?:\/\//i.test(r.coc.url)) { box2.appendChild(document.createTextNode(" ")); box2.appendChild(el("a", { href: r.coc.url, target: "_blank", rel: "noopener", text: "read the shared code" })); }
     parts.push(box2);
-    parts.push(principleList(r.nolan));
+    parts.push(principleList(r.nolan, r.mode));
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     parts.push(el("div", { class: "d-pending", text: "We have not checked this body's code yet." }));
@@ -283,7 +287,7 @@ function renderDetail(o) {
 
 /* ---------- legend ---------- */
 function renderLegend() {
-  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
+  $("nolan-legend").replaceChildren(...[["cov-yes", "covered"], ["cov-yes-shared", "covered by a shared code"], ["cov-no", "not covered"], ["cov-unknown", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: c }), l])));
 }
 

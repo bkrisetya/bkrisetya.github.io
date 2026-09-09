@@ -8,22 +8,25 @@
 
 const Charts = (() => {
   const TEAL = [0x18, 0x99, 0xa2], DEEP_TEAL = [0x08, 0x45, 0x4c], GREY = "#C3CAD5";
+  const NAVY = [0x1a, 0x14, 0x63], MID_NAVY = [0x7c, 0x7a, 0xa9];
   const PAPER = [0xf4, 0xf6, 0xfe]; // 0% share: looks empty, because nothing is there
 
   const hex = (rgb) => "#" + rgb.map((v) => Math.round(v).toString(16).padStart(2, "0")).join("");
   const lerp = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
 
-  /* Sequential teal scale: 0% = near-paper (empty, not celebrated), 50% = EIC teal,
-   * 100% = deep teal. Colour carries exactly one meaning: how many of the sector's
-   * codes mention the principle. No endpoint is "rewarded"; ink is earned by mentions. */
-  function shareColour(share) {
+  /* Sequential scales: 0% = near-paper (empty, not celebrated), 100% = the deepest
+   * brand colour. Individual codes use the teal family; the shared-code view uses
+   * the navy family so it matches the "Shared code" badges and register dots.
+   * Colour carries exactly one meaning: how much is covered. */
+  function shareColour(share, unit) {
     const s = Math.max(0, Math.min(1, share));
+    if (unit === "bodies") return s <= 0.5 ? lerp(PAPER, MID_NAVY, s * 2) : lerp(MID_NAVY, NAVY, (s - 0.5) * 2);
     return s <= 0.5 ? lerp(PAPER, TEAL, s * 2) : lerp(TEAL, DEEP_TEAL, (s - 0.5) * 2);
   }
 
-  function cellColor(share) {
+  function cellColor(share, unit) {
     if (share === null || share === undefined || isNaN(share)) return GREY;
-    return hex(shareColour(share));
+    return hex(shareColour(share, unit));
   }
 
   function available() {
@@ -81,7 +84,7 @@ const Charts = (() => {
     const data = [];
     hm.rows.forEach((r, y) => hm.cols.forEach((c, x) => {
       const cell = hm.cells.get(r.name + "|" + c.id) || { share: null, total: 0, yes: 0 };
-      data.push({ value: [x, y, cell.share], cell, itemStyle: { color: cellColor(cell.share), borderColor: "#fff", borderWidth: 2 } });
+      data.push({ value: [x, y, cell.share], cell, itemStyle: { color: cellColor(cell.share, hm.unit), borderColor: "#fff", borderWidth: 2 } });
     }));
     chart.setOption({
       grid: { left: 4, right: 8, top: 8, bottom: 8, containLabel: true },
@@ -114,7 +117,7 @@ const Charts = (() => {
         const td = tr.insertCell();
         const btn = document.createElement("button");
         btn.className = "hm-cell"; btn.type = "button"; btn.style.width = "100%";
-        btn.style.background = cellColor(cell.share);
+        btn.style.background = cellColor(cell.share, hm.unit);
         btn.title = tipText(r.label || r.name, c.name, cell, hm.unit);
         btn.dataset.cat = r.name; btn.dataset.pid = c.id;
         if (!cell.total) btn.disabled = true;
@@ -126,12 +129,12 @@ const Charts = (() => {
     el.replaceChildren(table);
   }
 
-  function renderScaleLegend(el) {
+  function renderScaleLegend(el, unit) {
     el.replaceChildren();
     const mk = (txt) => { const s = document.createElement("span"); s.textContent = txt; return s; };
     el.appendChild(mk("0%"));
     [0, 0.25, 0.5, 0.75, 1].forEach((v) => {
-      const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = cellColor(v); el.appendChild(sw);
+      const sw = document.createElement("i"); sw.className = "sw"; sw.style.background = cellColor(v, unit); el.appendChild(sw);
     });
     el.appendChild(mk("100%"));
     const g = document.createElement("span");
@@ -141,8 +144,11 @@ const Charts = (() => {
   }
 
   /* ---------- score waffle ---------- */
-  /* EIC families as a readable progression: magenta -> purple -> sky -> teal */
+  /* EIC families as a readable progression: magenta -> purple -> sky -> teal.
+   * The shared-code tab switches to a navy ramp to match the "Shared code"
+   * badges and register dots. */
   const BAND_COLOURS = ["#E41E7C", "#9851FB", "#3CB7F4", "#1899A2"]; // none / 1-2 / 3-5 / 6-7
+  const BAND_COLOURS_SHARED = ["#D8D6EE", "#9B97CF", "#56519E", "#1A1463"];
 
   /* 100 squares, worst band first. Largest-remainder rounding so squares sum to 100. */
   function waffleSquares(bands, total) {
@@ -160,13 +166,14 @@ const Charts = (() => {
 
   function renderScoreWaffle(el, bands, unit) {
     unit = unit || "codes";
+    const palette = unit === "bodies" ? BAND_COLOURS_SHARED : BAND_COLOURS;
     const total = bands.reduce((a, b) => a + b.count, 0);
     const wrap = document.createElement("div");
     wrap.className = "waffle";
     waffleSquares(bands, total).forEach((band) => {
       const sq = document.createElement("i");
       sq.className = "waffle-sq";
-      sq.style.background = BAND_COLOURS[band];
+      sq.style.background = palette[band];
       sq.title = `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")} ${unit}`;
       wrap.appendChild(sq);
     });
@@ -174,7 +181,7 @@ const Charts = (() => {
     legend.className = "waffle-legend";
     bands.forEach((b, i) => {
       const item = document.createElement("span");
-      const sw = document.createElement("i"); sw.style.background = BAND_COLOURS[i];
+      const sw = document.createElement("i"); sw.style.background = palette[i];
       item.appendChild(sw);
       item.appendChild(document.createTextNode(` ${b.label} — ${b.count.toLocaleString("en-GB")}`));
       legend.appendChild(item);
@@ -182,7 +189,7 @@ const Charts = (() => {
     el.replaceChildren(wrap, legend);
   }
 
-  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS };
+  const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS, BAND_COLOURS_SHARED };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   return api;
 })();
