@@ -140,7 +140,8 @@ const Charts = (() => {
     return out.slice(0, 100);
   }
 
-  function renderScoreWaffle(el, bands) {
+  function renderScoreWaffle(el, bands, unit) {
+    unit = unit || "codes";
     const total = bands.reduce((a, b) => a + b.count, 0);
     const wrap = document.createElement("div");
     wrap.className = "waffle";
@@ -148,7 +149,7 @@ const Charts = (() => {
       const sq = document.createElement("i");
       sq.className = "waffle-sq";
       sq.style.background = BAND_COLOURS[band];
-      sq.title = `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")} codes`;
+      sq.title = `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")} ${unit}`;
       wrap.appendChild(sq);
     });
     const legend = document.createElement("div");

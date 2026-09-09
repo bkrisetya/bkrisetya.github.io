@@ -1,6 +1,6 @@
 "use strict";
 
-const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null };
+const S = { meta: null, principles: [], scopeLabels: {}, umbrellas: {}, coded: [], selectedId: null, page: 0, hm: null, principleMissing: null, heatmapCat: null, sharedRows: [], distTab: "individual", stripTab: "individual" };
 const PAGE_SIZE = 25;
 
 function el(tag, props = {}, children = []) {
@@ -50,8 +50,7 @@ function renderHero() {
 }
 
 /* ---------- safety net ---------- */
-function renderSafetyNet(orgRows) {
-  const rows = Aggregates.safetyNetRows(S.umbrellas, orgRows, S.coded);
+function renderSafetyNet(rows) {
   $("net-rows").replaceChildren(...rows.map((r) =>
     el("div", { class: "net-row" }, [
       el("div", { class: "net-name" }, [r.name, el("small", { text: r.id }),
@@ -66,14 +65,16 @@ function renderSafetyNet(orgRows) {
     ])));
 }
 
-/* renderSafetyNet needs raw [id,name,category,umbrella] rows, which DataSource.query
+/* The safety net needs raw [id,name,category,umbrella] rows, which DataSource.query
  * maps to objects. Re-derive the row shape from one big page; if the adapter later
- * grows a raw-rows accessor, only this function changes. */
+ * grows a raw-rows accessor, only this function changes. The same rows feed the
+ * "with shared codes" tabs of the waffle and strip charts. */
 async function renderSafetyNetFromQuery() {
   try {
     const res = await DataSource.query({ page: 0, pageSize: Number.MAX_SAFE_INTEGER });
     const rows = res.orgs.map((o) => [o.id, o.name, o.category, o.umbrella || ""]);
-    renderSafetyNet(rows);
+    S.sharedRows = Aggregates.safetyNetRows(S.umbrellas, rows, S.coded);
+    renderSafetyNet(S.sharedRows);
   } catch (e) { $("net-rows").replaceChildren(el("p", { class: "hint", text: "Could not load umbrella coverage." })); }
 }
 
@@ -109,17 +110,49 @@ function renderPatchwork() {
     });
   }
   Charts.renderScaleLegend($("heatmap-legend"));
-  Charts.renderScoreWaffle($("dist-chart"), Aggregates.scoreBands(own));
+  renderDist();
   renderStrip();
+}
+
+/* ---------- shared tab plumbing for the waffle and the strip ---------- */
+function wireTabs(boxId, key, rerender) {
+  const box = $(boxId);
+  if (!box) return;
+  box.querySelectorAll("button[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x.dataset.tab === S[key])));
+  box.querySelectorAll("button[data-tab]").forEach((b) => b.addEventListener("click", () => {
+    if (S[key] === b.dataset.tab) return;
+    S[key] = b.dataset.tab;
+    box.querySelectorAll("button[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+    rerender();
+  }));
+}
+
+/* sharedRows are the umbrella totals after scrape-wins (bodies whose own code we
+ * read count under their own code, not the umbrella). */
+function sharedBodies() {
+  return S.sharedRows.reduce((a, r) => a + r.bodies, 0);
+}
+
+function renderDist() {
+  const withShared = S.distTab === "shared";
+  const bands = Aggregates.scoreBands(S.coded, withShared ? S.sharedRows : null);
+  Charts.renderScoreWaffle($("dist-chart"), bands, withShared ? "bodies" : "codes");
+  $("dist-hint").textContent = withShared
+    ? "Each square is one percent of every body whose code we know — its own, or its sector's shared code."
+    : "Each square is one percent of the codes we have read.";
 }
 
 /* ---------- the seven principles strip, weakest first ---------- */
 function renderStrip() {
+  const withShared = S.stripTab === "shared";
   const coded = S.coded;
-  const rows = Aggregates.principleBars(coded, S.principles);
-  const n = coded.length || 1;
+  const rows = Aggregates.principleBars(coded, S.principles, withShared ? S.sharedRows : null);
+  const total = coded.length + (withShared ? sharedBodies() : 0);
+  const n = total || 1;
   $("strip-rows").replaceChildren(...rows.map(({ name, yes, partial, no, unknown }) => {
-    const tip = `${yes} of ${coded.length.toLocaleString("en-GB")} codes mention ${name}`;
+    const tip = withShared
+      ? `${yes.toLocaleString("en-GB")} of ${total.toLocaleString("en-GB")} bodies have ${name} in their code (own or shared)`
+      : `${yes} of ${total.toLocaleString("en-GB")} codes mention ${name}`;
     const bar = el("div", { class: "strip-bar", title: tip });
     for (const [k, v] of [["yes", yes], ["no", no], ["unknown", unknown]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
@@ -335,14 +368,18 @@ async function boot() {
   S.allCount = meta.total;
   S.coded = meta.ownOrgs || [];
   renderHero();
+  await renderSafetyNetFromQuery(); // populates S.sharedRows, needed by the chart tabs
   renderPatchwork();
   renderLadderNote();
   renderLegend();
   fillChecks("f-cat", meta.categoryFacets);
   fillPrincipleChecks();
+  if (new URLSearchParams(window.location.search).get("tabs") === "shared") { S.distTab = "shared"; S.stripTab = "shared"; }
+  wireTabs("dist-tabs", "distTab", renderDist);
+  wireTabs("strip-tabs", "stripTab", renderStrip);
+  if (S.distTab === "shared" || S.stripTab === "shared") { renderDist(); renderStrip(); }
   $("search").addEventListener("input", () => { S.page = 0; refresh(); });
   await refresh();
-  renderSafetyNetFromQuery();
 }
 
 boot().catch((err) => {

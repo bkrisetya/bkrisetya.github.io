@@ -29,15 +29,18 @@ function heroNumbers(meta) {
   return { total: meta.total, shared, own, tocheck, reconciles: meta.total === shared + own + tocheck + rest };
 }
 
-function scoreDistribution(ownOrgs) {
+function scoreDistribution(ownOrgs, shared) {
   const bins = Array.from({ length: 8 }, (_, i) => ({ score: i, count: 0 }));
   (ownOrgs || []).forEach((o) => { bins[scoreOf(o.nolan)].count++; });
+  /* shared: rows of { nolan, bodies } — bodies under a shared sector code count
+   * with that code's coverage (scrape-wins already applied by safetyNetRows). */
+  (shared || []).forEach((s) => { if (s.bodies > 0) bins[scoreOf(s.nolan)].count += s.bodies; });
   return bins;
 }
 
 /* Four human bands for the waffle: none / a couple / some / nearly all. */
-function scoreBands(ownOrgs) {
-  const bins = scoreDistribution(ownOrgs);
+function scoreBands(ownOrgs, shared) {
+  const bins = scoreDistribution(ownOrgs, shared);
   const at = (i) => bins[i].count;
   return [
     { label: "None", count: at(0) },
@@ -47,10 +50,14 @@ function scoreBands(ownOrgs) {
   ];
 }
 
-function principleBars(ownOrgs, principles) {
+function principleBars(ownOrgs, principles, shared) {
   const rows = (principles || []).map((p) => ({ id: p.id, name: p.name, yes: 0, partial: 0, no: 0, unknown: 0 }));
   (ownOrgs || []).forEach((o) => {
     rows.forEach((r) => { const c = (o.nolan && o.nolan[r.id] && o.nolan[r.id].covered) || "unknown"; r[c]++; });
+  });
+  (shared || []).forEach((s) => {
+    if (!(s.bodies > 0)) return;
+    rows.forEach((r) => { const c = (s.nolan && s.nolan[r.id] && s.nolan[r.id].covered) || "unknown"; r[c] += s.bodies; });
   });
   rows.sort((a, b) => a.yes - b.yes || b.no - a.no || a.name.localeCompare(b.name)); // weakest first
   return rows;

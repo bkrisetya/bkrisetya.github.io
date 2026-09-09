@@ -138,3 +138,27 @@ test("heatmap rows carry plain-English labels; identity stays the upstream categ
   assert.equal(hm.rows[0].name, "Emergency services");      // filter identity unchanged
   assert.deepEqual(hm.rows[0].cats, ["Emergency services"]);
 });
+
+test("scoreBands adds shared-code bodies at their umbrella's score", () => {
+  const orgs = [{ nolan: n("yynnnnn") }]; // one own code scoring 2
+  const shared = [{ nolan: n("yyyyyyy"), bodies: 100 }, { nolan: n("nnnnnnn"), bodies: 5 }];
+  const bands = A.scoreBands(orgs, shared);
+  assert.equal(bands[0].count, 5);   // None
+  assert.equal(bands[1].count, 1);   // 1-2: the own code
+  assert.equal(bands[3].count, 100); // 6-7: the all-seven umbrella
+  assert.equal(bands.reduce((a, b) => a + b.count, 0), 106);
+  // omitted or empty shared rows change nothing
+  assert.deepEqual(A.scoreBands(orgs), A.scoreBands(orgs, null));
+  assert.deepEqual(A.scoreBands(orgs), A.scoreBands(orgs, [{ nolan: n("yyyyyyy"), bodies: 0 }]));
+});
+
+test("principleBars adds shared-code bodies per principle bucket", () => {
+  const orgs = [{ nolan: n("ynnnnnn") }];
+  const shared = [{ nolan: n("yynnnnn"), bodies: 10 }];
+  const rows = A.principleBars(orgs, PRINCIPLES, shared);
+  const byId = Object.fromEntries(rows.map((r) => [r.id, r]));
+  assert.equal(byId.selflessness.yes, 11);
+  assert.equal(byId.integrity.yes, 10);
+  assert.equal(byId.integrity.no, 1);
+  assert.equal(byId.honesty.no, 11);
+});
