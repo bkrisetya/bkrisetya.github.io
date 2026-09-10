@@ -65,8 +65,11 @@ function principleBars(ownOrgs, principles, shared) {
 
 /* Cells exist only where at least one coded org exists; missing cell = "no codes read yet".
  * Sectors with 1..HEATMAP_FOLD_MIN-1 coded orgs are pooled into a single "Others" row
- * (kept last, before zero-coded rows) so every visible cell rests on decent evidence. */
+ * (kept last, before zero-coded rows) so every visible cell rests on decent evidence.
+ * A named long-tail category can also be forced into Others when a standalone row
+ * adds clutter without adding useful evidence. */
 const HEATMAP_FOLD_MIN = 25;
+const HEATMAP_FOLD_NAMES = new Set(["Business and development"]);
 
 function heatmap(ownOrgs, categoryNames, principles, shared) {
   const cols = (principles || []).map((p) => ({ id: p.id, name: p.name }));
@@ -102,11 +105,11 @@ function heatmap(ownOrgs, categoryNames, principles, shared) {
   const sharedBodies = (name) => (shared && shared[name] && shared[name].bodies) || 0;
   const all = (categoryNames || []).map((name) => ({ name, label: CATEGORY_LABELS[name] || name, coded: codedByCat[name] || 0, bodies: (codedByCat[name] || 0) + sharedBodies(name), cats: [name] }))
     .sort((a, b) => b.bodies - a.bodies || a.name.localeCompare(b.name)); // bodies == coded in the individual lens; shared sectors float up in the shared lens
-  const keep = all.filter((r) => r.coded >= HEATMAP_FOLD_MIN);
-  const fold = all.filter((r) => r.coded > 0 && r.coded < HEATMAP_FOLD_MIN);
-  const zero = all.filter((r) => r.coded === 0 && r.bodies === 0);
-  const sharedOnly = all.filter((r) => r.coded === 0 && r.bodies > 0);
-  if (fold.length < 2) return { rows: all, cols, cells, unit: shared ? "bodies" : "codes" };
+  const keep = all.filter((r) => !HEATMAP_FOLD_NAMES.has(r.name) && r.coded >= HEATMAP_FOLD_MIN);
+  const fold = all.filter((r) => HEATMAP_FOLD_NAMES.has(r.name) || (r.coded > 0 && r.coded < HEATMAP_FOLD_MIN));
+  const zero = all.filter((r) => !HEATMAP_FOLD_NAMES.has(r.name) && r.coded === 0 && r.bodies === 0);
+  const sharedOnly = all.filter((r) => !HEATMAP_FOLD_NAMES.has(r.name) && r.coded === 0 && r.bodies > 0);
+  if (fold.length < 2 && !fold.some((r) => HEATMAP_FOLD_NAMES.has(r.name))) return { rows: all, cols, cells, unit: shared ? "bodies" : "codes" };
   const pooled = { name: "Others", coded: 0, bodies: 0, cats: [] };
   fold.forEach((r) => {
     pooled.coded += r.coded;
@@ -115,7 +118,7 @@ function heatmap(ownOrgs, categoryNames, principles, shared) {
     cols.forEach((c) => {
       const key = "Others|" + c.id;
       if (!cells.has(key)) cells.set(key, { yes: 0, partial: 0, no: 0, unknown: 0, total: 0, note: "Sectors with few codes read, grouped together." });
-      const dst = cells.get(key), src = cells.get(r.name + "|" + c.id);
+      const dst = cells.get(key), src = cells.get(r.name + "|" + c.id) || { yes: 0, partial: 0, no: 0, unknown: 0, total: 0 };
       ["yes", "partial", "no", "unknown"].forEach((k) => { dst[k] += src[k]; });
       dst.total += src.total;
     });
@@ -137,6 +140,6 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, HEATMAP_FOLD_NAMES, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
 }
-if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, HEATMAP_FOLD_NAMES, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };

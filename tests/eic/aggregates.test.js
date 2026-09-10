@@ -89,6 +89,15 @@ test("heatmap does not fold a single thin sector", () => {
   assert.deepEqual(hm.rows.map((r) => r.name), ["Health", "Thin A"]);
 });
 
+test("heatmap folds Business and development into Others even without own codes", () => {
+  const big = Array.from({ length: A.HEATMAP_FOLD_MIN }, () => ({ category: "Health", nolan: n("yyyyyyy") }));
+  const hm = A.heatmap([...big], ["Health", "Business and development", "Empty"], PRINCIPLES);
+  assert.deepEqual(hm.rows.map((r) => r.name), ["Health", "Others", "Empty"]);
+  assert.deepEqual(hm.rows[1].cats, ["Business and development"]);
+  assert.equal(hm.rows[1].coded, 0);
+  assert.equal(hm.cells.get("Others|selflessness").share, null);
+});
+
 test("safetyNetRows counts bodies per umbrella from org rows", () => {
   const umbrellas = { LGA: { name: "Local Government Association code", nolan: n("yyyyyyy") }, DfE: { name: "DfE code", nolan: n("yyyyyny") } };
   const rows = [["1", "A council", "Council", "LGA"], ["2", "B council", "Council", "LGA"], ["3", "A school", "Education", "DfE"], ["4", "Body", "Other", ""]];

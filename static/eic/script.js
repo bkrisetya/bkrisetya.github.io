@@ -167,11 +167,25 @@ function notChecked() {
 /* One story everywhere: teal = the body's own code, soft periwinkle = the
  * shared code backstops it, grey = not covered / not checked. */
 function renderDist() {
+  const ownLabels = [
+    "Has own code but mentioned no principle(s)",
+    "1-2 Principles (own code)",
+    "3-5 Principles (own code)",
+    "6-7 Principles (own code)",
+  ];
+  const ownHovers = [
+    (n) => `${fmt(n)} bodies have an own code but mentioned no principles`,
+    (n) => `${fmt(n)} bodies have 1-2 principles in their own code`,
+    (n) => `${fmt(n)} bodies have 3-5 principles in their own code`,
+    (n) => `${fmt(n)} bodies have 6-7 principles in their own code`,
+  ];
   const bands = Aggregates.scoreBands(S.coded, null).map((b, i) => ({
-    label: `Own code: ${b.label.toLowerCase()}`, count: b.count, colour: Charts.BAND_COLOURS[i],
+    label: ownLabels[i], hover: ownHovers[i](b.count), count: b.count, colour: Charts.BAND_COLOURS[i],
   }));
-  bands.push({ label: "Shared code: all 7", count: sharedBodies(), colour: Charts.SHARED });
-  bands.push({ label: "Not checked", count: notChecked(), colour: "#C3CAD5" });
+  const shared = sharedBodies();
+  bands.push({ label: "Only covered by shared codes", hover: `${fmt(shared)} bodies only covered by shared codes`, count: shared, colour: Charts.SHARED });
+  const unchecked = notChecked();
+  bands.push({ label: "Not checked", hover: `${fmt(unchecked)} bodies not checked`, count: unchecked, colour: "#C3CAD5" });
   Charts.renderScoreWaffle($("dist-chart"), bands);
   $("dist-hint").textContent = "Each square is one percent of the register.";
 }
