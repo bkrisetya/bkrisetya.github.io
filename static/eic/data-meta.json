@@ -3,12 +3,12 @@
   "total": 40376,
   "in_scope": 40376,
   "out_of_scope": 0,
-  "snapshot": "9 September 2026",
-  "correctAsOf": "9 September 2026",
+  "snapshot": "10 September 2026",
+  "correctAsOf": "10 September 2026",
   "allInScope": true,
   "scopeDropped": true,
   "master": {
-   "path": "/Users/beltsazar/code/PublicAuthorities_Database/data-ammara-2026-09-08.xlsx",
+   "path": "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/1c2bb22ca9c33c2a720ff09edc277df67394e0ac/data.xlsx",
    "rows": 43547,
    "columns": [
     "name",
@@ -38,6 +38,12 @@
     "human_review",
     "scraped_date"
    ]
+  },
+  "upstream": {
+   "repo": "ammara-y/PublicAuthorities_Database",
+   "sha": "1c2bb22ca9c33c2a720ff09edc277df67394e0ac",
+   "url": "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/1c2bb22ca9c33c2a720ff09edc277df67394e0ac/data.xlsx",
+   "fetched_at": "2026-09-10T01:07:40+01:00"
   },
   "defunctExcluded": 3171,
   "umbrellaScrapeHits": 6899,
