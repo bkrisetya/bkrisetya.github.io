@@ -14,7 +14,8 @@ Usage:
                                                  # (review the diff, then update
                                                  # PINNED_SHA below in the same commit)
 
-What is regenerated:  meta counts/facets/coverage, ownOrgs, data-orgs.json.
+What is regenerated:  meta counts/facets/coverage, ownOrgs, data-orgs.json,
+                      and the compact data.json fallback stub.
 What is preserved:    principles, scope_labels, umbrellas — the umbrella
                       codings and their statutory provenance are OUR editorial
                       layer, hand-authored, and never touched by this script.
@@ -30,33 +31,13 @@ import urllib.request
 
 import openpyxl
 
-PINNED_SHA = "1c2bb22ca9c33c2a720ff09edc277df67394e0ac"
+PINNED_SHA = "d79951ed80f3533729c6e66e3ee49edf297c9e3b"
 RAW_URL = "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/{sha}/data.xlsx"
 
 EIC_DIR = "static/eic"
 
-# Editorial exclusions from the 7–8 Sep 2026 build: bodies that are defunct
-# (dissolved, merged, or replaced) although the upstream sheet still lists
-# them as in scope. Matched by exact name; the script fails loudly if the
-# count drifts, so an upstream change can never silently drop or resurrect
-# one of these.
-CURATED_DEFUNCT = [
-    "Ackton Pastures Primary School, Castleford",
-    "Advisory Committee on Business Appointments",
-    "Appeal Body (DVTA)",
-    "Building Regulations Advisory Committee",
-    "City of Bath College",
-    "Darwin Advisory Committee",
-    "Defence Scientific Advisory Council",
-    "Forensic Science Service",
-    "Health and Safety Laboratory",
-    "Human Genetics Commission",
-    "Independent Inquiry into Child Sexual Abuse",
-    "Information Tribunal",
-    "NHS Institute for Innovation and Improvement",
-    "Research Councils UK",
-    "Scientific Committee on Tobacco and Health",
-]
+# Ammara's 10 Sep snapshot already removes defunct bodies upstream.
+CURATED_DEFUNCT = []
 
 # Our sector -> shared-code mapping (NOT part of the upstream dataset).
 # Provenance for each umbrella lives in the preserved `umbrellas` block.
@@ -96,6 +77,7 @@ CANONICAL_CATEGORIES = [
     "Welsh council",
 ]
 _CATEGORY_LOOKUP = {" ".join(c.lower().split()): c for c in CANONICAL_CATEGORIES}
+_CATEGORY_LOOKUP["parish council"] = "Parish Council or Meeting"
 
 
 def canonical_category(raw):
@@ -130,12 +112,24 @@ def build(blob, sha, url, existing_meta, fetched_at):
     orgs, own = [], []
     cat_counts = collections.Counter()
     per_cat = collections.defaultdict(lambda: collections.Counter())
+    scraped_dates = set()
 
     for i, r in enumerate(it, start=1):
         d = dict(zip(header, r))
         rid = f"sheet{i}"
         scope = str(d["scope"] or "").strip()
         name = str(d["name"] or "").strip()
+        scraped = d.get("scraped_date")
+        if scraped:
+            try:
+                if isinstance(scraped, datetime.datetime):
+                    scraped_dates.add(scraped.date())
+                elif isinstance(scraped, datetime.date):
+                    scraped_dates.add(scraped)
+                else:
+                    scraped_dates.add(datetime.date.fromisoformat(str(scraped).strip()[:10]))
+            except ValueError:
+                sys.exit(f"ERROR: invalid scraped_date {scraped!r} for {name!r}.")
 
         # exclusion: out-of-scope scopes + the curated defunct list
         if scope in ("NA", ""):
@@ -186,14 +180,18 @@ def build(blob, sha, url, existing_meta, fetched_at):
     shared_count = sum(c["shared"] for c in per_cat.values())
     tocheck_count = sum(c["tocheck"] for c in per_cat.values())
     total = len(orgs)
+    if len(scraped_dates) > 1:
+        sys.exit(f"ERROR: multiple scraped dates in upstream snapshot: {sorted(scraped_dates)}")
+    snapshot_date = next(iter(scraped_dates), fetched_at.date())
+    snapshot = snapshot_date.strftime("%-d %B %Y")
 
     meta = dict(existing_meta)  # shallow copy; hand-authored blocks preserved
     meta["meta"] = {
         "total": total,
         "in_scope": total,
         "out_of_scope": 0,
-        "snapshot": fetched_at.strftime("%-d %B %Y"),
-        "correctAsOf": fetched_at.strftime("%-d %B %Y"),
+        "snapshot": snapshot,
+        "correctAsOf": snapshot,
         "allInScope": True,
         "scopeDropped": True,
         "master": {
@@ -280,6 +278,12 @@ def main():
     with open(f"{EIC_DIR}/data-meta.json", "w") as f:
         json.dump(meta, f, indent=1, ensure_ascii=False)
         f.write("\n")
+    stub = dict(meta)
+    stub["meta"] = dict(meta["meta"])
+    stub["meta"].pop("ownOrgs", None)
+    stub["orgs"] = []
+    with open(f"{EIC_DIR}/data.json", "w") as f:
+        json.dump(stub, f, separators=(",", ":"), ensure_ascii=False)
     print(f"wrote {len(orgs)} orgs, {len(meta['meta']['ownOrgs'])} own-coded; "
           f"pinned to {args.pin[:8]}, fetched {fetched_at.date()}")
 
