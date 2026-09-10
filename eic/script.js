@@ -164,6 +164,20 @@ function notChecked() {
   return (S.meta.coverage && S.meta.coverage.tocheck) || 0;
 }
 
+function bindChartTip(node, tipBox, tip) {
+  node.title = tip;
+  node.tabIndex = 0;
+  node.setAttribute("role", "button");
+  node.setAttribute("aria-label", tip);
+  const show = () => { if (tipBox) tipBox.textContent = tip; };
+  node.addEventListener("mouseenter", show);
+  node.addEventListener("focus", show);
+  node.addEventListener("click", show);
+  node.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(); }
+  });
+}
+
 /* One story everywhere: teal = the body's own code, soft periwinkle = the
  * shared code backstops it, grey = not covered / not checked. */
 function renderDist() {
@@ -202,16 +216,20 @@ function renderStrip() {
   rows.sort((a, b) => (a.yes + a.shared) - (b.yes + b.shared) || a.name.localeCompare(b.name));
   const total = S.coded.length + sharedBodies() + notChecked();
   const n = total || 1;
+  const stripTip = $("strip-tip");
+  if (stripTip) stripTip.textContent = "Hover or tap a bar to see the breakdown.";
   $("strip-rows").replaceChildren(...rows.map((r) => {
     const covered = r.yes + r.shared;
-    const tip = `${r.yes} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(notChecked())} bodies not checked.`;
+    const tip = `${fmt(r.yes)} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(notChecked())} bodies not checked.`;
     const bar = el("div", { class: "strip-bar", title: tip });
     for (const [k, v] of [["yes", r.yes], ["shared", r.shared], ["no", r.no], ["unchecked", notChecked()]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
     }
-    return el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: r.name }), bar, el("div", { class: "p-count", text: `${covered === n ? 100 : Math.min(99, Math.round((covered / n) * 100))}%` })]);
+    const row = el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: r.name }), bar, el("div", { class: "p-count", text: `${covered === n ? 100 : Math.min(99, Math.round((covered / n) * 100))}%` })]);
+    bindChartTip(row, stripTip, tip);
+    return row;
   }));
-  $("strip-legend").replaceChildren(...[["s-yes", "own code mentions it"], ["s-shared", "shared code covers it"], ["s-no", "not mentioned"], ["s-unchecked", "not checked"]]
+  $("strip-legend").replaceChildren(...[["s-yes", "mentioned in own code"], ["s-shared", "covered by a shared code instead"], ["s-no", "not mentioned"], ["s-unchecked", "not checked"]]
     .map(([c, l]) => el("span", {}, [el("i", { class: `sl ${c}` }), l])));
 }
 

@@ -85,10 +85,15 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .patch-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .dist-chart { min-height: 200px; }
 .waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 340px; margin: 6px 0 14px; }
-.waffle-sq { display: block; aspect-ratio: 1; border-radius: 3px; }
+.waffle-sq { display: block; width: 100%; aspect-ratio: 1; border: 0; padding: 0; border-radius: 3px; cursor: pointer; touch-action: manipulation; }
+.waffle-sq:hover, .waffle-sq:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
 .waffle-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.85rem; color: var(--ink-soft); }
+.waffle-key { border: 0; padding: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; touch-action: manipulation; }
+.waffle-key:hover, .waffle-key:focus-visible { color: var(--navy); }
 .waffle-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; vertical-align: -1px; }
-.strip-row { display: grid; grid-template-columns: 130px 1fr 70px; gap: 10px; align-items: center; padding: 5px 0; }
+.chart-tip { min-height: 1.2em; margin: 0 0 10px; font-size: 0.8rem; color: var(--ink-soft); }
+.strip-row { display: grid; grid-template-columns: 130px 1fr 70px; gap: 10px; align-items: center; padding: 5px 0; cursor: pointer; touch-action: manipulation; }
+.strip-row:hover, .strip-row:focus-visible { background: var(--paper); outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
 .p-name { font-weight: 600; font-size: 0.95rem; }
 .strip-bar { display: flex; height: 16px; border-radius: 3px; overflow: hidden; background: var(--grey); }
 .strip-bar .s-yes { background: var(--teal); }

@@ -180,28 +180,41 @@ const Charts = (() => {
     const total = bands.reduce((a, b) => a + b.count, 0);
     const wrap = document.createElement("div");
     wrap.className = "waffle";
+    const tipBox = document.createElement("p");
+    tipBox.className = "chart-tip";
+    tipBox.setAttribute("aria-live", "polite");
+    tipBox.textContent = "Hover or tap a colour to see the number.";
+    const showTip = (tip) => { tipBox.textContent = tip; };
+    const bindTip = (node, tip) => {
+      node.title = tip;
+      node.setAttribute("aria-label", tip);
+      node.addEventListener("mouseenter", () => showTip(tip));
+      node.addEventListener("focus", () => showTip(tip));
+      node.addEventListener("click", () => showTip(tip));
+    };
     waffleSquares(bands, total).forEach((band) => {
-      const sq = document.createElement("i");
+      const sq = document.createElement("button");
+      sq.type = "button";
       sq.className = "waffle-sq";
       sq.style.background = bands[band].colour;
       const tip = bands[band].hover || `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")}`;
-      sq.title = tip;
-      sq.setAttribute("aria-label", tip);
+      bindTip(sq, tip);
       wrap.appendChild(sq);
     });
     const legend = document.createElement("div");
     legend.className = "waffle-legend";
     bands.forEach((b) => {
-      const item = document.createElement("span");
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = "waffle-key";
       const sw = document.createElement("i"); sw.style.background = b.colour;
       const tip = b.hover || `${b.label}: ${b.count.toLocaleString("en-GB")}`;
-      item.title = tip;
-      item.setAttribute("aria-label", tip);
+      bindTip(item, tip);
       item.appendChild(sw);
       item.appendChild(document.createTextNode(` ${b.label}`));
       legend.appendChild(item);
     });
-    el.replaceChildren(wrap, legend);
+    el.replaceChildren(wrap, tipBox, legend);
   }
 
   const api = { available, onEchartsReady, cellColor, waffleSquares, renderHeatmap, renderScaleLegend, renderScoreWaffle, BAND_COLOURS, SHARED };
