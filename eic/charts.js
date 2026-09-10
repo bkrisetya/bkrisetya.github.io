@@ -184,7 +184,9 @@ const Charts = (() => {
       const sq = document.createElement("i");
       sq.className = "waffle-sq";
       sq.style.background = bands[band].colour;
-      sq.title = `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")}`;
+      const tip = bands[band].hover || `${bands[band].label}: ${bands[band].count.toLocaleString("en-GB")}`;
+      sq.title = tip;
+      sq.setAttribute("aria-label", tip);
       wrap.appendChild(sq);
     });
     const legend = document.createElement("div");
@@ -192,8 +194,11 @@ const Charts = (() => {
     bands.forEach((b) => {
       const item = document.createElement("span");
       const sw = document.createElement("i"); sw.style.background = b.colour;
+      const tip = b.hover || `${b.label}: ${b.count.toLocaleString("en-GB")}`;
+      item.title = tip;
+      item.setAttribute("aria-label", tip);
       item.appendChild(sw);
-      item.appendChild(document.createTextNode(` ${b.label} — ${b.count.toLocaleString("en-GB")}`));
+      item.appendChild(document.createTextNode(` ${b.label}`));
       legend.appendChild(item);
     });
     el.replaceChildren(wrap, legend);
