@@ -148,6 +148,10 @@ test("heatmap rows carry plain-English labels; identity stays the upstream categ
   assert.deepEqual(hm.rows[0].cats, ["Emergency services"]);
 });
 
+test("Parish Council and Meeting is displayed as Parish Council", () => {
+  assert.equal(A.CATEGORY_LABELS["Parish Council or Meeting"], "Parish Council");
+});
+
 test("scoreBands adds shared-code bodies at their umbrella's score", () => {
   const orgs = [{ nolan: n("yynnnnn") }]; // one own code scoring 2
   const shared = [{ nolan: n("yyyyyyy"), bodies: 100 }, { nolan: n("nnnnnnn"), bodies: 5 }];
