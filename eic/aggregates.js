@@ -9,7 +9,7 @@ const PRINCIPLE_IDS = ["selflessness", "integrity", "objectivity", "accountabili
  * Heatmap rows only — filtering still keys on the original category. */
 const CATEGORY_LABELS = {
   "Education": "Schools & colleges",
-  "Parish Council or Meeting": "Parish & town councils",
+  "Parish Council or Meeting": "Parish Council",
   "Council – other (England)": "Other councils (England)",
   "Welsh council": "Councils (Wales)",
   "Health and social care": "Health & social care",

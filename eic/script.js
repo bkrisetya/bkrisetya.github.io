@@ -312,7 +312,7 @@ function renderDetail(o) {
   if (!o) { box.replaceChildren(el("p", { class: "d-empty", text: "Pick an organisation to see what code it has, and how many of the seven principles its code mentions." })); return; }
   const parts = [
     el("h3", { text: o.name }),
-    el("p", { class: "d-sub", text: o.category || "-" }),
+    el("p", { class: "d-sub", text: o.category === "Parish Council or Meeting" ? "Parish Council" : (o.category || "-") }),
   ];
   if (o.notes) parts.push(el("p", { class: "d-notes", text: o.notes }));
   const safeUrl = o.url && /^https?:\/\//i.test(o.url) ? o.url : null;
@@ -405,7 +405,8 @@ function fillChecks(id, facets) {
   const top = FILTER_TOP[id] || 8;
   const make = (f) => {
     const cb = el("input", { type: "checkbox", value: f.value });
-    const lab = el("label", { class: "fchip" }, [cb, `${f.label || f.value} (${fmt(f.count)})`]);
+    const label = f.value === "Parish Council or Meeting" ? "Parish Council" : (f.label || f.value);
+    const lab = el("label", { class: "fchip" }, [cb, `${label} (${fmt(f.count)})`]);
     cb.addEventListener("change", () => { lab.classList.toggle("on", cb.checked); S.heatmapCat = null; S.page = 0; refresh(); });
     return lab;
   };
