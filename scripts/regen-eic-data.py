@@ -26,6 +26,7 @@ import collections
 import datetime
 import io
 import json
+import os
 import sys
 import urllib.request
 
@@ -45,6 +46,17 @@ TOCHECK_REVIEW = "scripts/eic-tocheck-review.json"
 # the seven principle ticks and the document actually read replace the scrape's.
 # Built by ~/src/eic-coc-review/calib/build_overlay_layer.py.
 OVERLAY_REVIEW = "scripts/eic-overlay-review.json"
+
+# England-only scope (decision 2 Oct 2026, per Emma's 16 Apr brief): bodies operating only
+# in Scotland, Wales or Northern Ireland are left off. Built by
+# ~/src/eic-coc-review/scope/classify.py. Delete this file and rebuild to bring them back.
+DEVOLVED_SCOPE = "scripts/eic-devolved-excluded.json"
+
+# English councils misfiled upstream as Scottish/Welsh (build-only fix; sheet untouched).
+CATEGORY_FIX = {
+    "Thurrock Council": "Council – other (England)",
+    "Newport Town Council, Shropshire": "Council – other (England)",
+}
 
 # Ammara's 10 Sep snapshot already removes defunct bodies upstream.
 CURATED_DEFUNCT = []
@@ -110,10 +122,13 @@ def fetch_xlsx(sha):
         return url, io.BytesIO(res.read())
 
 
-def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None):
+def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, devolved=None):
     review = review or {"own": {}, "checked_none": []}
     overlay = overlay or {}
     overlay_hit = set()
+    devolved = devolved or {}
+    devolved_seen = set()
+    devolved_hit = 0
     review_own, review_none = review["own"], set(review["checked_none"])
     # closed/merged or no website found anywhere: left off the dashboard (user decision 2 Oct 2026)
     review_dropped = set(review.get("dropped", []))
@@ -156,14 +171,18 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None):
         if name in defunct:
             matched_defunct.add(name)
             continue
+        if name in devolved:
+            devolved_seen.add(name)
+            devolved_hit += 1
+            continue
         if name in review_dropped and not (bool(d["match"]) and str(d["code_url"] or "").startswith("http")) \
                 and not UMBRELLA_BY_CATEGORY.get(canonical_category(d["category"]), ""):
             review_hit.add(name)
             dropped_hit += 1
             continue
 
-        umbrella = UMBRELLA_BY_CATEGORY.get(canonical_category(d["category"]), "")
-        category = canonical_category(d["category"])
+        category = CATEGORY_FIX.get(name) or canonical_category(d["category"])
+        umbrella = UMBRELLA_BY_CATEGORY.get(category, "")
         orgs.append([rid, name, category, umbrella])
         cat_counts[category] += 1
 
@@ -201,6 +220,8 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None):
             own.append(rec)
             per_cat[category]["own"] += 1
         elif umbrella:
+            if name in review_none:  # re-filed into a shared-code category (CATEGORY_FIX)
+                review_hit.add(name)
             per_cat[category]["shared"] += 1
         elif name in review_own:
             x = review_own[name]
@@ -229,10 +250,13 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None):
                  f"({len(matched_defunct)}/{len(CURATED_DEFUNCT)} hit). Missing: {missing}. "
                  f"Review upstream changes before re-pinning.")
 
-    if set(overlay) - overlay_hit:
-        sys.exit(f"ERROR: {len(set(overlay) - overlay_hit)} re-read codes not found as coded rows: "
-                 f"{sorted(set(overlay) - overlay_hit)[:5]}")
-    missing_review = (set(review_own) | review_none | review_dropped) - review_hit
+    if set(devolved) - devolved_seen:
+        sys.exit(f"ERROR: {len(set(devolved) - devolved_seen)} devolved-scope names not on the sheet: "
+                 f"{sorted(set(devolved) - devolved_seen)[:5]}")
+    if set(overlay) - overlay_hit - devolved_seen:
+        miss = set(overlay) - overlay_hit - devolved_seen
+        sys.exit(f"ERROR: {len(miss)} re-read codes not found as coded rows: {sorted(miss)[:5]}")
+    missing_review = (set(review_own) | review_none | review_dropped) - review_hit - devolved_seen
     if missing_review:
         sys.exit(f"ERROR: {len(missing_review)} reviewed bodies not found as unchecked rows: "
                  f"{sorted(missing_review)[:5]}")
@@ -267,8 +291,9 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None):
             "url": url,
             "fetched_at": fetched_at.isoformat(timespec="seconds"),
         },
-        "defunctExcluded": master_rows - total - dropped_hit,
+        "defunctExcluded": master_rows - total - dropped_hit - devolved_hit,
         "noWebsiteExcluded": dropped_hit,
+        "devolvedExcluded": devolved_hit,
         "umbrellaScrapeHits": sum(1 for o in own if "umbrella" in o),
         "coverage": {
             "own": own_count,
@@ -322,7 +347,11 @@ def main():
         review = json.load(f)
     with open(OVERLAY_REVIEW) as f:
         overlay = json.load(f)["rows"]
-    orgs, meta = build(blob, args.pin, url, existing, fetched_at, review, overlay)
+    devolved = {}
+    if os.path.exists(DEVOLVED_SCOPE):
+        with open(DEVOLVED_SCOPE) as f:
+            devolved = json.load(f)
+    orgs, meta = build(blob, args.pin, url, existing, fetched_at, review, overlay, devolved)
 
     if args.check:
         with open(f"{EIC_DIR}/data-orgs.json") as f:
