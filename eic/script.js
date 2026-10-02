@@ -62,7 +62,7 @@ function renderHero() {
     [h.total, "bodies on the register"],
     [h.shared, `covered by ${Object.keys(S.umbrellas).length} shared codes`],
     [h.own, "own codes read"],
-    [h.checked, "no own code"],
+    [h.checked, "no code found"],
   ];
   if (h.tocheck) stats.push([h.tocheck, "still to check"]);
   $("hero-stats").replaceChildren(...stats.map(([n, label]) =>
@@ -203,7 +203,7 @@ function renderDist() {
   const shared = sharedBodies();
   bands.push({ label: "Only covered by shared codes", hover: `${fmt(shared)} bodies only covered by shared codes`, count: shared, colour: Charts.SHARED });
   const none = checkedNone();
-  bands.push({ label: "No own code", hover: `${fmt(none)} bodies whose website we read: no own code`, count: none, colour: "#8E97A6" });
+  bands.push({ label: "No code found", hover: `${fmt(none)} bodies whose website we read: no code found`, count: none, colour: "#8E97A6" });
   const unchecked = notChecked();
   if (unchecked) bands.push({ label: "Not checked", hover: `${fmt(unchecked)} bodies not checked`, count: unchecked, colour: "#C3CAD5" });
   Charts.renderScoreWaffle($("dist-chart"), bands);
@@ -226,7 +226,7 @@ function renderStrip() {
   if (stripTip) stripTip.textContent = "Hover or tap a bar to see the breakdown.";
   $("strip-rows").replaceChildren(...rows.map((r) => {
     const covered = r.yes + r.shared;
-    const tip = `${fmt(r.yes)} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(checkedNone())} bodies have no own code${notChecked() ? `; ${fmt(notChecked())} not checked` : ""}.`;
+    const tip = `${fmt(r.yes)} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(checkedNone())} bodies have no code found${notChecked() ? `; ${fmt(notChecked())} not checked` : ""}.`;
     const bar = el("div", { class: "strip-bar", title: tip });
     for (const [k, v] of [["yes", r.yes], ["shared", r.shared], ["no", r.no + checkedNone()], ["unchecked", notChecked()]]) {
       const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
@@ -264,7 +264,7 @@ function renderLadderNote() {
 /* ---------- table ---------- */
 function codeCell(o) {
   const r = resolveNolan(o);
-  if (!r.own && !r.shared) return el("span", { class: "muted-cell", text: o.checkedNone ? "No own code" : "Not checked" });
+  if (!r.own && !r.shared) return el("span", { class: "muted-cell", text: o.checkedNone ? "No code found" : "Not checked" });
   const name = r.own ? ((o.coc && o.coc.doc_type) || "Own code") : `Covered by ${UMBRELLA_SHORT[r.shared.fromId] || r.shared.fromId}`;
   const badges = [];
   if (r.own) badges.push(el("span", { class: "code-badge own", text: "Own code" }));
@@ -277,7 +277,7 @@ function codeCell(o) {
 }
 function nolanCell(o) {
   const r = resolveNolan(o);
-  if (!r.own && !r.shared) return el("span", { class: "muted-cell", text: o.checkedNone ? "no own code" : "not checked" });
+  if (!r.own && !r.shared) return el("span", { class: "muted-cell", text: o.checkedNone ? "no code found" : "not checked" });
   const wrap = el("span", { class: "nolan-mini" });
   S.principles.forEach((p) => { const d = dotInfo(r, p.id); wrap.appendChild(el("i", { class: d.cls, title: `${p.name}: ${d.label}` })); });
   wrap.appendChild(el("span", { class: "score", text: `${uScore(r)} of 7` }));
@@ -349,7 +349,7 @@ function renderDetail(o) {
   } else {
     if (safeUrl) parts.push(el("p", { class: "d-coc" }, [el("a", { href: safeUrl, target: "_blank", rel: "noopener", text: "Website" })]));
     parts.push(el("div", { class: "d-pending", text: o.checkedNone
-      ? "We read this body's website and did not find its own code of conduct."
+      ? "We read this body's website and found no code of conduct of its own, and none of the shared codes applies to it so far."
       : "We have not checked this body's code yet." }));
   }
   box.replaceChildren(...parts);
