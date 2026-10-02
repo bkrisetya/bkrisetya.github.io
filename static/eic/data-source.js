@@ -30,8 +30,8 @@ const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
   local: {
-    meta: "./data-meta.json?v=20260910f",
-    orgs: "./data-orgs.json?v=20260910f",
+    meta: "./data-meta.json?v=20261002a",
+    orgs: "./data-orgs.json?v=20261002a",
   },
 
   datasette: {
@@ -170,6 +170,7 @@ const DataSource = (() => {
   let _rows = null;
   let _orgsReady = null;
   let _ownById = {};
+  let _checkedNone = new Set();
 
   const NOLAN_IDS = ["selflessness","integrity","objectivity","accountability","openness","honesty","leadership"];
   function expandNolan(raw) {
@@ -190,6 +191,8 @@ const DataSource = (() => {
       if (extra.nolan) o.nolan = expandNolan(extra.nolan);
       if (extra.coc) o.coc = extra.coc;
       if (extra.url) o.url = extra.url;
+    } else if (_checkedNone.has(o.id)) {
+      o.checkedNone = true;
     }
     return o;
   }
@@ -203,6 +206,7 @@ const DataSource = (() => {
       for (const o of ((_cache.meta && _cache.meta.ownOrgs) || [])) {
         if (o && o.id) _ownById[o.id] = o;
       }
+      _checkedNone = new Set((_cache.meta && _cache.meta.checkedNone) || []);
       _orgsReady = fetch(cfg.local.orgs).then((res) => {
         if (!res.ok) throw new Error(`data-orgs.json ${res.status}`);
         return res.json();

@@ -26,6 +26,21 @@ test("heroNumbers reconciles parts to total", () => {
   assert.equal(A.heroNumbers({ total: 11, coverage: meta.coverage }).reconciles, false);
 });
 
+test("heroNumbers counts 'checked, no code found' separately from 'still to check'", () => {
+  const meta = { total: 10, coverage: { own: 2, shared: 5, checked: 2, tocheck: 1, periphery_out: 0, notscoped: 0 } };
+  const h = A.heroNumbers(meta);
+  assert.deepEqual([h.checked, h.tocheck], [2, 1]);
+  assert.equal(h.reconciles, true);
+});
+
+test("real data: checkedNone ids are unchecked rows, never own-coded", () => {
+  const raw = require(path.join(__dirname, "../../static/eic/data-meta.json"));
+  const ids = raw.meta.checkedNone || [];
+  assert.equal(ids.length, raw.meta.coverage.checked || 0);
+  const own = new Set(raw.meta.ownOrgs.map((o) => o.id));
+  assert.equal(ids.filter((id) => own.has(id)).length, 0);
+});
+
 test("scoreDistribution bins 0..7 and sums to input length", () => {
   const orgs = [{ nolan: n("yyyyyyy") }, { nolan: n("nnnnnnn") }, { nolan: n("yynnnnn") }, { nolan: n("yynnnnn") }];
   const d = A.scoreDistribution(orgs);

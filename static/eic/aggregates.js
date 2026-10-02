@@ -24,9 +24,9 @@ function scoreOf(nolan) {
 
 function heroNumbers(meta) {
   const cov = meta.coverage || {};
-  const shared = cov.shared || 0, own = cov.own || 0, tocheck = cov.tocheck || 0;
+  const shared = cov.shared || 0, own = cov.own || 0, checked = cov.checked || 0, tocheck = cov.tocheck || 0;
   const rest = (cov.periphery_out || 0) + (cov.notscoped || 0);
-  return { total: meta.total, shared, own, tocheck, reconciles: meta.total === shared + own + tocheck + rest };
+  return { total: meta.total, shared, own, checked, tocheck, reconciles: meta.total === shared + own + checked + tocheck + rest };
 }
 
 function scoreDistribution(ownOrgs, shared) {

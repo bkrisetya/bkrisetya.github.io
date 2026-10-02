@@ -36,6 +36,11 @@ RAW_URL = "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database
 
 EIC_DIR = "static/eic"
 
+# Editorial layer for bodies with neither an own nor a shared code on the sheet:
+# own codes we found ourselves, and bodies whose site we read without finding one.
+# Built by ~/src/eic-coc-review/calib/build_tocheck_layer.py.
+TOCHECK_REVIEW = "scripts/eic-tocheck-review.json"
+
 # Ammara's 10 Sep snapshot already removes defunct bodies upstream.
 CURATED_DEFUNCT = []
 
@@ -100,7 +105,14 @@ def fetch_xlsx(sha):
         return url, io.BytesIO(res.read())
 
 
-def build(blob, sha, url, existing_meta, fetched_at):
+def build(blob, sha, url, existing_meta, fetched_at, review=None):
+    review = review or {"own": {}, "checked_none": []}
+    review_own, review_none = review["own"], set(review["checked_none"])
+    # closed/merged or no website found anywhere: left off the dashboard (user decision 2 Oct 2026)
+    review_dropped = set(review.get("dropped", []))
+    review_hit = set()
+    dropped_hit = 0
+    checked_ids = []
     wb = openpyxl.load_workbook(blob, read_only=True)
     ws = wb["Sheet1"]
     it = ws.iter_rows(values_only=True)
@@ -137,6 +149,11 @@ def build(blob, sha, url, existing_meta, fetched_at):
         if name in defunct:
             matched_defunct.add(name)
             continue
+        if name in review_dropped and not (bool(d["match"]) and str(d["code_url"] or "").startswith("http")) \
+                and not UMBRELLA_BY_CATEGORY.get(canonical_category(d["category"]), ""):
+            review_hit.add(name)
+            dropped_hit += 1
+            continue
 
         umbrella = UMBRELLA_BY_CATEGORY.get(canonical_category(d["category"]), "")
         category = canonical_category(d["category"])
@@ -167,6 +184,24 @@ def build(blob, sha, url, existing_meta, fetched_at):
             per_cat[category]["own"] += 1
         elif umbrella:
             per_cat[category]["shared"] += 1
+        elif name in review_own:
+            x = review_own[name]
+            review_hit.add(name)
+            own.append({
+                "id": rid,
+                "name": name,
+                "category": category,
+                "url": d["url"] or x["url"],
+                "coded": True,
+                "nolan": x["nolan"],
+                "coc": {"doc_type": x["doc_type"], "url": x["url"]},
+                "source": "review",
+            })
+            per_cat[category]["own"] += 1
+        elif name in review_none:
+            review_hit.add(name)
+            checked_ids.append(rid)
+            per_cat[category]["checked"] += 1
         else:
             per_cat[category]["tocheck"] += 1
 
@@ -176,8 +211,14 @@ def build(blob, sha, url, existing_meta, fetched_at):
                  f"({len(matched_defunct)}/{len(CURATED_DEFUNCT)} hit). Missing: {missing}. "
                  f"Review upstream changes before re-pinning.")
 
+    missing_review = (set(review_own) | review_none | review_dropped) - review_hit
+    if missing_review:
+        sys.exit(f"ERROR: {len(missing_review)} reviewed bodies not found as unchecked rows: "
+                 f"{sorted(missing_review)[:5]}")
+
     own_count = len(own)
     shared_count = sum(c["shared"] for c in per_cat.values())
+    checked_count = sum(c["checked"] for c in per_cat.values())
     tocheck_count = sum(c["tocheck"] for c in per_cat.values())
     total = len(orgs)
     if len(scraped_dates) > 1:
@@ -205,11 +246,13 @@ def build(blob, sha, url, existing_meta, fetched_at):
             "url": url,
             "fetched_at": fetched_at.isoformat(timespec="seconds"),
         },
-        "defunctExcluded": master_rows - total,
+        "defunctExcluded": master_rows - total - dropped_hit,
+        "noWebsiteExcluded": dropped_hit,
         "umbrellaScrapeHits": sum(1 for o in own if "umbrella" in o),
         "coverage": {
             "own": own_count,
             "shared": shared_count,
+            "checked": checked_count,
             "tocheck": tocheck_count,
             "periphery_out": 0,
             "notscoped": 0,
@@ -225,12 +268,14 @@ def build(blob, sha, url, existing_meta, fetched_at):
                 "total": n,
                 "own": per_cat[c]["own"],
                 "shared": per_cat[c]["shared"],
+                "checked": per_cat[c]["checked"],
                 "tocheck": per_cat[c]["tocheck"],
-                "rest": n - per_cat[c]["own"] - per_cat[c]["shared"] - per_cat[c]["tocheck"],
+                "rest": n - per_cat[c]["own"] - per_cat[c]["shared"] - per_cat[c]["checked"] - per_cat[c]["tocheck"],
             }
             for c, n in cat_counts.most_common()
         ],
         "ownOrgs": own,
+        "checkedNone": checked_ids,
     }
     return orgs, meta
 
@@ -252,7 +297,9 @@ def main():
             sys.exit(f"ERROR: existing data-meta.json lacks hand-authored "
                      f"'{key}' block; refusing to regenerate without it.")
 
-    orgs, meta = build(blob, args.pin, url, existing, fetched_at)
+    with open(TOCHECK_REVIEW) as f:
+        review = json.load(f)
+    orgs, meta = build(blob, args.pin, url, existing, fetched_at, review)
 
     if args.check:
         with open(f"{EIC_DIR}/data-orgs.json") as f:
@@ -281,6 +328,7 @@ def main():
     stub = dict(meta)
     stub["meta"] = dict(meta["meta"])
     stub["meta"].pop("ownOrgs", None)
+    stub["meta"].pop("checkedNone", None)
     stub["orgs"] = []
     with open(f"{EIC_DIR}/data.json", "w") as f:
         json.dump(stub, f, separators=(",", ":"), ensure_ascii=False)
