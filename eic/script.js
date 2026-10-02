@@ -22,7 +22,7 @@ function el(tag, props = {}, children = []) {
 const $ = (id) => document.getElementById(id);
 const fmt = (n) => (n == null ? "-" : n.toLocaleString("en-GB"));
 
-const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code" };
+const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code", CO: "the Cabinet Office board members' code" };
 const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not covered", unknown: "unclear" }[c] || c);
 
 /* A body can have its own code, a shared sector code, both, or neither.
@@ -60,7 +60,7 @@ function renderHero() {
   if (!h.reconciles) console.warn("hero numbers do not reconcile", h);
   const stats = [
     [h.total, "bodies on the register"],
-    [h.shared, "covered by 4 shared codes"],
+    [h.shared, `covered by ${Object.keys(S.umbrellas).length} shared codes`],
     [h.own, "own codes read"],
     [h.checked, "no own code"],
   ];
