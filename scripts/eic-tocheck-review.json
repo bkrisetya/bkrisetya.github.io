@@ -92,6 +92,13 @@
    "coverage": "members_only",
    "judged_by": "glm-5.3-flash"
   },
+  "Charity Commission for England and Wales": {
+   "nolan": "yyyyyyy",
+   "doc_type": "Code of conduct",
+   "url": "https://www.gov.uk/government/publications/charity-commission-governance-framework/governance-framework",
+   "coverage": "members_only",
+   "judged_by": "grok-4.7"
+  },
   "Charity Commission for Northern Ireland": {
    "nolan": "yyyyyyy",
    "doc_type": "Code of conduct",
@@ -716,7 +723,6 @@
   "Channel 4",
   "Charities Advisory Committee",
   "Charities Advisory Committee (Northern Ireland)",
-  "Charity Commission for England and Wales",
   "Children and Family Court Advisory Support Service",
   "Children's Hearings Scotland",
   "City of Edinburgh Council",

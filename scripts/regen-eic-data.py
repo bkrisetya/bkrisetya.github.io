@@ -52,6 +52,12 @@ OVERLAY_REVIEW = "scripts/eic-overlay-review.json"
 # ~/src/eic-coc-review/scope/classify.py. Delete this file and rebuild to bring them back.
 DEVOLVED_SCOPE = "scripts/eic-devolved-excluded.json"
 
+# Bodies with no own code that fall under the Cabinet Office Code of Conduct for Board Members
+# of Public Bodies (GOV.UK type: department, agency, NDPB or public corporation). Decision
+# 2 Oct 2026. Built by ~/src/eic-coc-review/scope/board_code.py.
+BOARD_CODE = "scripts/eic-board-code.json"
+board_code = json.load(open(BOARD_CODE)) if os.path.exists(BOARD_CODE) else {}
+
 # English councils misfiled upstream as Scottish/Welsh (build-only fix; sheet untouched).
 CATEGORY_FIX = {
     "Thurrock Council": "Council – other (England)",
@@ -128,6 +134,7 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
     overlay_hit = set()
     devolved = devolved or {}
     devolved_seen = set()
+    board_seen = set()
     devolved_hit = 0
     review_own, review_none = review["own"], set(review["checked_none"])
     # closed/merged or no website found anywhere: left off the dashboard (user decision 2 Oct 2026)
@@ -183,6 +190,9 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
 
         category = CATEGORY_FIX.get(name) or canonical_category(d["category"])
         umbrella = UMBRELLA_BY_CATEGORY.get(category, "")
+        if not umbrella and name in board_code:
+            umbrella = "CO"
+            board_seen.add(name)
         orgs.append([rid, name, category, umbrella])
         cat_counts[category] += 1
 
@@ -250,6 +260,9 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
                  f"({len(matched_defunct)}/{len(CURATED_DEFUNCT)} hit). Missing: {missing}. "
                  f"Review upstream changes before re-pinning.")
 
+    if set(board_code) - board_seen:
+        sys.exit(f"ERROR: {len(set(board_code) - board_seen)} board-code names not on the sheet: "
+                 f"{sorted(set(board_code) - board_seen)[:5]}")
     if set(devolved) - devolved_seen:
         sys.exit(f"ERROR: {len(set(devolved) - devolved_seen)} devolved-scope names not on the sheet: "
                  f"{sorted(set(devolved) - devolved_seen)[:5]}")
