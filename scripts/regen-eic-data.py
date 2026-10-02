@@ -41,6 +41,11 @@ EIC_DIR = "static/eic"
 # Built by ~/src/eic-coc-review/calib/build_tocheck_layer.py.
 TOCHECK_REVIEW = "scripts/eic-tocheck-review.json"
 
+# Re-read of the 2,228 stored code links (Fionn-calibrated): for every row judged a code,
+# the seven principle ticks and the document actually read replace the scrape's.
+# Built by ~/src/eic-coc-review/calib/build_overlay_layer.py.
+OVERLAY_REVIEW = "scripts/eic-overlay-review.json"
+
 # Ammara's 10 Sep snapshot already removes defunct bodies upstream.
 CURATED_DEFUNCT = []
 
@@ -105,8 +110,10 @@ def fetch_xlsx(sha):
         return url, io.BytesIO(res.read())
 
 
-def build(blob, sha, url, existing_meta, fetched_at, review=None):
+def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None):
     review = review or {"own": {}, "checked_none": []}
+    overlay = overlay or {}
+    overlay_hit = set()
     review_own, review_none = review["own"], set(review["checked_none"])
     # closed/merged or no website found anywhere: left off the dashboard (user decision 2 Oct 2026)
     review_dropped = set(review.get("dropped", []))
@@ -162,6 +169,17 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None):
 
         coded = bool(d["match"]) and str(d["code_url"] or "").startswith("http")
         if coded:
+            ov = overlay.get(name)
+            if ov:
+                overlay_hit.add(name)
+                rec = {"id": rid, "name": name, "category": category, "url": d["url"] or ov["url"],
+                       "coded": True, "nolan": ov["nolan"],
+                       "coc": {"doc_type": ov["doc_type"], "url": ov["url"]}}
+                if umbrella:
+                    rec["umbrella"] = umbrella
+                own.append(rec)
+                per_cat[category]["own"] += 1
+                continue
             if all(str(d[c]) == "not located" for c in PRINCIPLE_COLS):
                 nolan = "u" * 7  # code found, principle text unreadable
             else:
@@ -211,6 +229,9 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None):
                  f"({len(matched_defunct)}/{len(CURATED_DEFUNCT)} hit). Missing: {missing}. "
                  f"Review upstream changes before re-pinning.")
 
+    if set(overlay) - overlay_hit:
+        sys.exit(f"ERROR: {len(set(overlay) - overlay_hit)} re-read codes not found as coded rows: "
+                 f"{sorted(set(overlay) - overlay_hit)[:5]}")
     missing_review = (set(review_own) | review_none | review_dropped) - review_hit
     if missing_review:
         sys.exit(f"ERROR: {len(missing_review)} reviewed bodies not found as unchecked rows: "
@@ -299,7 +320,9 @@ def main():
 
     with open(TOCHECK_REVIEW) as f:
         review = json.load(f)
-    orgs, meta = build(blob, args.pin, url, existing, fetched_at, review)
+    with open(OVERLAY_REVIEW) as f:
+        overlay = json.load(f)["rows"]
+    orgs, meta = build(blob, args.pin, url, existing, fetched_at, review, overlay)
 
     if args.check:
         with open(f"{EIC_DIR}/data-orgs.json") as f:
