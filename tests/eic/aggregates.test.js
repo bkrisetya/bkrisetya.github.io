@@ -224,3 +224,22 @@ test("heatmap: shared-only lens counts shared bodies and nothing else", () => {
   // sectors without a shared code stay empty
   assert.equal(hm.cells.has("Charity|selflessness"), false);
 });
+
+test("real data: safety net clusters into nation groups that sum to coverage.shared", () => {
+  const raw = require(path.join(__dirname, "../../static/eic/data-meta.json"));
+  const rows = require(path.join(__dirname, "../../static/eic/data-orgs.json"));
+  const flat = A.safetyNetRows(raw.umbrellas, rows, raw.meta.ownOrgs);
+  const groups = A.safetyNetGroups(flat);
+  const named = groups.filter((g) => g.name !== "Other");
+  assert.deepEqual(named.map((g) => g.name).sort(),
+    ["Education", "Health", "Local government", "Policing", "Public bodies"]);
+  const groupedBodies = groups.reduce((a, g) => a + g.bodies, 0);
+  assert.equal(groupedBodies, raw.meta.coverage.shared);
+  assert.equal(groups.reduce((a, g) => a + g.rows.length, 0), flat.length);
+  // each devolved instrument sits in its sector group
+  const home = { "WAL-SCH": "Education", "NI-SCH": "Education", "WAL-LG": "Local government",
+    "SCO-LG": "Local government", "NI-LG": "Local government", "WAL-NHS": "Health",
+    "NI-HSC": "Health", "SCO-POL": "Policing", "SCO-DPB": "Public bodies" };
+  const byId = Object.fromEntries(flat.map((r) => [r.id, r.group]));
+  for (const [id, g] of Object.entries(home)) assert.equal(byId[id], g, `${id} in ${g}`);
+});

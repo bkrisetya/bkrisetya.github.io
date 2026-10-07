@@ -79,7 +79,43 @@ CATEGORY_FIX = {
     "New Quay Town Council, Ceredigion": "Welsh council",
     "Shotton Town Council, Flintshire": "Welsh council",
     "Tenby Town Council, Pembrokeshire": "Welsh council",
+    # NI councils misfiled upstream as Scottish
+    "Causeway Coast and Glens Borough Council": "NI Council",
+    "Causeway Coast and Glens District Council": "NI Council",
+    # English bodies misfiled upstream as Welsh/Scottish
+    "City of Ely Council": "Council – other (England)",
+    "Batchworth Community Council": "Council – other (England)",
+    "Blakelaw and North Fenham Community Council": "Council – other (England)",
+    "Bradford Trident Community Council": "Council – other (England)",
+    "Campbell Park Community Council": "Council – other (England)",
+    "Great Ashby Community Council": "Council – other (England)",
+    "Kennington Community Council": "Council – other (England)",
+    "Llanymynech and Pant": "Council – other (England)",
+    "Myland Community Council": "Council – other (England)",
+    "Queen's Park Community Council": "Council – other (England)",
+    "Spooner Row Community Council Parish Council": "Council – other (England)",
+    "Walton Community Council": "Council – other (England)",
+    "WhitehouseÂ Community Council": "Council – other (England)",
+    "Woughton Community Council": "Council – other (England)",
+    "Alpraham and Calveley Community Council": "Council – other (England)",
+    "Little Bollington with Agden Community Council": "Council – other (England)",
+    "Far Cotton and Delapre Community Council": "Council – other (England)",
+    "Seaton Valley Community Council": "Council – other (England)",
+    "Penryn Town Council": "Council – other (England)",
+    "Orchard Park Community Council": "Council – other (England)",
+    # an NHS trust, not a policing body
+    "Welsh Ambulance Services NHS Trust": "Health and social care",
 }
+
+# Devolved umbrella/own-code layer (7 Oct 2026 primary-source pass): replaces
+# inappropriate English inheritance (DfE/LGA/NHS/Police) for Scottish, Welsh and
+# NI bodies with the verified national or local instrument, or strips it where
+# no applicable instrument was verified. Built from
+# ~/.hermes/sandbox/eic-devolved-resume/build_assignments.py.
+DEVOLVED_ASSIGN = "scripts/eic-devolved-assign.json"
+devolved_assign = {}
+if os.path.exists(DEVOLVED_ASSIGN):
+    devolved_assign = json.load(open(DEVOLVED_ASSIGN))["rows"]
 
 # Ammara's 10 Sep snapshot already removes defunct bodies upstream.
 CURATED_DEFUNCT = []
@@ -136,6 +172,27 @@ PRINCIPLE_COLS = [
     "NP_selflessness", "NP_integrity", "NP_objectivity", "NP_accountability",
     "NP_openness", "NP_honesty", "NP_leadership",
 ]
+
+
+def norm_doc_type(s):
+    """Fold verbose reviewed doc_type labels onto the register's vocabulary.
+    Scrape-derived labels already use Ammara's closed set and are untouched."""
+    t = str(s or "").lower()
+    for key, val in [
+        ("code of ethical conduct", "Code of ethics"),
+        ("code of ethics", "Code of ethics"),
+        ("code of best practice", "Code of practice"),
+        ("code of practice", "Code of practice"),
+        ("civil service code", "Civil service code"),
+        ("standing orders", "Standing orders"),
+        ("terms of reference", "Terms of reference"),
+        ("handbook", "Code of practice"),
+        ("councillors' code", "Code of conduct"),
+        ("code of conduct", "Code of conduct"),
+    ]:
+        if key in t:
+            return val
+    return s
 
 
 def fetch_xlsx(sha):
@@ -207,6 +264,9 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
 
         category = CATEGORY_FIX.get(name) or canonical_category(d["category"])
         umbrella = UMBRELLA_BY_CATEGORY.get(category, "")
+        da = devolved_assign.get(name)
+        if da is not None:
+            umbrella = da.get("umbrella", "")
         if not umbrella and name in board_code:
             umbrella = "CO"
             board_seen.add(name)
@@ -220,7 +280,7 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
                 overlay_hit.add(name)
                 rec = {"id": rid, "name": name, "category": category, "url": d["url"] or ov["url"],
                        "coded": True, "nolan": ov["nolan"],
-                       "coc": {"doc_type": ov["doc_type"], "url": ov["url"]}}
+                       "coc": {"doc_type": norm_doc_type(ov["doc_type"]), "url": ov["url"]}}
                 if umbrella:
                     rec["umbrella"] = umbrella
                 own.append(rec)
@@ -246,10 +306,20 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
                 rec["umbrella"] = umbrella
             own.append(rec)
             per_cat[category]["own"] += 1
-        elif umbrella:
-            if name in review_none:  # re-filed into a shared-code category (CATEGORY_FIX)
-                review_hit.add(name)
-            per_cat[category]["shared"] += 1
+        elif da is not None and "own" in da:
+            x = da["own"]
+            review_hit.add(name)  # may also sit in checked_none from the to-check review
+            own.append({
+                "id": rid,
+                "name": name,
+                "category": category,
+                "url": d["url"] or x["url"],
+                "coded": True,
+                "nolan": x["nolan"],
+                "coc": {"doc_type": x["doc_type"], "url": x["url"]},
+                "source": "devolved-review",
+            })
+            per_cat[category]["own"] += 1
         elif name in review_own:
             x = review_own[name]
             review_hit.add(name)
@@ -260,10 +330,15 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
                 "url": d["url"] or x["url"],
                 "coded": True,
                 "nolan": x["nolan"],
-                "coc": {"doc_type": x["doc_type"], "url": x["url"]},
+                "coc": {"doc_type": norm_doc_type(x["doc_type"]), "url": x["url"]},
                 "source": "review",
+                **({"umbrella": umbrella} if umbrella else {}),
             })
             per_cat[category]["own"] += 1
+        elif umbrella:
+            if name in review_none:  # re-filed into a shared-code category (CATEGORY_FIX)
+                review_hit.add(name)
+            per_cat[category]["shared"] += 1
         elif name in review_none:
             review_hit.add(name)
             checked_ids.append(rid)

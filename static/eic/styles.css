@@ -48,6 +48,9 @@ section { margin-bottom: 48px; }
 /* ---------- safety net ---------- */
 .net-row { display: grid; grid-template-columns: 1.4fr 0.6fr 1fr; gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
 .net-row:first-child { border-top: 0; }
+.net-group { margin: 22px 0 4px; font-size: 0.92rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.net-group:first-child { margin-top: 0; }
+.net-group + .net-row { border-top: 0; }
 .net-name { font-weight: 600; }
 .net-name small { display: block; font-weight: 400; color: var(--ink-soft); }
 .net-bodies { font-size: 1.05rem; }

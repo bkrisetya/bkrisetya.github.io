@@ -22,7 +22,13 @@ function el(tag, props = {}, children = []) {
 const $ = (id) => document.getElementById(id);
 const fmt = (n) => (n == null ? "-" : n.toLocaleString("en-GB"));
 
-const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code", CO: "the Cabinet Office board members' code" };
+const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for councils", NHS: "the NHS code", Police: "the College of Policing code", CO: "the Cabinet Office board members' code",
+  "WAL-LG": "the Welsh councils code", "SCO-LG": "the Scottish councillors' code", "NI-LG": "the Northern Ireland councillors code",
+  "NI-SCH": "the Northern Ireland school governor guidance", "WAL-SCH": "Welsh school governing-body duties",
+  "SCO-DPB": "the Scottish devolved public bodies code",
+  "SCO-CC-H": "the Highland community councillors code", "DG-CC": "the Dumfries and Galloway community council code", "GLA-CC": "the Glasgow community councillors code",
+  "WAL-NHS": "the Welsh NHS board members code", "NI-HSC": "the Northern Ireland HSC board code",
+  "SCO-POL": "the Police Scotland code of ethics" };
 const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not covered", unknown: "unclear" }[c] || c);
 
 /* A body can have its own code, a shared sector code, both, or neither.
@@ -71,7 +77,7 @@ function renderHero() {
 
 /* ---------- safety net ---------- */
 function renderSafetyNet(rows) {
-  $("net-rows").replaceChildren(...rows.map((r) =>
+  const netRow = (r) =>
     el("div", { class: "net-row" }, [
       el("div", { class: "net-name" }, [r.name, el("small", { text: r.id }),
         r.strength ? el("span", { class: "net-strength", text: r.strength }) : null,
@@ -82,7 +88,15 @@ function renderSafetyNet(rows) {
       (() => { const w = el("span", { class: "nolan-mini" });
         S.principles.forEach((p) => w.appendChild(el("i", { class: covClass(rCov(r.nolan, p.id), "inherited"), title: `${p.name}: ${humanCov(rCov(r.nolan, p.id))}` })));
         return w; })(),
-    ])));
+    ]);
+  const groups = Aggregates.safetyNetGroups(rows);
+  const nodes = [];
+  rows.filter((r) => !r.group).forEach((r) => nodes.push(netRow(r)));
+  groups.forEach((g) => {
+    if (g.name !== "Other") nodes.push(el("h3", { class: "net-group", text: `${g.name} · ${fmt(g.bodies)} bodies` }));
+    g.rows.forEach((r) => nodes.push(netRow(r)));
+  });
+  $("net-rows").replaceChildren(...nodes);
 }
 
 /* The safety net needs raw [id,name,category,umbrella] rows, which DataSource.query
