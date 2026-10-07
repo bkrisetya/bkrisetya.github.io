@@ -616,6 +616,20 @@
    "url": "https://assets.publishing.service.gov.uk/media/6671304fa414415642692c76/YJB_Code_of_Conduct_for_Non-Executive_Directors.odt",
    "coverage": "members_only",
    "judged_by": "gpt-5.5"
+  },
+  "Dundee City Council": {
+   "nolan": "yyyyyyy",
+   "doc_type": "Councillors' Code of Conduct and Guidance (Scottish Ministers / Standards Commission for Scotland, May 2022)",
+   "url": "https://www.dundeecity.gov.uk/sites/default/files/220517_scs_councillors_code_conduct_guidance_may_2022.pdf",
+   "coverage": "members_only",
+   "judged_by": "beltsazar-hermes 2026-10-07 (read: Section 2 names selflessness, integrity, objectivity, accountability and stewardship, openness, honesty, leadership)"
+  },
+  "Edinburgh City Council": {
+   "nolan": "yyyyyyy",
+   "doc_type": "Employee Code of Conduct (Finance and Resources Committee, 18 November 2025)",
+   "url": "https://democracy.edinburgh.gov.uk/documents/s90378/7.9%20Gender-based%20Violence%20and%20other%20ESAW%20policy%20updates.pdf",
+   "coverage": "staff_only",
+   "judged_by": "beltsazar-hermes 2026-10-07 (read: closing section 'The Seven Principles of Public Life' defines all seven)"
   }
  },
  "checked_none": [

@@ -47,10 +47,12 @@ TOCHECK_REVIEW = "scripts/eic-tocheck-review.json"
 # Built by ~/src/eic-coc-review/calib/build_overlay_layer.py.
 OVERLAY_REVIEW = "scripts/eic-overlay-review.json"
 
-# England-only scope (decision 2 Oct 2026, per Emma's 16 Apr brief): bodies operating only
-# in Scotland, Wales or Northern Ireland are left off. Built by
-# ~/src/eic-coc-review/scope/classify.py. Delete this file and rebuild to bring them back.
+# Devolved bodies (Scotland, Wales, Northern Ireland). Left off 2 Oct 2026 (England-only cut),
+# restored 7 Oct 2026 at Emma's request: the register is UK-wide again. The classification
+# file is kept so the England-only cut can be re-applied by setting ENGLAND_ONLY = True.
+# Built by ~/src/eic-coc-review/scope/classify.py.
 DEVOLVED_SCOPE = "scripts/eic-devolved-excluded.json"
+ENGLAND_ONLY = False
 
 # Bodies with no own code that fall under the Cabinet Office Code of Conduct for Board Members
 # of Public Bodies (GOV.UK type: department, agency, NDPB or public corporation). Decision
@@ -58,10 +60,25 @@ DEVOLVED_SCOPE = "scripts/eic-devolved-excluded.json"
 BOARD_CODE = "scripts/eic-board-code.json"
 board_code = json.load(open(BOARD_CODE)) if os.path.exists(BOARD_CODE) else {}
 
-# English councils misfiled upstream as Scottish/Welsh (build-only fix; sheet untouched).
+# Councils misfiled upstream by nation (build-only fix; sheet untouched).
 CATEGORY_FIX = {
     "Thurrock Council": "Council – other (England)",
     "Newport Town Council, Shropshire": "Council – other (England)",
+    # devolved councils filed upstream as "Council – other (England)"
+    "Dundee City Council": "Scottish council",
+    "Edinburgh City Council": "Scottish council",
+    "Ards and North Down Borough Council": "NI Council",
+    "Derry City and Strabane District Council": "NI Council",
+    "Wrexham County Borough Council": "Welsh council",
+    "Buckley Town Council, Flintshire": "Welsh council",
+    "Builth Wells Town Council, Powys": "Welsh council",
+    "Chirk Town Council, Wrexham": "Welsh council",
+    "Flint Town Council, Flintshire": "Welsh council",
+    "Milford Haven Town Council, Pembrokeshire": "Welsh council",
+    "Neyland Town Council, Pembrokeshire": "Welsh council",
+    "New Quay Town Council, Ceredigion": "Welsh council",
+    "Shotton Town Council, Flintshire": "Welsh council",
+    "Tenby Town Council, Pembrokeshire": "Welsh council",
 }
 
 # Ammara's 10 Sep snapshot already removes defunct bodies upstream.
@@ -361,7 +378,7 @@ def main():
     with open(OVERLAY_REVIEW) as f:
         overlay = json.load(f)["rows"]
     devolved = {}
-    if os.path.exists(DEVOLVED_SCOPE):
+    if ENGLAND_ONLY and os.path.exists(DEVOLVED_SCOPE):
         with open(DEVOLVED_SCOPE) as f:
             devolved = json.load(f)
     orgs, meta = build(blob, args.pin, url, existing, fetched_at, review, overlay, devolved)
