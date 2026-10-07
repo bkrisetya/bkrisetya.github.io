@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20261007c" />
+    <link rel="stylesheet" href="./styles.css?v=20261007d" />
     <script src="./vendor/echarts.min.js?v=5.5.1" id="echarts-lib" defer></script>
   </head>
   <body>
@@ -16,16 +16,16 @@
       <header class="hero">
         <p class="kicker">Ethics and Integrity Commission · working dataset</p>
         <h1>Codes of conduct and the Nolan principles</h1>
-        <p class="verdict" id="verdict">Schools, councils, the NHS and police are well covered by shared code. Otherwise, it's rather uneven.</p>
+        <p class="verdict" id="verdict">Schools, councils, public health, and police are well covered by shared code. Otherwise, it's rather uneven.</p>
         <div class="hero-stats" id="hero-stats" role="list"></div>
         <p class="snapshot" id="snapshot"></p>
       </header>
 
       <section class="net" aria-label="The safety net">
         <h2>The safety net</h2>
-        <p class="intro">Schools, councils, health and police answer to a sector-wide code or legal duty, shown by sector; the devolved nations' own instruments sit alongside their English and UK counterparts. Most cover all seven principles; a few cover only some, marked on the strip.</p>
+        <p class="intro">Most schools, councils, health and police bodies answer to a shared national code.</p>
         <div id="net-rows" class="net-rows"></div>
-        <p class="note">Where we have read a body's own code, it counts under that code instead of its sector's.</p>
+        <p class="note">Open a sector to see each code and how many of the seven principles it covers. Where we have read a body's own code, it counts under that code instead of its sector's.</p>
       </section>
 
       <section class="patchwork" aria-label="The patchwork">
@@ -37,6 +37,7 @@
           <p class="hint">Hover over a cell for breakdowns, click a cell to list the bodies below.</p>
           <div id="heatmap" class="heatmap" role="img" aria-label="Heatmap of principle coverage by sector"></div>
           <div class="scale-legend" id="heatmap-legend"></div>
+          <div id="hm-others-toggle"></div>
         </div>
 
         <div class="patch-duo">
@@ -97,9 +98,9 @@
       </footer>
     </main>
     <noscript><p class="load-error">This page needs JavaScript to load the register.</p></noscript>
-    <script src="./data-source.js?v=20261007c"></script>
-    <script src="./aggregates.js?v=20261007c"></script>
+    <script src="./data-source.js?v=20261007d"></script>
+    <script src="./aggregates.js?v=20261007d"></script>
     <script src="./charts.js?v=20260910f"></script>
-    <script src="./script.js?v=20261007c"></script>
+    <script src="./script.js?v=20261007d"></script>
   </body>
 </html>
