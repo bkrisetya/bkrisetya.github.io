@@ -383,6 +383,10 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
         sys.exit(f"ERROR: multiple scraped dates in upstream snapshot: {sorted(scraped_dates)}")
     snapshot_date = next(iter(scraped_dates), fetched_at.date())
     snapshot = snapshot_date.strftime("%-d %B %Y")
+    # The register is correct as of the build, not the upstream scrape: the
+    # dashboard adds reviewed codes, devolved instruments and recomputed
+    # coverage after the scrape lands.
+    correct_as_of = fetched_at.date().strftime("%-d %B %Y")
 
     meta = dict(existing_meta)  # shallow copy; hand-authored blocks preserved
     meta["meta"] = {
@@ -390,7 +394,7 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
         "in_scope": total,
         "out_of_scope": 0,
         "snapshot": snapshot,
-        "correctAsOf": snapshot,
+        "correctAsOf": correct_as_of,
         "allInScope": True,
         "scopeDropped": True,
         "master": {
