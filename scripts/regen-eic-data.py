@@ -27,7 +27,9 @@ import datetime
 import io
 import json
 import os
+import re
 import sys
+import unicodedata
 import urllib.request
 
 import openpyxl
@@ -95,7 +97,10 @@ CATEGORY_FIX = {
     "Queen's Park Community Council": "Council – other (England)",
     "Spooner Row Community Council Parish Council": "Council – other (England)",
     "Walton Community Council": "Council – other (England)",
-    "WhitehouseÂ Community Council": "Council – other (England)",
+    # NBSP in the sheet name, and the string carries a mojibake Â. Written as escapes
+    # because a regular space here silently matches nothing (the coverage check below
+    # now fails loudly if any key on this dict stops matching a sheet row).
+    "Whitehouse\u00c2\u00a0Community Council": "Council – other (England)",
     "Woughton Community Council": "Council – other (England)",
     "Alpraham and Calveley Community Council": "Council – other (England)",
     "Little Bollington with Agden Community Council": "Council – other (England)",
@@ -161,6 +166,55 @@ _CATEGORY_LOOKUP = {" ".join(c.lower().split()): c for c in CANONICAL_CATEGORIES
 _CATEGORY_LOOKUP["parish council"] = "Parish Council or Meeting"
 
 
+# --- Misfiled "Welsh council" rows (117 of 864) -----------------------------
+# The sheet files Scottish community councils and a handful of English town and
+# community councils under "Welsh council". The 108 Scottish ones are identified by
+# their verified devolved umbrella rather than by a name list; the rest carry no
+# umbrella and are named explicitly. Whitehouse Community Council is refiled by its
+# CATEGORY_FIX entry above.
+SCOTTISH_COMMUNITY_COUNCIL_UMBRELLAS = {"SCO-CC-H", "SCO-CC-F", "SCO-CC-NA", "DG-CC", "GLA-CC"}
+SCOTTISH_IN_WELSH_ROW = {
+    "Aviemore and Vicinity Community Council",
+    "Joint Community Councils of Moray",
+    "Kilmuir and Logie Easter Community Council",
+    "North Berwick Community Council",
+}
+ENGLISH_IN_WELSH_ROW = {
+    "Bridgnorth Town Council",
+    "Penrith Town Council",
+    "Polperro Community Council",
+    "Waverley Community Council",
+}
+
+
+def refile_misfiled_welsh(name, category, da):
+    """Refile the non-Welsh rows the sheet keeps in the 'Welsh council' category.
+
+    Membership is a nation question, so it is answered from the verified devolved
+    umbrella where one exists, and from an explicit list otherwise. The 747 genuine
+    Welsh councils are untouched."""
+    if category != "Welsh council":
+        return category
+    umbrella = (da or {}).get("umbrella", "")
+    if umbrella in SCOTTISH_COMMUNITY_COUNCIL_UMBRELLAS or name in SCOTTISH_IN_WELSH_ROW:
+        return "Scottish council"
+    if name in ENGLISH_IN_WELSH_ROW:
+        return "Council – other (England)"
+    return category
+
+
+# --- Duplicate rows ---------------------------------------------------------
+# The sheet lists some bodies twice under spelling variants (hyphenation, "St." vs
+# "St", non-breaking space, trailing space): 325 pairs of 39,323, of which 244 are
+# both shared-coded, 47 both own-coded and 34 own on one row only. Collapsing them
+# stops the register counting one body twice and stops their principles being counted
+# twice in the charts.
+def dedupe_key(name):
+    """Fold the sheet's spelling variants: case, punctuation, non-breaking space."""
+    s = unicodedata.normalize("NFKC", str(name)).replace("\u00a0", " ")
+    return " ".join(re.sub(r"[^a-z0-9]", " ", s.lower()).split())
+
+
 def canonical_category(raw):
     key = " ".join(str(raw or "").lower().split())
     if key not in _CATEGORY_LOOKUP:
@@ -209,6 +263,7 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
     devolved = devolved or {}
     devolved_seen = set()
     board_seen = set()
+    catfix_seen = set()
     devolved_hit = 0
     review_own, review_none = review["own"], set(review["checked_none"])
     # closed/merged or no website found anywhere: left off the dashboard (user decision 2 Oct 2026)
@@ -262,12 +317,15 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
             dropped_hit += 1
             continue
 
-        category = CATEGORY_FIX.get(name) or canonical_category(d["category"])
         da = devolved_assign.get(name)
         if da is not None and da.get("drop"):
             dropped_hit += 1
             continue
         no_code_row = da is not None and da.get("no_code")
+        if name in CATEGORY_FIX:
+            catfix_seen.add(name)
+        category = CATEGORY_FIX.get(name) or canonical_category(d["category"])
+        category = refile_misfiled_welsh(name, category, da)
         umbrella = UMBRELLA_BY_CATEGORY.get(category, "")
         if da is not None:
             umbrella = da.get("umbrella", "")
@@ -354,6 +412,56 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
         else:
             per_cat[category]["tocheck"] += 1
 
+    # --- collapse duplicate rows -------------------------------------------
+    # Only pairs that are indistinguishable in output (same umbrella, same category)
+    # are merged, keeping the own-coded twin when exactly one row is coded and the
+    # earliest sheet row otherwise. Pairs that disagree on umbrella or category are
+    # left alone and reported in the payload: choosing between two classifications is
+    # an editorial call, not a build call.
+    own_ids = {o["id"] for o in own}
+    checked_set = set(checked_ids)
+    by_key = collections.OrderedDict()
+    for o in orgs:
+        by_key.setdefault(dedupe_key(o[1]), []).append(o)
+    dedupe_dropped = 0
+    dedupe_left_alone = []
+    dropped_ids = set()
+    for group in by_key.values():
+        if len(group) < 2:
+            continue
+        if len({g[3] for g in group}) != 1 or len({g[2] for g in group}) != 1:
+            dedupe_left_alone.append([g[1] for g in group])
+            continue
+        keep = min(group, key=lambda g: (0 if g[0] in own_ids else 1, g[0]))
+        for g in group:
+            if g[0] != keep[0]:
+                dropped_ids.add(g[0])
+    if dropped_ids:
+        dedupe_dropped = len(dropped_ids)
+        orgs = [o for o in orgs if o[0] not in dropped_ids]
+        own = [o for o in own if o["id"] not in dropped_ids]
+        checked_ids = [i for i in checked_ids if i not in dropped_ids]
+        # Re-derive every count from the surviving rows so the totals in the payload
+        # cannot drift from the rows the dashboard is actually given.
+        cat_counts = collections.Counter(o[2] for o in orgs)
+        own_ids = {o["id"] for o in own}
+        checked_set = set(checked_ids)
+        per_cat = collections.defaultdict(lambda: collections.Counter())
+        for o in orgs:
+            if o[0] in own_ids:
+                per_cat[o[2]]["own"] += 1
+            elif o[0] in checked_set:
+                per_cat[o[2]]["checked"] += 1
+            elif o[3]:
+                per_cat[o[2]]["shared"] += 1
+            else:
+                per_cat[o[2]]["tocheck"] += 1
+
+    if set(CATEGORY_FIX) - catfix_seen:
+        missing = sorted(set(CATEGORY_FIX) - catfix_seen)
+        sys.exit(f"ERROR: {len(missing)} CATEGORY_FIX keys reached no row: {missing}. "
+                 f"Match the sheet spelling exactly (non-breaking spaces and mojibake included).")
+
     if len(matched_defunct) != len(CURATED_DEFUNCT):
         missing = sorted(set(CURATED_DEFUNCT) - matched_defunct)
         sys.exit(f"ERROR: curated defunct list no longer matches upstream "
@@ -408,9 +516,11 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
             "url": url,
             "fetched_at": fetched_at.isoformat(timespec="seconds"),
         },
-        "defunctExcluded": master_rows - total - dropped_hit - devolved_hit,
+        "defunctExcluded": master_rows - total - dropped_hit - devolved_hit - dedupe_dropped,
         "noWebsiteExcluded": dropped_hit,
         "devolvedExcluded": devolved_hit,
+        "dedupeDropped": dedupe_dropped,
+        "dedupeLeftAlone": dedupe_left_alone,
         "umbrellaScrapeHits": sum(1 for o in own if "umbrella" in o),
         "coverage": {
             "own": own_count,

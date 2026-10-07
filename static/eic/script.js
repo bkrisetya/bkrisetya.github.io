@@ -127,14 +127,23 @@ async function renderSafetyNetFromQuery() {
     /* Per-category shared bodies (scrape-wins: net of own-coded), for the
      * heatmap's "with shared codes" tab. */
     const byCat = {};
-    rows.forEach((r) => { if (r[3]) byCat[r[2]] = byCat[r[2]] || { umbrella: r[3], bodies: 0 }, byCat[r[2]].bodies++; });
+    rows.forEach((r) => {
+      if (!r[3]) return;
+      if (!byCat[r[2]]) byCat[r[2]] = { umbrellas: new Set(), bodies: 0 };
+      byCat[r[2]].umbrellas.add(r[3]);
+      byCat[r[2]].bodies++;
+    });
     const ownByCat = {};
     S.coded.forEach((o) => { if (o.umbrella) ownByCat[o.category] = (ownByCat[o.category] || 0) + 1; });
     S.sharedByCat = {};
     Object.entries(byCat).forEach(([cat, v]) => {
-      const u = S.umbrellas[v.umbrella];
+      /* A category can carry several shared codes (schools sit under DfE, the NI
+       * governor guidance and the Welsh governing-body duty), so the umbrellas are
+       * kept as a set rather than collapsed to whichever row came first. */
+      const first = Array.from(v.umbrellas)[0];
+      const u = S.umbrellas[first];
       const net = v.bodies - (ownByCat[cat] || 0);
-      if (u && net > 0) S.sharedByCat[cat] = { nolan: u.nolan, bodies: net };
+      if (u && net > 0) S.sharedByCat[cat] = { nolan: u.nolan, bodies: net, umbrellas: v.umbrellas };
     });
     renderSafetyNet(S.sharedRows);
   } catch (e) { $("net-rows").replaceChildren(el("p", { class: "hint", text: "Could not load umbrella coverage." })); }
@@ -167,8 +176,14 @@ function renderPatchwork() {
 function renderHm() {
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
   S.hm = Aggregates.heatmap(S.coded, catNames, S.principles, null, S.othersExpanded ? { nofold: true } : null);
-  /* Navy dot on rows whose sector has a shared code (all four cover all seven). */
-  const marks = new Set(Object.keys(S.sharedByCat));
+  /* The navy dot means "every shared code in this sector covers all seven principles",
+   * so it is driven by the payload's own allSeven flag rather than by "this sector has
+   * a shared code": the Welsh school governing-body duty covers 3 of 7 and Police
+   * Scotland 4 of 7, and the schools and police rows used to claim all seven. */
+  const allSeven = new Set(S.sharedRows.filter((r) => r.allSeven).map((r) => r.id));
+  const marks = new Set(Object.entries(S.sharedByCat)
+    .filter(([, v]) => Array.from(v.umbrellas || []).every((u) => allSeven.has(u)))
+    .map(([cat]) => cat));
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell, marks);
   /* If the chart library has not finished loading yet, the fallback table was
    * just drawn; swap in the real heatmap as soon as it is ready. */
@@ -188,7 +203,7 @@ function renderHm() {
   const tgl = $("hm-others-toggle");
   if (others && others.cats && others.cats.length) {
     tgl.replaceChildren(el("button", { class: "hm-toggle", type: "button",
-      text: `Show the ${others.cats.length} smaller sectors grouped as “Others”`,
+      text: `Show the ${others.cats.length} smaller sectors separately`,
       onclick: () => { S.othersExpanded = true; renderHm(); } }));
   } else if (S.othersExpanded) {
     tgl.replaceChildren(el("button", { class: "hm-toggle", type: "button",
@@ -256,12 +271,16 @@ function renderDist() {
 /* ---------- the seven principles strip, weakest first ---------- */
 function renderStrip() {
   const rows = Aggregates.principleBars(S.coded, S.principles, null);
-  /* Bodies covered through a shared code, per principle. */
+  /* Bodies covered through a shared code, per principle, and the remainder whose
+   * shared code does not mention it. Without that remainder the bar stops short of
+   * 100% with nothing in the legend to account for the gap. */
   const sharedYes = {};
+  const sharedNotYes = {};
   S.sharedRows.forEach((s) => S.principles.forEach((p) => {
-    if (rCov(s.nolan, p.id) === "yes") sharedYes[p.id] = (sharedYes[p.id] || 0) + s.bodies;
+    const bucket = rCov(s.nolan, p.id) === "yes" ? sharedYes : sharedNotYes;
+    bucket[p.id] = (bucket[p.id] || 0) + s.bodies;
   }));
-  rows.forEach((r) => { r.shared = sharedYes[r.id] || 0; });
+  rows.forEach((r) => { r.shared = sharedYes[r.id] || 0; r.sharedNotYes = sharedNotYes[r.id] || 0; });
   rows.sort((a, b) => (a.yes + a.shared) - (b.yes + b.shared) || a.name.localeCompare(b.name));
   const total = S.coded.length + sharedBodies() + checkedNone() + notChecked();
   const n = total || 1;
@@ -272,7 +291,7 @@ function renderStrip() {
     const tip = [`${fmt(r.yes)} bodies mentioned ${r.name} in their own code`, `${fmt(r.shared)} more bodies have it through a shared code`].join(String.fromCharCode(10));
     const bar = el("div", { class: "strip-bar", title: tip });
     const small = [];
-    for (const [k, v, lbl] of [["yes", r.yes, "own code"], ["shared", r.shared, "shared code"], ["no", r.no + checkedNone(), "not covered"], ["unchecked", notChecked(), "not checked"]]) {
+    for (const [k, v, lbl] of [["yes", r.yes, "own code"], ["shared", r.shared, "shared code"], ["no", r.no + r.sharedNotYes + checkedNone(), "not covered"], ["unchecked", notChecked(), "not checked"]]) {
       const w = (v / n) * 100; if (w <= 0) continue;
       const pct = `${Math.max(1, Math.round(w))}%`;
       bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%`, text: w >= 6 ? pct : "" }));
@@ -285,7 +304,7 @@ function renderStrip() {
     bindChartTip(row, stripTip, tip);
     return row;
   }));
-  $("strip-legend").replaceChildren(...[["s-yes", "mentioned in own code"], ["s-shared", "covered by a shared code instead"], ["s-no", "not mentioned"], ...(notChecked() ? [["s-unchecked", "not checked"]] : [])]
+  $("strip-legend").replaceChildren(...[["s-yes", "mentioned in own code"], ["s-shared", "covered by a shared code instead"], ["s-no", "not covered"], ...(notChecked() ? [["s-unchecked", "not checked"]] : [])]
     .map(([c, l]) => el("span", {}, [el("i", { class: `sl ${c}` }), l])));
 }
 
@@ -520,7 +539,7 @@ async function boot() {
   const meta = await DataSource.init();
   S.meta = meta; S.principles = meta.principles; S.scopeLabels = meta.scopeLabels; S.umbrellas = meta.umbrellas || {};
   const cap = $("snapshot"); if (cap) cap.textContent = (meta.correctAsOf || meta.snapshot) ? `Correct as of ${meta.correctAsOf || meta.snapshot}` : "";
-  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their sector.";
+  $("foot").textContent = "A working tool for the Ethics and Integrity Commission. Where a body has its own published code, that code is read directly; schools, councils, health and police bodies are covered by the shared code for their nation or sector.";
   S.allCount = meta.total;
   S.coded = meta.ownOrgs || [];
   renderHero();
