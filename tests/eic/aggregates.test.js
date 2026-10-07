@@ -232,14 +232,14 @@ test("real data: safety net clusters into nation groups that sum to coverage.sha
   const groups = A.safetyNetGroups(flat);
   const named = groups.filter((g) => g.name !== "Other");
   assert.deepEqual(named.map((g) => g.name).sort(),
-    ["Education", "Health", "Local government", "Policing", "Public bodies"]);
+    ["Board members of public bodies", "Education", "Health", "Local government", "Policing"]);
   const groupedBodies = groups.reduce((a, g) => a + g.bodies, 0);
   assert.equal(groupedBodies, raw.meta.coverage.shared);
   assert.equal(groups.reduce((a, g) => a + g.rows.length, 0), flat.length);
   // each devolved instrument sits in its sector group
   const home = { "WAL-SCH": "Education", "NI-SCH": "Education", "WAL-LG": "Local government",
     "SCO-LG": "Local government", "NI-LG": "Local government", "WAL-NHS": "Health",
-    "NI-HSC": "Health", "SCO-POL": "Policing", "SCO-DPB": "Public bodies" };
+    "NI-HSC": "Health", "SCO-POL": "Policing", "SCO-DPB": "Board members of public bodies" };
   const byId = Object.fromEntries(flat.map((r) => [r.id, r.group]));
   for (const [id, g] of Object.entries(home)) assert.equal(byId[id], g, `${id} in ${g}`);
 });
