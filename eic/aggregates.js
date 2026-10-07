@@ -12,6 +12,8 @@ const CATEGORY_LABELS = {
   "Parish Council or Meeting": "Parish Council",
   "Council – other (England)": "Other councils (England)",
   "Welsh council": "Councils (Wales)",
+  "Scottish council": "Councils (Scotland)",
+  "NI Council": "Councils (Northern Ireland)",
   "Health and social care": "Health & social care",
   "Emergency services": "Police & fire services",
   "Advisory, regulatory, investigatory": "Regulators & watchdogs",
