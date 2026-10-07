@@ -44,17 +44,17 @@
    "repo": "ammara-y/PublicAuthorities_Database",
    "sha": "d79951ed80f3533729c6e66e3ee49edf297c9e3b",
    "url": "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/d79951ed80f3533729c6e66e3ee49edf297c9e3b/data.xlsx",
-   "fetched_at": "2026-10-07T07:34:58+01:00"
+   "fetched_at": "2026-10-07T10:23:35+01:00"
   },
   "defunctExcluded": 0,
   "noWebsiteExcluded": 42,
   "devolvedExcluded": 0,
-  "umbrellaScrapeHits": 11693,
+  "umbrellaScrapeHits": 11672,
   "coverage": {
-   "own": 11911,
-   "shared": 27081,
-   "checked": 348,
-   "tocheck": 0,
+   "own": 11923,
+   "shared": 26985,
+   "checked": 318,
+   "tocheck": 114,
    "periphery_out": 0,
    "notscoped": 0
   },
@@ -79,17 +79,17 @@
    {
     "value": "Council – other (England)",
     "label": "Council – other (England)",
-    "count": 1164
+    "count": 1183
    },
    {
     "value": "Welsh council",
     "label": "Welsh council",
-    "count": 887
+    "count": 869
    },
    {
     "value": "Health and social care",
     "label": "Health and social care",
-    "count": 521
+    "count": 522
    },
    {
     "value": "Advisory, regulatory, investigatory",
@@ -99,7 +99,7 @@
    {
     "value": "Emergency services",
     "label": "Emergency services",
-    "count": 215
+    "count": 214
    },
    {
     "value": "Government, constitutional, administrative",
@@ -134,7 +134,7 @@
    {
     "value": "Scottish council",
     "label": "Scottish council",
-    "count": 40
+    "count": 37
    },
    {
     "value": "Transport and infrastructure",
@@ -152,14 +152,14 @@
     "count": 18
    },
    {
+    "value": "NI Council",
+    "label": "NI Council",
+    "count": 14
+   },
+   {
     "value": "Housing and communities",
     "label": "Housing and communities",
     "count": 13
-   },
-   {
-    "value": "NI Council",
-    "label": "NI Council",
-    "count": 12
    },
    {
     "value": "Business and development",
@@ -176,10 +176,10 @@
    {
     "name": "Education",
     "total": 25067,
-    "own": 7804,
-    "shared": 17263,
+    "own": 7811,
+    "shared": 17171,
     "checked": 0,
-    "tocheck": 0,
+    "tocheck": 85,
     "rest": 0
    },
    {
@@ -193,47 +193,47 @@
    },
    {
     "name": "Council – other (England)",
-    "total": 1164,
-    "own": 533,
-    "shared": 631,
+    "total": 1183,
+    "own": 544,
+    "shared": 639,
     "checked": 0,
     "tocheck": 0,
     "rest": 0
    },
    {
     "name": "Welsh council",
-    "total": 887,
-    "own": 240,
-    "shared": 647,
+    "total": 869,
+    "own": 230,
+    "shared": 625,
     "checked": 0,
-    "tocheck": 0,
+    "tocheck": 14,
     "rest": 0
    },
    {
     "name": "Health and social care",
-    "total": 521,
-    "own": 131,
-    "shared": 390,
+    "total": 522,
+    "own": 135,
+    "shared": 377,
     "checked": 0,
-    "tocheck": 0,
+    "tocheck": 10,
     "rest": 0
    },
    {
     "name": "Advisory, regulatory, investigatory",
     "total": 300,
-    "own": 89,
-    "shared": 90,
-    "checked": 121,
+    "own": 90,
+    "shared": 93,
+    "checked": 117,
     "tocheck": 0,
     "rest": 0
    },
    {
     "name": "Emergency services",
-    "total": 215,
+    "total": 214,
     "own": 70,
-    "shared": 145,
+    "shared": 139,
     "checked": 0,
-    "tocheck": 0,
+    "tocheck": 5,
     "rest": 0
    },
    {
@@ -292,10 +292,10 @@
    },
    {
     "name": "Scottish council",
-    "total": 40,
-    "own": 16,
-    "shared": 0,
-    "checked": 24,
+    "total": 37,
+    "own": 15,
+    "shared": 19,
+    "checked": 3,
     "tocheck": 0,
     "rest": 0
    },
@@ -321,8 +321,17 @@
     "name": "Energy, power and utilities",
     "total": 18,
     "own": 3,
-    "shared": 7,
-    "checked": 8,
+    "shared": 8,
+    "checked": 7,
+    "tocheck": 0,
+    "rest": 0
+   },
+   {
+    "name": "NI Council",
+    "total": 14,
+    "own": 9,
+    "shared": 5,
+    "checked": 0,
     "tocheck": 0,
     "rest": 0
    },
@@ -330,17 +339,8 @@
     "name": "Housing and communities",
     "total": 13,
     "own": 4,
-    "shared": 4,
-    "checked": 5,
-    "tocheck": 0,
-    "rest": 0
-   },
-   {
-    "name": "NI Council",
-    "total": 12,
-    "own": 9,
-    "shared": 0,
-    "checked": 3,
+    "shared": 5,
+    "checked": 4,
     "tocheck": 0,
     "rest": 0
    },
@@ -687,7 +687,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.abbeycwmhircommunitycouncil.co.uk/wp-content/uploads/2026/07/05-2026-Annual-Meeting-Agenda-.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet66",
@@ -843,7 +843,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.abervalleycommunitycouncil.org.uk/wp-content/uploads/2020/03/Code-of-Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet94",
@@ -892,10 +892,11 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Employee Code of Conduct",
+     "doc_type": "Code of conduct",
      "url": "https://peopleanytime.aberdeencity.gov.uk/wp-content/uploads/2020/12/Employee-Code-of-Conduct_11.2020-Final.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet117",
@@ -908,7 +909,7 @@
      "doc_type": "Code of conduct",
      "url": "https://abergwilicc.org/wp-content/uploads/2026/07/Training-Plan-2022-27-v050626.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet119",
@@ -921,7 +922,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.aberedwvillage.co.uk/s/Aberedw-CC-Minutes-15th-March-2021.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet120",
@@ -947,7 +948,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.abermulewithllandyssilcommunitycouncil.org.uk/_UserFiles/Files/_Policies/Acas-Code-of-Practice-1-on-disciplinary-and-grievance-procedures%202015.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet135",
@@ -960,7 +961,7 @@
      "doc_type": "Code of conduct",
      "url": "https://aberystwyth.gov.uk/wp-content/uploads/2025/03/PRESS-AND-COMMS-POLICY.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet136",
@@ -1090,7 +1091,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.aberwheeler.co.uk/index_htm_files/ACC.MIN.402.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet157",
@@ -1350,7 +1351,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet224",
@@ -1833,7 +1834,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet380",
@@ -2366,7 +2367,7 @@
      "doc_type": "Code of conduct",
      "url": "https://allchildrensips.co.uk/wp-content/uploads/2022/05/A-Code-of-Conduct-for-All-Staff.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet519",
@@ -2821,7 +2822,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet610",
@@ -2993,6 +2994,19 @@
     "umbrella": "LGA"
    },
    {
+    "id": "sheet646",
+    "name": "All Wales Medicines Strategy Group",
+    "category": "Health and social care",
+    "url": "http://www.awmsg.org/contact_us.html",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://awttc.nhs.wales/files/awmsg/other-awmsg/code-of-conduct-and-declaration-of-interest-guidance/"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet647",
     "name": "Allanson Street Primary School, St Helens",
     "category": "Education",
@@ -3042,7 +3056,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet657",
@@ -4264,7 +4278,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.archbishopmg.co.uk/page/?title=Policies&pid=24"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet961",
@@ -4381,7 +4395,7 @@
      "doc_type": "Code of conduct",
      "url": "http://ardgayanddistrictcommunitycouncil.org.uk/minutes/Draft Meeting Minutes_A&DCC_14 June 2021 (1).pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet996",
@@ -4419,7 +4433,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.ardsandnorthdown.gov.uk/media/426/Code-of-Conduct/pdf/dqCode-of-Conduct-for-Local-Government-Employees-Jan-2021.pdf?m=1741616794257"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet1011",
@@ -4432,7 +4447,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.argoedcommunitycouncil.org.uk/your-council/code-of-conduct/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet1012",
@@ -4445,7 +4460,20 @@
      "doc_type": "Code of conduct",
      "url": "https://argoedcommunitycouncil.gov.uk/wp-content/uploads/2022/06/Council-Agenda-202206-with-info-pack.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
+   },
+   {
+    "id": "sheet1016",
+    "name": "Argyll College UHI",
+    "category": "Education",
+    "url": "https://www.argyll.uhi.ac.uk",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.argyll.uhi.ac.uk/t4-media/one-web/argyll/about-us/governance/Argyll-College-Code-of-Conduct.pdf"
+    },
+    "source": "devolved-review"
    },
    {
     "id": "sheet1019",
@@ -4653,7 +4681,8 @@
      "doc_type": "Code of conduct",
      "url": "https://www.armaghbanbridgecraigavon.gov.uk/wp-content/uploads/2025/08/Constitution-Part-5-Codes-Northern-Ireland-Code-of-Conduct-for-Councillors.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet1074",
@@ -4856,7 +4885,7 @@
     "coded": true,
     "nolan": "yyyyynn",
     "coc": {
-     "doc_type": "Code of best practice",
+     "doc_type": "Code of practice",
      "url": "https://arts.wales/sites/default/files/2026-08/Code%20of%20Best%20Practice_2026_0.pdf"
     },
     "source": "review"
@@ -5883,7 +5912,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Fife Council Code of Conduct Policy (CC01) for employees, based on the National Code of Conduct for Local Government Employees",
+     "doc_type": "Code of conduct",
      "url": "https://www.fife.gov.uk/__data/assets/pdf_file/0013/52303/CC01-Code-of-Conduct-August-2026.pdf"
     },
     "source": "review"
@@ -5961,7 +5990,7 @@
     "coded": true,
     "nolan": "yyyyyyn",
     "coc": {
-     "doc_type": "Code of Best Practice (Arts Council of Wales), March 2026",
+     "doc_type": "Code of practice",
      "url": "https://arts.wales/sites/default/files/2026-08/Code%20of%20Best%20Practice_2026_0.pdf"
     },
     "source": "review"
@@ -6833,8 +6862,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www1.ayrshire.ac.uk/courses/school-college-courses"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet1565",
@@ -7029,7 +7057,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet1602",
@@ -7146,7 +7174,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.bagilltcommunitycouncil.gov.uk/wp-content/uploads/sites/116/2025/07/Model-Code-of-Conduct-May-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet1625",
@@ -7354,7 +7382,7 @@
      "doc_type": "Standards of behaviour",
      "url": "https://www.ballymagee.org.uk/pastoral-care/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet1700",
@@ -7445,7 +7473,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.bangorcentral.com/staying-safe-online"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet1745",
@@ -7458,7 +7486,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.bangorcitycouncil.com/Content/Upload/RMI-Gareth-Roberts.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet1753",
@@ -7653,7 +7681,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.bargoedtc.org.uk//wp-content/uploads/2020/02/BTC-Code-of-Conduct_AS-ADOPTED-1st-May-2019.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet1806",
@@ -8185,8 +8213,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.aviemorecommunitycouncil.net/wp-content/uploads/minutes-agendas-newsletters/Agenda_2021-04-08.pdf"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet1923",
@@ -8472,7 +8499,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.barrytowncouncil.gov.uk/public-information"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet1963",
@@ -8849,7 +8876,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.bassalegschool.com/_files/ugd/76937c_122ff3042c5b4d61b2c0c9784c09d40f.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet2032",
@@ -8932,7 +8959,7 @@
    {
     "id": "sheet2046",
     "name": "Batchworth Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.batchworth-ecc.gov.uk",
     "coded": true,
     "nolan": "yyyyyyy",
@@ -10266,7 +10293,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.bbms.org.uk/learning-support"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet2374",
@@ -11878,7 +11905,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet2722",
@@ -11930,7 +11957,7 @@
      "doc_type": "Code of conduct",
      "url": "https://bishopgore.net/index.php/en/school/governors"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet2735",
@@ -12541,7 +12568,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet2882",
@@ -13191,7 +13218,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.blackwoodtowncouncil.org.uk/wp-content/uploads/2020/03/Blackwood-Code-of-Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet3060",
@@ -13204,7 +13231,7 @@
      "doc_type": "Code of conduct",
      "url": "https://blaenavontowncouncil.co.uk/wp-content/uploads/2026/08/AGM-Agenda_2023.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet3063",
@@ -13217,7 +13244,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.blaenhonddan-wcc.gov.uk/wp-content/uploads/2026/08/Minutes-May-2026-to-date-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet3069",
@@ -14308,8 +14335,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.nhsborders.scot.nhs.uk/media/64737/nhs_borders_code_of_conduct_board_members.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet3328",
@@ -16492,7 +16518,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.brecon-hs.powys.sch.uk/attendanceandabsences.html"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet3775",
@@ -16713,7 +16739,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.blaengwrachcommunitycouncil.org/members-of-the-council/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet3817",
@@ -16783,7 +16809,7 @@
    {
     "id": "sheet3825",
     "name": "Blakelaw and North Fenham Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.blakelawnfenhamcommunity-council.com/",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -16894,8 +16920,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.bridgend.ac.uk/about-us/governance/code-of-conduct/"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet3871",
@@ -16972,8 +16997,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.bridgnorthtowncouncil.gov.uk/wp-content/uploads/sites/66/2025/06/15-Risk-Management-Schedule.pdf"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet3878",
@@ -17657,7 +17681,7 @@
     "coded": true,
     "nolan": "yynnnnn",
     "coc": {
-     "doc_type": "Council Standing Orders (April 2022), section 9: Members' conduct, interests, and acting for an improper purpose",
+     "doc_type": "Standing orders",
      "url": "https://www.gov.uk/government/publications/british-hallmarking-council-standing-orders/british-hallmarking-council-council-standing-orders"
     },
     "source": "review"
@@ -17773,7 +17797,7 @@
     "coded": true,
     "nolan": "yyyyyny",
     "coc": {
-     "doc_type": "Code of Best Practice for Trustees of the Royal Botanic Gardens, Kew",
+     "doc_type": "Code of practice",
      "url": "https://web.archive.org/web/20230404034349id_/https://www.kew.org/sites/default/files/2019-11/Code%20of%20Best%20Practice%20for%20Trustees.pdf"
     },
     "source": "review"
@@ -18062,7 +18086,7 @@
      "doc_type": "Code of conduct",
      "url": "https://bodfaricommunitycouncil.org.uk/b/index.php?lng=en&trg=Policies"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4116",
@@ -18881,7 +18905,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.broughtonandbrettoncommunitycouncil.gov.uk/_UserFiles/Files/Policies/Code%20of%20Conduct%20%202018.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4291",
@@ -18894,7 +18918,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.wrexham.gov.uk/council"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4294",
@@ -19115,7 +19139,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet4370",
@@ -19128,7 +19152,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet4384",
@@ -19427,7 +19451,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.buckleytc.org.uk"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4447",
@@ -19661,7 +19685,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.bunscoilbb.com/school/polasaithe/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet4511",
@@ -19778,7 +19802,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.bracklacommunitycouncil.gov.uk/wp-content/uploads/2025/05/Social-Media-Policy-2024-25-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4533",
@@ -20043,7 +20067,7 @@
    {
     "id": "sheet4594",
     "name": "Bradford Trident Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://bradfordtrident.co.uk/get-involved/community-council/",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -21104,7 +21128,7 @@
      "doc_type": "Standards of behaviour",
      "url": "https://www.caerleoncomprehensive.net/_files/ugd/0afaf9_70012fd2e2cc48a6b7d72f718831120c.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet4826",
@@ -21117,7 +21141,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cyngortrefcaernarfon.llyw.cymru/cms/resources/minutes-of-agm-2019.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4829",
@@ -21130,7 +21154,7 @@
      "doc_type": "Code of practice",
      "url": "https://caersws.powys.sch.uk/wp-content/uploads/2026/02/Admissions-Policy-2025.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet4830",
@@ -21143,7 +21167,7 @@
      "doc_type": "Code of conduct",
      "url": "https://caerswscommunitycouncil.co.uk/wp-content/uploads/2025/09/Code-of-Conduct-Guidance-Community-Councils-2021.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4834",
@@ -21156,7 +21180,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.caiapark.gov.uk/_UserFiles/Files/DECLARATION%20OF%20INTEREST%20%202021-22.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4844",
@@ -21338,7 +21362,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.caldicottc.org.uk/_UserFiles/Files/Caldicot_Town_Council_Councillor_Training_Record_16_Councillors.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet4879",
@@ -21850,7 +21874,7 @@
    {
     "id": "sheet4980",
     "name": "Campbell Park Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "http://www.campbell-park.gov.uk/",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -22183,7 +22207,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet5046",
@@ -22316,6 +22340,19 @@
     "umbrella": "DfE"
    },
    {
+    "id": "sheet5084",
+    "name": "Cardiff and Vale College",
+    "category": "Education",
+    "url": "http://www.cardiffandvalecollege.ac.uk",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://cavc.ac.uk/-/media/governors/code-of-conduct-feb22.ashx?la=en&hash=FCF4330D588A349A16530BE4D32F0B52118DABEC"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet5086",
     "name": "Cardiff Council",
     "category": "Welsh council",
@@ -22326,7 +22363,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet5089",
@@ -22339,7 +22376,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet5092",
@@ -22897,7 +22934,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.carreghofacc.org.uk/Media/Council Documents/Policies/Carreghofa_Community_Council-Standing_Orders-2021.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet5213",
@@ -24650,7 +24687,7 @@
      "doc_type": "Code of conduct",
      "url": "https://broracommunitycouncil.org.uk/code-of-conduct/"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet5593",
@@ -25521,7 +25558,7 @@
      "doc_type": "Code of conduct",
      "url": "https://buan.org.uk/gwe/index.php?lng=en&trg=dogfennauCyngor"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet5753",
@@ -27770,7 +27807,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet6218",
@@ -28303,7 +28340,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.churchstoke.org/uploads/minutes/Ordinary Business Minutes 30.07.26.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6328",
@@ -28451,15 +28488,16 @@
    {
     "id": "sheet6374",
     "name": "City of Ely Council",
-    "category": "Scottish council",
+    "category": "Council – other (England)",
     "url": "http://www.cityofelycouncil.org.uk/",
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "LGA Model Councillor Code of Conduct 2020",
+     "doc_type": "Code of conduct",
      "url": "https://elycity.gov.uk/wp-content/uploads/2026/06/Code-of-Conduct.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "LGA"
    },
    {
     "id": "sheet6375",
@@ -28471,8 +28509,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.cityofglasgowcollege.ac.uk/sites/default/files/2425_Terms_Cond_Agreement_MASTER.pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet6378",
@@ -29561,7 +29598,7 @@
      "doc_type": "Code of conduct",
      "url": "https://clocaenog.org.uk/EN/minutes/17-3-26 S.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6610",
@@ -29743,7 +29780,7 @@
      "doc_type": "Code of conduct",
      "url": "https://capelcurigcc.org.uk/wp-content/uploads/2025/01/Model-Standing-Orders-2018-for-Wales-revised-2020.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6674",
@@ -30003,7 +30040,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet6722",
@@ -30016,7 +30053,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.coedffranc-tc.gov.uk/wp-content/uploads/sites/89/2020/10/MEMBERS-CODE-OF-CONDUCT-2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6728",
@@ -30068,7 +30105,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.coityhighercommunitycouncil.co.uk/wp-content/uploads/2025/09/Final-Training-Plan-2025.2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6740",
@@ -30173,6 +30210,32 @@
      "url": "https://www.coldfall.haringey.sch.uk/_site/data/files/key-information/policies/965B4056501F75C1D93E49A175AE47E7.pdf"
     },
     "umbrella": "DfE"
+   },
+   {
+    "id": "sheet6776",
+    "name": "Coleg Ceredigion",
+    "category": "Education",
+    "url": "http://www.ceredigion.ac.uk/",
+    "coded": true,
+    "nolan": "pypyypn",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.csgcc.ac.uk/en/college-information/policy-governance-and-partnerships/governance"
+    },
+    "source": "devolved-review"
+   },
+   {
+    "id": "sheet6778",
+    "name": "Coleg Gwent",
+    "category": "Education",
+    "url": "http://www.coleggwent.ac.uk/",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Standing orders",
+     "url": "https://www.coleggwent.ac.uk/wp-content/uploads/2026/01/STANDING-ORDERS-2024-EN.pdf"
+    },
+    "source": "devolved-review"
    },
    {
     "id": "sheet6780",
@@ -30497,7 +30560,7 @@
      "doc_type": "Code of conduct",
      "url": "https://carno.org.uk/governance-documents"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6872",
@@ -30588,7 +30651,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.colwyn-tc.gov.uk/wp-content/uploads/2026/03/General-Purpose-and-Planning-Minutes-17.03.2026-DRAFT-2.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet6895",
@@ -30754,10 +30817,11 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct for Councillors (December 2021)",
+     "doc_type": "Code of conduct",
      "url": "https://www.cne-siar.gov.uk/sites/default/files/2024-10/councillors-code-of-conduct.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet6933",
@@ -30902,7 +30966,7 @@
     "coded": true,
     "nolan": "nnnnnny",
     "coc": {
-     "doc_type": "Code of conduct for chair, members, assessors and observers",
+     "doc_type": "Code of conduct",
      "url": "https://assets.publishing.service.gov.uk/media/5a7d96a440f0b65084e761a8/COM_code_of_conduct_for_observers.pdf"
     },
     "source": "review"
@@ -31005,7 +31069,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct for CMA Panel Members",
+     "doc_type": "Code of conduct",
      "url": "https://assets.publishing.service.gov.uk/media/5a7f2feee5274a2e87db453c/Code_of_conduct_for_CMA_panel_members.pdf"
     },
     "source": "review"
@@ -31278,7 +31342,7 @@
     "coded": true,
     "nolan": "nyyynnn",
     "coc": {
-     "doc_type": "CITB members' (groups/committees) code of conduct",
+     "doc_type": "Code of conduct",
      "url": "https://www.citb.co.uk/about-us/citb-policies/code-of-conduct"
     },
     "source": "review"
@@ -31410,7 +31474,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cefncribwr.org.uk/CCCC/images/CC_Mins_08.02.23.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet7079",
@@ -31917,7 +31981,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.corpuschristihs.co.uk/1449/ethos-values-and-cluster-vision"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7213",
@@ -32060,7 +32124,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7247",
@@ -32657,7 +32721,7 @@
      "doc_type": "Code of conduct",
      "url": "https://cowbridge-tc.gov.uk/wp-content/uploads/simple-file-list/Policies/bullying-and-harrasment-advisory-information-pdf.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet7373",
@@ -33372,7 +33436,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7506",
@@ -34396,7 +34460,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.crucorney.wales/wp-content/uploads/2025/12/CCC-Training-Policy-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet7724",
@@ -34890,7 +34954,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.swansea.gov.uk/ModernSlavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7872",
@@ -34903,7 +34967,7 @@
      "doc_type": "Standards of behaviour",
      "url": "https://www.cyfarthfapark-pri.merthyr.sch.uk/home"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7878",
@@ -34929,7 +34993,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cynwylelfed.cymru/download/17/policies-english/842/training-plan-2024-2025-cynwyl-elfed-community-council_1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet7883",
@@ -35397,7 +35461,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7956",
@@ -35501,7 +35565,7 @@
      "doc_type": "Code of practice",
      "url": "https://darland.wrexham.sch.uk/wp-content/uploads/2025/09/CCTV-Policy-Sept-2024.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet7972",
@@ -35579,7 +35643,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.darranvalleycommunitycouncil.org.uk/wp-content/uploads/2022/11/DarranValleyNov2022MinutesFinal-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet7987",
@@ -35761,7 +35825,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cilcain-council.wales/wp-content/uploads/2018/10/Cilcain-Community-Council-Code-of-Practice-for-handling-Complaints.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet8016",
@@ -36073,7 +36137,7 @@
      "doc_type": "Code of conduct",
      "url": "https://cilycwm.com/wp-content/uploads/2026/05/Agenda-Cilycwm-AGM-Mai-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet8078",
@@ -36358,7 +36422,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.denbightowncouncil.gov.uk/images/Pauline_Edwards_Code_of_Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet8156",
@@ -36608,6 +36672,19 @@
     "umbrella": "LGA"
    },
    {
+    "id": "sheet8216",
+    "name": "Department of Health (Northern Ireland)",
+    "category": "Health and social care",
+    "url": "https://www.health-ni.gov.uk",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Terms of reference",
+     "url": "https://www.health-ni.gov.uk/sites/default/files/2026-07/Departmental%20Board%20-%20Terms%20of%20Reference.pdf"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet8220",
     "name": "Deptford Green School, London",
     "category": "Education",
@@ -36812,7 +36889,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.derrystrabane.com/about-council/customer-service"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet8246",
@@ -37059,7 +37137,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet8303",
@@ -37202,7 +37280,7 @@
      "doc_type": "Code of conduct",
      "url": "https://dinaspowys.org/wp-content/uploads/2025/02/Diciplinary-Policy.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet8340",
@@ -37215,7 +37293,7 @@
      "doc_type": "Code of conduct",
      "url": "https://dinaspowys.org/wp-content/uploads/2025/02/Diciplinary-Policy.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet8342",
@@ -37682,8 +37760,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.donaldsons.org.uk/wp-content/uploads/2026/05/Response-to-the-Scottish-Government-consultation-on-‘Supporting-Childrens-Learning-Code-of-Practice.pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet8484",
@@ -38021,7 +38098,7 @@
      "doc_type": "Standards of behaviour",
      "url": "https://www.downhighschool.org.uk/pastoral/pastoral-care/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet8570",
@@ -38800,8 +38877,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.dumgal.ac.uk/wp-content/uploads/2025/09/Disclosure-of-Criminal-Offences.pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet8754",
@@ -38813,8 +38889,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.nhsdg.co.uk/data-protection-notice/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet8756",
@@ -38850,10 +38925,11 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Councillors' Code of Conduct and Guidance (Scottish Ministers / Standards Commission for Scotland, May 2022)",
+     "doc_type": "Code of conduct",
      "url": "https://www.dundeecity.gov.uk/sites/default/files/220517_scs_councillors_code_conduct_guidance_may_2022.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet8774",
@@ -39411,7 +39487,7 @@
      "doc_type": "Code of conduct",
      "url": "https://dyserthcouncil.wales/wp-content/uploads/2020/06/DYSERTH-MEMBERS-CODE-OF-CONDUCT-MASTER-MAY-2016-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet8893",
@@ -40186,10 +40262,11 @@
     "coded": true,
     "nolan": "nnnnnnn",
     "coc": {
-     "doc_type": "Councillors' Code of Conduct (Scottish Ministers)",
+     "doc_type": "Code of conduct",
      "url": "http://www.gov.scot/Publications/2010/12/10145144/0"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet9068",
@@ -41045,8 +41122,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.ebbwfawr.co.uk/wpfd_file/39-code-of-conduct-policy-for-staff-2/"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet9248",
@@ -41124,7 +41200,7 @@
      "doc_type": "Code of conduct",
      "url": "https://corriscommunitycouncil.com/wp-content/uploads/2025/09/Signed-Code-Of-Conduct-CCC-bilingual-04.09.25.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet9260",
@@ -41852,7 +41928,7 @@
      "doc_type": "Code of conduct",
      "url": "http://eglwyscummin.co.uk/wp-content/uploads/2026/04/2026-5-5-agenda-annual-and-normal-meetings-for-website.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet9420",
@@ -42928,7 +43004,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Principles of public life (EPSRC adopted code of practice)",
+     "doc_type": "Code of practice",
      "url": "https://www.ukri.org/about-us/epsrc/our-policies-and-standards/principles-of-public-life/"
     },
     "source": "review"
@@ -43254,7 +43330,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.croesyceiliogandllanyrafoncc.org.uk/_UserFiles/Files/CLCC%20Social%20Media%20Policy.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet9750",
@@ -43332,7 +43408,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cromartycareproject.co.uk/constitution"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet9780",
@@ -44461,7 +44537,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet9999",
@@ -44513,7 +44589,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.crynantcommunitycouncil.org/crynant-community-council-handbook/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10009",
@@ -45278,7 +45354,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.fermanaghomagh.com/your-council/councillors/code-of-conduct-for-councillors/"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet10189",
@@ -45499,7 +45576,8 @@
      "doc_type": "Code of conduct",
      "url": "https://www.fife.gov.uk/__data/assets/pdf_file/0013/52303/CC01_Code_of_Conduct-sept-2023.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet10246",
@@ -45590,7 +45668,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cwmbran.gov.uk/category/other-constitutional-governance-documents/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10263",
@@ -45628,7 +45706,7 @@
      "doc_type": "Code of conduct",
      "url": "https://cwmllynfell.cc/wp-content/uploads/2026/06/May-minutes-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10270",
@@ -45654,7 +45732,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.cyffylliogcommunitycouncil.co.uk/index_htm_files/Cyffylliog%20Agenda%2014.11.22.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10274",
@@ -45940,7 +46018,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet10347",
@@ -46265,7 +46343,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.flinttowncouncil.gov.wales/wp-content/uploads/2026/07/7.-THM-Mins-20th-July-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10409",
@@ -46278,7 +46356,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.flintshire.gov.uk/en/PDFFiles/Planning/Planning-Code-of-Practice.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10412",
@@ -46509,7 +46587,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct for Members of Food Standards Scotland (Version 2, March 2022)",
+     "doc_type": "Code of conduct",
      "url": "https://www.foodstandards.gov.scot/sites/default/files/migration/downloads/Revised_Code_-_Food_Standards_Scotland.pdf"
     },
     "source": "review"
@@ -46577,7 +46655,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.fltcc.org.uk/wp-content/uploads/2026/07/Agenda-Ordinary-Business-Meeting-30th-July-2026-2.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10480",
@@ -46926,8 +47004,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://nhsforthvalley.com/wp-content/uploads/2019/12/Code-of-Conduct.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet10561",
@@ -47096,7 +47173,8 @@
      "doc_type": "Code of conduct",
      "url": "https://www.derrystrabane.com/getmedia/4ddac737-36ca-4f4b-9c49-fb4e46861348/Code-of-Conduct-Employees.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet10606",
@@ -47850,7 +47928,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.disserthandtrecoedcommunitycouncil.gov.uk/wp-content/uploads/sites/114/2026/02/03.02.26.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10762",
@@ -48396,7 +48474,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet10868",
@@ -48448,7 +48526,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.dolgellautowncouncil.gov.wales/_UserFiles/Files/Training%20Courses%20Attended.xlsx%20-%20Sheet1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet10896",
@@ -48733,7 +48811,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.dornie.org.uk/consultations"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet10971",
@@ -48759,7 +48837,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.dornochareacommunitycouncil.com/documents/constitution/dacc-constitution-dec-2019.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet10977",
@@ -48980,7 +49058,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.gelligaercommunitycouncil.org.uk/wp-content/uploads/2020/07/Code-of-Conduct-as-amended-2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11023",
@@ -49629,7 +49707,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet11156",
@@ -49694,7 +49772,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.glascwmcommunitycouncil.co.uk/assets/252-cg-rcd-01.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11167",
@@ -49706,7 +49784,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.glasgow.gov.uk/media/11392/Code-of-Conduct/pdf/Code_of_Conduct.pdf?m=1715273593703"
-    }
+    },
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet11169",
@@ -49718,8 +49797,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "http://www.gcrb.ac.uk/usingthelibrary/generalusage.html"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet11174",
@@ -49745,7 +49823,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.glasswaterps.co.uk/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet11178",
@@ -50096,7 +50174,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet11275",
@@ -50109,7 +50187,7 @@
      "doc_type": "Code of conduct",
      "url": "https://glynneathtowncouncil.gov.uk/wp-content/uploads/2025/05/Model-Code-Of-Conduct-Wales.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11279",
@@ -50161,7 +50239,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.gobionfawrcommunitycouncil.org.uk/information/council-procedures/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11287",
@@ -50304,7 +50382,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.goytre.gov.uk/code-of-conduct"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11311",
@@ -50668,7 +50746,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.gorseinontowncouncil.gov.uk/_UserFiles/Files/policy%20schedule.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11413",
@@ -50914,7 +50992,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cyngordyffryntalybont.co.uk/wp-content/uploads/2025/05/TRAINING-SCHEME-DYFFRYN.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11474",
@@ -50927,7 +51005,7 @@
      "doc_type": "Code of conduct",
      "url": "https://dyffrynclydachcc.gov.wales/wp-content/uploads/simple-file-list/Policies/Terms-of-Reference-Personnel-Standards-Committee.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11475",
@@ -51018,7 +51096,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet11495",
@@ -51122,7 +51200,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.graigcc.co.uk/_UserFiles/Files/_People/24097-GCC_Register_of_Members_Interests_Form_Matthew_Cleeve-redacted.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet11525",
@@ -51134,8 +51212,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "http://www.nhsgrampian.org.uk"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet11527",
@@ -51343,7 +51420,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet11580",
@@ -53162,7 +53239,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet11999",
@@ -53445,10 +53522,11 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Employee Code of Conduct (Finance and Resources Committee, 18 November 2025)",
+     "doc_type": "Code of conduct",
      "url": "https://democracy.edinburgh.gov.uk/documents/s90378/7.9%20Gender-based%20Violence%20and%20other%20ESAW%20policy%20updates.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet12071",
@@ -53526,7 +53604,7 @@
      "doc_type": "Code of conduct",
      "url": "https://grosmont.wales/wp-content/uploads/2026/09/260908-Agenda-Council-Meeting-8-September-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet12095",
@@ -55816,6 +55894,19 @@
     "umbrella": "LGA"
    },
    {
+    "id": "sheet12605",
+    "name": "Estyn",
+    "category": "Education",
+    "url": "https://estyn.gov.wales/latest-inspection-reports/",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.estyn.gov.wales/system/files/2023-03/Corporate%20governance%20framework%20-%202023.pdf"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet12606",
     "name": "Etchilhampton Parish Council",
     "category": "Parish Council or Meeting",
@@ -57256,7 +57347,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.haverfordwesthigh.co.uk/docs/policies/Code_of_Conduct.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet12915",
@@ -57269,7 +57360,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.haverfordwesttown.co.uk/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet12917",
@@ -57308,7 +57399,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.hawardencommunitycouncil.gov.uk/_UserFiles/Files/Council/Policies%20and%20Procedures/HCC%20Code%20of%20Prac%20for%20handling%20complaints.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet12927",
@@ -57321,7 +57412,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.hawardenhigh.org.uk/wp-content/uploads/2020/10/HSA.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet12932",
@@ -57542,7 +57633,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet12974",
@@ -58165,8 +58256,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.hseni.gov.uk/consultations"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet13099",
@@ -58204,8 +58294,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.hiw.org.uk/about"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet13104",
@@ -59089,7 +59178,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.ferintoshcc.co.uk/documents/governance/cc_scheme_with_2015_populations-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet13338",
@@ -59920,7 +60009,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet13508",
@@ -61063,7 +61152,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.highland.gov.uk/council-government"
-    }
+    },
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet13806",
@@ -61075,8 +61165,7 @@
     "coc": {
      "doc_type": "Values and behaviours",
      "url": "https://www.nhshighland.scot.nhs.uk/about/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet13812",
@@ -61219,7 +61308,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.fortrosemarkie.org/about-community-council"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet13852",
@@ -61800,8 +61889,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://consult.scotland.gov.uk/"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet14008",
@@ -61813,8 +61901,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.gov.scot/publications/marine-and-fisheries-compliance-site-inspections-monitoring-acoustic-deterrent-devices/"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet14009",
@@ -61996,7 +62083,7 @@
      "doc_type": "Code of conduct",
      "url": "https://freystrop.cymru/fcc-documents/agenda-minutes/2025-2026/Freystrop-Community-Council-Agenda-2025-07-07.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14058",
@@ -63075,7 +63162,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet14306",
@@ -63608,7 +63695,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.holyheadcouncil.co.uk/images/downloads/policydocs/Code%20of%20Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14402",
@@ -63738,7 +63825,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.holywood-steiner.co.uk/s/Positive-Conduct-Policy-2025.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet14422",
@@ -63855,7 +63942,7 @@
      "doc_type": "Ministerial code",
      "url": "https://www.gov.wales/public-sector"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14440",
@@ -63985,7 +64072,7 @@
      "doc_type": "Code of conduct",
      "url": "http://cyngorganllwyd.cymru/images/Dogfennau/CodeC.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14472",
@@ -64024,7 +64111,7 @@
      "doc_type": "Code of conduct",
      "url": "https://hopecommunitycouncil.gov.wales/s/Mins-hybrid-meet-01072026-pywb.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14481",
@@ -64892,7 +64979,7 @@
     "coded": true,
     "nolan": "yyyyynn",
     "coc": {
-     "doc_type": "Code of Practice",
+     "doc_type": "Code of practice",
      "url": "https://lordsappointments.independent.gov.uk/codeofpractice"
     },
     "source": "review"
@@ -65024,7 +65111,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet14683",
@@ -65193,7 +65280,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cyngorglantwymyn.co.uk/index_html_files/Codeof%20conduct2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14726",
@@ -65309,7 +65396,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.glengarrycommunitycouncil.co.uk/_files/ugd/683538_b3b44dbdd6284af1bfb5f0d393069bba.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet14766",
@@ -65387,7 +65474,7 @@
      "doc_type": "Code of conduct",
      "url": "https://glyntarellcc.org/wp-content/uploads/GTCCDecMay25.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14782",
@@ -65816,7 +65903,7 @@
      "doc_type": "Code of conduct",
      "url": "https://gorslascommunitycouncil.gov.wales/wp-content/uploads/simple-file-list/Policies/Social-Media-Policy-Oct-25.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet14901",
@@ -65829,7 +65916,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet14918",
@@ -66099,8 +66186,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.justice-ni.gov.uk/news/competition-launched-independent-members-northern-ireland-policing-board-justice-0"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet15005",
@@ -66537,8 +66623,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.inverness.uhi.ac.uk/t4-media/one-web/inverness/about-us/publications-/Student-Code-of-Conduct-(August-2029).pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet15121",
@@ -66836,7 +66921,7 @@
      "doc_type": "Standards of behaviour",
      "url": "https://www.islwynhigh.org/about-us/mission-vision-statements/"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet15196",
@@ -66849,7 +66934,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.isycoedcommunitycouncil.gov.uk/_UserFiles/Files/Local%20Government%20Model%20Code%20of%20Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet15198",
@@ -67653,8 +67738,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.moray.gov.uk/media/cavjgsgg/file137736.pdf"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet15372",
@@ -68499,7 +68583,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.kerrycommunitycouncil.gov.uk/_UserFiles/Files/_Other/205163-KCC_PUBLIC_AGENDA_PACK_AND_NOTES_MEETING_28_JAN_FINAL_SR_V2_21012026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet15582",
@@ -68954,7 +69038,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.kilmallie.org.uk/download/165/minutes/1223/20151020_minutes-of-the-banavie-quarry-liaison-group-meeting-20th-october-2015.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet15699",
@@ -68980,7 +69064,7 @@
      "doc_type": "Code of conduct",
      "url": "https://kilmorackcc.org/wp-content/uploads/2025/07/scheme-of-establishment.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet15706",
@@ -68992,8 +69076,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://kalecc.org.uk/wp-content/uploads/2025/01/Community_Councils_in_Highland__Updated_Sept_2019_.pdf"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet15707",
@@ -69058,7 +69141,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.kiltearncc.co.uk/wp-content/uploads/2020/09/Kiltearn-CC-Mins-2019-12-10.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet15725",
@@ -69461,7 +69544,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet15793",
@@ -71138,7 +71221,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet16175",
@@ -71307,7 +71390,7 @@
      "doc_type": "Code of conduct",
      "url": "https://knightontc.wales/wp-content/uploads/2023/09/Code-of-Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet16204",
@@ -71346,7 +71429,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.knockbain.org/index.asp"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet16224",
@@ -71541,7 +71624,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.kyminviewprimary.org.uk/plans-policies-grants-forms/"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet16271",
@@ -71931,7 +72014,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet16357",
@@ -72618,7 +72701,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.langstonecommunitycouncil.org.uk/_UserFiles/Files/_Minutes/147897-22-2-17_Feb_T_and_F_Group_meeting_with_LLandevuad_Groups.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet16535",
@@ -72748,7 +72831,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet16572",
@@ -75294,7 +75377,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://lisburncastlereagh.gov.uk:443/complaint-comment-or-compliment"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet17108",
@@ -75398,7 +75482,7 @@
      "doc_type": "Code of conduct",
      "url": "https://lisvanecommunity.org.uk/wp-content/uploads/2026/05/Training-Plan-2026-2027.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17136",
@@ -76269,7 +76353,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanbadoc.org/wp-content/uploads/2026/05/May-Annual-Meeting-2026-Agenda.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17340",
@@ -76282,7 +76366,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanbedrog.org.uk/gwe/index.php?lng=en&trg=dogBlyn"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17342",
@@ -76308,7 +76392,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanbradachcc.co.uk/wp-content/uploads/2020/06/Code-of-Conduct-as-amended-2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17350",
@@ -76321,7 +76405,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet17357",
@@ -76347,7 +76431,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanddewibrefi.org/wp-content/uploads/2022/09/3-Code-of-Conduct-Members-Llanddewi-Brefi-May-2022.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17360",
@@ -76373,7 +76457,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanddulascc.org.uk/wp-content/uploads/sites/114/2025/06/Programming-and-Costs.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17366",
@@ -76412,7 +76496,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cyngorcymunedllandwrog.cymru/downloads/cod-ymddygiad.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17384",
@@ -76425,7 +76509,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llandybie.org.uk/_UserFiles/Files/_Minutes/3692-Minutes_Policy_Committee__and__Emloyment_10th_of_June_2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17392",
@@ -76451,7 +76535,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.ccllandysulcc.cymru/CCL/PublicFiles/media/Code%20of%20Conduct%20Members%20May%202016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17394",
@@ -76464,7 +76548,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet17395",
@@ -76477,7 +76561,7 @@
      "doc_type": "Code of conduct",
      "url": "http://henllan.cymru/community-council/cofnodion-y-cyngor/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17397",
@@ -76490,7 +76574,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.henllanfallteg.org/wp-content/uploads/2025/11/HCC-Agenda-May-2025-Ordinary-Meeting.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17398",
@@ -76503,7 +76587,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.henllys-cc.gov.wales/_UserFiles/Files/Documents/Social%20Media%20Policy.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17401",
@@ -76516,7 +76600,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanelli-rural.gov.uk/council-training-plan/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17403",
@@ -76529,7 +76613,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.henryd.org.uk/wp-content/uploads/en-code-of-conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17404",
@@ -76542,7 +76626,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llanellycc.org.uk/Useful_Links_28802.aspx"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17414",
@@ -76581,7 +76665,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanfaircommunitycouncil.gov.uk/wp-content/uploads/2018/01/Councils-Code-of-Conduct-2016-.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17421",
@@ -76633,7 +76717,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanrhydithon.wordpress.com/wp-content/uploads/2026/08/2026-08-20-agenda.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17443",
@@ -76646,7 +76730,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.cc-llanfihangel-ar-arth-cc.org.uk/wordpress/wp-content/uploads/Mai-May-2025-Agenda-EWdoc.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17445",
@@ -76685,7 +76769,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangathen.org.uk/council-meeting-minutes/code-of-conduct-min-ref-1622/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17463",
@@ -76711,7 +76795,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangollen-ruralcc.co.uk/_files/ugd/14b01c_757ee081b4974172838a6f185d2ea3a7.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17480",
@@ -76724,7 +76808,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangors.org.uk/wp-content/uploads/minutes-agendas-newsletters/Agendas_2026-01-03.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17481",
@@ -76750,7 +76834,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangristiolusacerrigceinwen.com/wp-content/uploads/2020/06/Code-of-Conduct-Adopted-18.03.19.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17483",
@@ -76815,7 +76899,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangybi.org/wp-content/uploads/2022/06/COMMUNITY-COUNCIL-CODE-OF-CONDUCT.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17496",
@@ -76841,7 +76925,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangynincc.co.uk/download/6/agendas/601/26-05-12-annual-and-normal-mmetings-ll-cc-ag.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17503",
@@ -76880,7 +76964,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanidloes.powys.sch.uk/wp-content/uploads/2026/01/Staff-Code-of-Conduct-2025-LSF.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet17515",
@@ -76906,7 +76990,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet17527",
@@ -76958,7 +77042,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanrug.cymru/wp-content/uploads/2023/05/Training-Policy.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet17547",
@@ -77153,7 +77237,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet17607",
@@ -79960,7 +80044,7 @@
      "doc_type": "Code of conduct",
      "url": "https://powys.moderngov.co.uk/documents/s106253/Minutes Public Pack 02072026 Pensions and Investment Committee.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet18192",
@@ -80090,7 +80174,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.maesycwmmercommunitycouncil.org.uk/wp-content/uploads/2022/10/MAESYCWMMER-COMMUNITY-COUNCL-TRAINING-PLAN.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet18226",
@@ -80181,7 +80265,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.magorundy.org.uk/_UserFiles/Files/_People/10376-Register_of__Members_Interests_-_James_D_2022.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet18245",
@@ -82443,7 +82527,7 @@
      "doc_type": "Code of conduct",
      "url": "https://matherncc.co.uk/wp-content/uploads/2025/01/finance-Minutes-december-2024-.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet18725",
@@ -82950,7 +83034,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet18847",
@@ -83405,7 +83489,7 @@
      "doc_type": "Code of conduct",
      "url": "https://ilstoncommunitycouncil.com/wp-content/uploads/2025/06/ICC-Training-Plan-May-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet18952",
@@ -84011,7 +84095,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.midandeastantrim.gov.uk/council/about-us/complaints"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet19100",
@@ -84049,7 +84134,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.midulstercouncil.org/a-z-search"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet19110",
@@ -84634,7 +84720,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet19233",
@@ -84920,7 +85006,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.miltonprimaryschool.co.uk/aln"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet19317",
@@ -85543,7 +85629,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.monmouth.gov.uk/_UserFiles/Files/Publications/MTC%20Code%20of%20Conduct%20adopted%2014.12.20.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet19463",
@@ -85556,7 +85642,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet19464",
@@ -85855,7 +85941,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet19525",
@@ -86510,7 +86596,7 @@
    {
     "id": "sheet19673",
     "name": "Kennington Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.kenningtontowncouncil.gov.uk/about/",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -86765,7 +86851,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet19741",
@@ -86999,7 +87085,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.mumbles.gov.uk/admin/resources/rules-policies/social-media-policy-v-4.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet19807",
@@ -87173,7 +87259,7 @@
    {
     "id": "sheet19844",
     "name": "Myland Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.mylandcommunitycouncil.gov.uk",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -87493,7 +87579,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.nashcommunitycouncil.org.uk/media/General/Nash Community Council_Training_Plan_25_26.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet19918",
@@ -87828,8 +87914,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.nptcgroup.ac.uk/wp-content/uploads/2026/04/Student-Code-of-Conduct-June-2024-Eng-Wel.pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet20013",
@@ -87842,7 +87927,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.neathtowncouncil.gov.uk/wp-content/uploads/sites/116/2024/05/Civility-Respect-Code.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet20015",
@@ -88570,7 +88655,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.newtredegarcommunitycouncil.org.uk/your-council/code-of-conduct/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet20215",
@@ -89376,7 +89461,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.newport.essex.sch.uk/our-school-and-community/whos-who/meet-the-governors"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet20386",
@@ -89389,7 +89474,7 @@
      "doc_type": "Code of conduct",
      "url": "https://newport-pembs.co.uk/document/gdc03-tc-code-of-conduct-4/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet20390",
@@ -89415,7 +89500,7 @@
      "doc_type": "Code of conduct",
      "url": "https://newryhigh.com/wp-content/uploads/2025/12/NHS-Student-Code-of-Conduct.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet20392",
@@ -89427,7 +89512,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "http://www.newrymournedown.org/media/uploads/making_a_complaint_about_the_conduct_of_a_councillor.pdf"
-    }
+    },
+    "umbrella": "NI-LG"
    },
    {
     "id": "sheet20394",
@@ -89674,7 +89760,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.neyland.org.uk/media/Decision Report - Cllr Devauden.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet20479",
@@ -89686,8 +89772,7 @@
     "coc": {
      "doc_type": "Values and behaviours",
      "url": "https://www.nhs24.scot/careers/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet20481",
@@ -89959,8 +90044,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://111.wales.nhs.uk/pdfs/PATIENT%20PRIVACY%20NOTICE%20V.4.2%20English.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet20546",
@@ -90129,7 +90213,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet20572",
@@ -90259,7 +90343,7 @@
      "doc_type": "Code of conduct",
      "url": "https://lalestoncommunitycouncil.gov.uk/wp-content/uploads/members-code-of-conduct-2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet20585",
@@ -91533,7 +91617,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.nwrc.ac.uk/assets/files/DfE_APEL_Guidelines.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet20868",
@@ -91883,8 +91967,7 @@
     "coc": {
      "doc_type": "Values and behaviours",
      "url": "https://www.niccy.org/about-niccy/our-organisation/staff-charter-values-behaviours/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet20933",
@@ -91894,7 +91977,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Practice For Community Relations Council Board Members",
+     "doc_type": "Code of practice",
      "url": "https://www.community-relations.org.uk/files/communityrelations/2025-05/CRCBoardMembersCodeOfPracticeV3May2025.pdf"
     },
     "source": "review"
@@ -91948,8 +92031,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.nifrs.org/wp-content/uploads/2025/09/NIFRS-Pension-Board-Terms-of-Reference.pdf"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet20948",
@@ -91999,8 +92081,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.nipolicingboard.org.uk/files/nipolicingboard/2026-09/code-of-conduct-for-members-policing-board.pdf"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet20967",
@@ -92035,7 +92116,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "VAPC Handbook for Chairs and Members – Public Service Values/conduct requirements for board members",
+     "doc_type": "Code of practice",
      "url": "https://assets.publishing.service.gov.uk/media/62178ede8fa8f5490e284db6/20220223-VAPC_Revised_Handbook-O_73_.odt"
     },
     "source": "review"
@@ -93130,7 +93211,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet21241",
@@ -94889,7 +94970,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.oldstmellonscommunitycouncil.org.uk/images/Training_Programme_Councillors_OSMCC.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet21562",
@@ -95375,7 +95456,7 @@
    {
     "id": "sheet21666",
     "name": "Orchard Park Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "http://www.orchardpark.gov.uk/",
     "coded": true,
     "nolan": "nnnynnn",
@@ -95562,10 +95643,11 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Councillors' Code (Easy Read), Standards Commission for Scotland",
+     "doc_type": "Code of conduct",
      "url": "https://www.standardscommissionscotland.org.uk/uploads/files/1750935436250624CouncillorsCodeFINAL.pdf"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet21699",
@@ -95577,8 +95659,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.ohb.scot.nhs.uk/about-us/access-to-personal-information/your-information-and-how-we-use-it/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet21701",
@@ -97034,7 +97115,7 @@
      "doc_type": "Code of conduct",
      "url": "https://overton-on-dee.co.uk/wp-content/uploads/2020/08/Complaints-Procedure-140519.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22069",
@@ -97372,7 +97453,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.painscastle-rhosgoch.co.uk/uploads/4/3/0/2/43028825/28mins_17.7.17.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22168",
@@ -98334,7 +98415,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanasacommunitycouncil.gov.uk/downloads/minutes-march-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22388",
@@ -98425,7 +98506,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanbedr.com/wp-content/uploads/2025/06/June-2025-Agenda.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22406",
@@ -98464,7 +98545,7 @@
      "doc_type": "Code of conduct",
      "url": "https://cyngorllanberis.cymru/wp-content/uploads/2021/07/Code-of-Conduct-Llanberis-Eng.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22410",
@@ -98477,7 +98558,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanbister.org.uk/policies-and-procedures/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22411",
@@ -98516,7 +98597,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanboidy.cymru/download/4/agendas/487/llanboidy-community-council-am-agenda-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22416",
@@ -98542,7 +98623,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanbrynmaircouncil.com/images/user/Minutes%20May%2026%20AGM.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22424",
@@ -98659,7 +98740,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanddewicouncil.wordpress.com/community-council/council-members/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22457",
@@ -98698,7 +98779,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llandeglacc.co.uk/index_htm_files/Llandegla%20CC%20Minutes%2008.09.22.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22469",
@@ -98711,7 +98792,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llandow.org.uk/LCC/files/LCC-Agenda-and-Meeting-documents/LLD%20CC%20AGENA%2005.03.26.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22481",
@@ -98737,7 +98818,7 @@
      "doc_type": "Code of conduct",
      "url": "http://eng.llandyfaelog.org.uk/_UserFiles/Files/Policies/Code%20of%20Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22484",
@@ -98789,7 +98870,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.pembreyburryport-tc.gov.uk/wp-content/uploads/sites/117/2026/06/Terms-of-Reference-Finance-Governance-and-Personnel-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22494",
@@ -98802,7 +98883,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llandysilio-council.org.uk/uploads/minutes/28th August 2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22495",
@@ -98828,7 +98909,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.pembrokedocktc.org.uk/app/download/715244/Revised+Code+of+Conduct+July+2008.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22497",
@@ -98867,7 +98948,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet22501",
@@ -98879,8 +98960,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.pembrokeshire.ac.uk/wp-content/uploads/2026/04/ethical_employment_statement.pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet22502",
@@ -98893,7 +98973,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.pembrokeshire.gov.uk/accessibility/accessibility-statement"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22503",
@@ -98945,7 +99025,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.penarthtowncouncil.gov.uk/ptcmedia/uploads/Rhys-Thomas-Updated.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22516",
@@ -98958,7 +99038,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet22518",
@@ -98971,7 +99051,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanedi-cc.gov.wales/wp-content/uploads/sites/117/2026/05/Civility-and-Respect-pledge-.docx-2.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22521",
@@ -98984,7 +99064,7 @@
      "doc_type": "Code of conduct",
      "url": "https://pencoedtowncouncil.gov.uk/wp-content/uploads/2025/10/Code-of-conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22529",
@@ -99036,7 +99116,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanegwadcommunitycouncil.wordpress.com/wp-content/uploads/2018/03/the-model-code-of-conduct-21.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22545",
@@ -99049,7 +99129,7 @@
      "doc_type": "Code of conduct",
      "url": "https://penhowcommunity.org/wp-content/uploads/2026/08/AGENDA-07-JULY-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22547",
@@ -99204,8 +99284,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.penrithtowncouncil.gov.uk/wp-content/uploads/2026/03/Code-of-Conduct.pdf"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet22606",
@@ -99244,7 +99323,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanfaircommunitycouncil.gov.uk/wp-content/uploads/2018/01/Councils-Code-of-Conduct-2016-.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22611",
@@ -99308,7 +99387,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.pentrebaneprimaryschool.com/page/?title=Key+Information+Including+Policies&pid=15"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet22633",
@@ -99321,7 +99400,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanferrescommunitycouncil.gov.uk/wp-content/uploads/sites/74/2026/05/69.-Public-Notice-and-Agenda-for-AGM-and-general-meeting-on-7th-May-2026-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22634",
@@ -99334,7 +99413,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.pentyrch.cc/s/Capability-Procedure-October-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22636",
@@ -99347,7 +99426,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet22639",
@@ -99412,7 +99491,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet22662",
@@ -99490,7 +99569,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangadog.com/council/agendas2023/agenda4july23.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22681",
@@ -99593,7 +99672,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.pkc.gov.uk/article/25532/Responsible-Busking-Code-of-Conduct"
-    }
+    },
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet22701",
@@ -99606,7 +99686,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llangancouncil.co.uk/wp-content/uploads/2020/05/Code-of-Conduct-PSOW-guide-2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22702",
@@ -99632,7 +99712,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet22707",
@@ -99658,7 +99738,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangattock-cc.gov.wales/wp-content/uploads/2025/04/Training-Plan-–-2023_24-2024_25.docx.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22710",
@@ -99736,7 +99816,7 @@
      "doc_type": "Code of conduct",
      "url": "http://llangoedmorcc.org.uk/wp-content/uploads/2016/02/4-Minutes-5.10.20.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22726",
@@ -99788,7 +99868,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangurigcommunitycouncil.gov.uk/community/llangurig-community-council-21246/policies-and-procedures/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22737",
@@ -99801,7 +99881,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangybi.org/wp-content/uploads/2022/06/COMMUNITY-COUNCIL-CODE-OF-CONDUCT.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22743",
@@ -99983,7 +100063,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangyniewcc.org.uk/council-history/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22780",
@@ -99996,7 +100076,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llangynog-powys-cc.llyw.cymru/wp-content/uploads/2025/09/Llangynog-Minutes-July-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22781",
@@ -100022,7 +100102,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangynwydlowercommunitycouncil.uk/wp-content/uploads/2026/04/Agenda-April-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22784",
@@ -100048,7 +100128,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llangynwydmiddlecommunitycouncil.co.uk/wp-content/uploads/sites/79/2019/11/Agenda-for-Full-Council-Meeting-on-11th-September-2019.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22788",
@@ -100100,7 +100180,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanharan-cc.gov.wales/wp-content/uploads/2026/05/Complaints-Procedure-V2-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22799",
@@ -100113,7 +100193,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanharrycc.org.uk/page/governance"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22802",
@@ -100126,7 +100206,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanidloeswithout.co.uk/documents/Minutes/202602-February-2026-Minutes.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22808",
@@ -100165,7 +100245,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llanllawddog.co.uk/_UserFiles/Files/Model%20Code%20of%20Conduct.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22816",
@@ -100295,7 +100375,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llanllyfni.org.uk/mm_uploads/datgan-buddiant-hydref-2021.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22838",
@@ -100334,7 +100414,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llanmaesonline.com/s/2019-Local-Resolution-Protocol.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22846",
@@ -100360,7 +100440,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.ccllannon.org.uk/wp-content/uploads/2026/05/Local-Government-Model-Code-of-Conduct-as-amended-from-1.04.2016-Eng-and-Welsh-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22851",
@@ -100373,7 +100453,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanpumsaint.org.uk/_files/ugd/365472_f3a779056c9841439cb7fb72a8ed8dc4.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22859",
@@ -100412,7 +100492,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llansadwrn.org.uk/community-council/community-council-vision/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22864",
@@ -100477,7 +100557,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llansantffraedcommunitycouncil.org.uk/_UserFiles/Files/Code%20of%20Conduct%20Members%20CCLL.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22876",
@@ -100528,7 +100608,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llansawelcc.org/wp-content/uploads/2025/04/llansawel-community-council-training-plan-2024-25-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22890",
@@ -100554,7 +100634,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llansilin-cc.gov.wales/_UserFiles/Files/_Agendas/0-Llansilin_Community_Council_-_Annual_General_Meeting_Agenda_12_May_2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22898",
@@ -100567,7 +100647,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.llantysiliocc.co.uk/Documents_31381.aspx"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22902",
@@ -100606,7 +100686,7 @@
      "doc_type": "Code of practice",
      "url": "https://llanwnnencc.org.uk/wp-content/uploads/2020/03/2018-07-10-Cofnodion-Minutes.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22912",
@@ -100619,7 +100699,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanwrda.org.uk/community-council/community-council-vision/"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22915",
@@ -100684,7 +100764,7 @@
      "doc_type": "Code of conduct",
      "url": "https://llanybydder.cymru/media/axvb2fk1/13-07-2026-agenda.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22931",
@@ -100749,7 +100829,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.llanynyscommunitycouncil.co.uk/index_htm_files/Agenda%20-%202026%2001%2013.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22952",
@@ -100787,8 +100867,7 @@
     "coc": {
      "doc_type": "Code of ethics",
      "url": "https://www.policeombudsman.org/news/police-officer-dismissed-after-police-ombudsman-investigation-finds-catalogue-of-corruption”"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet22957",
@@ -100796,12 +100875,11 @@
     "category": "Emergency services",
     "url": "https://www.psni.police.uk",
     "coded": true,
-    "nolan": "nynnnny",
+    "nolan": "nypynpp",
     "coc": {
-     "doc_type": "Code of practice",
-     "url": "https://www.psni.police.uk/request/third-party-information-request"
-    },
-    "umbrella": "Police"
+     "doc_type": "Code of ethics",
+     "url": "https://www.nipolicingboard.org.uk/files/nipolicingboard/publications/code-of-ethics.pdf"
+    }
    },
    {
     "id": "sheet22958",
@@ -100814,7 +100892,7 @@
      "doc_type": "Code of conduct",
      "url": "http://llanyre.org.uk/data/uploads/agendas/05-2026-annual-meeting-agenda.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22962",
@@ -100839,8 +100917,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://polperrocommunitycouncil.gov.uk/council-business"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet22968",
@@ -100879,7 +100956,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.pontarddulaistowncouncil.gov.uk/_UserFiles/Files/Planning/Minutes%20Special%20Meeting%2022%20Sept%2011.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet22980",
@@ -100931,7 +101008,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23013",
@@ -101568,7 +101645,7 @@
      "doc_type": "Rules of conduct",
      "url": "https://policies.google.com/terms?hl=en&utm_source=ucb"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet23171",
@@ -102126,8 +102203,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.publichealthscotland.scot/about-us/who-we-are/about-our-statistics/our-approach-to-voluntary-application-of-the-code-of-practice-for-statistics/what-is-voluntary-application-of-the-code-of-practice-for-statistics/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet23307",
@@ -102139,8 +102215,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://111.wales.nhs.uk/pdfs/PATIENT%20PRIVACY%20NOTICE%20V.4.2%20English.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet23310",
@@ -102819,7 +102894,7 @@
    {
     "id": "sheet23458",
     "name": "Queen's Park Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "http://www.queensparkcommunitycouncil.gov.uk/",
     "coded": true,
     "nolan": "nynnnnn",
@@ -103230,7 +103305,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23541",
@@ -103295,7 +103370,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23550",
@@ -103321,7 +103396,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.raglancc.org.uk/_UserFiles/Files/_Agendas/210015-26-5-27_May_AGM_meeting.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet23555",
@@ -104698,7 +104773,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.renfrewshire.gov.uk/staff-info"
-    }
+    },
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet23894",
@@ -104789,7 +104865,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23930",
@@ -104815,7 +104891,7 @@
      "doc_type": "Code of conduct",
      "url": "https://rhosnesni-high.wrexham.sch.uk/parents/values-and-standards/"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23940",
@@ -104828,7 +104904,7 @@
      "doc_type": "Code of conduct",
      "url": "https://rhuddlantowncouncil.gov.uk/wp-content/uploads/2026/07/Approved-Minutes-Full-Council-Meeting-12th-September-2024.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet23944",
@@ -104841,7 +104917,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23945",
@@ -104854,7 +104930,7 @@
      "doc_type": "Code of practice",
      "url": "https://rhylhigh.denbighshire.sch.uk/curriculum/alp/"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet23946",
@@ -105491,7 +105567,7 @@
      "doc_type": "Code of conduct",
      "url": "https://manordeilosalemcc.org.uk/minutes/2019/19-05-08.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet24097",
@@ -106466,7 +106542,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.rogerstonecommunitycouncil.com/_UserFiles/Files/_People/16665-Register_of_Members_Interests_Ryland.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet24301",
@@ -106895,7 +106971,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.sky.com/broadband"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet24402",
@@ -107450,7 +107526,7 @@
     "coded": true,
     "nolan": "yyyyyyn",
     "coc": {
-     "doc_type": "Staff Code of Conduct (HR-POL-010)",
+     "doc_type": "Code of conduct",
      "url": "https://royalarmouries.org/sites/default/files/2026-04/Staff-Code-of-Conduct-Mar-17.pdf"
     },
     "source": "review"
@@ -107597,6 +107673,19 @@
      "url": "https://www.rcvs.org.uk/veterinary-professionals/conduct-and-guidance"
     },
     "umbrella": "DfE"
+   },
+   {
+    "id": "sheet24538",
+    "name": "Royal Conservatoire of Scotland",
+    "category": "Education",
+    "url": "https://www.rcs.ac.uk",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of practice",
+     "url": "https://royal-cons-scotland-assets.s3.amazonaws.com/uploads/2024/11/Statement-of-Corporate-Governance.pdf"
+    },
+    "source": "devolved-review"
    },
    {
     "id": "sheet24542",
@@ -107804,7 +107893,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.ruaboncommunitycouncil.gov.wales/the-council"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet24586",
@@ -107986,7 +108075,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet24625",
@@ -108662,7 +108751,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.mcarthurnurseryschool.co.uk/documents/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet24732",
@@ -110221,7 +110310,7 @@
      "doc_type": "Code of conduct",
      "url": "https://melvichcommunityscio.org/letters-of-support"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet25043",
@@ -110676,7 +110765,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.merthyrcynog.org/s/Code-of-Conduct-2016-2023.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet25133",
@@ -110702,7 +110791,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.merthyrmawrcc.org.uk/p/model-standing-orders.html"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet25137",
@@ -110778,8 +110867,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://consult.scotland.gov.uk/"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet25169",
@@ -110814,10 +110902,11 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct for Councillors (Scottish Ministers, December 2021)",
+     "doc_type": "Code of conduct",
      "url": "https://www.gov.scot/binaries/content/documents/govscot/publications/regulation-directive-order/2021/12/code-conduct-councillors-2/documents/code-conduct-councillors/code-conduct-councillors/govscot%3Adocument/code-conduct-councillors.pdf?forceDownload=true"
     },
-    "source": "review"
+    "source": "review",
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet25172",
@@ -110841,8 +110930,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.firescotland.gov.uk:443/access-to-information/publication-scheme/"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet25178",
@@ -110871,6 +110959,32 @@
     "umbrella": "LGA"
    },
    {
+    "id": "sheet25180",
+    "name": "Scottish Government Health and Social Care Directorates",
+    "category": "Health and social care",
+    "url": "http://www.sehd.scot.nhs.uk/aboutus.html",
+    "coded": true,
+    "nolan": "nyynnyn",
+    "coc": {
+     "doc_type": "Civil service code",
+     "url": "https://www.gov.scot/publications/civil-service-code/"
+    },
+    "source": "devolved-review"
+   },
+   {
+    "id": "sheet25182",
+    "name": "Scottish Health Council",
+    "category": "Health and social care",
+    "url": "http://www.scottishhealthcouncil.org",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.healthcareimprovementscotland.scot/wp-content/uploads/2024/02/20220527-HIS-Code-of-Conduct-v5.0.pdf"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet25185",
     "name": "Scottish Information Commissioner",
     "category": "Advisory, regulatory, investigatory",
@@ -110892,8 +111006,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.spa.police.uk/spa-media/feyisqaa/members-code-of-conduct-june-2022.pdf"
-    },
-    "umbrella": "Police"
+    }
    },
    {
     "id": "sheet25190",
@@ -111257,7 +111370,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.seaviewipsglenarm.co.uk/parent-area/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet25270",
@@ -111789,7 +111902,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet25399",
@@ -112439,7 +112552,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.mochdre-community-council.co.uk/_files/ugd/057ee8_332b8b66671340f38491050c9a4019ce.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet25538",
@@ -113258,7 +113371,7 @@
      "doc_type": "Code of conduct",
      "url": "http://shirenewtoncc.org.uk/wp-content/uploads/2021/01/Local-Government-Model-Code-of-Conduct-as-amended-from-1.04.2016-Eng-and-Welsh-1.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet25712",
@@ -113453,7 +113566,7 @@
      "doc_type": "Code of conduct",
      "url": "https://morvern.org/sites/mcdc/files/mcdc-pdf/2024-02-07-mcdc-board-meeting-public-minutes-approved.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet25757",
@@ -114675,7 +114788,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.nantmelcc.co.uk/_UserFiles/Files/_Agendas/205437-16.01.25.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet25985",
@@ -115400,7 +115513,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.south-ayrshire.gov.uk/media/12666/Code-of-conduct/pdf/ParadeCODEofconduct.pdf?m=1722858230587"
-    }
+    },
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet26172",
@@ -115608,7 +115722,7 @@
      "doc_type": "Code of practice",
      "url": "https://setrust.hscni.net/getinvolved/working-for-us/"
     },
-    "umbrella": "NHS"
+    "umbrella": "NI-HSC"
    },
    {
     "id": "sheet26215",
@@ -116206,7 +116320,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.southwales-fire.gov.uk/app/uploads/2024/02/Commissioners-FA-Report.pdf"
     },
-    "umbrella": "Police"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet26343",
@@ -116939,7 +117053,7 @@
    {
     "id": "sheet26547",
     "name": "Spooner Row Community Council Parish Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.spoonerrow.cc",
     "coded": true,
     "nolan": "yyyyyyy",
@@ -117389,7 +117503,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet26638",
@@ -117468,6 +117582,19 @@
      "url": "https://www.squirrelhayes.staffs.sch.uk/_site/data/files/users/template/files/6D016432501075D72586A803756E5F3C.pdf"
     },
     "umbrella": "DfE"
+   },
+   {
+    "id": "sheet26656",
+    "name": "SRUC",
+    "category": "Education",
+    "url": "https://www.sruc.ac.uk",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of practice",
+     "url": "https://www.scottishuniversitygovernance.ac.uk/wp-content/uploads/2023/04/GOOD-HE-GOVERNANCE-A4-REPORT-2023.pdf"
+    },
+    "source": "devolved-review"
    },
    {
     "id": "sheet26660",
@@ -117779,7 +117906,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet26724",
@@ -118260,7 +118387,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.standrews.wales/s/Acceptable-Behaviour-Parent-and-Carer-Code-of-Conduct-Policy-2122025.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet26833",
@@ -118767,7 +118894,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.starvanscouncil.co.uk/_UserFiles/Files/_Agendas/0-SACC_May_2026_Council_Meeting_Agenda_Public_Notice.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet26931",
@@ -118780,7 +118907,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stasaphcitycouncil.gov.uk/wp-content/uploads/2026/05/City-Plan-WG-TOR.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet26935",
@@ -119443,7 +119570,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27090",
@@ -119663,8 +119790,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.stjosephsrc.com/attachments/documents.asp?id=474"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet27163",
@@ -120249,7 +120375,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27343",
@@ -120288,7 +120414,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27352",
@@ -120301,7 +120427,7 @@
      "doc_type": "Code of conduct",
      "url": "https://stdavids.gov.uk/wp-content/uploads/2025/05/SDCC-Code-of-Conduct-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet27355",
@@ -120756,7 +120882,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27460",
@@ -120977,7 +121103,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27508",
@@ -121757,7 +121883,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27693",
@@ -122290,7 +122416,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.sjc.ox.ac.uk/documents/St_Johns_College_Oxford_-_Alumni_Code_of_Conduct_-_2025.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet27791",
@@ -122511,7 +122637,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet27832",
@@ -123876,7 +124002,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stjosephstyrella.com/about-us/policies-1-1/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet28188",
@@ -123941,7 +124067,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stjosephsprm.cardiff.sch.uk/page/?title=Parents+Code+of+Conduct&pid=336"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet28203",
@@ -124006,7 +124132,7 @@
      "doc_type": "Standards of behaviour",
      "url": "https://www.stjuliansschool.co.uk/year-6-transition"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet28228",
@@ -125254,7 +125380,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet28552",
@@ -125423,7 +125549,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet28602",
@@ -126346,7 +126472,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.stmaryspsdraperstown.com/special-needs"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet28803",
@@ -126359,7 +126485,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.stmaryslisbuoy.com/curriculum-and-assessment/special-needs/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet28804",
@@ -126372,7 +126498,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stmaryspsmaghery.co.uk/our-school/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet28821",
@@ -126710,7 +126836,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet28916",
@@ -127152,7 +127278,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.saintmichaels.org.uk/_files/ugd/024943_f40705c8b396484b999d1c8af56f300c.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29007",
@@ -127295,7 +127421,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet29041",
@@ -127971,7 +128097,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stpatricksdrumgreenagh.com/our-school/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29205",
@@ -127984,7 +128110,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stpatrickspsglenariff.co.uk/our-school/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29207",
@@ -127997,7 +128123,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stpatrickspshilltown.com/our-school/pastoral-care-policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29209",
@@ -128010,7 +128136,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stpatricksprimaryloughguile.com/our-school/general-information/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29214",
@@ -128023,7 +128149,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stpatricksmullinahoe.co.uk/our-school/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29223",
@@ -128062,7 +128188,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stpatricksthemeadow.com/about-us/policies/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet29232",
@@ -128257,7 +128383,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet29278",
@@ -129180,7 +129306,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet29477",
@@ -129804,7 +129930,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet29600",
@@ -130740,7 +130866,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.st-brigids.co.uk/aln"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet29826",
@@ -130831,7 +130957,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.stnicholasbonvilston-cc.wales/uploads/1/3/0/0/130011206/draft_minutes_for_gm_of_9th_mar_2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet29853",
@@ -130909,7 +131035,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet29868",
@@ -134113,7 +134239,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct for Ofcom Board",
+     "doc_type": "Code of conduct",
      "url": "https://www.ofcom.org.uk/siteassets/resources/documents/about-ofcom/how-ofcom-is-run/ofcom-board/board-information/ofcom-board-code-of-conduct.pdf?v=393824"
     },
     "source": "review"
@@ -134156,6 +134282,19 @@
      "url": "https://sunningdaleschool.com/our-school/policies/"
     },
     "umbrella": "DfE"
+   },
+   {
+    "id": "sheet30630",
+    "name": "Office of Her Majesty's Chief Inspector of Education and Training in Wales (Estyn)",
+    "category": "Advisory, regulatory, investigatory",
+    "url": "https://www.estyn.gov.wales/system/files/2023-03/Corporate%20governance%20framework%20-%202023.pdf",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.estyn.gov.wales/system/files/2023-03/Corporate%20governance%20framework%20-%202023.pdf"
+    },
+    "source": "devolved-review"
    },
    {
     "id": "sheet30634",
@@ -134856,7 +134995,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.swansea.gov.uk/codeofconduct"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet30796",
@@ -135568,7 +135707,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Staff code of conduct",
+     "doc_type": "Code of conduct",
      "url": "https://www.lgo.org.uk/assets/attach/4230/Staff-code-of-conduct-June-2024.pdf"
     },
     "source": "review"
@@ -135610,7 +135749,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.tkcc.scot/codeofconduct"
     },
-    "umbrella": "LGA"
+    "umbrella": "SCO-CC-H"
    },
    {
     "id": "sheet32917",
@@ -135649,7 +135788,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/cctvcodeofpractice"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet33161",
@@ -136347,7 +136486,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct for Board Members of Public Bodies (Cabinet Office 2011) reproduced within UK Sport board member terms and conditions",
+     "doc_type": "Code of conduct",
      "url": "https://www.uksport.gov.uk/-/media/files/board-documents/example_appointment_agreement_board_member.pdf"
     },
     "source": "review"
@@ -136556,8 +136695,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://uniswales.ac.uk/sites/default/files/2021-11/Universities-Wales-response-to-the-Draft-Social-Partnership-and-Public-Procurement-Wales-Bill.pdf"
-    },
-    "umbrella": "DfE"
+    }
    },
    {
     "id": "sheet33427",
@@ -137090,7 +137228,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.usktown.org/_UserFiles/Files/_Agendas/209554-Agenda_AGM_2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet33552",
@@ -137415,7 +137553,7 @@
      "doc_type": "Code of practice",
      "url": "https://111.wales.nhs.uk/pdfs/PATIENT%20PRIVACY%20NOTICE%20V.4.2%20English.pdf"
     },
-    "umbrella": "NHS"
+    "umbrella": "WAL-NHS"
    },
    {
     "id": "sheet33628",
@@ -138433,7 +138571,7 @@
    {
     "id": "sheet33878",
     "name": "Walton Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.waltoncommunitycouncil.gov.uk",
     "coded": true,
     "nolan": "yyyyyyy",
@@ -138766,7 +138904,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.rhigoscommunitycouncil.org/wp-content/uploads/2026/07/Revised-Code-of-Conduct-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet33952",
@@ -138831,7 +138969,7 @@
      "doc_type": "Code of conduct",
      "url": "https://ccrhoscolyn.org.uk/cysylltiadau.html"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet33969",
@@ -138857,7 +138995,7 @@
      "doc_type": "Code of conduct",
      "url": "https://rhosyr.co.uk/wp-content/uploads/2025/09/Code-of-Conduct-Community-Councils-August-2016-ENGLISH.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet33981",
@@ -139571,8 +139709,7 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.waverley-cc.gov.uk/uploads/rofi-form-neil-adshead-240925-web.pdf"
-    },
-    "umbrella": "LGA"
+    }
    },
    {
     "id": "sheet34144",
@@ -140131,7 +140268,7 @@
      "doc_type": "Code of conduct",
      "url": "https://wellingtoncollegebelfast.org/beyond-the-classroom/sport/schools-rugby-code-of-conduct/"
     },
-    "umbrella": "DfE"
+    "umbrella": "NI-SCH"
    },
    {
     "id": "sheet34246",
@@ -140286,8 +140423,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.gov.wales/sites/default/files/publications/2021-07/code-of-practice-on-the-delivery-of-autism-services.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet34284",
@@ -140299,8 +140435,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.gov.wales/sites/default/files/publications/2021-07/code-of-practice-on-the-delivery-of-autism-services.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet34285",
@@ -140312,8 +140447,7 @@
     "coc": {
      "doc_type": "Code of practice",
      "url": "https://www.gov.wales/sites/default/files/publications/2021-07/code-of-practice-on-the-delivery-of-autism-services.pdf"
-    },
-    "umbrella": "NHS"
+    }
    },
    {
     "id": "sheet34286",
@@ -140351,7 +140485,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.welshpool-hs.powys.sch.uk/wp-content/uploads/2021/09/PN-Statement-for-school-websites.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet34292",
@@ -140364,7 +140498,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.welshpooltowncouncil.gov.uk/wp-content/uploads/2025/06/WTC-Code-of-Conduct-May-2025.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet34293",
@@ -141364,7 +141498,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.westlothian.gov.uk/article/33213/Code-of-Conduct"
-    }
+    },
+    "umbrella": "SCO-LG"
    },
    {
     "id": "sheet34508",
@@ -143286,7 +143421,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet34947",
@@ -143806,7 +143941,7 @@
      "doc_type": "Code of conduct",
      "url": "https://whitlandtowncouncil.co.uk/perch/resources/wtc-agenda-14-07-26.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet35054",
@@ -144310,7 +144445,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Code of Conduct",
+     "doc_type": "Code of conduct",
      "url": "https://www.scottishhumanrights.com/media/2670/code-of-conduct-2024-approved.pdf"
     },
     "source": "review"
@@ -145236,7 +145371,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet35359",
@@ -145756,7 +145891,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet35464",
@@ -148824,7 +148959,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.wrexham.gov.uk/council"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet36145",
@@ -148993,7 +149128,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.skenfrithcommunitycouncil.cymru/Sites/2891/_UserFiles/Files/Footer/SCC%20DISCLAIMER.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet36192",
@@ -149799,7 +149934,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.aberconwy.conwy.sch.uk/wp-content/uploads/2026/04/2026.04.24-Year-8-Parents-Evening-Letter.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36407",
@@ -149812,7 +149947,7 @@
      "doc_type": "Code of practice",
      "url": "https://ysgolbrogwaun.com/wp-content/uploads/2024/10/Ysgol-Bro-Gwaun-Privacy-Notice-ENGLISH-v4.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36414",
@@ -149825,7 +149960,7 @@
      "doc_type": "Code of practice",
      "url": "http://ysgolbropreseli.cymru/wp-content/uploads/2025/07/Ysgol-Bro-Preseli-Privacy-Notice.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36416",
@@ -149838,7 +149973,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.brotawe.powys.sch.uk/wp-content/uploads/2024/02/Bro-Tawe-Code-of-Conduct-for-Parents.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36438",
@@ -149851,7 +149986,7 @@
      "doc_type": "Code of conduct",
      "url": "https://cefnmawr-pri.wrexham.sch.uk/wp-content/uploads/2020/01/Home-School-Agreement-1.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36458",
@@ -149877,7 +150012,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36515",
@@ -149890,7 +150025,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.monmouthshire.gov.uk/app/uploads/2023/04/Code-of-Practice-ENG.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36523",
@@ -149903,7 +150038,7 @@
      "doc_type": "Code of practice",
      "url": "https://www.cardiff.gov.uk/modernslavery"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36550",
@@ -149916,7 +150051,7 @@
      "doc_type": "Code of conduct",
      "url": "https://johnbright.uk/wp-content/uploads/2024/03/Behaviour-Policy-Mar-2024.pdf"
     },
-    "umbrella": "DfE"
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet36645",
@@ -149942,7 +150077,7 @@
      "doc_type": "Code of conduct",
      "url": "https://ysguborycoedcommunitycouncil.co.uk/resources/Cod%20Ymddygiadyngor%20Cymuned%20Ysgubor%20y%20Coed%20Community%20Council.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet36668",
@@ -150644,7 +150779,7 @@
      "doc_type": "Code of conduct",
      "url": "https://stathancommunitycouncil.gov.uk/wp-content/uploads/2026/02/Code-of-Conduct-with-Social-Media-Statement.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet36880",
@@ -151005,7 +151140,7 @@
     "coded": true,
     "nolan": "yyyyyyy",
     "coc": {
-     "doc_type": "Staff Code of Ethics",
+     "doc_type": "Code of ethics",
      "url": "https://www.artscouncil.org.uk/sites/default/files/2026-08/2024%20-%20Staff%20Code%20of%20Ethics%20%28FINAL%29.pdf"
     },
     "source": "review"
@@ -151307,7 +151442,7 @@
      "doc_type": "Code of conduct",
      "url": "https://welshstdonats.community-council.org.uk/community-council-key-documents"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet38512",
@@ -151385,7 +151520,7 @@
      "doc_type": "Code of conduct",
      "url": "https://wenvoecouncil.org.uk/statutory"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet38540",
@@ -152646,7 +152781,7 @@
      "doc_type": "Code of conduct",
      "url": "https://www.whitford-council.wales/wp-content/uploads/2017/06/Code-of-Conduct-May-2016.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet38833",
@@ -155025,7 +155160,7 @@
      "doc_type": "Code of conduct",
      "url": "http://www.ystalyferacommunitycouncil.org/wp-content/uploads/2026/07/AGM-Minutes-May-2026.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet39374",
@@ -155051,7 +155186,7 @@
      "doc_type": "Code of conduct",
      "url": "https://ccystradfflurcc.org.uk/wp-content/uploads/2018/01/minutes-16-nov-2017.pdf"
     },
-    "umbrella": "LGA"
+    "umbrella": "WAL-LG"
    },
    {
     "id": "sheet39376",
@@ -155081,7 +155216,6 @@
    }
   ],
   "checkedNone": [
-   "sheet109",
    "sheet264",
    "sheet270",
    "sheet273",
@@ -155111,16 +155245,12 @@
    "sheet350",
    "sheet352",
    "sheet353",
-   "sheet853",
    "sheet855",
    "sheet856",
-   "sheet902",
    "sheet978",
-   "sheet1015",
    "sheet1353",
    "sheet1355",
    "sheet1356",
-   "sheet2364",
    "sheet2852",
    "sheet3411",
    "sheet3474",
@@ -155130,14 +155260,11 @@
    "sheet4400",
    "sheet4475",
    "sheet5401",
-   "sheet5420",
    "sheet5491",
    "sheet5649",
    "sheet5864",
    "sheet5993",
    "sheet5994",
-   "sheet6373",
-   "sheet6407",
    "sheet6605",
    "sheet6813",
    "sheet6928",
@@ -155147,8 +155274,6 @@
    "sheet6953",
    "sheet6960",
    "sheet6978",
-   "sheet7008",
-   "sheet7012",
    "sheet7119",
    "sheet7177",
    "sheet7271",
@@ -155168,7 +155293,6 @@
    "sheet8671",
    "sheet8673",
    "sheet8747",
-   "sheet8753",
    "sheet8842",
    "sheet8870",
    "sheet8871",
@@ -155176,15 +155300,11 @@
    "sheet8940",
    "sheet8966",
    "sheet8967",
-   "sheet8969",
-   "sheet9014",
-   "sheet9100",
    "sheet9237",
    "sheet9240",
    "sheet9435",
    "sheet9911",
    "sheet9916",
-   "sheet10019",
    "sheet10422",
    "sheet10498",
    "sheet10527",
@@ -155236,7 +155356,6 @@
    "sheet15027",
    "sheet15036",
    "sheet15040",
-   "sheet15118",
    "sheet15122",
    "sheet15549",
    "sheet15550",
@@ -155255,11 +155374,9 @@
    "sheet19079",
    "sheet19082",
    "sheet19088",
-   "sheet19167",
    "sheet19227",
    "sheet19237",
    "sheet19292",
-   "sheet19552",
    "sheet19829",
    "sheet19922",
    "sheet19924",
@@ -155274,8 +155391,6 @@
    "sheet19986",
    "sheet20500",
    "sheet20525",
-   "sheet20657",
-   "sheet20763",
    "sheet20794",
    "sheet20938",
    "sheet20942",
@@ -155327,9 +155442,6 @@
    "sheet25132",
    "sheet25134",
    "sheet25164",
-   "sheet25166",
-   "sheet25174",
-   "sheet25183",
    "sheet25189",
    "sheet25192",
    "sheet25363",
@@ -155337,7 +155449,6 @@
    "sheet25366",
    "sheet25517",
    "sheet25519",
-   "sheet25644",
    "sheet26033",
    "sheet26053",
    "sheet26058",
@@ -155352,10 +155463,8 @@
    "sheet26101",
    "sheet26104",
    "sheet26156",
-   "sheet26263",
    "sheet26507",
    "sheet26544",
-   "sheet30191",
    "sheet30247",
    "sheet30249",
    "sheet30257",
@@ -155365,7 +155474,6 @@
    "sheet30308",
    "sheet30427",
    "sheet30556",
-   "sheet30630",
    "sheet30667",
    "sheet30674",
    "sheet30679",
@@ -155385,10 +155493,8 @@
    "sheet31945",
    "sheet31975",
    "sheet31997",
-   "sheet31999",
    "sheet32124",
    "sheet32204",
-   "sheet32205",
    "sheet32283",
    "sheet32318",
    "sheet32376",
@@ -155407,7 +155513,6 @@
    "sheet33925",
    "sheet34280",
    "sheet34281",
-   "sheet34422",
    "sheet35133",
    "sheet35145",
    "sheet35175",
@@ -155517,7 +155622,8 @@
    "source": {
     "label": "Localism Act 2011, s. 27",
     "url": "https://www.legislation.gov.uk/ukpga/2011/20/section/27"
-   }
+   },
+   "group": "Local government"
   },
   "DfE": {
    "id": "DfE",
@@ -155564,7 +155670,8 @@
    "source": {
     "label": "Maintained schools governance guide",
     "url": "https://www.gov.uk/guidance/governance-in-maintained-schools"
-   }
+   },
+   "group": "Education"
   },
   "NHS": {
    "id": "NHS",
@@ -155611,7 +155718,8 @@
    "source": {
     "label": "How one NHS trust states the requirement",
     "url": "https://www.nbt.nhs.uk/sites/default/files/attachments/North%20Bristol%20NHS%20Trust%20Standards%20of%20Business%20Conduct.pdf"
-   }
+   },
+   "group": "Health"
   },
   "Police": {
    "id": "Police",
@@ -155658,7 +155766,8 @@
    "source": {
     "label": "College of Policing",
     "url": "https://www.college.police.uk/ethics/code-of-practice"
-   }
+   },
+   "group": "Policing"
   },
   "CO": {
    "id": "CO",
@@ -155705,7 +155814,584 @@
    "source": {
     "label": "Cabinet Office, June 2019",
     "url": "https://www.gov.uk/government/publications/code-of-conduct-for-board-members-of-public-bodies"
-   }
+   },
+   "group": "Public bodies"
+  },
+  "WAL-LG": {
+   "id": "WAL-LG",
+   "name": "Wales: statutory code for council members",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Conduct of Members (Principles) (Wales) Order 2001, Schedule: members must act solely in the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "2001 Order Schedule: no financial or other obligation to outside persons that might influence them."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "2001 Order Schedule: choices on merit in public business, appointments, contracts and rewards."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "2001 Order Schedule: accountable to the public and subject to appropriate scrutiny."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "2001 Order Schedule: as open as possible, giving reasons, restricting information only where the public interest demands."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "2001 Order Schedule: duty to declare private interests and resolve conflicts to protect the public interest."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "2001 Order Schedule: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Statutory principles (2001 Order) with model code (SI 2008/788, as amended 2016)",
+    "url": "https://www.legislation.gov.uk/wsi/2001/2276/schedule/made",
+    "explicit_seven_ref": true,
+    "note": "Applies to members of Welsh county and county borough councils, community and town councils, fire and rescue authorities and national park authorities (2001 Order, art. 2). Individual councils’ adopted codes are not separately assessed."
+   },
+   "strength": "Statutory duty",
+   "basis": "Local Government Act 2000 s.51 requires Welsh authorities to adopt a members’ code; the 2001 Order sets the statutory principles, which include all seven Nolan principles.",
+   "source": {
+    "label": "Conduct of Members (Principles) (Wales) Order 2001 (SI 2001/2276)",
+    "url": "https://www.legislation.gov.uk/wsi/2001/2276/contents/made"
+   },
+   "group": "Local government"
+  },
+  "SCO-LG": {
+   "id": "SCO-LG",
+   "name": "Scotland: councillors' code (2021)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: duty to take decisions solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: no financial or other obligation that might reasonably be thought to influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: decisions on merit in public business."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: accountable for decisions and actions to the public (accountability and stewardship)."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: as open as possible about decisions and actions, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: duty to act honestly and declare private interests."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "2021 Code, section 2: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Councillors’ Code of Conduct 2021",
+    "url": "https://www.gov.scot/publications/councillors-code-conduct-2021/pages/2/",
+    "explicit_seven_ref": true,
+    "note": "Nine Scottish principles (duty, selflessness, integrity, objectivity, accountability and stewardship, openness, honesty, leadership, respect) include all seven Nolan principles. Applies to councillors."
+   },
+   "strength": "Statutory duty",
+   "basis": "Issued under the Ethical Standards in Public Life etc. (Scotland) Act 2000; every council’s code is based on it.",
+   "source": {
+    "label": "Councillors’ Code of Conduct 2021 (gov.scot)",
+    "url": "https://www.gov.scot/publications/councillors-code-conduct-2021/"
+   },
+   "group": "Local government"
+  },
+  "NI-LG": {
+   "id": "NI-LG",
+   "name": "Northern Ireland: councillors code (2014)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "2014 Code, principles section: act solely in the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "2014 Code: no obligation to outside individuals or organisations that might influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "2014 Code: choices on merit in public business."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "2014 Code: accountable to the public and submit to appropriate scrutiny."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "2014 Code: as open as possible, giving reasons for decisions."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "2014 Code: declare private interests and resolve conflicts."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "2014 Code: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "NI Local Government Code of Conduct for Councillors",
+    "url": "https://www.communities-ni.gov.uk/sites/default/files/publications/doe/the-northern-ireland-local-government-code-of-conduct-for-councillors.pdf",
+    "explicit_seven_ref": true,
+    "note": "Twelve principles include all seven Nolan principles (PDF pp. 6–7). Applies to councillors, including certain appointed committee members. In force 28 May 2014; planning provisions from 1 April 2015."
+   },
+   "strength": "Statutory duty",
+   "basis": "Issued under the Local Government Act (Northern Ireland) 2014; councils must adopt a code consistent with it.",
+   "source": {
+    "label": "NI Local Government Code of Conduct for Councillors (Department for Communities)",
+    "url": "https://www.communities-ni.gov.uk/publications/ni-local-government-code-conduct-councillors"
+   },
+   "group": "Local government"
+  },
+  "NI-SCH": {
+   "id": "NI-SCH",
+   "name": "Northern Ireland: school governor guidance (2026)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: avoid obligations to outside bodies that might influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: accountable for decisions and actions; submit to scrutiny."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: as open as possible, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: declare private interests, resolve conflicts."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Governor Guide Appendix 2: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "DE Governor Guide (national governance guidance)",
+    "url": "https://www.education-ni.gov.uk/topics/governor-guide",
+    "explicit_seven_ref": true,
+    "note": "Paragraph 4.2: school governors are expected to act in accordance with the 7 Principles of Public Life; Appendix 2 names and defines each. Applies to governors of grant-aided schools of every management type; unfunded independent schools excluded. National guidance, not proof each school has adopted a code."
+   },
+   "strength": "National guidance",
+   "basis": "Department of Education (NI) governor guidance; NIAO school governance guide independently states every governor should act in accordance with the principles.",
+   "source": {
+    "label": "DE School Governor Guide, September 2026",
+    "url": "https://www.education-ni.gov.uk/topics/governor-guide"
+   },
+   "group": "Education"
+  },
+  "WAL-SCH": {
+   "id": "WAL-SCH",
+   "name": "Wales: school governing-body duties (2000 regulations)",
+   "nolan": {
+    "selflessness": {
+     "covered": "no",
+     "evidence": ""
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Regulation 3(3): the governing body shall act with integrity."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Regulation 3(3): shall act with objectivity."
+    },
+    "accountability": {
+     "covered": "partial",
+     "evidence": "Regulation 3(4): prepared to explain decisions and actions to interested persons (conceptual; not named)."
+    },
+    "openness": {
+     "covered": "partial",
+     "evidence": "Regulation 3(4): shall be open about decisions and actions (conceptual; not the named principle)."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Regulation 3(3): shall act with honesty."
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Statutory conduct duties for governing bodies (Terms of Reference Regulations)",
+    "url": "https://www.legislation.gov.uk/wsi/2000/3027/body/made",
+    "explicit_seven_ref": false,
+    "note": "Applies to community, foundation and voluntary schools (incl. community and foundation special schools and temporary governing bodies). Three principles are named; openness and accountability are required in substance; selflessness and leadership are not covered. Independent schools excluded. The 2024 induction-training syllabus does not itself constitute an adopted code."
+   },
+   "strength": "Statutory duty (partial principle coverage)",
+   "basis": "Education (School Government) (Terms of Reference) (Wales) Regulations 2000 (SI 2000/3027), regs 2–3, plus the national governing-body guide (ch. 2).",
+   "source": {
+    "label": "SI 2000/3027 (legislation.gov.uk)",
+    "url": "https://www.legislation.gov.uk/wsi/2000/3027/contents/made"
+   },
+   "group": "Education"
+  },
+  "SCO-DPB": {
+   "id": "SCO-DPB",
+   "name": "Scotland: model code for devolved public bodies (2021)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: decisions solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: no obligation that might reasonably be thought to influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: decisions on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: accountable to the public (accountability and stewardship)."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: as open as possible, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: act honestly, declare interests."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Model Code section 2: promote and support by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Model Code of Conduct for Members of Devolved Public Bodies",
+    "url": "https://www.gov.scot/publications/model-code-conduct-members-devolved-public-bodies-2/pages/2/",
+    "explicit_seven_ref": true,
+    "note": "Nine Scottish principles include all seven Nolan principles. Applies to board members of bodies on the ethical-standards framework list (checked 6 October 2026). Members, not all staff."
+   },
+   "strength": "Statutory duty",
+   "basis": "Ethical Standards in Public Life etc. (Scotland) Act 2000 framework; listed bodies’ codes are based on the model code.",
+   "source": {
+    "label": "Public bodies covered by the ethical standards framework (gov.scot)",
+    "url": "https://www.gov.scot/publications/public-bodies-covered-by-the-ethical-standards-framework/"
+   },
+   "group": "Public bodies"
+  },
+  "SCO-CC-H": {
+   "id": "SCO-CC-H",
+   "name": "Highland: community councillors code (2025 scheme)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Appendix 5: duty to take decisions solely in terms of the interest of the community represented."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Appendix 5: no financial or other obligation that might reasonably be thought to influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Appendix 5: represent the overall views of the community, assessing information on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Appendix 5: accountable for decisions and actions taken on behalf of the community."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Appendix 5: duty to be open about decisions, actions and representations, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Appendix 5: duty to act honestly."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Appendix 5: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Community Councillors’ Code of Conduct (Scheme Appendix 5)",
+    "url": "https://www.highland.gov.uk/downloads/file/3749/community-council-scheme-of-establishment-2025",
+    "explicit_seven_ref": true,
+    "note": "Scheme approved 18 September 2025, in force 13 October 2025; community councils and their members must adhere to the Appendix 5 code. Assignment follows the Scheme’s membership table and current ward directories; an area listing does not prove a council is currently formed."
+   },
+   "strength": "Adopted local scheme",
+   "basis": "Local Government (Scotland) Act 1973 schemes of establishment; Highland Council Scheme of Establishment 2025.",
+   "source": {
+    "label": "Highland Council Scheme of Establishment for Community Councils 2025",
+    "url": "https://www.highland.gov.uk/community-living/community-councils"
+   },
+   "group": "Local government"
+  },
+  "DG-CC": {
+   "id": "DG-CC",
+   "name": "Dumfries and Galloway: community council code (2018 scheme)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Scheme code: must not use the position for personal benefit."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Scheme code: no obligation that might be thought to influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Scheme code: represent the overall views of the community on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Scheme code: accountable for decisions and actions taken on behalf of the community."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Scheme code: duty to be open, giving reasons where appropriate."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Scheme code: duty to act honestly."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Scheme code: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Community council code of conduct (Scheme for the Establishment of Community Councils)",
+    "url": "https://www.dumfriesandgalloway.gov.uk/sites/default/files/2026-10/Scheme_for_the_Establishment_of_Community_Councils_October_2020.pdf",
+    "explicit_seven_ref": true,
+    "note": "Amended 2018 Scheme agreed 25 September 2018; all members (elected, co-opted, associate, ex-officio) must adhere to the code."
+   },
+   "strength": "Adopted local scheme",
+   "basis": "Local Government (Scotland) Act 1973 scheme of establishment.",
+   "source": {
+    "label": "Dumfries and Galloway Council community councils",
+    "url": "https://www.dumfriesandgalloway.gov.uk/council-elections/community-councils"
+   },
+   "group": "Local government"
+  },
+  "GLA-CC": {
+   "id": "GLA-CC",
+   "name": "Glasgow: community councillors code (2018 scheme)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Scheme code: decisions solely in terms of the interests of the community represented."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Scheme code: no obligation that might reasonably be thought to influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Scheme code: represent overall community views on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Scheme code: accountable for decisions and actions through the community council."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Scheme code: duty to be open, giving reasons where appropriate."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Scheme code: duty to act honestly."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Scheme code: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Code of Conduct for Community Councillors (Glasgow Scheme of Establishment 2018)",
+    "url": "https://onlineservices.glasgow.gov.uk/councillorsandcommittees/viewSelectedDocument.asp?c=P62AFQDN2UUTZL0G0G",
+    "explicit_seven_ref": true,
+    "note": "Scheme approved by Glasgow City Council City Administration Committee, 13 December 2018; community councillors must comply with the code it contains."
+   },
+   "strength": "Adopted local scheme",
+   "basis": "Local Government (Scotland) Act 1973 scheme of establishment.",
+   "source": {
+    "label": "Glasgow City Council Scheme of Establishment (adopted 13 December 2018)",
+    "url": "https://onlineservices.glasgow.gov.uk/councillorsandcommittees/viewSelectedDocument.asp?c=P62AFQDN2UUTZL0G0G"
+   },
+   "group": "Local government"
+  },
+  "WAL-NHS": {
+   "id": "WAL-NHS",
+   "name": "Wales: NHS board members code (2006)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "September 2006 code: act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "September 2006 code: no obligation to outside individuals or organisations that might influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "September 2006 code: choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "September 2006 code: accountable to the public, submit to scrutiny."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "September 2006 code: as open as possible, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "September 2006 code: declare private interests, resolve conflicts."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "September 2006 code: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Code of Conduct and Code of Accountability for NHS Boards (September 2006)",
+    "url": "https://phw.nhs.wales/app/uploads/sites/2/2025/01/4.4-BOARD-2023_05_25-Handbook-for-Trade-Union-Representatives-at-Trust-Boards.pdf",
+    "explicit_seven_ref": true,
+    "note": "All board members subscribe on appointment (code, paras 5–7). Applies to local health board members and NHS trust directors under the 2006 Directions; not automatically to hosted units, committees or charities."
+   },
+   "strength": "Statutory direction",
+   "basis": "Local Health Boards and NHS Trusts (Wales) Directions 2006 No. 95 require compliance with the September 2006 codes; codes reproduced in the Public Health Wales Trust Boards handbook (pp. 15–19).",
+   "source": {
+    "label": "LHBs and NHS Trusts (Wales) Directions 2006 No. 95",
+    "url": "https://www.legislation.gov.uk/wsi/2006/95/contents/made"
+   },
+   "group": "Health"
+  },
+  "NI-HSC": {
+   "id": "NI-HSC",
+   "name": "Northern Ireland: HSC board members code (2022)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "HSC code (Oct 2022 v2.0), para 3: act solely in terms of the public interest."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "HSC code para 3: no obligation that might inappropriately influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "HSC code para 3: choices on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "HSC code para 3: accountable for decisions and actions, submit to scrutiny."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "HSC code para 3: as open as possible, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "HSC code para 3: declare private interests, resolve conflicts."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "HSC code para 3: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Code of Conduct and Code of Accountability for Board Members of HSC Bodies",
+    "url": "https://www.health-ni.gov.uk/sites/default/files/publications/health/doh-code-conduct-accountability-hsc-bodies.pdf",
+    "explicit_seven_ref": true,
+    "note": "All HSC board members subscribe and are judged on observance. Applies to board members of HSC bodies (HSC trusts, the regional board, PHA, BSO, NISCC, NIPEC, RQIA); not automatically to hosted units or charities."
+   },
+   "strength": "Departmental direction",
+   "basis": "Issued by the Department of Health (NI) to all HSC bodies, October 2022 version 2.0.",
+   "source": {
+    "label": "DoH (NI) HSC board codes, October 2022",
+    "url": "https://www.health-ni.gov.uk/publications/code-conduct-and-accountability-board-members-hsc-bodies"
+   },
+   "group": "Health"
+  },
+  "SCO-POL": {
+   "id": "SCO-POL",
+   "name": "Scotland: code of ethics for policing",
+   "nolan": {
+    "selflessness": {
+     "covered": "partial",
+     "evidence": "Code of Ethics: placing service to communities before personal interest (conceptual; not named)."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Code of Ethics: act with integrity, fairness and respect."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Code of Ethics: investigate crimes objectively and impartially."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Code of Ethics: be accountable for my actions; personally accountable for use of force."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Code of Ethics: be open and truthful in my dealings; duty of candour."
+    },
+    "honesty": {
+     "covered": "partial",
+     "evidence": "Code of Ethics: truthful dealings and duty of candour (honesty not named)."
+    },
+    "leadership": {
+     "covered": "no",
+     "evidence": ""
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Code of Ethics for Policing in Scotland (revised under the 2025 Act)",
+    "url": "https://www.scotland.police.uk/about-us/who-we-are/code-of-ethics-for-policing-in-scotland/",
+    "explicit_seven_ref": false,
+    "note": "Values-based code (integrity, fairness, respect, human rights); it does not print the seven-principle list. Leadership is not covered."
+   },
+   "strength": "National code",
+   "basis": "Police Scotland Code of Ethics, revised following the Police (Ethics, Conduct and Scrutiny) (Scotland) Act 2025.",
+   "source": {
+    "label": "Police Scotland Code of Ethics",
+    "url": "https://www.scotland.police.uk/about-us/who-we-are/code-of-ethics-for-policing-in-scotland/"
+   },
+   "group": "Policing"
   }
  }
 }

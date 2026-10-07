@@ -137,11 +137,24 @@ function safetyNetRows(umbrellas, orgRows, ownOrgs) {
   const ownByUmb = {};
   (ownOrgs || []).forEach((o) => { if (o.umbrella) ownByUmb[o.umbrella] = (ownByUmb[o.umbrella] || 0) + 1; });
   return Object.entries(umbrellas || {})
-    .map(([id, u]) => ({ id, name: u.name || id, bodies: (counts[id] || 0) - (ownByUmb[id] || 0), allSeven: scoreOf(u.nolan) === 7, nolan: u.nolan || null, strength: u.strength || null, basis: u.basis || null, source: u.source || null }))
+    .map(([id, u]) => ({ id, name: u.name || id, bodies: (counts[id] || 0) - (ownByUmb[id] || 0), allSeven: scoreOf(u.nolan) === 7, nolan: u.nolan || null, strength: u.strength || null, basis: u.basis || null, source: u.source || null, group: u.group || null }))
     .sort((a, b) => b.bodies - a.bodies);
 }
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, HEATMAP_FOLD_NAMES, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+/* Cluster the safety net into named groups (nations); groups are ordered by
+ * their total bodies, codes within a group by bodies. */
+function safetyNetGroups(rows) {
+  const order = [], byGroup = {};
+  (rows || []).forEach((r) => {
+    const g = r.group || "Other";
+    if (!byGroup[g]) { byGroup[g] = { name: g, bodies: 0, rows: [] }; order.push(g); }
+    byGroup[g].bodies += r.bodies;
+    byGroup[g].rows.push(r);
+  });
+  return order.map((g) => byGroup[g]).sort((a, b) => b.bodies - a.bodies);
 }
-if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, HEATMAP_FOLD_NAMES, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows };
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, HEATMAP_FOLD_NAMES, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows, safetyNetGroups };
+}
+if (typeof window !== "undefined") window.Aggregates = { PRINCIPLE_IDS, CATEGORY_LABELS, HEATMAP_FOLD_MIN, HEATMAP_FOLD_NAMES, scoreOf, heroNumbers, scoreDistribution, scoreBands, principleBars, heatmap, safetyNetRows, safetyNetGroups };
