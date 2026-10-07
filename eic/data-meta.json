@@ -1,7 +1,7 @@
 {
  "meta": {
-  "total": 39323,
-  "in_scope": 39323,
+  "total": 38998,
+  "in_scope": 38998,
   "out_of_scope": 0,
   "snapshot": "9 September 2026",
   "correctAsOf": "7 October 2026",
@@ -44,15 +44,30 @@
    "repo": "ammara-y/PublicAuthorities_Database",
    "sha": "d79951ed80f3533729c6e66e3ee49edf297c9e3b",
    "url": "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/d79951ed80f3533729c6e66e3ee49edf297c9e3b/data.xlsx",
-   "fetched_at": "2026-10-07T11:55:52+01:00"
+   "fetched_at": "2026-10-07T12:35:21+01:00"
   },
   "defunctExcluded": 0,
   "noWebsiteExcluded": 59,
   "devolvedExcluded": 0,
-  "umbrellaScrapeHits": 11673,
+  "dedupeDropped": 325,
+  "dedupeLeftAlone": [
+   [
+    "Advisory, Conciliation and Arbitration Service",
+    "Advisory Conciliation and Arbitration Service"
+   ],
+   [
+    "Independent Monitoring Authority for the Citizens' Rights Agreements",
+    "Independent Monitoring Authority for the Citizens Rights Agreements"
+   ],
+   [
+    "School Teachers' Review Body",
+    "School Teachers’ Review Body"
+   ]
+  ],
+  "umbrellaScrapeHits": 11626,
   "coverage": {
-   "own": 11927,
-   "shared": 27009,
+   "own": 11880,
+   "shared": 26731,
    "checked": 387,
    "tocheck": 0,
    "periphery_out": 0,
@@ -62,29 +77,29 @@
    {
     "value": "IS",
     "label": "In scope",
-    "count": 39323
+    "count": 38998
    }
   ],
   "categoryFacets": [
    {
     "value": "Education",
     "label": "Education",
-    "count": 25058
+    "count": 24930
    },
    {
     "value": "Parish Council or Meeting",
     "label": "Parish Council or Meeting",
-    "count": 10645
+    "count": 10456
    },
    {
     "value": "Council – other (England)",
     "label": "Council – other (England)",
-    "count": 1183
+    "count": 1180
    },
    {
     "value": "Welsh council",
     "label": "Welsh council",
-    "count": 864
+    "count": 747
    },
    {
     "value": "Health and social care",
@@ -100,6 +115,11 @@
     "value": "Emergency services",
     "label": "Emergency services",
     "count": 214
+   },
+   {
+    "value": "Scottish council",
+    "label": "Scottish council",
+    "count": 149
    },
    {
     "value": "Government, constitutional, administrative",
@@ -130,11 +150,6 @@
     "value": "Military and security services",
     "label": "Military and security services",
     "count": 46
-   },
-   {
-    "value": "Scottish council",
-    "label": "Scottish council",
-    "count": 37
    },
    {
     "value": "Transport and infrastructure",
@@ -175,37 +190,37 @@
   "coverageByCategory": [
    {
     "name": "Education",
-    "total": 25058,
-    "own": 7812,
-    "shared": 17186,
+    "total": 24930,
+    "own": 7778,
+    "shared": 17092,
     "checked": 60,
     "tocheck": 0,
     "rest": 0
    },
    {
     "name": "Parish Council or Meeting",
-    "total": 10645,
-    "own": 2915,
-    "shared": 7730,
+    "total": 10456,
+    "own": 2904,
+    "shared": 7552,
     "checked": 0,
     "tocheck": 0,
     "rest": 0
    },
    {
     "name": "Council – other (England)",
-    "total": 1183,
-    "own": 544,
-    "shared": 639,
+    "total": 1180,
+    "own": 546,
+    "shared": 634,
     "checked": 0,
     "tocheck": 0,
     "rest": 0
    },
    {
     "name": "Welsh council",
-    "total": 864,
-    "own": 230,
-    "shared": 633,
-    "checked": 1,
+    "total": 747,
+    "own": 208,
+    "shared": 539,
+    "checked": 0,
     "tocheck": 0,
     "rest": 0
    },
@@ -233,6 +248,15 @@
     "own": 72,
     "shared": 139,
     "checked": 3,
+    "tocheck": 0,
+    "rest": 0
+   },
+   {
+    "name": "Scottish council",
+    "total": 149,
+    "own": 33,
+    "shared": 112,
+    "checked": 4,
     "tocheck": 0,
     "rest": 0
    },
@@ -287,15 +311,6 @@
     "own": 8,
     "shared": 18,
     "checked": 20,
-    "tocheck": 0,
-    "rest": 0
-   },
-   {
-    "name": "Scottish council",
-    "total": 37,
-    "own": 15,
-    "shared": 19,
-    "checked": 3,
     "tocheck": 0,
     "rest": 0
    },
@@ -4320,19 +4335,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet964",
-    "name": "Archbishop Runcie CE First School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.archbishop-runcie.eschools.co.uk",
-    "coded": true,
-    "nolan": "yyyyyyy",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://archbishop-runcie.eschools.co.uk/web/governors_code_of_conduct/309999"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet968",
     "name": "Archbishop Tenison's CE High School, Croydon",
     "category": "Education",
@@ -4387,7 +4389,7 @@
    {
     "id": "sheet994",
     "name": "Ardgay and District Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.ardgayanddistrictcommunitycouncil.org.uk",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -6943,19 +6945,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet1578",
-    "name": "Backworth Park Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "https://backworthpark.com",
-    "coded": true,
-    "nolan": "nnnynnn",
-    "coc": {
-     "doc_type": "Standards of behaviour",
-     "url": "https://www.backworthpark.com/welcome"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet1580",
     "name": "Bacon's College",
     "category": "Education",
@@ -8206,7 +8195,7 @@
    {
     "id": "sheet1915",
     "name": "Aviemore and Vicinity Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.aviemorecommunitycouncil.net/",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -8682,19 +8671,6 @@
      "url": "https://www.bartons.w-sussex.sch.uk/web/governing_body_information/250225"
     },
     "umbrella": "DfE"
-   },
-   {
-    "id": "sheet2007",
-    "name": "Barton-upon-Humber Town Council",
-    "category": "Council – other (England)",
-    "url": "https://www.bartonuponhumbertowncouncil.gov.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.bartonuponhumbertowncouncil.gov.uk/wp-content/uploads/2026/07/July-2026-Full-council-Agenda.pdf"
-    },
-    "umbrella": "LGA"
    },
    {
     "id": "sheet2009",
@@ -9971,19 +9947,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet2298",
-    "name": "Beech Hill Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "https://www.beechhill.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.beechhill.newcastle.sch.uk/_site/data/files/migrated/valour-multi-academy-trust/policies-and-when-to-update-them.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet2302",
     "name": "Beechcroft Infant School, Swindon",
     "category": "Education",
@@ -10907,19 +10870,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet2504",
-    "name": "Benton Dene Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.bentondeneschools.org.uk/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.bentondeneschools.org.uk/our-school/our-policies"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet2508",
     "name": "Benton Park School, Leeds",
     "category": "Education",
@@ -11804,19 +11754,6 @@
     "umbrella": "LGA"
    },
    {
-    "id": "sheet2693",
-    "name": "Barton under Needwood Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.bartonunderneedwood-pc.gov.uk",
-    "coded": true,
-    "nolan": "yyyyyyy",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.bartonunderneedwood-pc.gov.uk/_UserFiles/Files/BPC%20Code%20of%20Conduct%20%20Reviewed%207%20May%202026.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
     "id": "sheet2705",
     "name": "Bishop Aldhelm's C.E. Primary School, Poole, Dorset",
     "category": "Education",
@@ -12281,19 +12218,6 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://bawdripparishcouncil.gov.uk/wp-content/uploads/2026/04/Minutes-2nd-June-2026.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
-    "id": "sheet2822",
-    "name": "Bassingbourn-cum-Kneesworth Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.bassingbournparishcouncil.gov.uk",
-    "coded": true,
-    "nolan": "ynnyynn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://bassingbournparishcouncil.gov.uk/accounts/"
     },
     "umbrella": "LGA"
    },
@@ -16949,19 +16873,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet3873",
-    "name": "Bridgewater Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.bridgewater.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.bridgewater.newcastle.sch.uk/wp-content/uploads/2026/05/Parent-and-Carer-Code-of-Conduct.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet3875",
     "name": "Blandford St. Mary Parish Council",
     "category": "Parish Council or Meeting",
@@ -16990,7 +16901,7 @@
    {
     "id": "sheet3877",
     "name": "Bridgnorth Town Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.bridgnorthtowncouncil.gov.uk",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -20962,19 +20873,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet4785",
-    "name": "Byker Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.bykerprimary.org",
-    "coded": true,
-    "nolan": "nynnnnn",
-    "coc": {
-     "doc_type": "Code of practice",
-     "url": "https://www.bykerprimary.org/page/?title=SEN&pid=41"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet4786",
     "name": "Brandsby-Cum-Stearsby Parish Council",
     "category": "Parish Council or Meeting",
@@ -24679,7 +24577,7 @@
    {
     "id": "sheet5591",
     "name": "Brora Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://broracommunitycouncil.org.uk/",
     "coded": true,
     "nolan": "yyyyyyy",
@@ -26811,19 +26709,6 @@
    {
     "id": "sheet6013",
     "name": "Chillingham Road Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.chillingham.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nyyynny",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.chillingham.newcastle.sch.uk/docs/safeguarding_policies/Complaints_Policy_and_Procedures.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet6014",
-    "name": "Chillingham Road Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.chillingham.newcastle.sch.uk",
     "coded": true,
@@ -29681,19 +29566,6 @@
    {
     "id": "sheet6631",
     "name": "Clover Hill Community Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.cloverhillprimary.org/",
-    "coded": true,
-    "nolan": "nnnnnny",
-    "coc": {
-     "doc_type": "Code of practice",
-     "url": "https://www.cloverhillprimary.org/send"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet6632",
-    "name": "Clover Hill Community Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.cloverhillprimary.org/",
     "coded": true,
@@ -32906,19 +32778,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet7410",
-    "name": "Cragside Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.cragsideprimary.co.uk",
-    "coded": true,
-    "nolan": "nynynnn",
-    "coc": {
-     "doc_type": "Code of practice",
-     "url": "https://www.cragsideprimary.co.uk/docs/Surveillance_Policy.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet7411",
     "name": "Cheddleton Parish Council",
     "category": "Parish Council or Meeting",
@@ -33875,19 +33734,6 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.chalfontstgiles-pc.gov.uk/wp-content/uploads/sites/111/2022/09/Training-and-Development-Policy.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
-    "id": "sheet7593",
-    "name": "Chalfont St Peter Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.chalfontstpeter-pc.gov.uk",
-    "coded": true,
-    "nolan": "yyyyyyy",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.chalfontstpeter-pc.gov.uk/wp-content/uploads/sites/95/2026/04/CSP-Code-of-Conduct-reviewed-and-agreed-Sept-2025.pdf"
     },
     "umbrella": "LGA"
    },
@@ -35661,19 +35507,6 @@
    {
     "id": "sheet7987",
     "name": "Darras Hall Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.darrashallprimary.com",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.darrashallprimary.com/governance/"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet7988",
-    "name": "Darras Hall Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.darrashallprimary.com",
     "coded": true,
@@ -39761,19 +39594,6 @@
     }
    },
    {
-    "id": "sheet8945",
-    "name": "Clifton-upon-Dunsmore Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.cliftonupondunsmore.org.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.cliftonupondunsmore.org.uk/parish-council"
-    },
-    "umbrella": "LGA"
-   },
-   {
     "id": "sheet8949",
     "name": "Easington CofE Primary Academy, Hull",
     "category": "Education",
@@ -43414,7 +43234,7 @@
    {
     "id": "sheet9776",
     "name": "Cromarty Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.cromartycareproject.co.uk/index.asp?pageid=709777",
     "coded": true,
     "nolan": "nynnnnn",
@@ -48101,19 +47921,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet10788",
-    "name": "Front Street Community Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.frontstreetprimary.co.uk",
-    "coded": true,
-    "nolan": "nnnynny",
-    "coc": {
-     "doc_type": "Standards of conduct",
-     "url": "https://www.frontstreetprimary.co.uk/wp-content/uploads/2023/12/OFSTED-2023.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet10789",
     "name": "Ditton Priors Parish Council",
     "category": "Parish Council or Meeting",
@@ -48817,7 +48624,7 @@
    {
     "id": "sheet10970",
     "name": "Dornie and District Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.dornie.org.uk/news",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -48843,7 +48650,7 @@
    {
     "id": "sheet10974",
     "name": "Dornoch Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.dornochareacommunitycouncil.com/",
     "coded": true,
     "nolan": "yynnnnn",
@@ -49258,19 +49065,6 @@
    {
     "id": "sheet11049",
     "name": "George Stephenson High School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.gshs.org.uk/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.gshs.org.uk/_files/ugd/7c9397_f0daf080d0aa42bd9ad4783b5dbfd5c3.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet11050",
-    "name": "George Stephenson High School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.gshs.org.uk/",
     "coded": true,
@@ -50893,19 +50687,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet11437",
-    "name": "Gosforth Park First School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.gosforthpark.newcastle.sch.uk/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.gosforthpark.newcastle.sch.uk/code-of-conduct-1"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet11449",
     "name": "Dunstall Parish Council",
     "category": "Parish Council or Meeting",
@@ -51541,19 +51322,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet11595",
-    "name": "Grasmere Academy, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.grasmereacademy.org.uk",
-    "coded": true,
-    "nolan": "nnnynny",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.grasmereacademy.org.uk/_files/ugd/76322c_fb37b2e92978418ca122b1cae197c2df.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet11597",
     "name": "Grasmere Primary School, London",
     "category": "Education",
@@ -51771,19 +51539,6 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.eastchallowpc.co.uk/app/download/19001087/0920+Sept+2020+Agenda.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
-    "id": "sheet11640",
-    "name": "Draycott and Church Wilne Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.draycott-pc.gov.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.draycott-pc.gov.uk/wp-content/uploads/2026/09/Agenda-20260909-Draycott-Parish-Council-Meeting.pdf"
     },
     "umbrella": "LGA"
    },
@@ -59197,7 +58952,7 @@
    {
     "id": "sheet13336",
     "name": "Ferintosh Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "http://www.ferintoshcc.co.uk/index.asp",
     "coded": true,
     "nolan": "nynnnnn",
@@ -59791,19 +59546,6 @@
      "url": "https://www.henleyinardenprimary.org.uk/about-us/school-values-and-christian-ethos"
     },
     "umbrella": "DfE"
-   },
-   {
-    "id": "sheet13462",
-    "name": "Henley-on-Thames Town Council",
-    "category": "Council – other (England)",
-    "url": "https://www.henleytowncouncil.gov.uk",
-    "coded": true,
-    "nolan": "nnnyynn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.henleytowncouncil.gov.uk/your-council/finance-transparency/"
-    },
-    "umbrella": "LGA"
    },
    {
     "id": "sheet13463",
@@ -61327,7 +61069,7 @@
    {
     "id": "sheet13845",
     "name": "Fortrose and Rosemarkie Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.fortrosemarkie.org/",
     "coded": true,
     "nolan": "nynnnnn",
@@ -63764,19 +63506,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet14408",
-    "name": "Holystone Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.holystoneprimaryschool.co.uk/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.holystoneprimaryschool.co.uk/holystone-equality-objectives/"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet14412",
     "name": "Holywell Primary and Nursery School, Birmingham",
     "category": "Education",
@@ -65415,7 +65144,7 @@
    {
     "id": "sheet14758",
     "name": "Glengarry Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.glengarrycommunitycouncil.co.uk/",
     "coded": true,
     "nolan": "yynnnnn",
@@ -67758,7 +67487,7 @@
    {
     "id": "sheet15363",
     "name": "Joint Community Councils of Moray",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "http://www.moray.gov.uk/moray_standard/page_46297.html",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -69057,7 +68786,7 @@
    {
     "id": "sheet15698",
     "name": "Kilmallie Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.kilmallie.org.uk",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -69083,7 +68812,7 @@
    {
     "id": "sheet15703",
     "name": "Kilmorack Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.kilmorackcc.org",
     "coded": true,
     "nolan": "nynnnnn",
@@ -69096,7 +68825,7 @@
    {
     "id": "sheet15706",
     "name": "Kilmuir and Logie Easter Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.kalecc.org.uk",
     "coded": true,
     "nolan": "nynnnnn",
@@ -69160,7 +68889,7 @@
    {
     "id": "sheet15720",
     "name": "Kiltearn Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.kiltearncc.co.uk",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -71448,7 +71177,7 @@
    {
     "id": "sheet16211",
     "name": "Knockbain Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.knockbain.org",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -71474,19 +71203,6 @@
    {
     "id": "sheet16226",
     "name": "Knop Law Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.knoplaw.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.knoplaw.newcastle.sch.uk/docs/newsletters/Parent_Newsletter_12th_June_2026.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet16227",
-    "name": "Knop Law Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.knoplaw.newcastle.sch.uk",
     "coded": true,
@@ -74383,19 +74099,6 @@
    {
     "id": "sheet16852",
     "name": "Lemington Riverside Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.lemingtonriverside.newcastle.sch.uk/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.lemingtonriverside.newcastle.sch.uk/Parent-Carer-code-of-conduct/"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet16853",
-    "name": "Lemington Riverside Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.lemingtonriverside.newcastle.sch.uk/",
     "coded": true,
@@ -78099,19 +77802,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet17770",
-    "name": "Longbenton High School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://longbenton.org.uk/",
-    "coded": true,
-    "nolan": "nynnnny",
-    "coc": {
-     "doc_type": "Standards of behaviour",
-     "url": "https://longbenton.org.uk/vision"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet17775",
     "name": "Longcot and Fernham Church of England Primary School, Faringdon",
     "category": "Education",
@@ -78283,19 +77973,6 @@
    {
     "id": "sheet17802",
     "name": "Longhill Primary School, Kingston upon Hull",
-    "category": "Education",
-    "url": "http://www.longhillprimary.org.uk/",
-    "coded": true,
-    "nolan": "nynyyyy",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.longhillprimary.org.uk/docs/policies/safeguarding_policies/ChildProtection2025.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet17803",
-    "name": "Longhill Primary School, Kingston-upon-Hull",
     "category": "Education",
     "url": "http://www.longhillprimary.org.uk/",
     "coded": true,
@@ -84555,19 +84232,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet19192",
-    "name": "Milecastle Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.milecastle.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.milecastle.newcastle.sch.uk/page/?title=ParentMail&pid=63"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet19193",
     "name": "Milefield Primary School, Barnsley",
     "category": "Education",
@@ -85440,19 +85104,6 @@
    {
     "id": "sheet19424",
     "name": "Monkchester Road Nursery School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.monkchesterroad.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nynnnnn",
-    "coc": {
-     "doc_type": "Values and behaviours",
-     "url": "https://www.monkchesterroad.newcastle.sch.uk/website/ethos_and_values/454056"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet19425",
-    "name": "Monkchester Road Nursery School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.monkchesterroad.newcastle.sch.uk",
     "coded": true,
@@ -95767,19 +95418,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet21722",
-    "name": "Ormiston Horizon Academy, Stoke-on-Trent",
-    "category": "Education",
-    "url": "http://www.ormistonhorizonacademy.co.uk/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://ormistonhorizonacademy.co.uk/admin/wp-content/uploads/sites/19/2025/10/CConfirmations-Summary-Ormiston-Horizon-Academy.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet21727",
     "name": "Ormiston NEW Academy",
     "category": "Education",
@@ -99304,7 +98942,7 @@
    {
     "id": "sheet22600",
     "name": "Penrith Town Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.penrithtowncouncil.gov.uk",
     "coded": true,
     "nolan": "yyyyyyy",
@@ -100950,7 +100588,7 @@
    {
     "id": "sheet22964",
     "name": "Polperro Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.polperrocommunitycouncil.gov.uk",
     "coded": true,
     "nolan": "nnnynnn",
@@ -104585,19 +104223,6 @@
    {
     "id": "sheet23852",
     "name": "Regent Farm First School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.regentfarmfirstschool.co.uk/",
-    "coded": true,
-    "nolan": "nnnnnny",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.regentfarmfirstschool.co.uk/page/?title=Policies+%26amp%3B+Key+Documents&pid=19"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet23853",
-    "name": "Regent Farm First School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.regentfarmfirstschool.co.uk/",
     "coded": true,
@@ -108989,19 +108614,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet24773",
-    "name": "Sacred Heart High School, Fenham, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.sacredheart-high.org",
-    "coded": true,
-    "nolan": "nnnnnny",
-    "coc": {
-     "doc_type": "Standards of behaviour",
-     "url": "https://www.sacredheart-high.org/heads-welcome"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet24774",
     "name": "Sacred Heart High School, Hammersmith, London",
     "category": "Education",
@@ -109030,19 +108642,6 @@
    {
     "id": "sheet24781",
     "name": "Sacred Heart Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.shprimary.org.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.shprimary.org.uk/_files/ugd/872c7b_29d3cb31f087445da1fb69cb0fc43395.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet24782",
-    "name": "Sacred Heart Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.shprimary.org.uk",
     "coded": true,
@@ -110342,7 +109941,7 @@
    {
     "id": "sheet25042",
     "name": "Melvich Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://melvichcommunityscio.org/letters-of-support",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -111339,19 +110938,6 @@
     "name": "Middleton St George Parish Council",
     "category": "Parish Council or Meeting",
     "url": "https://www.middletonstgeorgeparish.gov.uk/",
-    "coded": true,
-    "nolan": "nnnnynn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.middletonstgeorgeparish.gov.uk/wp-content/uploads/sites/117/2026/09/260914-AGENDA-EGM-Full-Council.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
-    "id": "sheet25255",
-    "name": "Middleton St. George Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.middletonstgeorgeparish.gov.uk/our-community/history/",
     "coded": true,
     "nolan": "nnnnynn",
     "coc": {
@@ -113388,19 +112974,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet25710",
-    "name": "Shiremoor Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.shiremoor-primary.co.uk/",
-    "coded": true,
-    "nolan": "yyynnyn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.shiremoor-primary.co.uk/attachments/download.asp?file=627&type=pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet25711",
     "name": "Shirenewton Community Council, Monmouthshire",
     "category": "Welsh council",
@@ -113598,7 +113171,7 @@
    {
     "id": "sheet25756",
     "name": "Morvern Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://morvern.org/morvern-community-council",
     "coded": true,
     "nolan": "nynnnnn",
@@ -114207,19 +113780,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet25872",
-    "name": "Simonside Primary School, Westerhope, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.simonside.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nnnynny",
-    "coc": {
-     "doc_type": "Standards of behaviour",
-     "url": "https://www.simonside.newcastle.sch.uk/ethos_and_values"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet25873",
     "name": "Marden Parish Council, Kent",
     "category": "Parish Council or Meeting",
@@ -114313,19 +113873,6 @@
    {
     "id": "sheet25891",
     "name": "Sir Charles Parsons School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.scp.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "nynnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.scp.newcastle.sch.uk/web/policies/128315"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet25892",
-    "name": "Sir Charles Parsons School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.scp.newcastle.sch.uk",
     "coded": true,
@@ -115997,19 +115544,6 @@
      "url": "https://www.hee.nhs.uk/about-2"
     },
     "umbrella": "DfE"
-   },
-   {
-    "id": "sheet26271",
-    "name": "Mawgan In Pydar Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.stmawganparishcouncil.org.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.stmawganparishcouncil.org.uk/wp-content/uploads/2024/01/Draft-Minutes-10-Jan-2024-1-1.pdf"
-    },
-    "umbrella": "LGA"
    },
    {
     "id": "sheet26274",
@@ -125306,19 +124840,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet28527",
-    "name": "Milborne St Andrew Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.dorset-aptc.gov.uk",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.dorset-aptc.gov.uk/learning-development/councillor-development/cdf-essentials"
-    },
-    "umbrella": "LGA"
-   },
-   {
     "id": "sheet28534",
     "name": "St Mary Magdalene Catholic Primary School, Milton Keynes",
     "category": "Education",
@@ -126619,19 +126140,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet28844",
-    "name": "St Marys Roman Catholic Primary School Aided, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.stmarysrcprimaryschool.co.uk/",
-    "coded": true,
-    "nolan": "nynynny",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.stmarysrcprimaryschool.co.uk/british-values"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet28845",
     "name": "St Marys Roman Catholic Primary School Aided, North Shields",
     "category": "Education",
@@ -127362,19 +126870,6 @@
    {
     "id": "sheet29022",
     "name": "St Michael's RC Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.st-michaels.school",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Standards of behaviour",
-     "url": "http://www.st-michaels.school"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet29023",
-    "name": "St Michael's RC Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.st-michaels.school",
     "coded": true,
@@ -130040,19 +129535,6 @@
    {
     "id": "sheet29609",
     "name": "St Teresa's Catholic Primary School, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.stteresasnewcastle.org.uk",
-    "coded": true,
-    "nolan": "yyyyyny",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.stteresasnewcastle.org.uk/_files/ugd/872c7b_62cba1bf0a4549908e4a0de04c38af0a.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet29610",
-    "name": "St Teresa's Catholic Primary School, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.stteresasnewcastle.org.uk",
     "coded": true,
@@ -134921,19 +134403,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet30771",
-    "name": "Swalwell Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "http://www.swalwellprimary.org/",
-    "coded": true,
-    "nolan": "nnnnnnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.swalwellprimary.org/page/?title=Code+of+Conduct+for+parents&pid=199"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet30772",
     "name": "Swan Lane First School, Evesham",
     "category": "Education",
@@ -135794,7 +135263,7 @@
    {
     "id": "sheet32906",
     "name": "Torridon and Kinlochewe Community Council",
-    "category": "Welsh council",
+    "category": "Scottish council",
     "url": "https://www.tkcc.scot",
     "coded": true,
     "nolan": "yyyyyyy",
@@ -138259,19 +137728,6 @@
     "umbrella": "DfE"
    },
    {
-    "id": "sheet33771",
-    "name": "Walbottle Village Primary School, Newcastle-upon-Tyne",
-    "category": "Education",
-    "url": "https://www.walbottlevillage.newcastle.sch.uk",
-    "coded": true,
-    "nolan": "yyyyyyy",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.walbottlevillage.newcastle.sch.uk/_site/data/files/migrated/code-of-conduct/code-of-conduct-autumn-2021.docx"
-    },
-    "umbrella": "DfE"
-   },
-   {
     "id": "sheet33775",
     "name": "Waldegrave School for Girls, Twickenham",
     "category": "Education",
@@ -139755,7 +139211,7 @@
    {
     "id": "sheet34138",
     "name": "Waverley Community Council",
-    "category": "Welsh council",
+    "category": "Council – other (England)",
     "url": "https://www.waverley-cc.gov.uk",
     "coded": true,
     "nolan": "nnnnnnn",
@@ -141661,19 +141117,6 @@
    {
     "id": "sheet34533",
     "name": "West Newcastle Academy, Newcastle upon Tyne",
-    "category": "Education",
-    "url": "http://www.westnewcastleacademy.org",
-    "coded": true,
-    "nolan": "nynynnn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.westnewcastleacademy.org/docs/policies/safeguarding_policies/Allegations_against_staff_procedures.pdf"
-    },
-    "umbrella": "DfE"
-   },
-   {
-    "id": "sheet34534",
-    "name": "West Newcastle Academy, Newcastle-upon-Tyne",
     "category": "Education",
     "url": "http://www.westnewcastleacademy.org",
     "coded": true,
@@ -150458,19 +149901,6 @@
     "umbrella": "LGA"
    },
    {
-    "id": "sheet36756",
-    "name": "Shepherdswell-with-Coldred Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.shepherdswellcoldred-pc.gov.uk",
-    "coded": true,
-    "nolan": "nnnnynn",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://www.shepherdswellcoldred-pc.gov.uk/community/shepherdswell-with-coldred-parish-council-20501/councillors-resources/"
-    },
-    "umbrella": "LGA"
-   },
-   {
     "id": "sheet36760",
     "name": "South Milton Parish Council",
     "category": "Parish Council or Meeting",
@@ -152707,19 +152137,6 @@
     "umbrella": "LGA"
    },
    {
-    "id": "sheet38805",
-    "name": "Whitchurch-on-Thames Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://whitchurchonthames.com/council.html",
-    "coded": true,
-    "nolan": "nnnynny",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://whitchurchonthames.com/pcminutes/Councillor%20Job%20Description%20ed%20April%202021.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
     "id": "sheet38815",
     "name": "Wheathampstead Parish Council",
     "category": "Parish Council or Meeting",
@@ -154822,19 +154239,6 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.wraysburyparishcouncil.gov.uk/wp-content/uploads/sites/116/2026/08/17-Aug-26-Agenda-Final.pdf"
-    },
-    "umbrella": "LGA"
-   },
-   {
-    "id": "sheet39279",
-    "name": "Wrenbury-cum-Frith Parish Council",
-    "category": "Parish Council or Meeting",
-    "url": "https://www.wrenburypc.org.uk",
-    "coded": true,
-    "nolan": "yyyyyyy",
-    "coc": {
-     "doc_type": "Code of conduct",
-     "url": "https://wrenburypc.org.uk/wp-content/uploads/2020/09/Code-of-Conduct-2019.pdf"
     },
     "umbrella": "LGA"
    },

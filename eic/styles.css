@@ -149,6 +149,10 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .result-count { font-size: 0.9rem; color: var(--ink-soft); }
 
 .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start; }
+/* Grid children default to min-width:auto, so the register table's min-content width
+   pushed the panel past the viewport and the whole page scrolled sideways on a phone.
+   Zero lets .table-scroll scroll the table instead. */
+.grid > * { min-width: 0; }
 .panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
 .legend span { font-size: 0.8rem; color: var(--ink-soft); margin-left: 12px; }
 .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; }
