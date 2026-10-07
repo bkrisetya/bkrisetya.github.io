@@ -263,8 +263,12 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
             continue
 
         category = CATEGORY_FIX.get(name) or canonical_category(d["category"])
-        umbrella = UMBRELLA_BY_CATEGORY.get(category, "")
         da = devolved_assign.get(name)
+        if da is not None and da.get("drop"):
+            dropped_hit += 1
+            continue
+        no_code_row = da is not None and da.get("no_code")
+        umbrella = UMBRELLA_BY_CATEGORY.get(category, "")
         if da is not None:
             umbrella = da.get("umbrella", "")
         if not umbrella and name in board_code:
@@ -272,6 +276,10 @@ def build(blob, sha, url, existing_meta, fetched_at, review=None, overlay=None, 
             board_seen.add(name)
         orgs.append([rid, name, category, umbrella])
         cat_counts[category] += 1
+        if no_code_row:
+            checked_ids.append(rid)
+            per_cat[category]["checked"] += 1
+            continue
 
         coded = bool(d["match"]) and str(d["code_url"] or "").startswith("http")
         if coded:

@@ -1,7 +1,7 @@
 {
  "meta": {
-  "total": 39340,
-  "in_scope": 39340,
+  "total": 39323,
+  "in_scope": 39323,
   "out_of_scope": 0,
   "snapshot": "9 September 2026",
   "correctAsOf": "9 September 2026",
@@ -44,17 +44,17 @@
    "repo": "ammara-y/PublicAuthorities_Database",
    "sha": "d79951ed80f3533729c6e66e3ee49edf297c9e3b",
    "url": "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/d79951ed80f3533729c6e66e3ee49edf297c9e3b/data.xlsx",
-   "fetched_at": "2026-10-07T10:23:35+01:00"
+   "fetched_at": "2026-10-07T11:44:46+01:00"
   },
   "defunctExcluded": 0,
-  "noWebsiteExcluded": 42,
+  "noWebsiteExcluded": 59,
   "devolvedExcluded": 0,
-  "umbrellaScrapeHits": 11672,
+  "umbrellaScrapeHits": 11673,
   "coverage": {
-   "own": 11923,
-   "shared": 26985,
-   "checked": 318,
-   "tocheck": 114,
+   "own": 11927,
+   "shared": 27009,
+   "checked": 387,
+   "tocheck": 0,
    "periphery_out": 0,
    "notscoped": 0
   },
@@ -62,14 +62,14 @@
    {
     "value": "IS",
     "label": "In scope",
-    "count": 39340
+    "count": 39323
    }
   ],
   "categoryFacets": [
    {
     "value": "Education",
     "label": "Education",
-    "count": 25067
+    "count": 25058
    },
    {
     "value": "Parish Council or Meeting",
@@ -84,12 +84,12 @@
    {
     "value": "Welsh council",
     "label": "Welsh council",
-    "count": 869
+    "count": 864
    },
    {
     "value": "Health and social care",
     "label": "Health and social care",
-    "count": 522
+    "count": 519
    },
    {
     "value": "Advisory, regulatory, investigatory",
@@ -175,11 +175,11 @@
   "coverageByCategory": [
    {
     "name": "Education",
-    "total": 25067,
-    "own": 7811,
-    "shared": 17171,
-    "checked": 0,
-    "tocheck": 85,
+    "total": 25058,
+    "own": 7812,
+    "shared": 17186,
+    "checked": 60,
+    "tocheck": 0,
     "rest": 0
    },
    {
@@ -202,20 +202,20 @@
    },
    {
     "name": "Welsh council",
-    "total": 869,
+    "total": 864,
     "own": 230,
-    "shared": 625,
-    "checked": 0,
-    "tocheck": 14,
+    "shared": 633,
+    "checked": 1,
+    "tocheck": 0,
     "rest": 0
    },
    {
     "name": "Health and social care",
-    "total": 522,
-    "own": 135,
-    "shared": 377,
-    "checked": 0,
-    "tocheck": 10,
+    "total": 519,
+    "own": 136,
+    "shared": 378,
+    "checked": 5,
+    "tocheck": 0,
     "rest": 0
    },
    {
@@ -230,10 +230,10 @@
    {
     "name": "Emergency services",
     "total": 214,
-    "own": 70,
+    "own": 72,
     "shared": 139,
-    "checked": 0,
-    "tocheck": 5,
+    "checked": 3,
+    "tocheck": 0,
     "rest": 0
    },
    {
@@ -30897,6 +30897,19 @@
     }
    },
    {
+    "id": "sheet6940",
+    "name": "Commissioner for Older People in Wales",
+    "category": "Health and social care",
+    "url": "http://www.olderpeoplewales.com",
+    "coded": true,
+    "nolan": "uuuuuuu",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://olderpeople.wales/wp-content/uploads/2025/09/Annual-Report-and-Accounts-2024-25.pdf"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet6941",
     "name": "Castle Eaton Parish Council",
     "category": "Parish Council or Meeting",
@@ -41122,7 +41135,8 @@
     "coc": {
      "doc_type": "Code of conduct",
      "url": "https://www.ebbwfawr.co.uk/wpfd_file/39-code-of-conduct-policy-for-staff-2/"
-    }
+    },
+    "umbrella": "WAL-SCH"
    },
    {
     "id": "sheet9248",
@@ -51071,6 +51085,19 @@
      "url": "https://earlsbarton.gov.uk/page/transparency"
     },
     "umbrella": "LGA"
+   },
+   {
+    "id": "sheet11488",
+    "name": "Gower College Swansea",
+    "category": "Education",
+    "url": "https://www.gowercollegeswansea.ac.uk",
+    "coded": true,
+    "nolan": "uuuuuuu",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.gcs.ac.uk/sites/default/files/Governance%20Report%202020-21%20(full).pdf"
+    },
+    "source": "devolved-review"
    },
    {
     "id": "sheet11492",
@@ -100832,6 +100859,19 @@
     "umbrella": "WAL-LG"
    },
    {
+    "id": "sheet22950",
+    "name": "Police Federation of Northern Ireland",
+    "category": "Emergency services",
+    "url": "https://www.policefedni.com",
+    "coded": true,
+    "nolan": "nypynpp",
+    "coc": {
+     "doc_type": "Code of ethics",
+     "url": "https://www.niassembly.gov.uk/globalassets/documents/raise/deposited-papers/2014/dp1338.pdf"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet22952",
     "name": "Police Investigations and Review Commissioner",
     "category": "Emergency services",
@@ -132701,6 +132741,19 @@
     "umbrella": "DfE"
    },
    {
+    "id": "sheet30259",
+    "name": "Northern Ireland Fire and Rescue Board",
+    "category": "Emergency services",
+    "url": "https://www.northernirelandworld.com/news/people/larne-fire-station-reopens-after-ps125m-refurbishment-3870451",
+    "coded": true,
+    "nolan": "yyyyyyy",
+    "coc": {
+     "doc_type": "Code of conduct",
+     "url": "https://www.nifrs.org/wp-content/uploads/2021/03/Conduct-and-Accountability-for-NIFRS-Board-Members.pdf"
+    },
+    "source": "devolved-review"
+   },
+   {
     "id": "sheet30261",
     "name": "Northern Ireland Food Advisory Committee",
     "category": "Advisory, regulatory, investigatory",
@@ -155216,6 +155269,7 @@
    }
   ],
   "checkedNone": [
+   "sheet107",
    "sheet264",
    "sheet270",
    "sheet273",
@@ -155245,27 +155299,42 @@
    "sheet350",
    "sheet352",
    "sheet353",
+   "sheet747",
    "sheet855",
    "sheet856",
    "sheet978",
    "sheet1353",
    "sheet1355",
    "sheet1356",
+   "sheet2136",
+   "sheet2196",
+   "sheet2311",
+   "sheet2366",
+   "sheet2370",
    "sheet2852",
+   "sheet3345",
    "sheet3411",
    "sheet3474",
+   "sheet3853",
    "sheet4001",
    "sheet4008",
    "sheet4013",
    "sheet4400",
+   "sheet4458",
    "sheet4475",
+   "sheet4983",
+   "sheet5085",
+   "sheet5088",
    "sheet5401",
+   "sheet5479",
    "sheet5491",
    "sheet5649",
    "sheet5864",
    "sheet5993",
    "sheet5994",
    "sheet6605",
+   "sheet6617",
+   "sheet6777",
    "sheet6813",
    "sheet6928",
    "sheet6944",
@@ -155290,9 +155359,11 @@
    "sheet8215",
    "sheet8218",
    "sheet8365",
+   "sheet8457",
    "sheet8671",
    "sheet8673",
    "sheet8747",
+   "sheet8778",
    "sheet8842",
    "sheet8870",
    "sheet8871",
@@ -155300,22 +155371,39 @@
    "sheet8940",
    "sheet8966",
    "sheet8967",
+   "sheet9086",
    "sheet9237",
    "sheet9240",
+   "sheet9322",
+   "sheet9325",
+   "sheet9326",
+   "sheet9327",
+   "sheet9328",
    "sheet9435",
    "sheet9911",
    "sheet9916",
+   "sheet10308",
    "sheet10422",
    "sheet10498",
    "sheet10527",
    "sheet10535",
+   "sheet11165",
+   "sheet11166",
    "sheet11856",
+   "sheet12003",
+   "sheet12204",
    "sheet12271",
    "sheet12512",
+   "sheet12622",
    "sheet12639",
+   "sheet13520",
+   "sheet13521",
+   "sheet13522",
+   "sheet13523",
    "sheet13656",
    "sheet13740",
    "sheet13809",
+   "sheet13905",
    "sheet13989",
    "sheet13990",
    "sheet13992",
@@ -155357,15 +155445,21 @@
    "sheet15036",
    "sheet15040",
    "sheet15122",
+   "sheet15371",
    "sheet15549",
    "sheet15550",
+   "sheet16873",
+   "sheet17493",
    "sheet17674",
    "sheet17675",
    "sheet17873",
    "sheet18051",
+   "sheet18179",
+   "sheet18216",
    "sheet18518",
    "sheet19005",
    "sheet19026",
+   "sheet19033",
    "sheet19040",
    "sheet19052",
    "sheet19053",
@@ -155377,7 +155471,10 @@
    "sheet19227",
    "sheet19237",
    "sheet19292",
+   "sheet19363",
+   "sheet19750",
    "sheet19829",
+   "sheet19891",
    "sheet19922",
    "sheet19924",
    "sheet19931",
@@ -155398,6 +155495,7 @@
    "sheet20953",
    "sheet20954",
    "sheet20955",
+   "sheet20961",
    "sheet20965",
    "sheet20966",
    "sheet20970",
@@ -155405,8 +155503,10 @@
    "sheet20975",
    "sheet20977",
    "sheet20980",
+   "sheet21044",
    "sheet21203",
    "sheet21280",
+   "sheet21396",
    "sheet21422",
    "sheet21437",
    "sheet21455",
@@ -155439,16 +155539,19 @@
    "sheet24549",
    "sheet24550",
    "sheet24554",
+   "sheet24855",
    "sheet25132",
    "sheet25134",
    "sheet25164",
    "sheet25189",
    "sheet25192",
+   "sheet25357",
    "sheet25363",
    "sheet25364",
    "sheet25366",
    "sheet25517",
    "sheet25519",
+   "sheet25646",
    "sheet26033",
    "sheet26053",
    "sheet26058",
@@ -155465,6 +155568,13 @@
    "sheet26156",
    "sheet26507",
    "sheet26544",
+   "sheet27348",
+   "sheet27349",
+   "sheet29592",
+   "sheet29978",
+   "sheet30077",
+   "sheet30203",
+   "sheet30243",
    "sheet30247",
    "sheet30249",
    "sheet30257",
@@ -155488,12 +155598,15 @@
    "sheet31402",
    "sheet31450",
    "sheet31486",
+   "sheet31600",
    "sheet31704",
    "sheet31943",
    "sheet31945",
    "sheet31975",
    "sheet31997",
    "sheet32124",
+   "sheet32166",
+   "sheet32170",
    "sheet32204",
    "sheet32283",
    "sheet32318",
@@ -155504,13 +155617,21 @@
    "sheet32789",
    "sheet32829",
    "sheet32838",
+   "sheet32867",
+   "sheet32911",
    "sheet32933",
    "sheet32972",
+   "sheet33342",
    "sheet33346",
+   "sheet33352",
    "sheet33353",
    "sheet33357",
+   "sheet33423",
+   "sheet33424",
+   "sheet33647",
    "sheet33891",
    "sheet33925",
+   "sheet34278",
    "sheet34280",
    "sheet34281",
    "sheet35133",
@@ -155533,6 +155654,7 @@
    "sheet38149",
    "sheet38157",
    "sheet38278",
+   "sheet38507",
    "sheet39365"
   ]
  },
@@ -156392,6 +156514,102 @@
     "url": "https://www.scotland.police.uk/about-us/who-we-are/code-of-ethics-for-policing-in-scotland/"
    },
    "group": "Policing"
+  },
+  "SCO-CC-F": {
+   "id": "SCO-CC-F",
+   "group": "Local government",
+   "name": "Fife: community councillors code (2026 scheme)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Scheme Schedule 3 code: duty to act in the interests of the local community represented."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Schedule 3: no obligation to any person that might reasonably be thought to influence."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Schedule 3: represent the overall views of the community, assessing information on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Schedule 3: accountable for decisions and actions (accountability and stewardship)."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Schedule 3: duty to be open about decisions, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Schedule 3: duty to act honestly and declare interests."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Schedule 3: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Community councillors code of conduct (scheme schedule)",
+    "url": "https://www.fife.gov.uk/__data/assets/pdf_file/0018/61326/Scheme-of-Establishment-for-Community-Councils-in-Fife-with-effect-from-19-January-2026-1.pdf",
+    "explicit_seven_ref": true,
+    "note": "Nine principles (service to the community, selflessness, integrity, objectivity, accountability and stewardship, openness, honesty, leadership, respect) include all seven Nolan principles. The scheme (in force 19 January 2026) requires community councils and their members to adhere to the code; each successful candidate declares acceptance of the standards of conduct."
+   },
+   "strength": "Adopted local scheme",
+   "basis": "Scheme for the Establishment of Community Councils in Fife (in force 19 January 2026), Schedule 3 code of conduct; made under the Local Government (Scotland) Act 1973.",
+   "source": {
+    "label": "Fife Council scheme for community councils (2026)",
+    "url": "https://www.fife.gov.uk/__data/assets/pdf_file/0018/61326/Scheme-of-Establishment-for-Community-Councils-in-Fife-with-effect-from-19-January-2026-1.pdf"
+   }
+  },
+  "SCO-CC-NA": {
+   "id": "SCO-CC-NA",
+   "group": "Local government",
+   "name": "North Ayrshire: community councillors code (2019 guide)",
+   "nolan": {
+    "selflessness": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7 code: duty to take decisions solely in terms of the interest of the community represented."
+    },
+    "integrity": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7: no financial or other obligation that might reasonably be thought to influence; declare interests."
+    },
+    "objectivity": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7: represent the overall views of the community, assessing information on merit."
+    },
+    "accountability": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7: accountable for decisions and actions (accountability and stewardship)."
+    },
+    "openness": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7: duty to be open about decisions and actions, giving reasons."
+    },
+    "honesty": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7: duty to act honestly and declare private interests."
+    },
+    "leadership": {
+     "covered": "yes",
+     "evidence": "Guide s.9.7: promote and support the principles by leadership and example."
+    }
+   },
+   "coc": {
+    "found": true,
+    "doc_type": "Community councillors code of conduct (scheme guide s.9.7)",
+    "url": "https://north-ayrshire.cmis.uk.com/north-ayrshire/Portals/0/09%20Community%20Council%20Scheme%20A%20Guide%202019.pdf",
+    "explicit_seven_ref": true,
+    "note": "Nine principles (service to the community, selflessness, integrity, objectivity, accountability and stewardship, openness, honesty, leadership, respect) include all seven Nolan principles, based on the councillors code under the Ethical Standards in Public Life etc. (Scotland) Act 2000. Community councillors and appointed advisors undertake to comply."
+   },
+   "strength": "Adopted local scheme",
+   "basis": "North Ayrshire Council scheme for the establishment of community councils, guide (2019), section 9.7.",
+   "source": {
+    "label": "North Ayrshire community council scheme guide (2019)",
+    "url": "https://north-ayrshire.cmis.uk.com/north-ayrshire/Portals/0/09%20Community%20Council%20Scheme%20A%20Guide%202019.pdf"
+   }
   }
  }
 }

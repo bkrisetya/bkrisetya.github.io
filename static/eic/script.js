@@ -27,6 +27,7 @@ const UMBRELLA_SHORT = { DfE: "the DfE code for schools", LGA: "the LGA code for
   "NI-SCH": "the Northern Ireland school governor guidance", "WAL-SCH": "Welsh school governing-body duties",
   "SCO-DPB": "the Scottish devolved public bodies code",
   "SCO-CC-H": "the Highland community councillors code", "DG-CC": "the Dumfries and Galloway community council code", "GLA-CC": "the Glasgow community councillors code",
+  "SCO-CC-F": "the Fife community councillors code", "SCO-CC-NA": "the North Ayrshire community councillors code",
   "WAL-NHS": "the Welsh NHS board members code", "NI-HSC": "the Northern Ireland HSC board code",
   "SCO-POL": "the Police Scotland code of ethics" };
 const humanCov = (c) => ({ yes: "covered", partial: "partly covered", no: "not covered", unknown: "unclear" }[c] || c);
@@ -70,7 +71,6 @@ function renderHero() {
     [h.own, "own codes read"],
     [h.checked, "no code found"],
   ];
-  if (h.tocheck) stats.push([h.tocheck, "still to check"]);
   $("hero-stats").replaceChildren(...stats.map(([n, label]) =>
     el("div", { class: "stat", role: "listitem" }, [el("b", { text: fmt(n) }), el("span", { text: label })])));
 }
@@ -93,8 +93,24 @@ function renderSafetyNet(rows) {
   const nodes = [];
   rows.filter((r) => !r.group).forEach((r) => nodes.push(netRow(r)));
   groups.forEach((g) => {
-    if (g.name !== "Other") nodes.push(el("h3", { class: "net-group", text: `${g.name} · ${fmt(g.bodies)} bodies` }));
-    g.rows.forEach((r) => nodes.push(netRow(r)));
+    if (g.name === "Other") { g.rows.forEach((r) => nodes.push(netRow(r))); return; }
+    /* Collapsed by default: sector name, bodies covered, and a principle strip
+     * weighted by bodies so partial codes show at group level. */
+    const mini = el("span", { class: "nolan-mini" });
+    S.principles.forEach((p) => {
+      const yesB = g.rows.reduce((a, r) => a + (rCov(r.nolan, p.id) === "yes" ? r.bodies : 0), 0);
+      const share = g.bodies ? yesB / g.bodies : 0;
+      const cls = share >= 0.995 ? "cov-yes-shared" : share <= 0.005 ? "cov-unknown" : "cov-partial";
+      mini.appendChild(el("i", { class: cls, title: `${p.name}: ${Math.round(share * 100)}% of bodies in this group` }));
+    });
+    nodes.push(el("details", { class: "net-sect" }, [
+      el("summary", {}, [
+        el("span", { class: "net-group-title", text: g.name }),
+        el("span", { class: "net-group-bodies", text: `${fmt(g.bodies)} bodies` }),
+        mini,
+      ]),
+      ...g.rows.map(netRow),
+    ]));
   });
   $("net-rows").replaceChildren(...nodes);
 }
@@ -150,7 +166,7 @@ function renderPatchwork() {
 
 function renderHm() {
   const catNames = (S.meta.coverageByCategory || []).map((g) => g.name);
-  S.hm = Aggregates.heatmap(S.coded, catNames, S.principles, null);
+  S.hm = Aggregates.heatmap(S.coded, catNames, S.principles, null, S.othersExpanded ? { nofold: true } : null);
   /* Navy dot on rows whose sector has a shared code (all four cover all seven). */
   const marks = new Set(Object.keys(S.sharedByCat));
   Charts.renderHeatmap($("heatmap"), S.hm, onHeatmapCell, marks);
@@ -167,6 +183,19 @@ function renderHm() {
   if (marks.size) {
     $("heatmap-legend").appendChild(el("span", { class: "hm-mark-note" },
       [el("i", { class: "hm-mark" }), " A shared code covers all seven principles in this sector"]));
+  }
+  const others = S.hm.rows.find((r) => r.name === "Others");
+  const tgl = $("hm-others-toggle");
+  if (others && others.cats && others.cats.length) {
+    tgl.replaceChildren(el("button", { class: "hm-toggle", type: "button",
+      text: `Show the ${others.cats.length} smaller sectors grouped as “Others”`,
+      onclick: () => { S.othersExpanded = true; renderHm(); } }));
+  } else if (S.othersExpanded) {
+    tgl.replaceChildren(el("button", { class: "hm-toggle", type: "button",
+      text: "Group the smaller sectors back into “Others”",
+      onclick: () => { S.othersExpanded = false; renderHm(); } }));
+  } else {
+    tgl.replaceChildren();
   }
 }
 
@@ -242,10 +271,17 @@ function renderStrip() {
     const covered = r.yes + r.shared;
     const tip = `${fmt(r.yes)} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(checkedNone())} bodies have no code found${notChecked() ? `; ${fmt(notChecked())} not checked` : ""}.`;
     const bar = el("div", { class: "strip-bar", title: tip });
-    for (const [k, v] of [["yes", r.yes], ["shared", r.shared], ["no", r.no + checkedNone()], ["unchecked", notChecked()]]) {
-      const w = (v / n) * 100; if (w > 0) bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%` }));
+    const small = [];
+    for (const [k, v, lbl] of [["yes", r.yes, "own code"], ["shared", r.shared, "shared code"], ["no", r.no + checkedNone(), "not covered"], ["unchecked", notChecked(), "not checked"]]) {
+      const w = (v / n) * 100; if (w <= 0) continue;
+      const pct = `${Math.max(1, Math.round(w))}%`;
+      bar.appendChild(el("span", { class: `s-${k}`, style: `width:${w}%`, text: w >= 6 ? pct : "" }));
+      if (w < 6) small.push(`${lbl} ${pct}`);
     }
-    const row = el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: r.name }), bar, el("div", { class: "p-count", text: `${covered === n ? 100 : Math.min(99, Math.round((covered / n) * 100))}%` })]);
+    const barWrap = small.length
+      ? el("div", { class: "strip-barwrap" }, [bar, el("div", { class: "strip-small", text: small.join(" · ") })])
+      : bar;
+    const row = el("div", { class: "strip-row", title: tip }, [el("div", { class: "p-name", text: r.name }), barWrap, el("div", { class: "p-count", text: `${covered === n ? 100 : Math.min(99, Math.round((covered / n) * 100))}%` })]);
     bindChartTip(row, stripTip, tip);
     return row;
   }));

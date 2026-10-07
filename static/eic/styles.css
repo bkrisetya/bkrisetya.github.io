@@ -51,6 +51,21 @@ section { margin-bottom: 48px; }
 .net-group { margin: 22px 0 4px; font-size: 0.92rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
 .net-group:first-child { margin-top: 0; }
 .net-group + .net-row { border-top: 0; }
+.net-sect { border-top: 1px solid var(--line); padding: 10px 0; }
+.net-sect:first-of-type { border-top: 0; }
+.net-sect > summary { display: flex; align-items: center; gap: 14px; cursor: pointer; list-style: none; }
+.net-sect > summary::-webkit-details-marker { display: none; }
+.net-sect > summary::before { content: "▸"; color: var(--ink-soft); font-size: 0.85rem; }
+.net-sect[open] > summary::before { content: "▾"; }
+.net-group-title { font-weight: 700; }
+.net-group-bodies { color: var(--ink-soft); }
+.net-sect .net-row { padding: 10px 0 10px 18px; }
+.hm-toggle { margin-top: 8px; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 0.85rem; color: var(--ink-soft); cursor: pointer; }
+.hm-toggle:hover { color: var(--ink); border-color: var(--ink-soft); }
+.strip-bar span { font-size: 10px; line-height: 16px; color: #fff; text-align: center; white-space: nowrap; overflow: hidden; }
+.strip-bar .s-no { color: #fff; }
+.strip-bar .s-unchecked { color: var(--ink-soft); }
+.strip-small { font-size: 0.72rem; color: var(--ink-soft); margin-top: 2px; }
 .net-name { font-weight: 600; }
 .net-name small { display: block; font-weight: 400; color: var(--ink-soft); }
 .net-bodies { font-size: 1.05rem; }

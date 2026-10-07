@@ -56,7 +56,8 @@
    "umbrella": "WAL-LG"
   },
   "Aberdeen Business School Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "university subsidiary; no board/member code published"
   },
   "Aberdeen City Council": {
    "umbrella": "SCO-LG"
@@ -119,7 +120,7 @@
    "umbrella": "WAL-SCH"
   },
   "Abertillery Learning Community": {
-   "umbrella": ""
+   "umbrella": "WAL-SCH"
   },
   "Abertillery Primary School": {
    "umbrella": "WAL-SCH"
@@ -226,7 +227,8 @@
    "umbrella": "SCO-CC-H"
   },
   "Alva Academy, Alva, Clackmannanshire": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Stored clacks.sch.uk site dead; live Google Site has school-improvement pages only, no staff or governor code."
   },
   "Ambleston Community Council, Pembrokeshire": {
    "umbrella": "WAL-LG"
@@ -302,6 +304,9 @@
   },
   "Ardross Community Council": {
    "umbrella": "SCO-CC-H"
+  },
+  "Ards Council": {
+   "umbrella": ""
   },
   "Ards and North Down Borough Council": {
    "umbrella": "NI-LG"
@@ -525,7 +530,8 @@
    "umbrella": "NI-SCH"
   },
   "Ballymoney Independent Christian School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Individual subdomain times out; shared Independent Christian Schools network site is live and publishes no code."
   },
   "Ballymoney Model Integrated Primary School": {
    "umbrella": "NI-SCH"
@@ -597,7 +603,8 @@
    "umbrella": "NI-SCH"
   },
   "Bangor Independent Christian School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Individual subdomain times out; shared Independent Christian Schools network site is live and publishes no code."
   },
   "Bangor Isycoed Community Council, Wrexham": {
    "umbrella": "WAL-LG"
@@ -638,9 +645,6 @@
   "Beca Community Primary School, Carmarthenshire": {
    "umbrella": "WAL-SCH"
   },
-  "Beckford Primary School, London": {
-   "umbrella": ""
-  },
   "Beddgelert Community Council": {
    "umbrella": "WAL-LG"
   },
@@ -663,7 +667,8 @@
    "umbrella": "NI-SCH"
   },
   "Beechwood College, Sully": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no board/staff code published"
   },
   "Beguildy Community Council": {
    "umbrella": "WAL-LG"
@@ -678,7 +683,8 @@
    "umbrella": "NI-SCH"
   },
   "Belfast Harbour Police": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no harbour-specific conduct code published; NI police Code of Ethics adoption not established"
   },
   "Belfast Health and Social Care Trust": {
    "umbrella": "NI-HSC"
@@ -690,7 +696,8 @@
    "umbrella": "NI-SCH"
   },
   "Belfast International Airport Constabulary": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no conduct code published; NI police Code of Ethics adoption not established"
   },
   "Belfast Metropolitan College": {
    "umbrella": "NI-SCH"
@@ -903,7 +910,8 @@
    "umbrella": ""
   },
   "Boroughmuir High School, Edinburgh": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "School handbook carries only a pupil 'RESPECT' behaviour code; no staff or governor code of conduct."
   },
   "Borth Community Council": {
    "umbrella": "WAL-LG"
@@ -924,7 +932,8 @@
    "umbrella": ""
   },
   "Bower Community Council": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "merged into Bower & Castletown Community Council (Highland Scheme 2025)"
   },
   "Brackenagh West Primary School, Kilkeel": {
    "umbrella": "NI-SCH"
@@ -960,7 +969,8 @@
    "umbrella": "NI-SCH"
   },
   "Bridge of Allan Primary School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Local-authority primary listed on Stirling Council site; no school-level staff or governor code."
   },
   "Bridgend College": {
    "umbrella": ""
@@ -1122,7 +1132,8 @@
    "umbrella": "WAL-LG"
   },
   "Buddy Bear Trust Conductive Education Independent School, Dungannon": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Charity school site live; no code of conduct for trustees, board or staff published."
   },
   "Buick Memorial Primary School, Ballymena": {
    "umbrella": "NI-SCH"
@@ -1260,7 +1271,8 @@
    "umbrella": "NI-SCH"
   },
   "Camphill Rudolf Steiner School, Aberdeen": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "camphillschools.org.uk live; footer and information pages list no conduct code for staff or trustees."
   },
   "Camrose Community Council, Pembrokeshire": {
    "umbrella": "WAL-LG"
@@ -1290,7 +1302,8 @@
    "umbrella": "WAL-SCH"
   },
   "Cardiff Sixth Form College": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no board/staff code published"
   },
   "Cardiff West Community High School, Cardiff": {
    "umbrella": "WAL-SCH"
@@ -1304,19 +1317,23 @@
    "umbrella": ""
   },
   "Cardiff and Vale Regional Partnership Board": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no code of conduct published"
   },
   "Cardigan Town Council": {
    "umbrella": "WAL-LG"
   },
   "Careers Wales Cardiff and Vale Ltd": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "historical entity; Careers Wales is now a single national body"
   },
   "Careers Wales Mid Glamorgan and Powys Ltd": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "historical entity; Careers Wales is now a single national body"
   },
   "Careers Wales West - Gyrda Cymru Gorllewin Ltd": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "historical entity; Careers Wales is now a single national body"
   },
   "Carew Community Council, Pembrokeshire": {
    "umbrella": "WAL-LG"
@@ -1430,7 +1447,8 @@
    "umbrella": "NI-SCH"
   },
   "Castletown Community Council": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "merged into Bower & Castletown Community Council (Highland Scheme 2025)"
   },
   "Cathays HIgh School, Cardiff": {
    "umbrella": "WAL-SCH"
@@ -1460,7 +1478,8 @@
    "umbrella": "NI-SCH"
   },
   "Cefn Coch Language Centre, Gwynedd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Cyngor Gwynedd language centre; no centre-level staff or governor code of conduct."
   },
   "Cefn Community Council, Wrexham": {
    "umbrella": "WAL-LG"
@@ -1631,7 +1650,8 @@
    "umbrella": "NI-SCH"
   },
   "Closeburn House School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Holistic Childcare policies page lists behaviour, safeguarding and attendance only; no staff or governor code."
   },
   "Clough Primary School, Ballymena": {
    "umbrella": "NI-SCH"
@@ -1708,7 +1728,8 @@
    "umbrella": ""
   },
   "Coleg Cymunedol Y Dderwen, Bridgend": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Policies page publishes only a Code of Conduct for parents, carers and visitors, not staff or governors."
   },
   "Coleg Gwent": {
    "own": {
@@ -1751,6 +1772,9 @@
   "Commission for Ethical Standards in Public Life in Scotland": {
    "umbrella": ""
   },
+  "Commission for Judicial Appointments (Scotland)": {
+   "umbrella": ""
+  },
   "Commission for Local Administration in Wales": {
    "umbrella": ""
   },
@@ -1764,6 +1788,11 @@
    "umbrella": ""
   },
   "Commissioner for Older People in Wales": {
+   "own": {
+    "nolan": "uuuuuuu",
+    "doc_type": "Code of conduct",
+    "url": "https://olderpeople.wales/wp-content/uploads/2025/09/Annual-Report-and-Accounts-2024-25.pdf"
+   },
    "umbrella": ""
   },
   "Commissioner for Public Appointments for Northern Ireland": {
@@ -1773,7 +1802,8 @@
    "umbrella": "SCO-DPB"
   },
   "Community Councils (Scotland) (En Bloc)": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "aggregate row, not a single body"
   },
   "Community Councils (Wales) (En Bloc)": {
    "umbrella": "WAL-LG"
@@ -2234,7 +2264,8 @@
    "umbrella": "WAL-LG"
   },
   "Dolgellau Language Centre, Gwynedd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Cyngor Gwynedd language centre (trochigwynedd.cymru); no centre-level staff or governor code."
   },
   "Dolgellau Town Council": {
    "umbrella": "WAL-LG"
@@ -2399,7 +2430,7 @@
    "umbrella": "SCO-LG"
   },
   "Dundee and Angus College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Dundela Infants School, Belfast": {
    "umbrella": "NI-SCH"
@@ -2414,7 +2445,8 @@
    "umbrella": "NI-SCH"
   },
   "Dunedin School, Edinburgh": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "site carries a pupil/teacher etiquette code, not a code of conduct for the school body; no governance code published"
   },
   "Dungannon Nursery School": {
    "umbrella": "NI-SCH"
@@ -2492,10 +2524,12 @@
    "umbrella": "SCO-LG"
   },
   "East Nairnshire Community Council": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "historical area; current Highland areas are Nairn River and Cawdor & West Nairnshire"
   },
   "East Park School, Glasgow": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Stored eastpark.co.uk now a hotel; live charity site eastpark.org.uk publishes no conduct code for staff or trustees."
   },
   "East Renfrewshire Council": {
    "umbrella": "SCO-LG"
@@ -2507,7 +2541,7 @@
    "umbrella": "WAL-SCH"
   },
   "Ebbw Fawr Learning Community, Ebbw Vale": {
-   "umbrella": ""
+   "umbrella": "WAL-SCH"
   },
   "Ebbw Vale Comprehensive School": {
    "umbrella": "WAL-SCH"
@@ -2543,25 +2577,30 @@
    "umbrella": "NI-SCH"
   },
   "Edinburgh Business School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Heriot-Watt school; no separate code published"
   },
   "Edinburgh City Council": {
    "umbrella": "SCO-LG"
   },
   "Edinburgh College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Edinburgh Conference Centre Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "university company; no board/member code published"
   },
   "Edinburgh Innovations Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "university company; no board/member code published"
   },
   "Edinburgh International Hotel Schools Limited": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "company row; no board/member code published"
   },
   "Edinburgh International Hotel Schools Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "company row; no board/member code published"
   },
   "Edmund Rice College, Newtownabbey": {
    "umbrella": "NI-SCH"
@@ -2698,7 +2737,7 @@
    "umbrella": "WAL-SCH"
   },
   "Fife College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Fife Council": {
    "umbrella": "SCO-LG"
@@ -2710,7 +2749,8 @@
    "umbrella": "NI-SCH"
   },
   "Firrhill High School, Edinburgh": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Local-authority secondary; handbook carries pupil rules only, no staff or governor code."
   },
   "Fishguard and Goodwick Town Council, Pembrokeshire": {
    "umbrella": "WAL-LG"
@@ -2782,7 +2822,7 @@
    "umbrella": "NI-SCH"
   },
   "Forth Valley College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Forth Valley NHS Board": {
    "umbrella": ""
@@ -2950,22 +2990,24 @@
    "umbrella": "WAL-LG"
   },
   "Glasgow Business School Limited": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "university subsidiary; no board/member code published"
   },
   "Glasgow Business School Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "university subsidiary; no board/member code published"
   },
   "Glasgow City Council": {
    "umbrella": "SCO-LG"
   },
   "Glasgow Clyde College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Glasgow College Regional Board": {
    "umbrella": ""
   },
   "Glasgow Kelvin College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Glasswater Primary School, Crossgar": {
    "umbrella": "NI-SCH"
@@ -3112,6 +3154,11 @@
    "umbrella": ""
   },
   "Gower College Swansea": {
+   "own": {
+    "nolan": "uuuuuuu",
+    "doc_type": "Code of conduct",
+    "url": "https://www.gcs.ac.uk/sites/default/files/Governance%20Report%202020-21%20(full).pdf"
+   },
    "umbrella": ""
   },
   "Gowerton Community Council, Swansea": {
@@ -3165,11 +3212,9 @@
   "Greenway Primary School, Cardiff": {
    "umbrella": "WAL-SCH"
   },
-  "Greenwood Academy, Birmingham": {
-   "umbrella": ""
-  },
   "Greenwood House Assessment Centre, Belfast": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Bullying policy only references a Staff Code of Conduct held at the school office; none published, stored site unreachable."
   },
   "Greenwood Primary School & Nursery, Belfast": {
    "umbrella": "NI-SCH"
@@ -3217,7 +3262,8 @@
    "umbrella": "WAL-SCH"
   },
   "Gwegogledd Cymru": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "closed body; host code only, no separate authority"
   },
   "Gwehelog Fawr Community Council, Monmouthshire": {
    "umbrella": "WAL-LG"
@@ -3226,7 +3272,8 @@
    "umbrella": "WAL-SCH"
   },
   "Gwent Careers Service Partnership": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "historical entity, no separate existence"
   },
   "Gwent Police": {
    "umbrella": "Police"
@@ -3262,7 +3309,8 @@
    "umbrella": "WAL-LG"
   },
   "Gwynedd Secondary Language Centre, Gwynedd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Cyngor Gwynedd language centre; no centre-level staff or governor code of conduct."
   },
   "Gwynfryn Community Primary School, Carmarthenshire": {
    "umbrella": "WAL-SCH"
@@ -3313,7 +3361,7 @@
    "umbrella": "WAL-SCH"
   },
   "Halkirk and District Community Council": {
-   "umbrella": ""
+   "umbrella": "SCO-CC-H"
   },
   "Halkyn Community Council, Flintshire": {
    "umbrella": "WAL-LG"
@@ -3334,7 +3382,8 @@
    "umbrella": "NI-SCH"
   },
   "Harmeny Education Trust, Balerno": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Policies page lists EDI, complaints and information policies only; no code of conduct for staff or trustees."
   },
   "Harmony Christian School, Ballynahinch": {
    "umbrella": "NI-SCH"
@@ -3451,16 +3500,20 @@
    "umbrella": "WAL-LG"
   },
   "Heriot-Watt Services Limited": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "active university company; no board/member code published"
   },
   "Heriot-Watt Services Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "active university company; no board/member code published"
   },
   "Heriot-Watt Trading Limited": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "active university company; no board/member code published"
   },
   "Heriot-Watt Trading Ltd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "active university company (Companies House SC132919); no board/member code published"
   },
   "Hezlett Primary School, Coleraine": {
    "umbrella": "NI-SCH"
@@ -3481,7 +3534,8 @@
    "umbrella": "NI-SCH"
   },
   "Hillside School, Aberdour": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "hillsideschool.co.uk returns server error; one search found only US schools and directory listings, no live site."
   },
   "Hilton, Milton and Castle Heather Community Council": {
    "umbrella": "SCO-CC-H"
@@ -3508,7 +3562,7 @@
    "umbrella": "NI-SCH"
   },
   "Holm Community Council": {
-   "umbrella": ""
+   "umbrella": "SCO-CC-H"
   },
   "Holt CP School, Wrexham": {
    "umbrella": "WAL-SCH"
@@ -3602,9 +3656,6 @@
   },
   "Hope Nursery School, Belfast": {
    "umbrella": "NI-SCH"
-  },
-  "Hospital Education Service, Coventry": {
-   "umbrella": ""
   },
   "Howard Primary School, Dungannon": {
    "umbrella": "NI-SCH"
@@ -3706,7 +3757,8 @@
    "umbrella": "NI-SCH"
   },
   "Jordanhill School, Glasgow": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Board of Managers and school pages publish no code of conduct for managers or staff."
   },
   "Jordanstown Special School, Newtownabbey": {
    "umbrella": "NI-SCH"
@@ -3805,7 +3857,8 @@
    "umbrella": "NI-SCH"
   },
   "Kilskeery Independent Christian School, Omagh": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "No working school website; shared independentchristianschool.org not reachable; no live site found."
   },
   "Kiltarlity Community Council": {
    "umbrella": "SCO-CC-H"
@@ -3814,7 +3867,7 @@
    "umbrella": "SCO-CC-H"
   },
   "Kilwinning Community Council": {
-   "umbrella": ""
+   "umbrella": "SCO-CC-NA"
   },
   "Kincraig and Vicinity Community Council": {
    "umbrella": "SCO-CC-H"
@@ -3892,7 +3945,7 @@
    "umbrella": "NI-SCH"
   },
   "Kyleakin Community Council": {
-   "umbrella": ""
+   "umbrella": "SCO-CC-H"
   },
   "Kylemore Nursery School, Coleraine": {
    "umbrella": "NI-SCH"
@@ -3982,7 +4035,8 @@
    "umbrella": ""
   },
   "Letham Primary School, Perth": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Perth & Kinross council school; no school-level code of conduct for staff or governors found."
   },
   "Letterston Community Council, Pembrokeshire": {
    "umbrella": "WAL-LG"
@@ -4504,7 +4558,8 @@
    "umbrella": "WAL-LG"
   },
   "Llangybi Language Centre, Gwynedd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Council-run language centre; no separate code of conduct; falls under Cyngor Gwynedd policies."
   },
   "Llangyfelach Community Council, Swansea": {
    "umbrella": "WAL-LG"
@@ -4819,7 +4874,7 @@
    "umbrella": "SCO-CC-H"
   },
   "Lochgelly Community Council": {
-   "umbrella": ""
+   "umbrella": "SCO-CC-F"
   },
   "Londonderry Model Primary School, Derry/Londonderry": {
    "umbrella": "NI-SCH"
@@ -4864,7 +4919,8 @@
    "umbrella": "NI-SCH"
   },
   "Maben House School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Provider (Outcomes First Group) policies page lists no code of conduct or ethics for staff or governors."
   },
   "Machen Primary School, Caerphilly": {
    "umbrella": "WAL-SCH"
@@ -4900,7 +4956,8 @@
    "umbrella": "WAL-LG"
   },
   "Maesincla Language Centre, Gwynedd": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Council-run language centre; no separate code of conduct; falls under Cyngor Gwynedd policies."
   },
   "Maesteg Comprehensive School, Bridgend": {
    "umbrella": "WAL-SCH"
@@ -5074,7 +5131,8 @@
    "umbrella": "WAL-LG"
   },
   "Merthyr Tydfil College": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "university subsidiary; no code retrieved"
   },
   "Merthyr Tydfil County Borough Council": {
    "umbrella": "WAL-LG"
@@ -5083,7 +5141,7 @@
    "umbrella": "NI-SCH"
   },
   "Michaelston le PitÂ and Leckwith Community Council": {
-   "umbrella": ""
+   "umbrella": "WAL-LG"
   },
   "Michaelstone-y-Fedw Community Council, Newport": {
    "umbrella": "WAL-LG"
@@ -5143,7 +5201,8 @@
    "umbrella": "SCO-CC-H"
   },
   "Mirren Park School, Paisley": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Site gives vision, values and referral process only; no code of conduct for staff or board."
   },
   "Miskin Primary School, Rhondda": {
    "umbrella": "WAL-SCH"
@@ -5203,7 +5262,7 @@
    "umbrella": "SCO-CC-H"
   },
   "Moray College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "Moray Council": {
    "umbrella": "SCO-LG"
@@ -5251,7 +5310,8 @@
    "umbrella": "WAL-SCH"
   },
   "Mourne Independent Christian School, Kilkeel": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Listed site and shared independentchristianschool.org domain not reachable; no live site found."
   },
   "Movilla High School, Newtownards": {
    "umbrella": "NI-SCH"
@@ -5269,7 +5329,8 @@
    "umbrella": "SCO-CC-H"
   },
   "Muirtown Community Council": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "no current Highland community council of this name in the 2025 scheme or ward directories"
   },
   "Mullabuoy Primary School, Derry/Londonderry": {
    "umbrella": "NI-SCH"
@@ -5299,10 +5360,11 @@
    "umbrella": ""
   },
   "NHS Board Endowment Funds (Scotland)": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "charitable endowment funds, not a single body"
   },
   "NHS Counter Fraud Authority Wales": {
-   "umbrella": ""
+   "umbrella": "CO"
   },
   "NHS Grampian Health Board": {
    "umbrella": ""
@@ -5317,7 +5379,7 @@
    "umbrella": "SCO-CC-H"
   },
   "Nairn Suburban and West Community Council": {
-   "umbrella": ""
+   "umbrella": "SCO-CC-H"
   },
   "Nannerch Community Council, Flintshire": {
    "umbrella": "WAL-LG"
@@ -5350,7 +5412,8 @@
    "umbrella": ""
   },
   "National Grid for Learning Cymru (Wales)": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "historical service, superseded by Hwb"
   },
   "National Museum Wales": {
    "umbrella": ""
@@ -5416,13 +5479,14 @@
    "umbrella": "WAL-LG"
   },
   "New Campus Glasgow": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "Merger/project name; the merger proposal for New College Glasgow later became Glasgow Kelvin College (2013), no separate body."
   },
   "New Cmaman Primary School, Rhondda": {
    "umbrella": "WAL-SCH"
   },
   "New College Lanarkshire": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "New Lodge Nursery School, Belfast": {
    "umbrella": "NI-SCH"
@@ -5440,10 +5504,12 @@
    "umbrella": "NI-SCH"
   },
   "New Struan School": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "School run by Scottish Autism; closed with effect June 2026, no longer exists as a separate body."
   },
   "New Struan School, Alloa": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "Same school as row above (Scottish Autism, Alloa); closed June 2026, no longer a separate body."
   },
   "New Tredegar Community Council, Caerphilly": {
    "umbrella": "WAL-LG"
@@ -5503,7 +5569,8 @@
    "umbrella": "WAL-LG"
   },
   "Newtownabbey Independent Christian School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Listed site and shared independentchristianschool.org domain timed out; no live site found."
   },
   "Newtownards Model Primary School": {
    "umbrella": "NI-SCH"
@@ -5539,7 +5606,8 @@
    "umbrella": "SCO-LG"
   },
   "North Berwick Community Council": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "East Lothian scheme carries no seven-principle code; community council site read, none published"
   },
   "North Coast Integrated College, Coleraine": {
    "umbrella": "NI-SCH"
@@ -5566,7 +5634,8 @@
    "umbrella": "NI-HSC"
   },
   "Northern Ireland Cancer Registry": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "QUB-hosted registry; no board/unit code published"
   },
   "Northern Ireland Central Investment Fund for Charities": {
    "umbrella": ""
@@ -5590,6 +5659,11 @@
    "umbrella": ""
   },
   "Northern Ireland Fire and Rescue Board": {
+   "own": {
+    "nolan": "yyyyyyy",
+    "doc_type": "Code of conduct",
+    "url": "https://www.nifrs.org/wp-content/uploads/2021/03/Conduct-and-Accountability-for-NIFRS-Board-Members.pdf"
+   },
    "umbrella": ""
   },
   "Northern Ireland Fire and Rescue Service": {
@@ -5605,6 +5679,10 @@
    "umbrella": ""
   },
   "Northern Ireland Health and Social Care Trust Charitable Funds": {
+   "drop": true,
+   "reason": "charitable funds, not a single body"
+  },
+  "Northern Ireland Housing Executive (NIHE)": {
    "umbrella": ""
   },
   "Northern Ireland Human Rights Commission": {
@@ -5629,7 +5707,8 @@
    "umbrella": ""
   },
   "Northern Ireland Police Fund": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "published 'code of conduct' is a client-behaviour policy, not a governance code"
   },
   "Northern Ireland Policing Board": {
    "umbrella": ""
@@ -5644,6 +5723,9 @@
    "umbrella": ""
   },
   "Northern Ireland Railways Company Ltd (s NITHC)": {
+   "umbrella": ""
+  },
+  "Northern Ireland Review Body (Driver, Operator and Vehicle Licensing)": {
    "umbrella": ""
   },
   "Northern Ireland Screen Commission": {
@@ -5686,7 +5768,8 @@
    "umbrella": "WAL-LG"
   },
   "Northview House School, Kilbarchan": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Provider Curo Salus site (curosalus.org) has no code of conduct for staff or governors; only terms, privacy and FoI."
   },
   "Oakfield Primary School, Cardiff": {
    "umbrella": "WAL-SCH"
@@ -5710,7 +5793,8 @@
    "umbrella": "NI-SCH"
   },
   "Ochil Tower School, Auchterarder": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Site sets out vision and values but publishes no code of conduct for staff or board."
   },
   "Offa Community Council, Wrexham": {
    "umbrella": "WAL-LG"
@@ -5727,6 +5811,12 @@
    "umbrella": ""
   },
   "Office of the Chief Electoral Officer for Northern Ireland": {
+   "umbrella": ""
+  },
+  "Office of the Northern Ireland Commissioner for Administration": {
+   "umbrella": ""
+  },
+  "Office of the Northern Ireland Commissioner for Complaints": {
    "umbrella": ""
   },
   "Office of the Northern Ireland Local Government Commissioner for Standards": {
@@ -6159,6 +6249,11 @@
    "umbrella": "SCO-CC-H"
   },
   "Police Federation of Northern Ireland": {
+   "own": {
+    "nolan": "nypynpp",
+    "doc_type": "Code of ethics",
+    "url": "https://www.niassembly.gov.uk/globalassets/documents/raise/deposited-papers/2014/dp1338.pdf"
+   },
    "umbrella": ""
   },
   "Police Ombudsman for Northern Ireland": {
@@ -6258,7 +6353,8 @@
    "umbrella": "NI-SCH"
   },
   "Portadown Independent Christian School, Portadown": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Weebly site covers curriculum, fees, nursery and history; no code of conduct for staff or trustees."
   },
   "Portadown Integrated Primary School, Portadown": {
    "umbrella": "NI-SCH"
@@ -6357,7 +6453,8 @@
    "umbrella": "WAL-LG"
   },
   "Qualifications Wales/Cymwysterau Cymru": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "terms of reference and recruitment pack cite Nolan adherence; no code document published"
   },
   "Quarter Bach Community Council": {
    "umbrella": "WAL-LG"
@@ -6545,9 +6642,6 @@
   "Riverside Special School, Antrim": {
    "umbrella": "NI-SCH"
   },
-  "Riverview Primary School, Burton-on-Trent": {
-   "umbrella": ""
-  },
   "Roan St Patrick's Primary School, Eglish, Dungannon": {
    "umbrella": "NI-SCH"
   },
@@ -6658,7 +6752,8 @@
    "umbrella": "NI-SCH"
   },
   "Saint Peter's RC Primary School, Aberdeen": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Handbook contains a pupil-focused School Code of Conduct only; nothing covering staff or governors."
   },
   "Saintfield High School, Saintfield": {
    "umbrella": "NI-SCH"
@@ -6711,6 +6806,9 @@
   "Scottish Advisory Committee on the Medical Workforce": {
    "umbrella": ""
   },
+  "Scottish Agricultural Science Agency": {
+   "umbrella": ""
+  },
   "Scottish Agricultural Wages Board": {
    "umbrella": ""
   },
@@ -6761,7 +6859,8 @@
    "umbrella": "SCO-DPB"
   },
   "Scottish Public Health Observatory": {
-   "umbrella": ""
+   "drop": true,
+   "reason": "merged into Public Health Scotland (2017-2020)"
   },
   "Scottish Public Services Ombudsman": {
    "umbrella": ""
@@ -6797,7 +6896,8 @@
    "umbrella": "NI-SCH"
   },
   "Sensations Nest, Belfast": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Provider sites give services and contact only; no code of conduct for staff or trustees."
   },
   "Sesswick Community Council, Wrexham": {
    "umbrella": "WAL-LG"
@@ -6821,7 +6921,8 @@
    "umbrella": "SCO-DPB"
   },
   "Shetland UHI": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no separate college code located"
   },
   "Shieldaig Community Council": {
    "umbrella": "SCO-CC-H"
@@ -6884,7 +6985,7 @@
    "umbrella": "SCO-CC-H"
   },
   "South Lanarkshire College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "South Lanarkshire Council": {
    "umbrella": "SCO-LG"
@@ -7196,10 +7297,12 @@
    "umbrella": "NI-SCH"
   },
   "St David's Catholic College": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no board/staff code published"
   },
   "St David's Catholic College, Glamorgan": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no board/staff code published"
   },
   "St David's Church in Wales Primary School, Cardiff": {
    "umbrella": "WAL-SCH"
@@ -8102,7 +8205,7 @@
    "umbrella": "WAL-LG"
   },
   "St. Georges and St.Â Brides-Super-Ely Community Council": {
-   "umbrella": ""
+   "umbrella": "WAL-LG"
   },
   "St. Harmon Community Council": {
    "umbrella": "WAL-LG"
@@ -8132,7 +8235,8 @@
    "umbrella": "NI-SCH"
   },
   "Starley Hall School, Burntisland": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Site covers services, education and recruitment; no code of conduct for staff or board found."
   },
   "Statistics Advisory Committee (Northern Ireland)": {
    "umbrella": ""
@@ -8153,7 +8257,8 @@
    "umbrella": "SCO-LG"
   },
   "Stockbridge Primary School": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "row is Stockbridge Primary, Edinburgh City (Scottish school register); the sheet URL points to a Hampshire school of the same name; no code published by the Edinburgh school"
   },
   "Strabane Academy": {
    "umbrella": "NI-SCH"
@@ -8312,7 +8417,8 @@
    "umbrella": ""
   },
   "The Glasgow School of Art": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "documents portal blocked; no board code of conduct located"
   },
   "The Good Shepherd Primary School, Belfast": {
    "umbrella": "NI-SCH"
@@ -8360,10 +8466,12 @@
    "umbrella": "NI-SCH"
   },
   "The Royal Blind School, Edinburgh": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Run by Sight Scotland (formerly Royal Blind); site (royalblind.org obsolete) publishes no code of conduct for staff or trustees."
   },
   "The Royal High School, Edinburgh": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "Local-authority school; pupil behaviour policy only, nothing covering staff or governors."
   },
   "The Royal School Armagh": {
    "umbrella": "NI-SCH"
@@ -8441,7 +8549,8 @@
    "umbrella": "WAL-LG"
   },
   "Tonypandy Community College, Rhondda": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no own code located"
   },
   "Tonypandy Primary School, Rhondda": {
    "umbrella": "WAL-SCH"
@@ -8639,7 +8748,8 @@
    "umbrella": "WAL-LG"
   },
   "UHI Orkney": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no separate college code located"
   },
   "Ulidia Integrated College, Carrickfergus": {
    "umbrella": "NI-SCH"
@@ -8648,10 +8758,12 @@
    "umbrella": "WAL-SCH"
   },
   "Universities Ireland": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "cross-border membership body; no code of conduct published"
   },
   "Universities Scotland": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "membership body; no code of conduct published"
   },
   "Universities Wales": {
    "umbrella": ""
@@ -8684,7 +8796,8 @@
    "umbrella": "WAL-NHS"
   },
   "Veterans Commissioner for Northern Ireland": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no office-holder code published; appointment notices cite Nolan only for political-activity disclosure"
   },
   "Victoria College Prepatory School, Belfast": {
    "umbrella": "NI-SCH"
@@ -8743,14 +8856,19 @@
   "Wellington College, Belfast": {
    "umbrella": "NI-SCH"
   },
+  "Welsh Advisory Committee on Telecommunications (WACT)": {
+   "umbrella": ""
+  },
   "Welsh Ambulance Services NHS Trust": {
    "umbrella": "WAL-NHS"
   },
   "Welsh Committee for Professional Development of Pharmacy": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "no own code located"
   },
   "Welsh Health Specialised Services Committee": {
-   "umbrella": ""
+   "no_code": true,
+   "reason": "hosted committee; no own code published"
   },
   "Welsh Industrial Development Advisory Board": {
    "umbrella": ""
@@ -8792,7 +8910,7 @@
    "umbrella": "SCO-LG"
   },
   "West Lothian College": {
-   "umbrella": ""
+   "umbrella": "SCO-DPB"
   },
   "West Lothian Council": {
    "umbrella": "SCO-LG"

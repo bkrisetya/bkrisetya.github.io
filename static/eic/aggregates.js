@@ -73,7 +73,8 @@ function principleBars(ownOrgs, principles, shared) {
 const HEATMAP_FOLD_MIN = 25;
 const HEATMAP_FOLD_NAMES = new Set(["Business and development"]);
 
-function heatmap(ownOrgs, categoryNames, principles, shared) {
+function heatmap(ownOrgs, categoryNames, principles, shared, opts) {
+  const nofold = opts && opts.nofold;
   const cols = (principles || []).map((p) => ({ id: p.id, name: p.name }));
   const cells = new Map();
   const codedByCat = {};
@@ -111,6 +112,7 @@ function heatmap(ownOrgs, categoryNames, principles, shared) {
   const fold = all.filter((r) => HEATMAP_FOLD_NAMES.has(r.name) || (r.coded > 0 && r.coded < HEATMAP_FOLD_MIN));
   const zero = all.filter((r) => !HEATMAP_FOLD_NAMES.has(r.name) && r.coded === 0 && r.bodies === 0);
   const sharedOnly = all.filter((r) => !HEATMAP_FOLD_NAMES.has(r.name) && r.coded === 0 && r.bodies > 0);
+  if (nofold) return { rows: all, cols, cells, unit: shared ? "bodies" : "codes", folded: fold.length };
   if (fold.length < 2 && !fold.some((r) => HEATMAP_FOLD_NAMES.has(r.name))) return { rows: all, cols, cells, unit: shared ? "bodies" : "codes" };
   const pooled = { name: "Others", coded: 0, bodies: 0, cats: [] };
   fold.forEach((r) => {
