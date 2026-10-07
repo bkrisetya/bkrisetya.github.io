@@ -100,7 +100,7 @@ function renderSafetyNet(rows) {
     S.principles.forEach((p) => {
       const yesB = g.rows.reduce((a, r) => a + (rCov(r.nolan, p.id) === "yes" ? r.bodies : 0), 0);
       const share = g.bodies ? yesB / g.bodies : 0;
-      const cls = share >= 0.995 ? "cov-yes-shared" : share <= 0.005 ? "cov-unknown" : "cov-partial";
+      const cls = share >= 0.995 ? "cov-yes-shared" : share <= 0.005 ? "cov-unknown" : "cov-shared-partial";
       mini.appendChild(el("i", { class: cls, title: `${p.name}: ${Math.round(share * 100)}% of bodies in this group` }));
     });
     nodes.push(el("details", { class: "net-sect" }, [
@@ -269,7 +269,7 @@ function renderStrip() {
   if (stripTip) stripTip.textContent = "Hover or tap a bar to see the breakdown.";
   $("strip-rows").replaceChildren(...rows.map((r) => {
     const covered = r.yes + r.shared;
-    const tip = `${fmt(r.yes)} of the ${fmt(S.coded.length)} codes we read mention ${r.name}; ${fmt(r.shared)} more bodies have it through a shared code; ${fmt(checkedNone())} bodies have no code found${notChecked() ? `; ${fmt(notChecked())} not checked` : ""}.`;
+    const tip = [`${fmt(r.yes)} bodies mentioned ${r.name} in their own code`, `${fmt(r.shared)} more bodies have it through a shared code`].join(String.fromCharCode(10));
     const bar = el("div", { class: "strip-bar", title: tip });
     const small = [];
     for (const [k, v, lbl] of [["yes", r.yes, "own code"], ["shared", r.shared, "shared code"], ["no", r.no + checkedNone(), "not covered"], ["unchecked", notChecked(), "not checked"]]) {

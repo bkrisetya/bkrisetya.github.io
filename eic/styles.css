@@ -82,6 +82,9 @@ section { margin-bottom: 48px; }
 i.cov-yes, .dot.cov-yes { background: var(--teal); }
 i.cov-yes-shared, .dot.cov-yes-shared { background: var(--shared); }
 i.cov-partial, .dot.cov-partial { background: var(--teal-light); border: 1px solid var(--teal); }
+/* Group strips: nearly-all coverage keeps the shared-code colour, with a line to
+ * say it is not complete, so Education and Policing match the other sectors. */
+i.cov-shared-partial, .dot.cov-shared-partial { background: var(--shared); border: 1px solid #4F478F; }
 i.cov-no, .dot.cov-no { background: var(--magenta); }
 i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 
@@ -109,7 +112,7 @@ i.cov-unknown, .dot.cov-unknown { background: var(--grey); }
 .waffle-key { border: 0; padding: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; touch-action: manipulation; }
 .waffle-key:hover, .waffle-key:focus-visible { color: var(--navy); }
 .waffle-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; vertical-align: -1px; }
-.chart-tip { min-height: 1.2em; margin: 0 0 10px; font-size: 0.8rem; color: var(--ink-soft); }
+.chart-tip { min-height: 1.2em; margin: 0 0 10px; font-size: 0.8rem; color: var(--ink-soft); white-space: pre-line; }
 .strip-row { display: grid; grid-template-columns: 130px 1fr 70px; gap: 10px; align-items: center; padding: 5px 0; cursor: pointer; touch-action: manipulation; }
 .strip-row:hover, .strip-row:focus-visible { background: var(--paper); outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
 .p-name { font-weight: 600; font-size: 0.95rem; }
