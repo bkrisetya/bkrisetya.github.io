@@ -30,8 +30,8 @@ const DATA_CONFIG = {
   mode: "local", // "local" | "datasette"
 
   local: {
-    meta: "./data-meta.json?v=20261007h",
-    orgs: "./data-orgs.json?v=20261007f",
+    meta: "./data-meta.json?v=20261008a",
+    orgs: "./data-orgs.json?v=20261008a",
   },
 
   datasette: {

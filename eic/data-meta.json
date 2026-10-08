@@ -4,7 +4,7 @@
   "in_scope": 38998,
   "out_of_scope": 0,
   "snapshot": "9 September 2026",
-  "correctAsOf": "7 October 2026",
+  "correctAsOf": "8 October 2026",
   "allInScope": true,
   "scopeDropped": true,
   "master": {
@@ -44,7 +44,7 @@
    "repo": "ammara-y/PublicAuthorities_Database",
    "sha": "d79951ed80f3533729c6e66e3ee49edf297c9e3b",
    "url": "https://raw.githubusercontent.com/ammara-y/PublicAuthorities_Database/d79951ed80f3533729c6e66e3ee49edf297c9e3b/data.xlsx",
-   "fetched_at": "2026-10-07T12:35:21+01:00"
+   "fetched_at": "2026-10-08T15:17:47+01:00"
   },
   "defunctExcluded": 0,
   "noWebsiteExcluded": 59,
@@ -43470,10 +43470,10 @@
     "category": "Government, constitutional, administrative",
     "url": "https://eic.independent-commission.uk/",
     "coded": true,
-    "nolan": "nynnnnn",
+    "nolan": "yyyyyyy",
     "coc": {
      "doc_type": "Code of conduct",
-     "url": "https://eic.independent-commission.uk/wp-content/uploads/2026/08/2026-08-14-Call-for-Evidence-Headed.pdf"
+     "url": "https://eic.independent-commission.uk/our-remit/code-of-conduct/"
     }
    },
    {
